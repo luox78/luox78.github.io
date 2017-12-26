@@ -95,7 +95,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="C-7-特性"><a href="#C-7-特性" class="headerlink" title="C#7 特性"></a>C#7 特性</h1><h2 id="本地方法（Local-functions）"><a href="#本地方法（Local-functions）" class="headerlink" title="本地方法（Local functions）"></a>本地方法（Local functions）</h2><p><strong>有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为</strong></p>
+        <h2 id="本地方法（Local-functions）"><a href="#本地方法（Local-functions）" class="headerlink" title="本地方法（Local functions）"></a>本地方法（Local functions）</h2><p><strong>有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为</strong></p>
 <p><strong>（local function）：</strong> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int Fibonacci(int x) </span><br><span class="line">&#123; </span><br><span class="line">    if (x &lt; 0) throw new ArgumentException(&quot;Less negativity please!&quot;, nameof(x)); </span><br><span class="line">    return Fib(x).current; </span><br><span class="line"> </span><br><span class="line">	(int current, int previous) Fib(int i) </span><br><span class="line">    &#123; </span><br><span class="line">        if (i == 0) return (1, 0); </span><br><span class="line">        var (p, pp) = Fib(i - 1); </span><br><span class="line">        return (p + pp, p); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="元组（Tuples）"><a href="#元组（Tuples）" class="headerlink" title="元组（Tuples）"></a>元组（Tuples）</h2><p>我们经常希望能从一个方法中返回一个以上的结果。旧版本的 C#中的选项远远达不到令人满意的程度： </p>
@@ -119,7 +119,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/blog/2017/12/26/CS7/" data-id="cjbmfjndn00011gjx4266jvpj" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/blog/2017/12/26/CS7/" data-id="cjbnkscuh0000a0jx4ln0ze76" class="article-share-link">Teilen</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-7特性/">C#7特性</a></li></ul>
@@ -166,7 +166,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/blog/2017/12/25/hello-world/" data-id="cjbmfjnde00001gjxjv6pt37h" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/blog/2017/12/25/hello-world/" data-id="cjbnkscun0001a0jxlvtstuf4" class="article-share-link">Teilen</a>
       
       
     </footer>
