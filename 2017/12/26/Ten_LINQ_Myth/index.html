@@ -5,18 +5,20 @@
   
 
   
-  <title>luox78</title>
+  <title>LINQ | luox78</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Daily Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="luox78">
-<meta property="og:url" content="http://yoursite.com/blog/index.html">
+  <meta name="description" content="1 All LINQ queries must start with the ‘var’ keyword. In fact, the very purpose of the ‘var’ keyword is to start a LINQ query!123456string[] people = new [] &amp;#123; &amp;quot;Tom&amp;quot;, &amp;quot;Dick&amp;quot;, &amp;">
+<meta name="keywords" content="LINQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LINQ">
+<meta property="og:url" content="http://yoursite.com/blog/2017/12/26/Ten_LINQ_Myth/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="Daily Learning">
+<meta property="og:description" content="1 All LINQ queries must start with the ‘var’ keyword. In fact, the very purpose of the ‘var’ keyword is to start a LINQ query!123456string[] people = new [] &amp;#123; &amp;quot;Tom&amp;quot;, &amp;quot;Dick&amp;quot;, &amp;">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2017-12-26T15:22:53.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="Daily Learning">
+<meta name="twitter:title" content="LINQ">
+<meta name="twitter:description" content="1 All LINQ queries must start with the ‘var’ keyword. In fact, the very purpose of the ‘var’ keyword is to start a LINQ query!123456string[] people = new [] &amp;#123; &amp;quot;Tom&amp;quot;, &amp;quot;Dick&amp;quot;, &amp;">
   
     <link rel="alternate" href="/atom.xml" title="luox78" type="application/atom+xml">
   
@@ -67,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-Ten_LINQ_Myth" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Ten_LINQ_Myth" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/26/Ten_LINQ_Myth/" class="article-date">
   <time datetime="2017-12-26T14:34:53.555Z" itemprop="datePublished">2017-12-26</time>
@@ -86,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/26/Ten_LINQ_Myth/">LINQ</a>
+    <h1 class="article-title" itemprop="name">
+      LINQ
     </h1>
   
 
@@ -121,69 +121,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-CS6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/26/CS6/" class="article-date">
-  <time datetime="2017-12-26T12:27:56.003Z" itemprop="datePublished">2017-12-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C#</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/26/CS6/">C#6 特性</a>
-    </h1>
+    <a href="/2017/12/26/CS6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">C#6 特性</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Name = &quot;Jack&quot;; </span><br><span class="line">var results = $&quot;Hello &#123;Name&#125;&quot;; ## 空操作符</span><br></pre></td></tr></table></figure>
-<h2 id="空操作符"><a href="#空操作符" class="headerlink" title="空操作符 ( ?. )"></a>空操作符 ( ?. )</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (user != null &amp;&amp; user.Project != null &amp;&amp; user.Project.Tasks != null &amp;&amp; user.Project.Tasks.Count &gt; 0) </span><br><span class="line">&#123; </span><br><span class="line">   Console.WriteLine(user.Project.Tasks.First().Name); </span><br><span class="line">&#125; </span><br><span class="line">//现在</span><br><span class="line">Console.WriteLine(user?.Project?.Tasks?.First()?.Name);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意： 上面的代码虽然可以让我们少些很多代码，而且也减少了空异常，但是我们却需要小心使用，因为有的时候我们确实是需要抛出空异常，那么使用这个特性反而隐藏了Bug </p>
-</blockquote>
-<h2 id="NameOf"><a href="#NameOf" class="headerlink" title="NameOf"></a>NameOf</h2><p>利用nameof减少手写带来的错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person p;</span><br><span class="line">if(p == null)</span><br><span class="line">&#123;</span><br><span class="line"> 	throw new Exception(&quot;nameof(Person)&quot;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="表达式方法体"><a href="#表达式方法体" class="headerlink" title="表达式方法体"></a>表达式方法体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private static string SayHello() =&gt; &quot;Hello World&quot;;</span><br></pre></td></tr></table></figure>
-<h2 id="自动属性初始化器"><a href="#自动属性初始化器" class="headerlink" title="自动属性初始化器"></a>自动属性初始化器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//以前</span><br><span class="line">public class Person </span><br><span class="line">&#123; </span><br><span class="line">    public int Age &#123; get; set; &#125; </span><br><span class="line"> </span><br><span class="line">	public Person() </span><br><span class="line">    &#123; </span><br><span class="line">        Age = 100; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">//现在</span><br><span class="line">public class Person </span><br><span class="line">&#123; </span><br><span class="line">    public  int Age &#123; get; private set; &#125; </span><br><span class="line">&#125; </span><br><span class="line">//同时增加了只读属性初始化</span><br><span class="line">public class Person </span><br><span class="line">&#123; </span><br><span class="line">    public int Age &#123; get; &#125; = 100; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Index-初始化器"><a href="#Index-初始化器" class="headerlink" title="Index 初始化器"></a>Index 初始化器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var names = new Dictionary&lt;int, string&gt; </span><br><span class="line">       &#123; </span><br><span class="line">           [1] = &quot;Jack&quot;, </span><br><span class="line">           [2] = &quot;Alex&quot;, </span><br><span class="line">           [3] = &quot;Eric&quot;, </span><br><span class="line">           [4] = &quot;Jo&quot; </span><br><span class="line">       &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="using-静态类的方法可以使用-static-using"><a href="#using-静态类的方法可以使用-static-using" class="headerlink" title="using 静态类的方法可以使用 static using"></a>using 静态类的方法可以使用 static using</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">using System; </span><br><span class="line">using static System.Math; </span><br><span class="line">namespace CSharp6NewFeatures </span><br><span class="line">&#123; </span><br><span class="line">  class Program </span><br><span class="line">  &#123; </span><br><span class="line">      static void Main(string[] args) </span><br><span class="line">     &#123; </span><br><span class="line">        Console.WriteLine(Log10(5)+PI); </span><br><span class="line">     &#125; </span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/blog/2017/12/26/CS6/" data-id="cjbns8gdt00006sjxg7hbjbgh" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-特性/">C#特性</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         
