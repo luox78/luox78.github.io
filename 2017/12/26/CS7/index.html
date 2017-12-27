@@ -19,8 +19,8 @@
 <meta property="og:url" content="https://luox78.github.io/2017/12/26/CS7/index.html">
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="本地方法（Local functions）有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为 （local function）：  123456789101112public int Fibonacci(int x) &amp;#123;     if (x &amp;lt; 0) throw new ArgumentException(&amp;quot;Less negativit">
-<meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-12-26T12:11:25.519Z">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-27T15:15:16.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#7 特性">
 <meta name="twitter:description" content="本地方法（Local functions）有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为 （local function）：  123456789101112public int Fibonacci(int x) &amp;#123;     if (x &amp;lt; 0) throw new ArgumentException(&amp;quot;Less negativit">
@@ -151,6 +151,7 @@
     	<h2 id="本地方法（Local-functions）"><a href="#本地方法（Local-functions）" class="headerlink" title="本地方法（Local functions）"></a>本地方法（Local functions）</h2><p><strong>有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为</strong></p>
 <p><strong>（local function）：</strong> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int Fibonacci(int x) </span><br><span class="line">&#123; </span><br><span class="line">    if (x &lt; 0) throw new ArgumentException(&quot;Less negativity please!&quot;, nameof(x)); </span><br><span class="line">    return Fib(x).current; </span><br><span class="line"> </span><br><span class="line">	(int current, int previous) Fib(int i) </span><br><span class="line">    &#123; </span><br><span class="line">        if (i == 0) return (1, 0); </span><br><span class="line">        var (p, pp) = Fib(i - 1); </span><br><span class="line">        return (p + pp, p); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="元组（Tuples）"><a href="#元组（Tuples）" class="headerlink" title="元组（Tuples）"></a>元组（Tuples）</h2><p>我们经常希望能从一个方法中返回一个以上的结果。旧版本的 C#中的选项远远达不到令人满意的程度： </p>
 <ol>
 <li>Out 参数： 使用起来很笨拙（哪怕你使用了上面所述的改进），并且无法在 async 方法中使用。 </li>
