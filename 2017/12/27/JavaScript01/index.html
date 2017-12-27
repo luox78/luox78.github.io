@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-12-27T13:51:16.717Z">
+<meta property="og:updated_time" content="2017-12-27T15:05:01.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识JavaScript01">
 <meta name="twitter:description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
@@ -60,12 +60,6 @@
 						<li>
 							<a class='flat-box nav-archives' href='/archives'>
 								Archives
-							</a>
-						</li>
-					
-						<li>
-							<a class='flat-box nav-gallery' href='https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN'>
-								Gallery
 							</a>
 						</li>
 					
@@ -118,10 +112,6 @@
 				Archives
 			</a>
 		
-			<a href="https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN" class="nav-gallery nav">
-				Gallery
-			</a>
-		
 			<a href="/about" class="nav-about nav">
 				About
 			</a>
@@ -158,7 +148,7 @@
 	<section class="article typo">
   	<div class="article-entry" itemprop="articleBody">
     	<h3 id="js作用域"><a href="#js作用域" class="headerlink" title="js作用域"></a>js作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    for (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;               //js没有块级作用域</span><br><span class="line">    alert(i);       //10</span><br><span class="line"></span><br><span class="line">    function f1(parameters) &#123;</span><br><span class="line">        var n = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    //因为页面一开始加载并不会执行f1方法</span><br><span class="line">    //alert(n); undefined</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>默认如果直接在script标签中定义变量，则属于“全局作用域范围”(全局执行环境)，即属于window对象。<br>1 . 全局作用域范围的变量直到网页关闭或浏览器关闭时才释放资源<br>2 . 一个页面中的多个script标签中的变量可以互相访问。<br>3 . JS有垃圾回收机制，会定时对可释放资源的变量回收。将变量设置为null则表示可以被回收了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function name(parameters) &#123;</span><br><span class="line">        var i = 0;</span><br><span class="line">        i++;</span><br><span class="line">        alert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    //方法无返回值，会返回undefined</span><br><span class="line">    alert(name());</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>默认如果直接在script标签中定义变量，则属于“全局作用域范围”(全局执行环境)，即属于window对象。<br>1 . 全局作用域范围的变量直到网页关闭或浏览器关闭时才释放资源<br>2 . 一个页面中的多个script标签中的变量可以互相访问。<br>3 . JS有垃圾回收机制，会定时对可释放资源的变量回收。将变量设置为null则表示可以被回收了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    function name(parameters) &#123;</span><br><span class="line">        var i = 0;</span><br><span class="line">        i++;</span><br><span class="line">        alert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    //方法无返回值，会返回undefined</span><br><span class="line">    alert(name());</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var i = 1;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //全局作用域范围的变量直到网页关闭或浏览器关闭时才释放资源</span><br><span class="line">    alert(i);//1</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>方法内部不使用var定义的变量相当于全局变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function f1(parameters) &#123;</span><br><span class="line">        i = 100;</span><br><span class="line">        //var i = 100;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    f1();</span><br><span class="line">    alert(i);//100</span><br><span class="line">    //alert(i);使用未定义</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>js中switch中的判断是严格判断就是全等于（===）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var i = 90;</span><br><span class="line">    switch (i) &#123;</span><br><span class="line">        case 90:</span><br><span class="line">            alert(&quot;number&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case &quot;90&quot;:</span><br><span class="line">            alert(&quot;string&quot;);</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
