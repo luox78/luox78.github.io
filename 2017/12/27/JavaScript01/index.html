@@ -5,18 +5,19 @@
   
 
   
-  <title>luox78</title>
+  <title>初识JavaScript | luox78</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Daily Learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="luox78">
-<meta property="og:url" content="http://yoursite.com/blog/index.html">
+  <meta name="description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识JavaScript">
+<meta property="og:url" content="http://yoursite.com/blog/2017/12/27/JavaScript01/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="Daily Learning">
+<meta property="og:description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2017-12-27T13:42:21.707Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="Daily Learning">
+<meta name="twitter:title" content="初识JavaScript">
+<meta name="twitter:description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
   
     <link rel="alternate" href="/atom.xml" title="luox78" type="application/atom+xml">
   
@@ -67,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-JavaScript01" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-JavaScript01" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/12/27/JavaScript01/" class="article-date">
   <time datetime="2017-12-27T12:55:09.751Z" itemprop="datePublished">2017-12-27</time>
@@ -86,8 +85,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/27/JavaScript01/">初识JavaScript</a>
+    <h1 class="article-title" itemprop="name">
+      初识JavaScript
     </h1>
   
 
@@ -111,72 +110,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-Ten_LINQ_Myth" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/26/Ten_LINQ_Myth/" class="article-date">
-  <time datetime="2017-12-26T14:34:53.555Z" itemprop="datePublished">2017-12-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/C/">C#</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/26/Ten_LINQ_Myth/">LINQ</a>
-    </h1>
+    <a href="/2017/12/26/Ten_LINQ_Myth/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">LINQ</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-All-LINQ-queries-must-start-with-the-‘var’-keyword-In-fact-the-very-purpose-of-the-‘var’-keyword-is-to-start-a-LINQ-query"><a href="#1-All-LINQ-queries-must-start-with-the-‘var’-keyword-In-fact-the-very-purpose-of-the-‘var’-keyword-is-to-start-a-LINQ-query" class="headerlink" title="1 All LINQ queries must start with the ‘var’ keyword. In fact, the very purpose of the ‘var’ keyword is to start a LINQ query!"></a>1 All LINQ queries must start with the ‘var’ keyword. In fact, the very purpose of the ‘var’ keyword is to start a LINQ query!</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string[] people = new [] &#123; &quot;Tom&quot;, &quot;Dick&quot;, &quot;Harry&quot; &#125;;</span><br><span class="line">var filteredPeople = people.Where (p =&gt; p.Length &gt; 3); </span><br><span class="line">//is precisely equivalent to:</span><br><span class="line"></span><br><span class="line">string[] people = new [] &#123; &quot;Tom&quot;, &quot;Dick&quot;, &quot;Harry&quot; &#125;;</span><br><span class="line">IEnumerable&lt;string&gt; filteredPeople = people.Where (p =&gt; p.Length &gt; 3);</span><br></pre></td></tr></table></figure>
-<h2 id="2-All-LINQ-queries-must-use-query-syntax"><a href="#2-All-LINQ-queries-must-use-query-syntax" class="headerlink" title="2 All LINQ queries must use query syntax."></a>2 All LINQ queries must use query syntax.</h2><ul>
-<li><p><strong>lambda syntax</strong> </p>
-</li>
-<li><p><strong>query syntax</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//Here&apos;s an example of lambda syntax:</span><br><span class="line"></span><br><span class="line">string[] people = new [] &#123; &quot;Tom&quot;, &quot;Dick&quot;, &quot;Harry&quot; &#125;;</span><br><span class="line">var filteredPeople = people.Where (p =&gt; p.Length &gt; 3); </span><br><span class="line">Here&apos;s the same thing expressed in query syntax:</span><br><span class="line"></span><br><span class="line">//string[] people = new [] &#123; &quot;Tom&quot;, &quot;Dick&quot;, &quot;Harry&quot; &#125;;</span><br><span class="line">var filteredPeople = from p in people where p.Length &gt; 3 select p;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="3-To-retrieve-all-customers-from-the-customer-table-you-must-perform-a-query-similar-to-the-following"><a href="#3-To-retrieve-all-customers-from-the-customer-table-you-must-perform-a-query-similar-to-the-following" class="headerlink" title="3 To retrieve all customers from the customer table, you must perform a query similar to the following:"></a>3 To retrieve all customers from the customer table, you must perform a query similar to the following:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">The expression:</span><br><span class="line"></span><br><span class="line">from c in db.Customers select c </span><br><span class="line">is a frivolous query! You can simply go:</span><br><span class="line"></span><br><span class="line">db.Customers</span><br><span class="line">Similarly, the following LINQ to XML query:</span><br><span class="line"></span><br><span class="line">var xe = from e in myXDocument.Descendants (&quot;phone&quot;) select e;</span><br><span class="line">can be simplified to:</span><br><span class="line"></span><br><span class="line">var xe = myXDocument.Descendants (&quot;phone&quot;);</span><br><span class="line">And this:</span><br><span class="line"></span><br><span class="line">Customer customer = (from c in db.Customers where c.ID == 123 select c)</span><br><span class="line">                    .Single();</span><br><span class="line">can be simplified to:</span><br><span class="line"></span><br><span class="line">Customer customer = db.Customers.Single (c =&gt; c.ID == 123);</span><br></pre></td></tr></table></figure>
-<h2 id="4-A-LINQ-to-SQL-or-EF-query-will-be-executed-in-one-round-trip-only-if-the-query-was-built-in-a-single-step"><a href="#4-A-LINQ-to-SQL-or-EF-query-will-be-executed-in-one-round-trip-only-if-the-query-was-built-in-a-single-step" class="headerlink" title="4 A LINQ to SQL or EF query will be executed in one round-trip only if the query was built in a single step."></a>4 A LINQ to SQL or EF query will be executed in one round-trip only if the query was built in a single step.</h2><p>LINQ follows a lazy evaluation model, which means queries execute not when constructed, but when enumerated. This means you can build up a query in as many steps as you like, and it won’t actually hit the server until you eventually start consuming the results.</p>
-<p>For instance, the following query retrieves the names of all customers whose name starts with the letter ‘A’, and who have made at least two purchases. We build this query in three steps:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var query = db.Customers.Where (c =&gt; c.Name.StartsWith (&quot;A&quot;));</span><br><span class="line">query = query.Where (c =&gt; c.Purchases.Count() &gt;= 2);</span><br><span class="line">var result = query.Select (c =&gt; c.Name);</span><br><span class="line"></span><br><span class="line">foreach (string name in result)   // Only now is the query executed!</span><br><span class="line">   Console.WriteLine (name);</span><br></pre></td></tr></table></figure></p>
-<h2 id="5-Because-SQL-emits-flat-result-sets-LINQ-queries-must-be-structured-to-emit-flat-result-sets-too"><a href="#5-Because-SQL-emits-flat-result-sets-LINQ-queries-must-be-structured-to-emit-flat-result-sets-too" class="headerlink" title="5 Because SQL emits flat result sets, LINQ queries must be structured to emit flat result sets, too."></a>5 Because SQL emits flat result sets, LINQ queries must be structured to emit flat result sets, too.</h2><p>For example, if you want to retrieve the names of customers in the state of WA along with all their purchases, you can simply do the following:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from c in db.Customers</span><br><span class="line">where c.State == &quot;WA&quot;</span><br><span class="line">select new</span><br><span class="line">&#123;</span><br><span class="line">   c.Name,</span><br><span class="line">   c.Purchases    // An EntitySet (collection)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>The hierarchical result from this query is much easier to work with than a flat result set!</p>
-<p>We can achieve the same result without association properties as follows:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from c in db.Customers</span><br><span class="line">where c.State == &quot;WA&quot;</span><br><span class="line">select new</span><br><span class="line">&#123;</span><br><span class="line">   c.Name,</span><br><span class="line">   Purchases = db.Purchases.Where (p =&gt; p.CustomerID == c.ID)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/blog/2017/12/26/Ten_LINQ_Myth/" data-id="cjbp4233d000e74jxnby5l3rr" class="article-share-link">Teilen</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LINQ/">LINQ</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">weiter &raquo;</a>
-  </nav>
 
 </section>
         
