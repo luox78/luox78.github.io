@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: C#特性 | luox78</title>
+  <title>Tag: jsfoundation | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,7 +15,7 @@
   <meta name="description" content="Blog for luox78">
 <meta property="og:type" content="website">
 <meta property="og:title" content="luox78">
-<meta property="og:url" content="https://luox78.github.io/tags/C-特性/index.html">
+<meta property="og:url" content="https://luox78.github.io/tags/jsfoundation/index.html">
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="Blog for luox78">
 <meta property="og:locale" content="zh-Hans">
@@ -124,7 +124,7 @@
       <div class='l_main'>
         
   <script>
-    window.subData= { title:'Tag : C#特性'}
+    window.subData= { title:'Tag : jsfoundation'}
   </script>
 
 <section class="post-list">
@@ -134,77 +134,34 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/26/CS6/">
-        C#6 特性
+      <a href="/2017/12/28/JavaScript02/">
+        初识JavaScript02
       </a>
     </h2>
     
     <time>
-      Dec 26, 2017
+      Dec 28, 2017
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/C/">C#</a>
+        <a href="/categories/JavaScript/">JavaScript</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Name = &quot;Jack&quot;; </span><br><span class="line">var results = $&quot;Hello &#123;Name&#125;&quot;; ## 空操作符</span><br></pre></td></tr></table></figure>
-<h2 id="空操作符"><a href="#空操作符" class="headerlink" title="空操作符 ( ?. )"></a>空操作符 ( ?. )</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (user != null &amp;&amp; user.Project != null &amp;&amp; user.Project.Tasks != null &amp;&amp; user.Project.Tasks.Count &gt; 0) </span><br><span class="line">&#123; </span><br><span class="line">   Console.WriteLine(user.Project.Tasks.First().Name); </span><br><span class="line">&#125; </span><br><span class="line">//现在</span><br><span class="line">Console.WriteLine(user?.Project?.Tasks?.First()?.Name);</span><br></pre></td></tr></table></figure>
+	  <h2 id="js中的事件"><a href="#js中的事件" class="headerlink" title="js中的事件"></a>js中的事件</h2><p>1 通过调用方法名或在“”内部写<br>2 通过id，使用<code>document.getElementById</code>实现事件</p>
 
     
 	  <div class="readmore">
-      <a href="/2017/12/26/CS6/">Read More</a>
+      <a href="/2017/12/28/JavaScript02/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/C-特性/">C#特性</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/26/CS7/">
-        C#7 特性
-      </a>
-    </h2>
-    
-    <time>
-      Dec 26, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="本地方法（Local-functions）"><a href="#本地方法（Local-functions）" class="headerlink" title="本地方法（Local functions）"></a>本地方法（Local functions）</h2><p><strong>有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为</strong></p>
-<p><strong>（local function）：</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int Fibonacci(int x) </span><br><span class="line">&#123; </span><br><span class="line">    if (x &lt; 0) throw new ArgumentException(&quot;Less negativity please!&quot;, nameof(x)); </span><br><span class="line">    return Fib(x).current; </span><br><span class="line"> </span><br><span class="line">	(int current, int previous) Fib(int i) </span><br><span class="line">    &#123; </span><br><span class="line">        if (i == 0) return (1, 0); </span><br><span class="line">        var (p, pp) = Fib(i - 1); </span><br><span class="line">        return (p + pp, p); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2017/12/26/CS7/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/C-特性/">C#特性</a>
+        <a href="/tags/jsfoundation/">jsfoundation</a>
       
 	  </div>
     

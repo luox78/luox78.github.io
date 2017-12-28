@@ -5,23 +5,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <title>luox78</title>
-  <meta name="description" content="Daily Learning" />
+  <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="shortcut icon" href="/">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Daily Learning">
+  <meta name="description" content="Blog for luox78">
 <meta property="og:type" content="website">
 <meta property="og:title" content="luox78">
 <meta property="og:url" content="https://luox78.github.io/page/2/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="Daily Learning">
-<meta property="og:locale" content="zh">
+<meta property="og:description" content="Blog for luox78">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="Daily Learning">
+<meta name="twitter:description" content="Blog for luox78">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -63,13 +63,7 @@
 						</li>
 					
 						<li>
-							<a class='flat-box nav-gallery' href='https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN'>
-								Gallery
-							</a>
-						</li>
-					
-						<li>
-							<a class='flat-box nav-about' href='/about'>
+							<a class='flat-box nav-about' href='/about.html'>
 								About
 							</a>
 						</li>
@@ -117,11 +111,7 @@
 				Archives
 			</a>
 		
-			<a href="https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN" class="nav-gallery nav">
-				Gallery
-			</a>
-		
-			<a href="/about" class="nav-about nav">
+			<a href="/about.html" class="nav-about nav">
 				About
 			</a>
 		
@@ -140,55 +130,8 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/26/CS6/">
-        C#6 特性
-      </a>
-    </h2>
-    
-    <time>
-      Dec 26, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Name = &quot;Jack&quot;; </span><br><span class="line">var results = $&quot;Hello &#123;Name&#125;&quot;; ## 空操作符</span><br></pre></td></tr></table></figure>
-<h2 id="空操作符"><a href="#空操作符" class="headerlink" title="空操作符 ( ?. )"></a>空操作符 ( ?. )</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (user != null &amp;&amp; user.Project != null &amp;&amp; user.Project.Tasks != null &amp;&amp; user.Project.Tasks.Count &gt; 0) </span><br><span class="line">&#123; </span><br><span class="line">   Console.WriteLine(user.Project.Tasks.First().Name); </span><br><span class="line">&#125; </span><br><span class="line">//现在</span><br><span class="line">Console.WriteLine(user?.Project?.Tasks?.First()?.Name);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意： 上面的代码虽然可以让我们少些很多代码，而且也减少了空异常，但是我们却需要小心使用，因为有的时候我们确实是需要抛出空异常，那么使用这个特性反而隐藏了Bug </p>
-</blockquote>
-<h2 id="NameOf"><a href="#NameOf" class="headerlink" title="NameOf"></a>NameOf</h2><p>利用nameof减少手写带来的错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Person p;</span><br><span class="line">if(p == null)</span><br><span class="line">&#123;</span><br><span class="line"> 	throw new Exception(&quot;nameof(Person)&quot;); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="表达式方法体"><a href="#表达式方法体" class="headerlink" title="表达式方法体"></a>表达式方法体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private static string SayHello() =&gt; &quot;Hello World&quot;;</span><br></pre></td></tr></table></figure>
-<h2 id="自动属性初始化器"><a href="#自动属性初始化器" class="headerlink" title="自动属性初始化器"></a>自动属性初始化器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//以前</span><br><span class="line">public class Person </span><br><span class="line">&#123; </span><br><span class="line">    public int Age &#123; get; set; &#125; </span><br><span class="line"> </span><br><span class="line">	public Person() </span><br><span class="line">    &#123; </span><br><span class="line">        Age = 100; </span><br><span class="line">    &#125; </span><br><span class="line">&#125; </span><br><span class="line">//现在</span><br><span class="line">public class Person </span><br><span class="line">&#123; </span><br><span class="line">    public  int Age &#123; get; private set; &#125; </span><br><span class="line">&#125; </span><br><span class="line">//同时增加了只读属性初始化</span><br><span class="line">public class Person </span><br><span class="line">&#123; </span><br><span class="line">    public int Age &#123; get; &#125; = 100; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Index-初始化器"><a href="#Index-初始化器" class="headerlink" title="Index 初始化器"></a>Index 初始化器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var names = new Dictionary&lt;int, string&gt; </span><br><span class="line">       &#123; </span><br><span class="line">           [1] = &quot;Jack&quot;, </span><br><span class="line">           [2] = &quot;Alex&quot;, </span><br><span class="line">           [3] = &quot;Eric&quot;, </span><br><span class="line">           [4] = &quot;Jo&quot; </span><br><span class="line">       &#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="using-静态类的方法可以使用-static-using"><a href="#using-静态类的方法可以使用-static-using" class="headerlink" title="using 静态类的方法可以使用 static using"></a>using 静态类的方法可以使用 static using</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">using System; </span><br><span class="line">using static System.Math; </span><br><span class="line">namespace CSharp6NewFeatures </span><br><span class="line">&#123; </span><br><span class="line">  class Program </span><br><span class="line">  &#123; </span><br><span class="line">      static void Main(string[] args) </span><br><span class="line">     &#123; </span><br><span class="line">        Console.WriteLine(Log10(5)+PI); </span><br><span class="line">     &#125; </span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/C-特性/">C#特性</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/26/CS7/">
-        C#7 特性
+      <a href="/2017/12/25/hello-world/">
+        Hello World
       </a>
     </h2>
     
@@ -196,43 +139,18 @@
       Dec 25, 2017
     </time>
 		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
   </section>
   <section class="article typo">
-	  <h2 id="本地方法（Local-functions）"><a href="#本地方法（Local-functions）" class="headerlink" title="本地方法（Local functions）"></a>本地方法（Local functions）</h2><p><strong>有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为</strong></p>
-<p><strong>（local function）：</strong> </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int Fibonacci(int x) </span><br><span class="line">&#123; </span><br><span class="line">    if (x &lt; 0) throw new ArgumentException(&quot;Less negativity please!&quot;, nameof(x)); </span><br><span class="line">    return Fib(x).current; </span><br><span class="line"> </span><br><span class="line">	(int current, int previous) Fib(int i) </span><br><span class="line">    &#123; </span><br><span class="line">        if (i == 0) return (1, 0); </span><br><span class="line">        var (p, pp) = Fib(i - 1); </span><br><span class="line">        return (p + pp, p); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="元组（Tuples）"><a href="#元组（Tuples）" class="headerlink" title="元组（Tuples）"></a>元组（Tuples）</h2><p>我们经常希望能从一个方法中返回一个以上的结果。旧版本的 C#中的选项远远达不到令人满意的程度： </p>
-<ol>
-<li>Out 参数： 使用起来很笨拙（哪怕你使用了上面所述的改进），并且无法在 async 方法中使用。 </li>
-<li>System.Tuple&lt;…&gt; 返回类型： 用起来很啰嗦，并且需要分配一个元组对象。 </li>
-<li>自定义每个方法的传输类型： 需要用一大堆代码来实现一个类，而目的仅仅是临时打包几个变量。 </li>
-<li>通过动态类型返回匿名类： 性能有瓶颈，且没有静态类型检查。 </li>
-</ol>
-<p>为了在这方面做得更好，C# 7.0 加入了元组类型（tuple types）和元组字面量（tupleliterals）： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(string, string, string) LookupName(long id) // 元组返回类型 </span><br><span class="line">&#123; </span><br><span class="line">     // 从数据储存中取出第一个、中间和最后一个数据 </span><br><span class="line">    return (first, middle, last); // 元组字面量 </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这种方法现在会很有效率地返回三个字符串，包装成一个元组值中的元素。 </p>
-<p>方法的调用者将会收到一个元组，并可以分别访问各个元素： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var names = LookupName(id); </span><br><span class="line"></span><br><span class="line">WriteLine($&quot;found &#123;names.Item1&#125;&#123;names.Item3&#125;.&quot;);</span><br></pre></td></tr></table></figure>
-<p>Item1等是元组元素的默认名称，并且总是可用的。但是这样描述性不是非常好，因此你可以选择性地使用另一种更好的方法： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(string first, string middle, string last)LookupName(long id) // 元组元素拥有了名称 </span><br><span class="line">//现在元组的接收者可以使用更具描述性的名字了： </span><br><span class="line">var names = LookupName(id); </span><br><span class="line">WriteLine($&quot;found &#123;names.first&#125;&#123;names.last&#125;.&quot;); </span><br><span class="line">//你也可以直接在元组字面量中指定元素名称： </span><br><span class="line">return (first: first, middle: middle,last: last); // 在字面量中命名元组元素</span><br></pre></td></tr></table></figure>
-<p>通常来说你可以无视名字而将元组类型互相转换：只要每个元素之间是可转换的（assignable），元组类型即可自由地互相转换。 </p>
-<p>元组是值类型，它们的元素是简单的公共、可修改的字段。它们具有值相等性，意味着如果两个元组间每个元素两两相等（且拥有相同的哈希值）则两个元组相等（且拥有相同的哈希值）。 </p>
-<p>这使得元组在多返回值之外的许多场景也很有用。例如，如果你需要一个拥有多个键的字典，使用一个元组作为你的键，一切都会正常运行。如果你需要一个每个位置有多个值的列表，使用元组吧，诸如搜索列表这样的功能将会正确的工作。 </p>
-
+	  <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a><br>
 
     
+	  <div class="readmore">
+      <a href="/2017/12/25/hello-world/">Read More</a>
+    </div>
     
     
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/C-特性/">C#特性</a>
-      
-	  </div>
     
   </section>
 </article>
@@ -249,11 +167,6 @@
     </a>
     
     
-    <a class="next" rel="next" href="/page/3/">
-      <span class="text">Next</span>
-      <span class="icon icon-chevron-right"></span>
-    </a>
-    
   </nav>
   
 
@@ -261,6 +174,8 @@
       <aside class='l_side'>
         
   <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/avatar.jpg' />
 
 <div class='header'>luox78</div>
 <div class='content'>
@@ -273,20 +188,12 @@
 <div class='content'>
     <ul class="entry">
     
-        <li><a class="flat-box" target="_blank" href="https://ccoooss.com">
-            <div class='name'>ClassicOldSong</div>
+        <li><a class="flat-box" target="_blank" href="https://github.com/luox78">
+            <div class='name'>Github</div>
         </a></li>
     
-        <li><a class="flat-box" target="_blank" href="https://frantic1048.logdown.com/">
-            <div class='name'>Frantic1048</div>
-        </a></li>
-    
-        <li><a class="flat-box" target="_blank" href="https://hclmaster.github.io/">
-            <div class='name'>Hclmaster</div>
-        </a></li>
-    
-        <li><a class="flat-box" target="_blank" href="https://whst.github.io/">
-            <div class='name'>WANG Hsü-Tung</div>
+        <li><a class="flat-box" target="_blank" href="https://www.baidu.com">
+            <div class='name'>Baidu</div>
         </a></li>
     
     </ul>
@@ -299,9 +206,9 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>3</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>4</div></a></li>
     
-        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>2</div></a></li>
     
     </ul>
     
@@ -312,7 +219,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a>
+        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 14px; color: #808080">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
     </div>
 </div>
 
@@ -327,14 +234,14 @@
 	<div class="social-wrapper">
   	
       
-        <a href="https://github.com/stkevintan" class="social github"
+        <a href="https://github.com/luox78" class="social github"
           target="_blank" rel="external">
           <span class="icon icon-github"></span>
         </a>
       
-        <a href="https://twitter.com/kevinsfork" class="social twitter"
+        <a href="/" class="social weibo"
           target="_blank" rel="external">
-          <span class="icon icon-twitter"></span>
+          <span class="icon icon-weibo"></span>
         </a>
       
         <a href="/atom.xml" class="social rss"
