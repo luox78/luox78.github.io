@@ -124,7 +124,9 @@
 <h3 id="2-4线程优先级"><a href="#2-4线程优先级" class="headerlink" title="2.4线程优先级"></a>2.4线程优先级</h3><p>线程的<code>Priority</code>属性决定了相对于操作系统中的其它活动线程，它可以获得多少执行时间。线程优先级的取值如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enum ThreadPriority &#123; Lowest, BelowNormal, Normal, AboveNormal, Highest &#125;</span><br></pre></td></tr></table></figure>
 <p>只有当多个线程同时活动时，线程优先级才有意义。</p>
+<blockquote>
 <p>在提升线程优先级前请三思，这可能会导致其它线程的资源饥饿（resource starvation，译者注：指没有分配到足够的CPU时间来运行）等问题。</p>
+</blockquote>
 <p>提升线程的优先级是无法使其能够处理实时任务的，因为它还受到程序进程优先级的影响。要进行实时任务，必须同时使用<code>System.Diagnostics</code>中的<code>Process</code>类来提升进程的优先级（记得这不是我告诉你的）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">using (Process p = Process.GetCurrentProcess())</span><br><span class="line">  p.PriorityClass = ProcessPriorityClass.High;</span><br></pre></td></tr></table></figure>
 <p><code>ProcessPriorityClass.High</code>实际上就是一个略低于最高优先级<code>Realtime</code>的级别。将一个进程的优先级设置为<code>Realtime</code>是通知操作系统，我们绝不希望该进程将 CPU 时间出让给其它进程。如果你的程序误入一个无限循环，会发现甚至是操作系统也被锁住了，就只好去按电源按钮了<code>o(&gt;_&lt;)o</code>　正是由于这一原因，High 通常是实时程序的最好选择。</p>
@@ -133,7 +135,9 @@
 <p>即使是提升了进程优先级，托管环境在处理强实时需求时仍然有限制。除了自动垃圾回收带来的延迟，操作系统也不能够完全满足实时任务的需要，即便是非托管的程序也是如此。最好的解决办法还是使用独立的硬件或者专门的实时平台。</p>
 <h3 id="2-5异常处理"><a href="#2-5异常处理" class="headerlink" title="2.5异常处理"></a>2.5异常处理</h3><p>当线程开始运行后，其创建代码所在的<code>try / catch / finally</code>块与该线程不再有任何关系。考虑下面的程序：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public static void Main()</span><br><span class="line">&#123;</span><br><span class="line">  try</span><br><span class="line">  &#123;</span><br><span class="line">    new Thread (Go).Start();</span><br><span class="line">  &#125;</span><br><span class="line">  catch (Exception ex)</span><br><span class="line">  &#123;</span><br><span class="line">    // 永远执行不到这里</span><br><span class="line">    Console.WriteLine (&quot;Exception!&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void Go() &#123; throw null; &#125;   // 产生 NullReferenceException 异常</span><br></pre></td></tr></table></figure>
-<p>这个例子中的<code>try / catch</code>语句是无效的，而新创建的线程将会遇到一个未处理的<code>NullReferenceException</code>。当你考虑到每一个线程具有独立的执行路径时，这种行为就可以理解了。</p>
+<blockquote>
+<p>这个例子中的<code>try / catch</code>语句是无效的，而新创建的线程将会遇到一个未处理的<code>NullReferenceException</code>。因为主线程直接跳过catch。</p>
+</blockquote>
 <p>修改方法是将异常处理移到<code>Go</code>方法中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public static void Main()</span><br><span class="line">&#123;</span><br><span class="line">   new Thread (Go).Start();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void Go()</span><br><span class="line">&#123;</span><br><span class="line">  try</span><br><span class="line">  &#123;</span><br><span class="line">    // ...</span><br><span class="line">    throw null;    // 异常会在下面被捕获</span><br><span class="line">    // ...</span><br><span class="line">  &#125;</span><br><span class="line">  catch (Exception ex)</span><br><span class="line">  &#123;</span><br><span class="line">    // 一般会记录异常， 和/或通知其它线程我们遇到问题了</span><br><span class="line">    // ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>在生产环境的程序中，所有线程的入口方法处都应该有一个异常处理器，就如同在主线程所做的那样（一般可能是在执行栈上靠近入口的地方）。未处理的异常会使得整个程序停止运行，弹出一个难看的对话框。</p>
@@ -146,7 +150,9 @@
 <li>[<code>BackgroundWorker</code>]</li>
 <li>[任务并行库（TPL）]</li>
 </ul>
-<h2 id="3线程池"><a href="#3线程池" class="headerlink" title="3线程池"></a>3线程池</h2><p>当启动一个线程时，会有几百毫秒的时间花费在准备一些额外的资源上，例如一个新的私有局部变量栈这样的事情。每个线程会占用（默认情况下）1MB 内存。线程池（thread pool）可以通过共享与回收线程来减轻这些开销，允许多线程应用在很小的粒度上而没有性能损失。在多核心处理器以分治（divide-and-conquer）的风格执行计算密集代码时将会十分有用。</p>
+<h2 id="3线程池"><a href="#3线程池" class="headerlink" title="3线程池"></a>3线程池</h2><blockquote>
+<p>当启动一个线程时，会有几百毫秒的时间花费在准备一些额外的资源上，例如一个新的私有局部变量栈这样的事情。每个线程会占用（默认情况下）1MB 内存。线程池（thread pool）可以通过共享与回收线程来减轻这些开销，允许多线程应用在很小的粒度上而没有性能损失。在多核心处理器以分治（divide-and-conquer）的风格执行计算密集代码时将会十分有用。</p>
+</blockquote>
 <p>线程池会限制其同时运行的工作线程总数。太多的活动线程会加重操作系统的管理负担，也会降低 CPU 缓存的效果。一旦达到数量限制，任务就会进行排队，等待一个任务完成后才会启动另一个。这使得程序任意并发成为可能，例如 web 服务器。（异步方法模式（asynchronous method pattern）是进一步高效利用线程池的高级技术，我们在<a href="http://www.albahari.com/nutshell/" target="_blank" rel="noopener">C# 4.0 in a Nutshell**</a>的 23 章来讲）。</p>
 <p>有多种方法可以使用线程池：</p>
 <ul>
@@ -171,10 +177,13 @@
 </ul>
 <p>可以改变线程池线程的[优先级]，当它用完后返回线程池时会被恢复到默认状态。</p>
 <p>可以通过<code>Thread.CurrentThread.IsThreadPoolThread</code>属性来查询当前是否运行在线程池线程上。</p>
-<h3 id="3-1通过-TPL-使用线程池"><a href="#3-1通过-TPL-使用线程池" class="headerlink" title="3.1通过 TPL 使用线程池"></a>3.1通过 TPL 使用线程池</h3><p>可以很容易的使用任务并行库（Task Parallel Library，TPL）中的[<code>Task</code>]类来使用线程池。<code>Task</code>类在 Framework 4.0 时被加入：如果你熟悉旧式的构造，可以将非泛型的<code>Task</code>类看作[<code>ThreadPool.QueueUserWorkItem</code>]的替代，而泛型的<code>Task&lt;TResult&gt;</code>看作[异步委托]的替代。比起旧式的构造，新式的构造会更快速，更方便，并且更灵活。</p>
+<h3 id="3-1通过-TPL-使用线程池"><a href="#3-1通过-TPL-使用线程池" class="headerlink" title="3.1通过 TPL 使用线程池"></a>3.1通过 TPL 使用线程池</h3><p>可以很容易的使用<em>任务并行库</em>（Task Parallel Library，TPL）中的[<code>Task</code>]类来使用线程池。</p>
+<blockquote>
+<p><code>Task</code>类在 Framework 4.0 时被加入：如果你熟悉旧式的构造，可以将非泛型的<code>Task</code>类看作[<code>ThreadPool.QueueUserWorkItem</code>]的替代，而泛型的<code>Task&lt;TResult&gt;</code>看作[异步委托]的替代。比起旧式的构造，新式的构造会更快速，更方便，并且更灵活。</p>
+</blockquote>
 <p>要使用非泛型的<code>Task</code>类，调用<code>Task.Factory.StartNew</code>，并传递目标方法的委托：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">static void Main()    // Task 类在 System.Threading.Tasks 命名空间中</span><br><span class="line">&#123;</span><br><span class="line">  Task.Factory.StartNew (Go);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void Go()</span><br><span class="line">&#123;</span><br><span class="line">  Console.WriteLine (&quot;Hello from the thread pool!&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>Task.Factory.StartNew</code>返回一个<code>Task</code>对象，可以用来监视任务，例如通过调用[Wait])方法来等待其结束。</p>
+<p><code>Task.Factory.StartNew</code>返回一个<code>Task</code>对象，可以用来监视任务，例如通过调用<code>Wait</code>)方法来等待其结束。</p>
 <p>当调用<code>Task</code>的[<code>Wait</code>方法]时，所有未处理的异常会在宿主线程被重新抛出。（如果不调用<code>Wait</code>而是丢弃不管，未处理的异常会[像普通的线程那样]结束程序。（译者注：在 .NET 4.5 中，为了支持基于<code>async / await</code>的异步模式，<code>Task</code>中这种“未观察”的异常默认会被忽略，而不会导致程序结束。</p>
 <p>泛型的<code>Task&lt;TResult&gt;</code>类是非泛型<code>Task</code>的子类。它可以使你在其完成执行后得到一个返回值。在下面的例子中，我们使用<code>Task&lt;TResult&gt;</code>来下载一个网页：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">  // 启动 task：</span><br><span class="line">  Task&lt;string&gt; task = Task.Factory.StartNew&lt;string&gt;</span><br><span class="line">    ( () =&gt; DownloadString (&quot;http://www.gkarch.com&quot;) );</span><br><span class="line"></span><br><span class="line">  // 执行其它工作，它会和 task 并行执行：</span><br><span class="line">  RunSomeOtherMethod();</span><br><span class="line"></span><br><span class="line">  // 通过 Result 属性获取返回值：</span><br><span class="line">  // 如果仍在执行中, 当前进程会阻塞等待直到 task 结束：</span><br><span class="line">  string result = task.Result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static string DownloadString (string uri)</span><br><span class="line">&#123;</span><br><span class="line">  using (var wc = new System.Net.WebClient())</span><br><span class="line">    return wc.DownloadString (uri);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -207,8 +216,10 @@
 <li>它会接收返回值（也包括<code>ref</code>和<code>out</code>方式的参数）。</li>
 <li>它会向调用线程抛出未处理的异常。</li>
 </ol>
+<blockquote>
 <p>如果使用异步委托调用的方法没有返回值，技术上你仍然需要调用<code>EndInvoke</code>。在实践中，这里存在争论，因为不调用<code>EndInvoke</code>也不会有什么损失。然而如果你选择不调用它，就需要考虑目标方法中的异常处理来避免错误无法察觉。</p>
 <p>（译者注：<a href="https://msdn.microsoft.com/zh-cn/library/2e08f6yc.aspx" target="_blank" rel="noopener">MSDN文档**</a>中明确写了 “无论您使用何种方法，都要调用 <strong>EndInvoke</strong> 来完成异步调用。”，所以最好不要偷懒。）</p>
+</blockquote>
 <p>当调用<code>BeginInvoke</code>时也可以指定一个回调委托。这是一个在完成时会被自动调用的、接受<code>IAsyncResult</code>对象的方法。这样可以在后面的代码中“忘记”异步委托，但是需要在回调方法里做点其它工作：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">static void Main()</span><br><span class="line">&#123;</span><br><span class="line">  Func&lt;string, int&gt; method = Work;</span><br><span class="line">  method.BeginInvoke (&quot;test&quot;, Done, method);</span><br><span class="line">  // ...</span><br><span class="line">  //</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static int Work (string s) &#123; return s.Length; &#125;</span><br><span class="line"></span><br><span class="line">static void Done (IAsyncResult cookie)</span><br><span class="line">&#123;</span><br><span class="line">  var target = (Func&lt;string, int&gt;) cookie.AsyncState;</span><br><span class="line">  int result = target.EndInvoke (cookie);</span><br><span class="line">  Console.WriteLine (&quot;String length is: &quot; + result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>BeginInvoke</code>的最后一个参数是一个用户状态对象，用于设置<code>IAsyncResult</code>的<code>AsyncState</code>属性。它可以是需要的任何东西，在这个例子中，我们用它向回调方法传递<code>method</code>委托，这样才能够在它上面调用<code>EndInvoke</code>。</p>
@@ -223,7 +234,9 @@
 <p>（这些数字可能根据硬件和操作系统不同而有差异。）数量这么多是因为要确定[阻塞]（等待一些条件，比如远程计算机的相应）的线程的条件是否被满足。</p>
 <p>也可以通过<code>ThreadPool.SetMinThreads</code>设置线程数量下限。下限的作用比较奇妙：它是一种高级的优化技术，用来指示线程池管理器在达到下限之前不要延迟线程的分配。当存在[阻塞]线程时，提高下限可以改善程序并发性。</p>
 <p>默认下限数量是 CPU 核心数，也就是能充分利用 CPU 的最小数值。在服务器环境下（比如 IIS 中的 ASP.NET），下限数量一般要高的多，差不多 50 或者更高。</p>
-<h4 id="最小线程数量是如何起作用的？"><a href="#最小线程数量是如何起作用的？" class="headerlink" title="最小线程数量是如何起作用的？"></a>最小线程数量是如何起作用的？</h4><p><strong>将线程池的最小线程数设置为 <em>x</em> 并不是立即创建至少 <em>x</em> 个线程，而是线程会根据需要来创建。这个数值是指示线程池管理器当需要的时候，立即 创建 <em>x</em> 个线程</strong>。那么问题是为什么线程池在其它情况下会延迟创建线程？</p>
+<h4 id="最小线程数量是如何起作用的？"><a href="#最小线程数量是如何起作用的？" class="headerlink" title="最小线程数量是如何起作用的？"></a>最小线程数量是如何起作用的？</h4><blockquote>
+<p><strong>将线程池的最小线程数设置为 <em>x</em> 并不是立即创建至少 <em>x</em> 个线程，而是线程会根据需要来创建。这个数值是指示线程池管理器当需要的时候，立即 创建 <em>x</em> 个线程</strong>。那么问题是为什么线程池在其它情况下会延迟创建线程？</p>
+</blockquote>
 <p>答案是为了防止短生命周期的任务导致线程数量短暂高峰，使程序的内存足迹（memory footprint）快速膨胀。为了描述这个问题，考虑在一个 4 核的计算机上运行一个客户端程序，它一次发起了 40 个任务请求。如果每个任务都是一个 10ms 的计算，假设它们平均分配在 4 个核心上，总共的开销就是 100ms 多。理想情况下，我们希望这 40 个任务运行在 <em>4</em> 个线程上：</p>
 <ul>
 <li>如果线程数量更少，就无法充分利用 4 个核心。</li>
