@@ -22,7 +22,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luox78.github.io/images/javascript/1.png">
 <meta property="og:image" content="https://luox78.github.io/images/javascript/2.png">
-<meta property="og:updated_time" content="2017-12-31T09:56:23.787Z">
+<meta property="og:updated_time" content="2017-12-31T10:19:57.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识JavaScript02">
 <meta name="twitter:description" content="js中的事件1 通过调用方法名或在“”内部写2 通过id，使用document.getElementById实现事件">
@@ -205,14 +205,8 @@
 <p>闭包获取数据会长时间占用内存，尽量减少使用<br>js中利用函数可以模拟面向对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    //类名首字母大写以示区分</span><br><span class="line">    function Person()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    var per=new Person();</span><br><span class="line">    per.name=&quot;luox78&quot;;</span><br><span class="line">    per.age=18;</span><br><span class="line">    per.say=function ()&#123;</span><br><span class="line">        alert(&quot;hello&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    alert(per.name);</span><br><span class="line">    per.say();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function Person(name)&#123;</span><br><span class="line">        this.name=name;</span><br><span class="line">    &#125;</span><br><span class="line">    var per=new Person(&quot;luo78&quot;);</span><br><span class="line">    //访问里面变量的两种方法</span><br><span class="line">   alert(per.name);</span><br><span class="line">   alert(per[&quot;name&quot;]);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="js里面string的常用方法"><a href="#js里面string的常用方法" class="headerlink" title="js里面string的常用方法"></a>js里面string的常用方法</h2><pre><code>`length` 返回字符串长度
-`charAt(index)` 返回index位置的字符
-`split(&quot;分隔符&quot;,limit)` 多个分隔符使用正则表达式，limit代表返回数组的最大长度
-`substr(startindex,len)` 返回截取start位置后len长度的字符串
-`substring(startindex,stopindex)`  返回截取start位置到stop位置的字符串
-`toUpperCase() toLowerCase()` 返回大写，小写
-`match() replace() search()` 后面dom部分涉及
-</code></pre>
+<h2 id="js里面string的常用方法"><a href="#js里面string的常用方法" class="headerlink" title="js里面string的常用方法"></a>js里面string的常用方法</h2><p><code>length</code> 返回字符串长度<br><code>charAt(index)</code> 返回index位置的字符<br><code>split(&quot;分隔符&quot;,limit)</code> 多个分隔符使用正则表达式，limit代表返回数组的最大长度<br><code>substr(startindex,len)</code> 返回截取start位置后len长度的字符串<br><code>substring(startindex,stopindex)</code>  返回截取start位置到stop位置的字符串<br><code>toUpperCase() toLowerCase()</code> 返回大写，小写<br><code>match() replace() search()</code> 后面dom部分涉及</p>
+
  </div>
  
  <div class="article-tags tags">
