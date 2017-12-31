@@ -27,6 +27,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
@@ -169,6 +171,47 @@
 </article>
     </div>
   
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/27/JavaScript01/">
+        初识JavaScript01
+      </a>
+    </h2>
+    
+    <time>
+      Dec 27, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h3 id="js作用域"><a href="#js作用域" class="headerlink" title="js作用域"></a>js作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    for (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;               //js没有块级作用域</span><br><span class="line">    alert(i);       //10</span><br><span class="line"></span><br><span class="line">    function f1(parameters) &#123;</span><br><span class="line">        var n = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    //因为页面一开始加载并不会执行f1方法</span><br><span class="line">    //alert(n); undefined</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>默认如果直接在script标签中定义变量，则属于“全局作用域范围”(全局执行环境)，即属于window对象。<br>1 . 全局作用域范围的变量直到网页关闭或浏览器关闭时才释放资源<br>2 . 一个页面中的多个script标签中的变量可以互相访问。<br>3 . JS有垃圾回收机制，会定时对可释放资源的变量回收。将变量设置为null则表示可以被回收了。<br>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/27/JavaScript01/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/jsfoundation/">jsfoundation</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
 </section>
 
 
@@ -181,7 +224,7 @@
 
 <div class='header'>luox78</div>
 <div class='content'>
-<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+<div class='desc'>2018's dream is to make 2014's dream come true</div>
 </div>
 </section>
 
@@ -221,7 +264,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 14px; color: #808080">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
+        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 20px; color: #000">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
     </div>
 </div>
 
@@ -241,9 +284,9 @@
           <span class="icon icon-github"></span>
         </a>
       
-        <a href="/" class="social weibo"
+        <a href="/" class="social twitter"
           target="_blank" rel="external">
-          <span class="icon icon-weibo"></span>
+          <span class="icon icon-twitter"></span>
         </a>
       
         <a href="/atom.xml" class="social rss"
@@ -254,7 +297,24 @@
     
   </div>
   
-  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量：
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
   
 </footer>
 

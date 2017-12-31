@@ -13,13 +13,14 @@
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
+<meta name="keywords" content="jsfoundation">
 <meta property="og:type" content="article">
 <meta property="og:title" content="初识JavaScript01">
 <meta property="og:url" content="https://luox78.github.io/2017/12/27/JavaScript01/index.html">
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-27T15:12:05.946Z">
+<meta property="og:updated_time" content="2017-12-31T09:18:28.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识JavaScript01">
 <meta name="twitter:description" content="js作用域123456789101112&amp;lt;script&amp;gt;    for (var i = 0; i &amp;lt; 10; i++) &amp;#123;            &amp;#125;               //js没有块级作用域    alert(i);       //10    function f1(parameters) &amp;#123;        var n = 1;">
@@ -28,6 +29,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
@@ -124,61 +127,78 @@
     <div class='container clearfix'>
       <div class='l_main'>
         <article id="post-JavaScript01"
-  class="post white-box article-type-post"
-  itemscope itemprop="blogPost">
-	<section class='meta'>
-	<h2 class="title">
-  	<a href="/2017/12/27/JavaScript01/">
-    	初识JavaScript01
-    </a>
-  </h2>
-	<time>
-	  Dec 27, 2017
-	</time>
-	
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2017/12/27/JavaScript01/">
+				 初识JavaScript01
+		 </a>
+ </h2>
+ <time>
+		 Dec 27, 2017
+ </time>
+ 
     
     <div class='cats'>
         <a href="/categories/JavaScript/">JavaScript</a>
     </div>
 
-	</section>
-	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#js作用域"><span class="toc-number">1.</span> <span class="toc-text">js作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switch"><span class="toc-number">2.</span> <span class="toc-text">switch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js类型转换"><span class="toc-number">3.</span> <span class="toc-text">js类型转换</span></a></li></ol></section>
-	
-	<section class="article typo">
-  	<div class="article-entry" itemprop="articleBody">
-    	<h3 id="js作用域"><a href="#js作用域" class="headerlink" title="js作用域"></a>js作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    for (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;               //js没有块级作用域</span><br><span class="line">    alert(i);       //10</span><br><span class="line"></span><br><span class="line">    function f1(parameters) &#123;</span><br><span class="line">        var n = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    //因为页面一开始加载并不会执行f1方法</span><br><span class="line">    //alert(n); undefined</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+ <br />
+ <span id="busuanzi_container_page_pv">
+		 本文总阅读量
+		 <a href="javascript:void(0)">
+				 <span id="busuanzi_value_page_pv"></span>
+		 </a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#js作用域"><span class="toc-number">1.</span> <span class="toc-text">js作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#switch"><span class="toc-number">2.</span> <span class="toc-text">switch</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js类型转换"><span class="toc-number">3.</span> <span class="toc-text">js类型转换</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h3 id="js作用域"><a href="#js作用域" class="headerlink" title="js作用域"></a>js作用域</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    for (var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;               //js没有块级作用域</span><br><span class="line">    alert(i);       //10</span><br><span class="line"></span><br><span class="line">    function f1(parameters) &#123;</span><br><span class="line">        var n = 1;</span><br><span class="line">    &#125;</span><br><span class="line">    //因为页面一开始加载并不会执行f1方法</span><br><span class="line">    //alert(n); undefined</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>默认如果直接在script标签中定义变量，则属于“全局作用域范围”(全局执行环境)，即属于window对象。<br>1 . 全局作用域范围的变量直到网页关闭或浏览器关闭时才释放资源<br>2 . 一个页面中的多个script标签中的变量可以互相访问。<br>3 . JS有垃圾回收机制，会定时对可释放资源的变量回收。将变量设置为null则表示可以被回收了。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function name(parameters) &#123;</span><br><span class="line">        var i = 0;</span><br><span class="line">        i++;</span><br><span class="line">        alert(i);</span><br><span class="line">    &#125;</span><br><span class="line">    //方法无返回值，会返回undefined</span><br><span class="line">    alert(name());</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var i = 1;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    //全局作用域范围的变量直到网页关闭或浏览器关闭时才释放资源</span><br><span class="line">    alert(i);//1</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>方法内部不使用var定义的变量相当于全局变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    function f1(parameters) &#123;</span><br><span class="line">        i = 100;</span><br><span class="line">        //var i = 100;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    f1();</span><br><span class="line">    alert(i);//100</span><br><span class="line">    //alert(i);使用未定义</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h3><p>js中switch中的判断是严格判断就是全等于（===）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    var i = 90;</span><br><span class="line">    switch (i) &#123;</span><br><span class="line">        case 90:</span><br><span class="line">            alert(&quot;number&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case &quot;90&quot;:</span><br><span class="line">            alert(&quot;string&quot;);</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="js类型转换"><a href="#js类型转换" class="headerlink" title="js类型转换"></a>js类型转换</h3><p>注意点：<br>    1 Number（）将任意值转换成数字 如果该字符串不能完全转换为整型，则返回NaN<br>    2 String（）转换不成功返回undefined， toString（）报错<br>    3 Boolean（）转换当为0或为空（值为空或者null）时返回false，其余返回true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    alert(parseInt(&quot;90&quot;));              //90</span><br><span class="line">    alert(parseInt(&quot;90aaaaaaaaaa&quot;));    //90</span><br><span class="line">    alert(parseInt(&quot;aaaaaa&quot;));          //NaN</span><br><span class="line">    alert(parseInt(111, 2));            //代表给定一个二进制的数111输出十进制</span><br><span class="line">    alert(parseFloat(10.111));          //10.111</span><br><span class="line">    alert(Number(&quot;40addd&quot;));            //将任意值转换成数字 如果该字符串不能完全转换为整型，则返回NaN</span><br><span class="line">    //alert(isNaN(&quot;aaa&quot;));              //true</span><br><span class="line">    var str;</span><br><span class="line">    alert(String(str));                 //undefined</span><br><span class="line">    alert(str.toString());              //报错</span><br><span class="line"></span><br><span class="line">    //boolean</span><br><span class="line">    var b1 = Boolean(&quot;&quot;); //false - 空字符串</span><br><span class="line">    var b2 = Boolean(&quot;hello&quot;); //true - 非空字符串</span><br><span class="line">    var b1 = Boolean(50); //true - 非零数字</span><br><span class="line">    var b1 = Boolean(null); //false – null</span><br><span class="line">    var b1 = Boolean(0); //false - 零</span><br><span class="line">    var b1 = Boolean(new object()); //true - 对象 </span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 
-  	</div>
-	  
-		
-	
-		<div class="art-item-footer">
-				
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/28/CS_Thread01/" rel="prev"  title="C#中的多线程 - 01基础知识">
-						C#中的多线程 - 01基础知识 
-					</a></span>
-				
-				
-					<span class="art-item-right">next：<a href="/2017/12/26/Ten_LINQ_Myth/" rel="next"  title="LINQ">
-						LINQ
-					</a><i class="icon icon-chevron-thin-right"></i></span>
-				
-		</div>
-	
-	</section>
-	
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/jsfoundation/">jsfoundation</a>
+		 
+ </div>
+ 
+
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/28/CS_Thread01/" rel="prev" title="C#中的多线程 - 01基础知识">
+						 C#中的多线程 - 01基础知识
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2017/12/26/Ten_LINQ_Myth/" rel="next" title="LINQ">
+						 LINQ
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
 </article>
 <script>
-	window.subData = {
-		title: '初识JavaScript01',
-		tools: true
-	}
+window.subData = {
+ title: '初识JavaScript01',
+ tools: true
+}
 </script>
 
       </div>
@@ -190,7 +210,7 @@
 
 <div class='header'>luox78</div>
 <div class='content'>
-<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+<div class='desc'>2018's dream is to make 2014's dream come true</div>
 </div>
 </section>
 
@@ -230,7 +250,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 14px; color: #808080">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
+        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 20px; color: #000">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
     </div>
 </div>
 
@@ -250,9 +270,9 @@
           <span class="icon icon-github"></span>
         </a>
       
-        <a href="/" class="social weibo"
+        <a href="/" class="social twitter"
           target="_blank" rel="external">
-          <span class="icon icon-weibo"></span>
+          <span class="icon icon-twitter"></span>
         </a>
       
         <a href="/atom.xml" class="social rss"
@@ -263,7 +283,24 @@
     
   </div>
   
-  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量：
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
   
 </footer>
 

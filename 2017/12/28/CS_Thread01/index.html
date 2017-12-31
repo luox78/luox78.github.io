@@ -31,6 +31,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
@@ -127,30 +129,37 @@
     <div class='container clearfix'>
       <div class='l_main'>
         <article id="post-CS_Thread01"
-  class="post white-box article-type-post"
-  itemscope itemprop="blogPost">
-	<section class='meta'>
-	<h2 class="title">
-  	<a href="/2017/12/28/CS_Thread01/">
-    	C#中的多线程 - 01基础知识
-    </a>
-  </h2>
-	<time>
-	  Dec 28, 2017
-	</time>
-	
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2017/12/28/CS_Thread01/">
+				 C#中的多线程 - 01基础知识
+		 </a>
+ </h2>
+ <time>
+		 Dec 28, 2017
+ </time>
+ 
     
     <div class='cats'>
         <a href="/categories/C/">C#</a>
     </div>
 
-	</section>
-	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1简介及概念"><span class="toc-number">1.</span> <span class="toc-text">1简介及概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1Join-和-Sleep"><span class="toc-number">1.1.</span> <span class="toc-text">1.1Join 和 Sleep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2线程是如何工作的"><span class="toc-number">1.2.</span> <span class="toc-text">1.2线程是如何工作的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3线程-vs-进程"><span class="toc-number">1.3.</span> <span class="toc-text">1.3线程 vs 进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4线程的使用与误用"><span class="toc-number">1.4.</span> <span class="toc-text">1.4线程的使用与误用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2创建和启动线程"><span class="toc-number">2.</span> <span class="toc-text">2创建和启动线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1向线程传递数据"><span class="toc-number">2.1.</span> <span class="toc-text">2.1向线程传递数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Lambda-表达式与被捕获变量"><span class="toc-number">2.1.1.</span> <span class="toc-text">Lambda 表达式与被捕获变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2线程命名"><span class="toc-number">2.2.</span> <span class="toc-text">2.2线程命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3前台与后台线程"><span class="toc-number">2.3.</span> <span class="toc-text">2.3前台与后台线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4线程优先级"><span class="toc-number">2.4.</span> <span class="toc-text">2.4线程优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5异常处理"><span class="toc-number">2.5.</span> <span class="toc-text">2.5异常处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3线程池"><span class="toc-number">3.</span> <span class="toc-text">3线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1通过-TPL-使用线程池"><span class="toc-number">3.1.</span> <span class="toc-text">3.1通过 TPL 使用线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2不通过-TPL-使用线程池"><span class="toc-number">3.2.</span> <span class="toc-text">3.2不通过 TPL 使用线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#QueueUserWorkItem"><span class="toc-number">3.2.1.</span> <span class="toc-text">QueueUserWorkItem</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异步委托"><span class="toc-number">3.2.2.</span> <span class="toc-text">异步委托</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3优化线程池"><span class="toc-number">3.3.</span> <span class="toc-text">3.3优化线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最小线程数量是如何起作用的？"><span class="toc-number">3.3.1.</span> <span class="toc-text">最小线程数量是如何起作用的？</span></a></li></ol></li></ol></li></ol></section>
-	
-	<section class="article typo">
-  	<div class="article-entry" itemprop="articleBody">
-    	<h2 id="1简介及概念"><a href="#1简介及概念" class="headerlink" title="1简介及概念"></a>1简介及概念</h2><p>C# 支持通过多线程并行执行代码，线程有其独立的执行路径，能够与其它线程同时执行。</p>
+ <br />
+ <span id="busuanzi_container_page_pv">
+		 本文总阅读量
+		 <a href="javascript:void(0)">
+				 <span id="busuanzi_value_page_pv"></span>
+		 </a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1简介及概念"><span class="toc-number">1.</span> <span class="toc-text">1简介及概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1Join-和-Sleep"><span class="toc-number">1.1.</span> <span class="toc-text">1.1Join 和 Sleep</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2线程是如何工作的"><span class="toc-number">1.2.</span> <span class="toc-text">1.2线程是如何工作的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3线程-vs-进程"><span class="toc-number">1.3.</span> <span class="toc-text">1.3线程 vs 进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4线程的使用与误用"><span class="toc-number">1.4.</span> <span class="toc-text">1.4线程的使用与误用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2创建和启动线程"><span class="toc-number">2.</span> <span class="toc-text">2创建和启动线程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1向线程传递数据"><span class="toc-number">2.1.</span> <span class="toc-text">2.1向线程传递数据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Lambda-表达式与被捕获变量"><span class="toc-number">2.1.1.</span> <span class="toc-text">Lambda 表达式与被捕获变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2线程命名"><span class="toc-number">2.2.</span> <span class="toc-text">2.2线程命名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3前台与后台线程"><span class="toc-number">2.3.</span> <span class="toc-text">2.3前台与后台线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4线程优先级"><span class="toc-number">2.4.</span> <span class="toc-text">2.4线程优先级</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5异常处理"><span class="toc-number">2.5.</span> <span class="toc-text">2.5异常处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3线程池"><span class="toc-number">3.</span> <span class="toc-text">3线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1通过-TPL-使用线程池"><span class="toc-number">3.1.</span> <span class="toc-text">3.1通过 TPL 使用线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2不通过-TPL-使用线程池"><span class="toc-number">3.2.</span> <span class="toc-text">3.2不通过 TPL 使用线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#QueueUserWorkItem"><span class="toc-number">3.2.1.</span> <span class="toc-text">QueueUserWorkItem</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异步委托"><span class="toc-number">3.2.2.</span> <span class="toc-text">异步委托</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3优化线程池"><span class="toc-number">3.3.</span> <span class="toc-text">3.3优化线程池</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#最小线程数量是如何起作用的？"><span class="toc-number">3.3.1.</span> <span class="toc-text">最小线程数量是如何起作用的？</span></a></li></ol></li></ol></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h2 id="1简介及概念"><a href="#1简介及概念" class="headerlink" title="1简介及概念"></a>1简介及概念</h2><p>C# 支持通过多线程并行执行代码，线程有其独立的执行路径，能够与其它线程同时执行。</p>
 <p>一个 C# 客户端程序（Console 命令行、WPF 以及 Windows Forms）开始于一个单线程，这个线程（也称为“主线程”）是由 CLR 和操作系统自动创建的，并且也可以再创建其它线程。以下是一个简单的使用多线程的例子：</p>
 <a id="more"></a>
 <blockquote>
@@ -398,37 +407,41 @@
 <p>（第二个参数是表示多少个线程分配给 I/O 完成端口（I/O completion ports，IOCP），来被APM使用，这会在<a href="http://www.albahari.com/nutshell/" target="_blank" rel="noopener">C# 4.0 in a Nutshell**</a> 的第 23 章描述。）</p>
 <p>最小线程数量的默认值是 CPU 核心数。</p>
 
-  	</div>
-	  
-	  <div class="article-tags tags">
-      
-        <a href="/tags/thread/">thread</a>
-      
-	  </div>
-    
-		
-	
-		<div class="art-item-footer">
-				
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/28/JavaScript02/" rel="prev"  title="初识JavaScript02">
-						初识JavaScript02 
-					</a></span>
-				
-				
-					<span class="art-item-right">next：<a href="/2017/12/27/JavaScript01/" rel="next"  title="初识JavaScript01">
-						初识JavaScript01
-					</a><i class="icon icon-chevron-thin-right"></i></span>
-				
-		</div>
-	
-	</section>
-	
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/thread/">thread</a>
+		 
+ </div>
+ 
+
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/28/JavaScript02/" rel="prev" title="初识JavaScript02">
+						 初识JavaScript02
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2017/12/27/JavaScript01/" rel="next" title="初识JavaScript01">
+						 初识JavaScript01
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
 </article>
 <script>
-	window.subData = {
-		title: 'C#中的多线程 - 01基础知识',
-		tools: true
-	}
+window.subData = {
+ title: 'C#中的多线程 - 01基础知识',
+ tools: true
+}
 </script>
 
       </div>
@@ -440,7 +453,7 @@
 
 <div class='header'>luox78</div>
 <div class='content'>
-<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+<div class='desc'>2018's dream is to make 2014's dream come true</div>
 </div>
 </section>
 
@@ -480,7 +493,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 14px; color: #808080">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
+        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 20px; color: #000">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
     </div>
 </div>
 
@@ -500,9 +513,9 @@
           <span class="icon icon-github"></span>
         </a>
       
-        <a href="/" class="social weibo"
+        <a href="/" class="social twitter"
           target="_blank" rel="external">
-          <span class="icon icon-weibo"></span>
+          <span class="icon icon-twitter"></span>
         </a>
       
         <a href="/atom.xml" class="social rss"
@@ -513,7 +526,24 @@
     
   </div>
   
-  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量：
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
   
 </footer>
 

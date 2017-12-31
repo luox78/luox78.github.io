@@ -29,6 +29,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
@@ -125,30 +127,37 @@
     <div class='container clearfix'>
       <div class='l_main'>
         <article id="post-CS6"
-  class="post white-box article-type-post"
-  itemscope itemprop="blogPost">
-	<section class='meta'>
-	<h2 class="title">
-  	<a href="/2017/12/26/CS6/">
-    	C#6 特性
-    </a>
-  </h2>
-	<time>
-	  Dec 26, 2017
-	</time>
-	
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2017/12/26/CS6/">
+				 C#6 特性
+		 </a>
+ </h2>
+ <time>
+		 Dec 26, 2017
+ </time>
+ 
     
     <div class='cats'>
         <a href="/categories/C/">C#</a>
     </div>
 
-	</section>
-	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串拼接"><span class="toc-number">1.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空操作符"><span class="toc-number">2.</span> <span class="toc-text">空操作符 ( ?. )</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NameOf"><span class="toc-number">3.</span> <span class="toc-text">NameOf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表达式方法体"><span class="toc-number">4.</span> <span class="toc-text">表达式方法体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动属性初始化器"><span class="toc-number">5.</span> <span class="toc-text">自动属性初始化器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Index-初始化器"><span class="toc-number">6.</span> <span class="toc-text">Index 初始化器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-静态类的方法可以使用-static-using"><span class="toc-number">7.</span> <span class="toc-text">using 静态类的方法可以使用 static using</span></a></li></ol></section>
-	
-	<section class="article typo">
-  	<div class="article-entry" itemprop="articleBody">
-    	<h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Name = &quot;Jack&quot;; </span><br><span class="line">var results = $&quot;Hello &#123;Name&#125;&quot;; ## 空操作符</span><br></pre></td></tr></table></figure>
+ <br />
+ <span id="busuanzi_container_page_pv">
+		 本文总阅读量
+		 <a href="javascript:void(0)">
+				 <span id="busuanzi_value_page_pv"></span>
+		 </a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符串拼接"><span class="toc-number">1.</span> <span class="toc-text">字符串拼接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空操作符"><span class="toc-number">2.</span> <span class="toc-text">空操作符 ( ?. )</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NameOf"><span class="toc-number">3.</span> <span class="toc-text">NameOf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表达式方法体"><span class="toc-number">4.</span> <span class="toc-text">表达式方法体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动属性初始化器"><span class="toc-number">5.</span> <span class="toc-text">自动属性初始化器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Index-初始化器"><span class="toc-number">6.</span> <span class="toc-text">Index 初始化器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#using-静态类的方法可以使用-static-using"><span class="toc-number">7.</span> <span class="toc-text">using 静态类的方法可以使用 static using</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h2 id="字符串拼接"><a href="#字符串拼接" class="headerlink" title="字符串拼接"></a>字符串拼接</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var Name = &quot;Jack&quot;; </span><br><span class="line">var results = $&quot;Hello &#123;Name&#125;&quot;; ## 空操作符</span><br></pre></td></tr></table></figure>
 <h2 id="空操作符"><a href="#空操作符" class="headerlink" title="空操作符 ( ?. )"></a>空操作符 ( ?. )</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (user != null &amp;&amp; user.Project != null &amp;&amp; user.Project.Tasks != null &amp;&amp; user.Project.Tasks.Count &gt; 0) </span><br><span class="line">&#123; </span><br><span class="line">   Console.WriteLine(user.Project.Tasks.First().Name); </span><br><span class="line">&#125; </span><br><span class="line">//现在</span><br><span class="line">Console.WriteLine(user?.Project?.Tasks?.First()?.Name);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <blockquote>
@@ -161,37 +170,41 @@
 <h2 id="Index-初始化器"><a href="#Index-初始化器" class="headerlink" title="Index 初始化器"></a>Index 初始化器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var names = new Dictionary&lt;int, string&gt; </span><br><span class="line">       &#123; </span><br><span class="line">           [1] = &quot;Jack&quot;, </span><br><span class="line">           [2] = &quot;Alex&quot;, </span><br><span class="line">           [3] = &quot;Eric&quot;, </span><br><span class="line">           [4] = &quot;Jo&quot; </span><br><span class="line">       &#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="using-静态类的方法可以使用-static-using"><a href="#using-静态类的方法可以使用-static-using" class="headerlink" title="using 静态类的方法可以使用 static using"></a>using 静态类的方法可以使用 static using</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">using System; </span><br><span class="line">using static System.Math; </span><br><span class="line">namespace CSharp6NewFeatures </span><br><span class="line">&#123; </span><br><span class="line">  class Program </span><br><span class="line">  &#123; </span><br><span class="line">      static void Main(string[] args) </span><br><span class="line">     &#123; </span><br><span class="line">        Console.WriteLine(Log10(5)+PI); </span><br><span class="line">     &#125; </span><br><span class="line">  &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  	</div>
-	  
-	  <div class="article-tags tags">
-      
-        <a href="/tags/C-特性/">C#特性</a>
-      
-	  </div>
-    
-		
-	
-		<div class="art-item-footer">
-				
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/26/Ten_LINQ_Myth/" rel="prev"  title="LINQ">
-						LINQ 
-					</a></span>
-				
-				
-					<span class="art-item-right">next：<a href="/2017/12/26/CS7/" rel="next"  title="C#7 特性">
-						C#7 特性
-					</a><i class="icon icon-chevron-thin-right"></i></span>
-				
-		</div>
-	
-	</section>
-	
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/C-特性/">C#特性</a>
+		 
+ </div>
+ 
+
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/26/Ten_LINQ_Myth/" rel="prev" title="LINQ">
+						 LINQ
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2017/12/26/CS7/" rel="next" title="C#7 特性">
+						 C#7 特性
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
 </article>
 <script>
-	window.subData = {
-		title: 'C#6 特性',
-		tools: true
-	}
+window.subData = {
+ title: 'C#6 特性',
+ tools: true
+}
 </script>
 
       </div>
@@ -203,7 +216,7 @@
 
 <div class='header'>luox78</div>
 <div class='content'>
-<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+<div class='desc'>2018's dream is to make 2014's dream come true</div>
 </div>
 </section>
 
@@ -243,7 +256,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 14px; color: #808080">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
+        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 20px; color: #000">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
     </div>
 </div>
 
@@ -263,9 +276,9 @@
           <span class="icon icon-github"></span>
         </a>
       
-        <a href="/" class="social weibo"
+        <a href="/" class="social twitter"
           target="_blank" rel="external">
-          <span class="icon icon-weibo"></span>
+          <span class="icon icon-twitter"></span>
         </a>
       
         <a href="/atom.xml" class="social rss"
@@ -276,7 +289,24 @@
     
   </div>
   
-  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量：
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
   
 </footer>
 

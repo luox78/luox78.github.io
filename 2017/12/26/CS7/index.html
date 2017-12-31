@@ -29,6 +29,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
@@ -125,30 +127,37 @@
     <div class='container clearfix'>
       <div class='l_main'>
         <article id="post-CS7"
-  class="post white-box article-type-post"
-  itemscope itemprop="blogPost">
-	<section class='meta'>
-	<h2 class="title">
-  	<a href="/2017/12/26/CS7/">
-    	C#7 特性
-    </a>
-  </h2>
-	<time>
-	  Dec 26, 2017
-	</time>
-	
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2017/12/26/CS7/">
+				 C#7 特性
+		 </a>
+ </h2>
+ <time>
+		 Dec 26, 2017
+ </time>
+ 
     
     <div class='cats'>
         <a href="/categories/C/">C#</a>
     </div>
 
-	</section>
-	
-		<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地方法（Local-functions）"><span class="toc-number">1.</span> <span class="toc-text">本地方法（Local functions）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元组（Tuples）"><span class="toc-number">2.</span> <span class="toc-text">元组（Tuples）</span></a></li></ol></section>
-	
-	<section class="article typo">
-  	<div class="article-entry" itemprop="articleBody">
-    	<h2 id="本地方法（Local-functions）"><a href="#本地方法（Local-functions）" class="headerlink" title="本地方法（Local functions）"></a>本地方法（Local functions）</h2><p><strong>有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为</strong></p>
+ <br />
+ <span id="busuanzi_container_page_pv">
+		 本文总阅读量
+		 <a href="javascript:void(0)">
+				 <span id="busuanzi_value_page_pv"></span>
+		 </a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本地方法（Local-functions）"><span class="toc-number">1.</span> <span class="toc-text">本地方法（Local functions）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#元组（Tuples）"><span class="toc-number">2.</span> <span class="toc-text">元组（Tuples）</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h2 id="本地方法（Local-functions）"><a href="#本地方法（Local-functions）" class="headerlink" title="本地方法（Local functions）"></a>本地方法（Local functions）</h2><p><strong>有时一个辅助函数只在某个使用到它的函数中有用。现在你可以在其他函数体内将这类函数定义为</strong></p>
 <p><strong>（local function）：</strong> </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public int Fibonacci(int x) </span><br><span class="line">&#123; </span><br><span class="line">    if (x &lt; 0) throw new ArgumentException(&quot;Less negativity please!&quot;, nameof(x)); </span><br><span class="line">    return Fib(x).current; </span><br><span class="line"> </span><br><span class="line">	(int current, int previous) Fib(int i) </span><br><span class="line">    &#123; </span><br><span class="line">        if (i == 0) return (1, 0); </span><br><span class="line">        var (p, pp) = Fib(i - 1); </span><br><span class="line">        return (p + pp, p); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
@@ -170,37 +179,41 @@
 <p>元组是值类型，它们的元素是简单的公共、可修改的字段。它们具有值相等性，意味着如果两个元组间每个元素两两相等（且拥有相同的哈希值）则两个元组相等（且拥有相同的哈希值）。 </p>
 <p>这使得元组在多返回值之外的许多场景也很有用。例如，如果你需要一个拥有多个键的字典，使用一个元组作为你的键，一切都会正常运行。如果你需要一个每个位置有多个值的列表，使用元组吧，诸如搜索列表这样的功能将会正确的工作。 </p>
 
-  	</div>
-	  
-	  <div class="article-tags tags">
-      
-        <a href="/tags/C-特性/">C#特性</a>
-      
-	  </div>
-    
-		
-	
-		<div class="art-item-footer">
-				
-					<span class="art-item-left"><i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/26/CS6/" rel="prev"  title="C#6 特性">
-						C#6 特性 
-					</a></span>
-				
-				
-					<span class="art-item-right">next：<a href="/2017/12/25/hello-world/" rel="next"  title="Hello World">
-						Hello World
-					</a><i class="icon icon-chevron-thin-right"></i></span>
-				
-		</div>
-	
-	</section>
-	
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/C-特性/">C#特性</a>
+		 
+ </div>
+ 
+
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2017/12/26/CS6/" rel="prev" title="C#6 特性">
+						 C#6 特性
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2017/12/25/hello-world/" rel="next" title="Hello World">
+						 Hello World
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
 </article>
 <script>
-	window.subData = {
-		title: 'C#7 特性',
-		tools: true
-	}
+window.subData = {
+ title: 'C#7 特性',
+ tools: true
+}
 </script>
 
       </div>
@@ -212,7 +225,7 @@
 
 <div class='header'>luox78</div>
 <div class='content'>
-<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+<div class='desc'>2018's dream is to make 2014's dream come true</div>
 </div>
 </section>
 
@@ -252,7 +265,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 14px; color: #808080">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
+        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 20px; color: #000">jsfoundation</a> <a href="/tags/thread/" style="font-size: 14px; color: #808080">thread</a>
     </div>
 </div>
 
@@ -272,9 +285,9 @@
           <span class="icon icon-github"></span>
         </a>
       
-        <a href="/" class="social weibo"
+        <a href="/" class="social twitter"
           target="_blank" rel="external">
-          <span class="icon icon-weibo"></span>
+          <span class="icon icon-twitter"></span>
         </a>
       
         <a href="/atom.xml" class="social rss"
@@ -285,7 +298,24 @@
     
   </div>
   
-  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量：
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
   
 </footer>
 
