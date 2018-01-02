@@ -71,10 +71,10 @@
 </li>
 </ul>
 </li>
-<li><p><code>lonunload</code>（页面卸载后触发）</p>
+<li><p><code>onunload</code>（页面卸载后触发）</p>
 <p>网页关闭（或者离开）后触发。//刷新页面的时候、关闭选项卡的时候（多个选项卡）</p>
 </li>
-<li><p><code>lonbeforeunload</code>（页面卸载前触发）</p>
+<li><p><code>onbeforeunload</code>（页面卸载前触发）</p>
 <p>在网页准备关闭（或者离开）前触发。//注意浏览器缓存</p>
 <p><code>&lt;bodyonbeforeunload=“return ‘真的要放弃发帖退出吗?’; ”&gt;</code>。显示的文字随浏览器版本而有差异。// =“window.event.returnValue=‘’只兼容IE</p>
 </li>
