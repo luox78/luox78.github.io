@@ -7,6 +7,7 @@
       <url>/2018/01/02/CS_Thread02/</url>
       <content type="html"><![CDATA[<h2 id="1同步概要"><a href="#1同步概要" class="headerlink" title="1同步概要"></a>1同步概要</h2><p>在<a href="https://blog.gkarch.com/threading/part1.html" target="_blank" rel="noopener">第 1 部分：基础知识</a>中，我们描述了如何在线程上启动任务、配置线程以及双向传递数据。同时也说明了局部变量对于线程来说是私有的，以及引用是如何在线程之间共享，允许其通过公共字段进行通信。</p>
 <p>下一步是同步（synchronization）：为期望的结果协调线程的行为。当多个线程访问同一个数据时，同步尤其重要，但是这是一件非常容易搞砸的事情。</p>
+<a id="more"></a>
 <p>同步构造可以分为以下四类：</p>
 <ul>
 <li><p>简单的阻塞方法</p>
