@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://blog.gkarch.com/img/threading/ThreadState.png">
 <meta property="og:image" content="https://blog.gkarch.com/img/threading/EventWaitHandle.png">
 <meta property="og:image" content="https://blog.gkarch.com/img/threading/TwoWaySignaling.png">
-<meta property="og:updated_time" content="2018-01-02T13:32:29.110Z">
+<meta property="og:updated_time" content="2018-01-03T11:46:34.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步基础">
 <meta name="twitter:description" content="1同步概要在第 1 部分：基础知识中，我们描述了如何在线程上启动任务、配置线程以及双向传递数据。同时也说明了局部变量对于线程来说是私有的，以及引用是如何在线程之间共享，允许其通过公共字段进行通信。 下一步是同步（synchronization）：为期望的结果协调线程的行为。当多个线程访问同一个数据时，同步尤其重要，但是这是一件非常容易搞砸的事情。">
@@ -230,9 +230,9 @@
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part2.html#mutex" target="_blank" rel="noopener">Mutex</a></td>
-<td>**</td>
-<td>1000ns</td>
 <td></td>
+<td>yes</td>
+<td>1000ns</td>
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part2.html#semaphore" target="_blank" rel="noopener">SemaphoreSlim</a>（Framework 4.0 中加入）</td>
@@ -242,9 +242,9 @@
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part2.html#semaphore" target="_blank" rel="noopener">Semaphore</a></td>
-<td>**</td>
-<td>1000ns</td>
 <td></td>
+<td>yes</td>
+<td>1000ns</td>
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part4.html#reader-writer-locks" target="_blank" rel="noopener">ReaderWriterLockSlim</a>（Framework 3.5 中加入）</td>
@@ -254,6 +254,7 @@
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part4.html#reader-writer-locks" target="_blank" rel="noopener">ReaderWriterLock</a>（已过时）</td>
+<td></td>
 <td>-</td>
 <td>100ns</td>
 </tr>
@@ -413,20 +414,20 @@
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part2.html#autoresetevent" target="_blank" rel="noopener">AutoResetEvent</a></td>
 <td>使线程在收到其它线程信号时解除阻塞一次</td>
-<td>**</td>
+<td>yes</td>
 <td>1000ns</td>
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part2.html#manualresetevent" target="_blank" rel="noopener">ManualResetEvent</a></td>
 <td>使线程在收到其它线程信号时解除阻塞，并且不继续阻塞直到被复位</td>
-<td>**</td>
+<td>yes</td>
 <td>1000ns</td>
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part2.html#manualresetevent" target="_blank" rel="noopener">ManualResetEventSlim</a>（Framework 4.0 中加入）</td>
+<td></td>
 <td>-</td>
 <td>40ns</td>
-<td></td>
 </tr>
 <tr>
 <td><a href="https://blog.gkarch.com/threading/part2.html#countdownevent" target="_blank" rel="noopener">CountdownEvent</a>（Framework 4.0 中加入）</td>
