@@ -21,7 +21,7 @@
 <meta property="og:description" content="Array对象 js中的数组相当于C#中的集合，数组，哈希表集合体，是个动态数组 赋值">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luox78.github.io/images/javascript/3.png">
-<meta property="og:updated_time" content="2018-01-02T12:02:22.286Z">
+<meta property="og:updated_time" content="2018-01-03T14:04:31.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识JavaScript03">
 <meta name="twitter:description" content="Array对象 js中的数组相当于C#中的集合，数组，哈希表集合体，是个动态数组 赋值">
@@ -244,6 +244,8 @@
 <li><p><code>window.event</code></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"dv"</span>).onmousedown= <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="built_in">window</span>.event.shiftKey) &#123;</span></span><br><span class="line"><span class="actionscript">            alert(<span class="string">"you have pressed the shift"</span>);</span></span><br><span class="line"><span class="actionscript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">            alert(<span class="string">"only mouse click"</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
+<li><p><code>window.event.shiftKey</code> <code>.ctrlKey</code> <code>.altKey</code> etc 获取是否按下某键</p>
+</li>
 <li><p><code>clientX、clientY</code>发生事件时鼠标在客户区域的坐标(指显示html区域)；</p>
 <p><code>screenX、screenY</code>发生事件时鼠标在屏幕上的坐标；</p>
 <p><code>offsetX、offsetY</code>发生事件时鼠标相对于事件源（比如点击按钮时触发<code>onclick</code>）的坐标。当页面中有&lt;!DOCTYPE（文档定义）时，对<code>offsetX</code>和<code>offsetY</code>单击时的解析不同(使用<code>onmousedown</code>的时候与<code>onclick</code>测试结果不同)（单击按钮中文字的时候。）</p>
