@@ -5,4 +5,4 @@ blog for luox78
 ###updates
 ####2018
 1/3 添加表格样式
-1/4 添加meta使chrome手机版有有一致体验
+1/4 添加meta使chrome手机版有有一致体验;改变搜索栏样式
