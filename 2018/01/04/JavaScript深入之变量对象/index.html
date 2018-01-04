@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>luox78</title>
+  <title>04JavaScript深入之变量对象 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog  04JavaScript深入之变量对象 JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScrip">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScript 代码执行一段可执行代码(executa">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luox78">
+<meta property="og:title" content="04JavaScript深入之变量对象">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之变量对象/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog  04JavaScript深入之变量对象 JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScrip">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScript 代码执行一段可执行代码(executa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:20:15.200Z">
+<meta property="og:updated_time" content="2018-01-04T12:29:47.806Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog  04JavaScript深入之变量对象 JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScrip">
+<meta name="twitter:title" content="04JavaScript深入之变量对象">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScript 代码执行一段可执行代码(executa">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -133,7 +133,7 @@
 <section class='meta'>
  <h2 class="title">
 		 <a href="/2018/01/04/JavaScript深入之变量对象/">
-				 
+				 04JavaScript深入之变量对象
 		 </a>
  </h2>
  <time>
@@ -152,14 +152,12 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#04JavaScript深入之变量对象"><span class="toc-number">1.</span> <span class="toc-text">04JavaScript深入之变量对象</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量对象"><span class="toc-number">1.2.</span> <span class="toc-text">变量对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局上下文"><span class="toc-number">1.3.</span> <span class="toc-text">全局上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数上下文"><span class="toc-number">1.4.</span> <span class="toc-text">函数上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行过程"><span class="toc-number">1.5.</span> <span class="toc-text">执行过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进入执行上下文"><span class="toc-number">1.5.1.</span> <span class="toc-text">进入执行上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码执行"><span class="toc-number">1.5.2.</span> <span class="toc-text">代码执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题"><span class="toc-number">1.6.</span> <span class="toc-text">思考题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">1.7.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文相关链接"><span class="toc-number">1.8.</span> <span class="toc-text">本文相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">1.9.</span> <span class="toc-text">深入系列</span></a></li></ol></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#变量对象"><span class="toc-number">2.</span> <span class="toc-text">变量对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#全局上下文"><span class="toc-number">3.</span> <span class="toc-text">全局上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数上下文"><span class="toc-number">4.</span> <span class="toc-text">函数上下文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行过程"><span class="toc-number">5.</span> <span class="toc-text">执行过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#进入执行上下文"><span class="toc-number">5.1.</span> <span class="toc-text">进入执行上下文</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码执行"><span class="toc-number">5.2.</span> <span class="toc-text">代码执行</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题"><span class="toc-number">6.</span> <span class="toc-text">思考题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">7.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文相关链接"><span class="toc-number">8.</span> <span class="toc-text">本文相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">9.</span> <span class="toc-text">深入系列</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
 		 <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-</blockquote>
-<h1 id="04JavaScript深入之变量对象"><a href="#04JavaScript深入之变量对象" class="headerlink" title="04JavaScript深入之变量对象"></a>04JavaScript深入之变量对象</h1><blockquote>
 <p>JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！</p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上篇<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当 JavaScript 代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。</p>
@@ -272,15 +270,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之参数按值传递/" rel="prev" title="">
-						 
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之从原型到原型链/" rel="prev" title="01JavaScript深入之从原型到原型链">
+						 01JavaScript深入之从原型到原型链
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/" rel="next" title="">
-						 
+				 next：<a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/" rel="next" title="02JavaScript深入之词法作用域和动态作用域">
+						 02JavaScript深入之词法作用域和动态作用域
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -291,7 +289,7 @@
 </article>
 <script>
 window.subData = {
- title: '',
+ title: '04JavaScript深入之变量对象',
  tools: true
 }
 </script>

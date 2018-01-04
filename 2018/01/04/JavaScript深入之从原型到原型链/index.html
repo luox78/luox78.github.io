@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>luox78</title>
+  <title>01JavaScript深入之从原型到原型链 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,23 +13,23 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog  01JavaScript深入之从原型到原型链 JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#125;var person = new Per">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luox78">
+<meta property="og:title" content="01JavaScript深入之从原型到原型链">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之从原型到原型链/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog  01JavaScript深入之从原型到原型链 JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#125;var person = new Per">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype1.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype2.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype3.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype4.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype5.png">
-<meta property="og:updated_time" content="2018-01-04T12:21:34.355Z">
+<meta property="og:updated_time" content="2018-01-04T12:31:12.040Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog  01JavaScript深入之从原型到原型链 JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#">
+<meta name="twitter:title" content="01JavaScript深入之从原型到原型链">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#125;var person = new Per">
 <meta name="twitter:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype1.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -139,7 +139,7 @@
 <section class='meta'>
  <h2 class="title">
 		 <a href="/2018/01/04/JavaScript深入之从原型到原型链/">
-				 
+				 01JavaScript深入之从原型到原型链
 		 </a>
  </h2>
  <time>
@@ -158,14 +158,12 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#01JavaScript深入之从原型到原型链"><span class="toc-number">1.</span> <span class="toc-text">01JavaScript深入之从原型到原型链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数创建对象"><span class="toc-number">1.1.</span> <span class="toc-text">构造函数创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prototype"><span class="toc-number">1.2.</span> <span class="toc-text">prototype</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#proto"><span class="toc-number">1.3.</span> <span class="toc-text">__proto__</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#constructor-NaN"><span class="toc-number">1.4.</span> <span class="toc-text">constructor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例与原型"><span class="toc-number">1.5.</span> <span class="toc-text">实例与原型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型的原型"><span class="toc-number">1.6.</span> <span class="toc-text">原型的原型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型链"><span class="toc-number">1.7.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充"><span class="toc-number">1.8.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor"><span class="toc-number">1.8.1.</span> <span class="toc-text">constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proto-1"><span class="toc-number">1.8.2.</span> <span class="toc-text">__proto__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真的是继承吗？"><span class="toc-number">1.8.3.</span> <span class="toc-text">真的是继承吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">1.9.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">1.10.</span> <span class="toc-text">深入系列</span></a></li></ol></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数创建对象"><span class="toc-number">1.</span> <span class="toc-text">构造函数创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prototype"><span class="toc-number">2.</span> <span class="toc-text">prototype</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#proto"><span class="toc-number">3.</span> <span class="toc-text">__proto__</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#constructor-NaN"><span class="toc-number">4.</span> <span class="toc-text">constructor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实例与原型"><span class="toc-number">5.</span> <span class="toc-text">实例与原型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型的原型"><span class="toc-number">6.</span> <span class="toc-text">原型的原型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原型链"><span class="toc-number">7.</span> <span class="toc-text">原型链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补充"><span class="toc-number">8.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#constructor"><span class="toc-number">8.1.</span> <span class="toc-text">constructor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#proto-1"><span class="toc-number">8.2.</span> <span class="toc-text">__proto__</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#真的是继承吗？"><span class="toc-number">8.3.</span> <span class="toc-text">真的是继承吗？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">9.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">10.</span> <span class="toc-text">深入系列</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
 		 <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-</blockquote>
-<h1 id="01JavaScript深入之从原型到原型链"><a href="#01JavaScript深入之从原型到原型链" class="headerlink" title="01JavaScript深入之从原型到原型链"></a>01JavaScript深入之从原型到原型链</h1><blockquote>
 <p>JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。</p>
 </blockquote>
 <h2 id="构造函数创建对象"><a href="#构造函数创建对象" class="headerlink" title="构造函数创建对象"></a>构造函数创建对象</h2><p>我们先使用构造函数创建一个对象：</p>
@@ -244,15 +242,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之执行上下文/" rel="prev" title="">
-						 
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/" rel="prev" title="14JavaScript深入之创建对象的多种方式以及优缺点">
+						 14JavaScript深入之创建对象的多种方式以及优缺点
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之闭包/" rel="next" title="">
-						 
+				 next：<a href="/2018/01/04/JavaScript深入之变量对象/" rel="next" title="04JavaScript深入之变量对象">
+						 04JavaScript深入之变量对象
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -263,7 +261,7 @@
 </article>
 <script>
 window.subData = {
- title: '',
+ title: '01JavaScript深入之从原型到原型链',
  tools: true
 }
 </script>

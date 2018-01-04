@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>luox78</title>
+  <title>02JavaScript深入之词法作用域和动态作用域 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog  02JavaScript深入之词法作用域和动态作用域 JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。  作用域作用域是指程序源代码中定义变量的区域。 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。  作用域作用域是指程序源代码中定义变量的区域。 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。 JavaScript 采用词法作用域(lexi">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luox78">
+<meta property="og:title" content="02JavaScript深入之词法作用域和动态作用域">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之词法作用域和动态作用域/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog  02JavaScript深入之词法作用域和动态作用域 JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。  作用域作用域是指程序源代码中定义变量的区域。 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。  作用域作用域是指程序源代码中定义变量的区域。 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。 JavaScript 采用词法作用域(lexi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:21:05.063Z">
+<meta property="og:updated_time" content="2018-01-04T12:30:44.865Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog  02JavaScript深入之词法作用域和动态作用域 JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。  作用域作用域是指程序源代码中定义变量的区域。 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访">
+<meta name="twitter:title" content="02JavaScript深入之词法作用域和动态作用域">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。  作用域作用域是指程序源代码中定义变量的区域。 作用域规定了如何查找变量，也就是确定当前执行代码对变量的访问权限。 JavaScript 采用词法作用域(lexi">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -133,7 +133,7 @@
 <section class='meta'>
  <h2 class="title">
 		 <a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/">
-				 
+				 02JavaScript深入之词法作用域和动态作用域
 		 </a>
  </h2>
  <time>
@@ -152,14 +152,12 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#02JavaScript深入之词法作用域和动态作用域"><span class="toc-number">1.</span> <span class="toc-text">02JavaScript深入之词法作用域和动态作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">1.1.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态作用域与动态作用域"><span class="toc-number">1.2.</span> <span class="toc-text">静态作用域与动态作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态作用域"><span class="toc-number">1.3.</span> <span class="toc-text">动态作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题"><span class="toc-number">1.4.</span> <span class="toc-text">思考题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">1.5.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">1.6.</span> <span class="toc-text">深入系列</span></a></li></ol></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">1.</span> <span class="toc-text">作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态作用域与动态作用域"><span class="toc-number">2.</span> <span class="toc-text">静态作用域与动态作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动态作用域"><span class="toc-number">3.</span> <span class="toc-text">动态作用域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#思考题"><span class="toc-number">4.</span> <span class="toc-text">思考题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">5.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">6.</span> <span class="toc-text">深入系列</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
 		 <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-</blockquote>
-<h1 id="02JavaScript深入之词法作用域和动态作用域"><a href="#02JavaScript深入之词法作用域和动态作用域" class="headerlink" title="02JavaScript深入之词法作用域和动态作用域"></a>02JavaScript深入之词法作用域和动态作用域</h1><blockquote>
 <p>JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。</p>
 </blockquote>
 <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>作用域是指程序源代码中定义变量的区域。</p>
@@ -207,15 +205,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之bind的模拟实现/" rel="prev" title="">
-						 
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之变量对象/" rel="prev" title="04JavaScript深入之变量对象">
+						 04JavaScript深入之变量对象
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之继承的多种方式和优缺点/" rel="next" title="">
-						 
+				 next：<a href="/2018/01/04/JavaScript深入之参数按值传递/" rel="next" title="09JavaScript深入之参数按值传递">
+						 09JavaScript深入之参数按值传递
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -226,7 +224,7 @@
 </article>
 <script>
 window.subData = {
- title: '',
+ title: '02JavaScript深入之词法作用域和动态作用域',
  tools: true
 }
 </script>

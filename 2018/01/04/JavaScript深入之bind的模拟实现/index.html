@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>luox78</title>
+  <title>11JavaScript深入之bind的模拟实现 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog  11JavaScript深入之bind的模拟实现 JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性  bind一句话介绍 bind:  bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性  bind一句话介绍 bind:  bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。(来自于 MDN )">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luox78">
+<meta property="og:title" content="11JavaScript深入之bind的模拟实现">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之bind的模拟实现/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog  11JavaScript深入之bind的模拟实现 JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性  bind一句话介绍 bind:  bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性  bind一句话介绍 bind:  bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。(来自于 MDN )">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:19:43.436Z">
+<meta property="og:updated_time" content="2018-01-04T12:28:08.680Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog  11JavaScript深入之bind的模拟实现 JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性  bind一句话介绍 bind:  bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在">
+<meta name="twitter:title" content="11JavaScript深入之bind的模拟实现">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性  bind一句话介绍 bind:  bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。(来自于 MDN )">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -133,7 +133,7 @@
 <section class='meta'>
  <h2 class="title">
 		 <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">
-				 
+				 11JavaScript深入之bind的模拟实现
 		 </a>
  </h2>
  <time>
@@ -152,14 +152,12 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#11JavaScript深入之bind的模拟实现"><span class="toc-number">1.</span> <span class="toc-text">11JavaScript深入之bind的模拟实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#bind"><span class="toc-number">1.1.</span> <span class="toc-text">bind</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回函数的模拟实现"><span class="toc-number">1.2.</span> <span class="toc-text">返回函数的模拟实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传参的模拟实现"><span class="toc-number">1.3.</span> <span class="toc-text">传参的模拟实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数效果的模拟实现"><span class="toc-number">1.4.</span> <span class="toc-text">构造函数效果的模拟实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数效果的优化实现"><span class="toc-number">1.5.</span> <span class="toc-text">构造函数效果的优化实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个小问题"><span class="toc-number">1.6.</span> <span class="toc-text">三个小问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最终代码"><span class="toc-number">1.7.</span> <span class="toc-text">最终代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">1.8.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关链接"><span class="toc-number">1.9.</span> <span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">1.10.</span> <span class="toc-text">深入系列</span></a></li></ol></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#bind"><span class="toc-number">1.</span> <span class="toc-text">bind</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回函数的模拟实现"><span class="toc-number">2.</span> <span class="toc-text">返回函数的模拟实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#传参的模拟实现"><span class="toc-number">3.</span> <span class="toc-text">传参的模拟实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数效果的模拟实现"><span class="toc-number">4.</span> <span class="toc-text">构造函数效果的模拟实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造函数效果的优化实现"><span class="toc-number">5.</span> <span class="toc-text">构造函数效果的优化实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三个小问题"><span class="toc-number">6.</span> <span class="toc-text">三个小问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最终代码"><span class="toc-number">7.</span> <span class="toc-text">最终代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">8.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关链接"><span class="toc-number">9.</span> <span class="toc-text">相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">10.</span> <span class="toc-text">深入系列</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
 		 <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-</blockquote>
-<h1 id="11JavaScript深入之bind的模拟实现"><a href="#11JavaScript深入之bind的模拟实现" class="headerlink" title="11JavaScript深入之bind的模拟实现"></a>11JavaScript深入之bind的模拟实现</h1><blockquote>
 <p>JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性</p>
 </blockquote>
 <h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>一句话介绍 bind:</p>
@@ -235,15 +233,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之new的模拟实现/" rel="prev" title="">
-						 
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/" rel="prev" title="10JavaScript深入之call和apply的模拟实现">
+						 10JavaScript深入之call和apply的模拟实现
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/" rel="next" title="">
-						 
+				 next：<a href="/2018/01/04/JavaScript深入之闭包/" rel="next" title="08JavaScript深入之闭包">
+						 08JavaScript深入之闭包
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -254,7 +252,7 @@
 </article>
 <script>
 window.subData = {
- title: '',
+ title: '11JavaScript深入之bind的模拟实现',
  tools: true
 }
 </script>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>luox78</title>
+  <title>05JavaScript深入之作用域链 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog  05JavaScript深入之作用域链 JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？  前言在《JavaScript深入之执行上下文栈》中讲到，当JavaScript代码执行一段可执行代码(executable c">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？  前言在《JavaScript深入之执行上下文栈》中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(exe">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="luox78">
+<meta property="og:title" content="05JavaScript深入之作用域链">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之作用域链/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog  05JavaScript深入之作用域链 JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？  前言在《JavaScript深入之执行上下文栈》中讲到，当JavaScript代码执行一段可执行代码(executable c">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？  前言在《JavaScript深入之执行上下文栈》中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(exe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:23:09.928Z">
+<meta property="og:updated_time" content="2018-01-04T12:32:11.572Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog  05JavaScript深入之作用域链 JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？  前言在《JavaScript深入之执行上下文栈》中讲到，当JavaScript代码执行一段可执行代码(executable c">
+<meta name="twitter:title" content="05JavaScript深入之作用域链">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？  前言在《JavaScript深入之执行上下文栈》中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(exe">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -133,7 +133,7 @@
 <section class='meta'>
  <h2 class="title">
 		 <a href="/2018/01/04/JavaScript深入之作用域链/">
-				 
+				 05JavaScript深入之作用域链
 		 </a>
  </h2>
  <time>
@@ -152,14 +152,12 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#05JavaScript深入之作用域链"><span class="toc-number">1.</span> <span class="toc-text">05JavaScript深入之作用域链</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-number">1.2.</span> <span class="toc-text">作用域链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数创建"><span class="toc-number">1.3.</span> <span class="toc-text">函数创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数激活"><span class="toc-number">1.4.</span> <span class="toc-text">函数激活</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#捋一捋"><span class="toc-number">1.5.</span> <span class="toc-text">捋一捋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">1.6.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文相关链接"><span class="toc-number">1.7.</span> <span class="toc-text">本文相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">1.8.</span> <span class="toc-text">深入系列</span></a></li></ol></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域链"><span class="toc-number">2.</span> <span class="toc-text">作用域链</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数创建"><span class="toc-number">3.</span> <span class="toc-text">函数创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#函数激活"><span class="toc-number">4.</span> <span class="toc-text">函数激活</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#捋一捋"><span class="toc-number">5.</span> <span class="toc-text">捋一捋</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下一篇文章"><span class="toc-number">6.</span> <span class="toc-text">下一篇文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本文相关链接"><span class="toc-number">7.</span> <span class="toc-text">本文相关链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深入系列"><span class="toc-number">8.</span> <span class="toc-text">深入系列</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
 		 <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-</blockquote>
-<h1 id="05JavaScript深入之作用域链"><a href="#05JavaScript深入之作用域链" class="headerlink" title="05JavaScript深入之作用域链"></a>05JavaScript深入之作用域链</h1><blockquote>
 <p>JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？</p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。</p>
@@ -221,8 +219,8 @@
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之执行上下文栈/" rel="next" title="">
-						 
+				 next：<a href="/2018/01/04/JavaScript深入之执行上下文栈/" rel="next" title="03JavaScript深入之执行上下文栈">
+						 03JavaScript深入之执行上下文栈
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -233,7 +231,7 @@
 </article>
 <script>
 window.subData = {
- title: '',
+ title: '05JavaScript深入之作用域链',
  tools: true
 }
 </script>
