@@ -5,28 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <title>luox78</title>
-  <meta name="description" content="Daily Learning" />
+  <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
+  <meta name="theme-color" content=" rgb(59,95,208)">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" href="/">
+  <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Daily Learning">
+  <meta name="description" content="Blog for luox78">
 <meta property="og:type" content="website">
 <meta property="og:title" content="luox78">
 <meta property="og:url" content="https://luox78.github.io/page/3/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="Daily Learning">
-<meta property="og:locale" content="zh">
+<meta property="og:description" content="Blog for luox78">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="Daily Learning">
+<meta name="twitter:description" content="Blog for luox78">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
   <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
   <script>
     function setLoadingBarProgress(num) {
       document.getElementById('loading-bar').style.width=num+"%";
@@ -63,13 +66,7 @@
 						</li>
 					
 						<li>
-							<a class='flat-box nav-gallery' href='https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN'>
-								Gallery
-							</a>
-						</li>
-					
-						<li>
-							<a class='flat-box nav-about' href='/about'>
+							<a class='flat-box nav-about' href='/about.html'>
 								About
 							</a>
 						</li>
@@ -117,11 +114,7 @@
 				Archives
 			</a>
 		
-			<a href="https://photos.google.com/album/AF1QipNoqKYgspQo5O1YhlFXGCQ7p575KBH3Yxf8WHL4?hl=zh-CN" class="nav-gallery nav">
-				Gallery
-			</a>
-		
-			<a href="/about" class="nav-about nav">
+			<a href="/about.html" class="nav-about nav">
 				About
 			</a>
 		
@@ -136,34 +129,421 @@
 <section class="post-list">
 	
     <div class='post-wrapper'>
+      <article class="post revealno-title">
+  <section class="meta">
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+</blockquote>
+<h1 id="09JavaScript深入之参数按值传递"><a href="#09JavaScript深入之参数按值传递" class="headerlink" title="09JavaScript深入之参数按值传递"></a>09JavaScript深入之参数按值传递</h1><blockquote>
+<p>JavaScript深入系列第九篇，除了按值传递、引用传递，还有第三种传递方式 —— 按共享传递</p>
+</blockquote>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>在《JavaScript高级程序设计》第三版 4.1.3，讲到传递参数：</p>
+<blockquote>
+<p>ECMAScript中所有函数的参数都是按值传递的。</p>
+</blockquote>
+<p>什么是按值传递呢？</p>
+<blockquote>
+<p>也就是说，把函数外部的值复制给函数内部的参数，就和把值从一个变量复制到另一个变量一样。</p>
+</blockquote>
+<h2 id="按值传递"><a href="#按值传递" class="headerlink" title="按值传递"></a>按值传递</h2><p>举个简单的例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">v</span>) </span>&#123;</span><br><span class="line">    v = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(v); <span class="comment">//2</span></span><br><span class="line">&#125;</span><br><span class="line">foo(value);</span><br><span class="line"><span class="built_in">console</span>.log(value) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>很好理解，当传递 value 到函数 foo 中，相当于拷贝了一份 value，假设拷贝的这份叫 _value，函数中修改的都是 _value 的值，而不会影响原来的 value 值。</p>
+<h2 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h2><p>拷贝虽然很好理解，但是当值是一个复杂的数据结构的时候，拷贝就会产生性能上的问题。</p>
+<p>所以还有另一种传递方式叫做按引用传递。</p>
+<p>所谓按引用传递，就是传递对象的引用，函数内部对参数的任何改变都会影响该对象的值，因为两者引用的是同一个对象。</p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    o.value = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(o.value); <span class="comment">//2</span></span><br><span class="line">&#125;</span><br><span class="line">foo(obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj.value) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>哎，不对啊，连我们的红宝书都说了 ECMAScript 中所有函数的参数都是按值传递的，这怎么能按引用传递成功呢？</p>
+<p>而这究竟是不是引用传递呢？</p>
+<h2 id="第三种传递方式"><a href="#第三种传递方式" class="headerlink" title="第三种传递方式"></a>第三种传递方式</h2><p>不急，让我们再看个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">o</span>) </span>&#123;</span><br><span class="line">    o = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(o); <span class="comment">//2</span></span><br><span class="line">&#125;</span><br><span class="line">foo(obj);</span><br><span class="line"><span class="built_in">console</span>.log(obj.value) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>如果 JavaScript 采用的是引用传递，外层的值也会被修改呐，这怎么又没被改呢？所以真的不是引用传递吗？</p>
+<p>这就要讲到其实还有第三种传递方式，叫按共享传递。</p>
+<p>而共享传递是指，在传递对象的时候，传递对象的引用的副本。</p>
+<p><strong>注意： 按引用传递是传递对象的引用，而按共享传递是传递对象的引用的副本！</strong></p>
+<p>所以修改 o.value，可以通过引用找到原值，但是直接修改 o，并不会修改原值。所以第二个和第三个例子其实都是按共享传递。</p>
+<p>最后，你可以这样理解：</p>
+<p>参数如果是基本类型是按值传递，如果是引用类型按共享传递。</p>
+<p>但是因为拷贝副本也是一种值的拷贝，所以在高程中也直接认为是按值传递了。</p>
+<p>所以，高程，谁叫你是红宝书嘞！</p>
+<h2 id="下一篇文章"><a href="#下一篇文章" class="headerlink" title="下一篇文章"></a>下一篇文章</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/11" target="_blank" rel="noopener">JavaScript深入之call和apply的模拟实现</a></p>
+<h2 id="深入系列"><a href="#深入系列" class="headerlink" title="深入系列"></a>深入系列</h2><p>JavaScript深入系列目录地址：<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a>。</p>
+<p>JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。</p>
+<p>如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。</p>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post revealno-title">
+  <section class="meta">
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+</blockquote>
+<h1 id="04JavaScript深入之变量对象"><a href="#04JavaScript深入之变量对象" class="headerlink" title="04JavaScript深入之变量对象"></a>04JavaScript深入之变量对象</h1><blockquote>
+<p>JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上篇<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当 JavaScript 代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。</p>
+<p>对于每个执行上下文，都有三个重要属性：</p>
+<ul>
+<li>变量对象(Variable object，VO)</li>
+<li>作用域链(Scope chain)</li>
+<li>this</li>
+</ul>
+<p>今天重点讲讲创建变量对象的过程。</p>
+<h2 id="变量对象"><a href="#变量对象" class="headerlink" title="变量对象"></a>变量对象</h2><p>变量对象是与执行上下文相关的数据作用域，存储了在上下文中定义的变量和函数声明。</p>
+<p>因为不同执行上下文下的变量对象稍有不同，所以我们来聊聊全局上下文下的变量对象和函数上下文下的变量对象。</p>
+<h2 id="全局上下文"><a href="#全局上下文" class="headerlink" title="全局上下文"></a>全局上下文</h2><p>我们先了解一个概念，叫全局对象。在 <a href="http://www.w3school.com.cn/jsref/jsref_obj_global.asp" target="_blank" rel="noopener">W3School</a> 中也有介绍：</p>
+<blockquote>
+<p>全局对象是预定义的对象，作为 JavaScript 的全局函数和全局属性的占位符。通过使用全局对象，可以访问所有其他所有预定义的对象、函数和属性。</p>
+<p>在顶层 JavaScript 代码中，可以用关键字 this 引用全局对象。因为全局对象是作用域链的头，这意味着所有非限定性的变量和函数名都会作为该对象的属性来查询。</p>
+<p>例如，当JavaScript 代码引用 parseInt() 函数时，它引用的是全局对象的 parseInt 属性。全局对象是作用域链的头，还意味着在顶层 JavaScript 代码中声明的所有变量都将成为全局对象的属性。</p>
+</blockquote>
+<p>如果看的不是很懂的话，容我再来介绍下全局对象:</p>
+<p>1.可以通过 this 引用，在客户端 JavaScript 中，全局对象就是 Window 对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<p>2.全局对象是由 Object 构造函数实例化的一个对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span>);</span><br></pre></td></tr></table></figure>
+<p>3.预定义了一堆，嗯，一大堆函数和属性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 都能生效</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.random());</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.Math.random());</span><br></pre></td></tr></table></figure>
+<p>4.作为全局变量的宿主。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.a);</span><br></pre></td></tr></table></figure>
+<p>5.客户端 JavaScript 中，全局对象有 window 属性指向自身。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.a);</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.window.b = <span class="number">2</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.b);</span><br></pre></td></tr></table></figure>
+<p>花了一个大篇幅介绍全局对象，其实就想说：</p>
+<p>全局上下文中的变量对象就是全局对象呐！</p>
+<h2 id="函数上下文"><a href="#函数上下文" class="headerlink" title="函数上下文"></a>函数上下文</h2><p>在函数上下文中，我们用活动对象(activation object, AO)来表示变量对象。</p>
+<p>活动对象和变量对象其实是一个东西，只是变量对象是规范上的或者说是引擎实现上的，不可在 JavaScript 环境中访问，只有到当进入一个执行上下文中，这个执行上下文的变量对象才会被激活，所以才叫 activation object 呐，而只有被激活的变量对象，也就是活动对象上的各种属性才能被访问。</p>
+<p>活动对象是在进入函数上下文时刻被创建的，它通过函数的 arguments 属性初始化。arguments 属性值是 Arguments 对象。</p>
+<h2 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h2><p>执行上下文的代码会分成两个阶段进行处理：分析和执行，我们也可以叫做：</p>
+<ol>
+<li>进入执行上下文</li>
+<li>代码执行</li>
+</ol>
+<h3 id="进入执行上下文"><a href="#进入执行上下文" class="headerlink" title="进入执行上下文"></a>进入执行上下文</h3><p>当进入执行上下文时，这时候还没有执行代码，</p>
+<p>变量对象会包括：</p>
+<ol>
+<li><p>函数的所有形参 (如果是函数上下文)</p>
+<ul>
+<li>由名称和对应值组成的一个变量对象的属性被创建</li>
+<li>没有实参，属性值设为 undefined</li>
+</ul>
+</li>
+<li><p>函数声明</p>
+<ul>
+<li>由名称和对应值（函数对象(function-object)）组成一个变量对象的属性被创建</li>
+<li>如果变量对象已经存在相同名称的属性，则完全替换这个属性</li>
+</ul>
+</li>
+<li><p>变量声明</p>
+<ul>
+<li>由名称和对应值（undefined）组成一个变量对象的属性被创建；</li>
+<li>如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性</li>
+</ul>
+</li>
+</ol>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> b = <span class="number">2</span>;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">  <span class="keyword">var</span> d = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line">  b = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>在进入执行上下文后，这时候的 AO 是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;</span><br><span class="line">        <span class="number">0</span>: <span class="number">1</span>,</span><br><span class="line">        length: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="literal">undefined</span>,</span><br><span class="line">    c: reference to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    d: <span class="literal">undefined</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="代码执行"><a href="#代码执行" class="headerlink" title="代码执行"></a>代码执行</h3><p>在代码执行阶段，会顺序执行代码，根据代码，修改变量对象的值</p>
+<p>还是上面的例子，当代码执行完后，这时候的 AO 是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;</span><br><span class="line">        <span class="number">0</span>: <span class="number">1</span>,</span><br><span class="line">        length: <span class="number">1</span></span><br><span class="line">    &#125;,</span><br><span class="line">    a: <span class="number">1</span>,</span><br><span class="line">    b: <span class="number">3</span>,</span><br><span class="line">    c: reference to <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    d: reference to FunctionExpression <span class="string">"d"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到这里变量对象的创建过程就介绍完了，让我们简洁的总结我们上述所说：</p>
+<ol>
+<li><p>全局上下文的变量对象初始化是全局对象</p>
+</li>
+<li><p>函数上下文的变量对象初始化只包括 Arguments 对象</p>
+</li>
+<li><p>在进入执行上下文时会给变量对象添加形参、函数声明、变量声明等初始的属性值</p>
+</li>
+<li><p>在代码执行阶段，会再次修改变量对象的属性值</p>
+</li>
+</ol>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><p>最后让我们看几个例子：</p>
+<p>1.第一题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo(); <span class="comment">// ???</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    a = <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;</span><br><span class="line">bar(); <span class="comment">// ???</span></span><br></pre></td></tr></table></figure>
+<p>第一段会报错：<code>Uncaught ReferenceError: a is not defined</code>。</p>
+<p>第二段会打印：<code>1</code>。</p>
+<p>这是因为函数中的 “a” 并没有通过 var 关键字声明，所有不会被存放在 AO 中。</p>
+<p>第一段执行 console 的时候， AO 的值是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">AO = &#123;</span><br><span class="line">    <span class="built_in">arguments</span>: &#123;</span><br><span class="line">        length: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>没有 a 的值，然后就会到全局去找，全局也没有，所以会报错。</p>
+<p>当第二段执行 console 的时候，全局对象已经被赋予了 a 属性，这时候就可以从全局找到 a 的值，所以会打印 1。</p>
+<p>2.第二题</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(foo);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"foo"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>会打印函数，而不是 undefined 。</p>
+<p>这是因为在进入执行上下文时，首先会处理函数声明，其次会处理变量声明，如果如果变量名称跟已经声明的形式参数或函数相同，则变量声明不会干扰已经存在的这类属性。</p>
+<h2 id="下一篇文章"><a href="#下一篇文章" class="headerlink" title="下一篇文章"></a>下一篇文章</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/6" target="_blank" rel="noopener">《JavaScript深入之作用域链》</a></p>
+<h2 id="本文相关链接"><a href="#本文相关链接" class="headerlink" title="本文相关链接"></a>本文相关链接</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a></p>
+<h2 id="深入系列"><a href="#深入系列" class="headerlink" title="深入系列"></a>深入系列</h2><p>JavaScript深入系列目录地址：<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a>。</p>
+<p>JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。</p>
+<p>如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。</p>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post revealno-title">
+  <section class="meta">
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+</blockquote>
+<h1 id="10JavaScript深入之call和apply的模拟实现"><a href="#10JavaScript深入之call和apply的模拟实现" class="headerlink" title="10JavaScript深入之call和apply的模拟实现"></a>10JavaScript深入之call和apply的模拟实现</h1><blockquote>
+<p>JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相</p>
+</blockquote>
+<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：</p>
+<blockquote>
+<p>call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。</p>
+</blockquote>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar.call(foo); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>注意两点：</p>
+<ol>
+<li>call 改变了 this 的指向，指向到 foo</li>
+<li>bar 函数执行了</li>
+</ol>
+<h2 id="模拟实现第一步"><a href="#模拟实现第一步" class="headerlink" title="模拟实现第一步"></a>模拟实现第一步</h2><p>那么我们该怎么模拟实现这两个效果呢？</p>
+<p>试想当调用 call 的时候，把 foo 对象改造成如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    value: <span class="number">1</span>,</span><br><span class="line">    bar: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo.bar(); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>这个时候 this 就指向了 foo，是不是很简单呢？</p>
+<p>但是这样却给 foo 对象本身添加了一个属性，这可不行呐！</p>
+<p>不过也不用担心，我们用 delete 再删除它不就好了~</p>
+<p>所以我们模拟的步骤可以分为：</p>
+<ol>
+<li>将函数设为对象的属性</li>
+<li>执行该函数</li>
+<li>删除该函数</li>
+</ol>
+<p>以上个例子为例，就是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一步</span></span><br><span class="line">foo.fn = bar</span><br><span class="line"><span class="comment">// 第二步</span></span><br><span class="line">foo.fn()</span><br><span class="line"><span class="comment">// 第三步</span></span><br><span class="line"><span class="keyword">delete</span> foo.fn</span><br></pre></td></tr></table></figure>
+<p>fn 是对象的属性名，反正最后也要删除它，所以起成什么都无所谓。</p>
+<p>根据这个思路，我们可以尝试着去写第一版的 <strong>call2</strong> 函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一版</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.call2 = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 首先要获取调用call的函数，用this可以获取</span></span><br><span class="line">    context.fn = <span class="keyword">this</span>;</span><br><span class="line">    context.fn();</span><br><span class="line">    <span class="keyword">delete</span> context.fn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试一下</span></span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar.call2(foo); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>正好可以打印 1 哎！是不是很开心！(～￣▽￣)～</p>
+<h2 id="模拟实现第二步"><a href="#模拟实现第二步" class="headerlink" title="模拟实现第二步"></a>模拟实现第二步</h2><p>最一开始也讲了，call 函数还能给定参数执行函数。举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar.call(foo, <span class="string">'kevin'</span>, <span class="number">18</span>);</span><br><span class="line"><span class="comment">// kevin</span></span><br><span class="line"><span class="comment">// 18</span></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>注意：传入的参数并不确定，这可咋办？</p>
+<p>不急，我们可以从 Arguments 对象中取值，取出第二个到最后一个参数，然后放到一个数组里。</p>
+<p>比如这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 以上个例子为例，此时的arguments为：</span></span><br><span class="line"><span class="comment">// arguments = &#123;</span></span><br><span class="line"><span class="comment">//      0: foo,</span></span><br><span class="line"><span class="comment">//      1: 'kevin',</span></span><br><span class="line"><span class="comment">//      2: 18,</span></span><br><span class="line"><span class="comment">//      length: 3</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// 因为arguments是类数组对象，所以可以用for循环</span></span><br><span class="line"><span class="keyword">var</span> args = [];</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>, len = <span class="built_in">arguments</span>.length; i &lt; len; i++) &#123;</span><br><span class="line">    args.push(<span class="string">'arguments['</span> + i + <span class="string">']'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 执行后 args为 ["arguments[1]", "arguments[2]", "arguments[3]"]</span></span><br></pre></td></tr></table></figure>
+<p>不定长的参数问题解决了，我们接着要把这个参数数组放到要执行的函数的参数里面去。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将数组里的元素作为多个参数放进函数的形参里</span></span><br><span class="line">context.fn(args.join(<span class="string">','</span>))</span><br><span class="line"><span class="comment">// (O_o)??</span></span><br><span class="line"><span class="comment">// 这个方法肯定是不行的啦！！！</span></span><br></pre></td></tr></table></figure>
+<p>也许有人想到用 ES6 的方法，不过 call 是 ES3 的方法，我们为了模拟实现一个 ES3 的方法，要用到ES6的方法，好像……，嗯，也可以啦。但是我们这次用 eval 方法拼成一个函数，类似于这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">eval</span>(<span class="string">'context.fn('</span> + args +<span class="string">')'</span>)</span><br></pre></td></tr></table></figure>
+<p>这里 args 会自动调用 Array.toString() 这个方法。</p>
+<p>所以我们的第二版克服了两个大问题，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第二版</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.call2 = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>) </span>&#123;</span><br><span class="line">    context.fn = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">var</span> args = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>, len = <span class="built_in">arguments</span>.length; i &lt; len; i++) &#123;</span><br><span class="line">        args.push(<span class="string">'arguments['</span> + i + <span class="string">']'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">eval</span>(<span class="string">'context.fn('</span> + args +<span class="string">')'</span>);</span><br><span class="line">    <span class="keyword">delete</span> context.fn;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试一下</span></span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar.call2(foo, <span class="string">'kevin'</span>, <span class="number">18</span>); </span><br><span class="line"><span class="comment">// kevin</span></span><br><span class="line"><span class="comment">// 18</span></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>(๑•̀ㅂ•́)و✧</p>
+<h2 id="模拟实现第三步"><a href="#模拟实现第三步" class="headerlink" title="模拟实现第三步"></a>模拟实现第三步</h2><p>模拟代码已经完成 80%，还有两个小点要注意：</p>
+<p><strong>1.this 参数可以传 null，当为 null 的时候，视为指向 window</strong></p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar.call(<span class="literal">null</span>); <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+<p>虽然这个例子本身不使用 call，结果依然一样。</p>
+<p><strong>2.函数是可以有返回值的！</strong></p>
+<p>举个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        value: <span class="keyword">this</span>.value,</span><br><span class="line">        name: name,</span><br><span class="line">        age: age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bar.call(obj, <span class="string">'kevin'</span>, <span class="number">18</span>));</span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    value: 1,</span></span><br><span class="line"><span class="comment">//    name: 'kevin',</span></span><br><span class="line"><span class="comment">//    age: 18</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+<p>不过都很好解决，让我们直接看第三版也就是最后一版的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第三版</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.call2 = <span class="function"><span class="keyword">function</span> (<span class="params">context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context = context || <span class="built_in">window</span>;</span><br><span class="line">    context.fn = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> args = [];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">1</span>, len = <span class="built_in">arguments</span>.length; i &lt; len; i++) &#123;</span><br><span class="line">        args.push(<span class="string">'arguments['</span> + i + <span class="string">']'</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result = <span class="built_in">eval</span>(<span class="string">'context.fn('</span> + args +<span class="string">')'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> context.fn</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 测试一下</span></span><br><span class="line"><span class="keyword">var</span> value = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    value: <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        value: <span class="keyword">this</span>.value,</span><br><span class="line">        name: name,</span><br><span class="line">        age: age</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bar.call(<span class="literal">null</span>); <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(bar.call2(obj, <span class="string">'kevin'</span>, <span class="number">18</span>));</span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// Object &#123;</span></span><br><span class="line"><span class="comment">//    value: 1,</span></span><br><span class="line"><span class="comment">//    name: 'kevin',</span></span><br><span class="line"><span class="comment">//    age: 18</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+<p>到此，我们完成了 call 的模拟实现，给自己一个赞 ｂ（￣▽￣）ｄ</p>
+<h2 id="apply的模拟实现"><a href="#apply的模拟实现" class="headerlink" title="apply的模拟实现"></a>apply的模拟实现</h2><p>apply 的实现跟 call 类似，在这里直接给代码，代码来自于知乎 @郑航的实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype.apply = <span class="function"><span class="keyword">function</span> (<span class="params">context, arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> context = <span class="built_in">Object</span>(context) || <span class="built_in">window</span>;</span><br><span class="line">    context.fn = <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> result;</span><br><span class="line">    <span class="keyword">if</span> (!arr) &#123;</span><br><span class="line">        result = context.fn();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">var</span> args = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">            args.push(<span class="string">'arr['</span> + i + <span class="string">']'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        result = <span class="built_in">eval</span>(<span class="string">'context.fn('</span> + args + <span class="string">')'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> context.fn</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="下一篇文章"><a href="#下一篇文章" class="headerlink" title="下一篇文章"></a>下一篇文章</h2><p><a href="https://github.com/mqyqingfeng/Blog/issues/12" target="_blank" rel="noopener">JavaScript深入之bind的模拟实现</a></p>
+<h2 id="重要参考"><a href="#重要参考" class="headerlink" title="重要参考"></a>重要参考</h2><p><a href="https://www.zhihu.com/question/35787390" target="_blank" rel="noopener">知乎问题 不能使用call、apply、bind，如何用 js 实现 call 或者 apply 的功能？</a></p>
+<h2 id="深入系列"><a href="#深入系列" class="headerlink" title="深入系列"></a>深入系列</h2><p>JavaScript深入系列目录地址：<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a>。</p>
+<p>JavaScript深入系列预计写十五篇左右，旨在帮大家捋顺JavaScript底层知识，重点讲解如原型、作用域、执行上下文、变量对象、this、闭包、按值传递、call、apply、bind、new、继承等难点概念。</p>
+<p>如果有错误或者不严谨的地方，请务必给予指正，十分感谢。如果喜欢或者有所启发，欢迎star，对作者也是一种鼓励。</p>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
       <article class="post reveal">
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2017/12/25/hello-world/">
-        Hello World
+      <a href="/2018/01/02/CS_Thread02/">
+        同步基础
       </a>
     </h2>
     
     <time>
-      Dec 25, 2017
+      Jan 2, 2018
     </time>
 		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
   </section>
   <section class="article typo">
-	  <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+	  <h2 id="1同步概要"><a href="#1同步概要" class="headerlink" title="1同步概要"></a>1同步概要</h2><p>在<a href="https://blog.gkarch.com/threading/part1.html" target="_blank" rel="noopener">第 1 部分：基础知识</a>中，我们描述了如何在线程上启动任务、配置线程以及双向传递数据。同时也说明了局部变量对于线程来说是私有的，以及引用是如何在线程之间共享，允许其通过公共字段进行通信。</p>
+<p>下一步是同步（synchronization）：为期望的结果协调线程的行为。当多个线程访问同一个数据时，同步尤其重要，但是这是一件非常容易搞砸的事情。</p>
 
     
+	  <div class="readmore">
+      <a href="/2018/01/02/CS_Thread02/">Read More</a>
+    </div>
     
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/thread/">thread</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/31/JavaScript03/">
+        初识JavaScript03
+      </a>
+    </h2>
+    
+    <time>
+      Dec 31, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h2><blockquote>
+<p>js中的数组相当于C#中的集合，数组，哈希表集合体，是个动态数组</p>
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3></blockquote>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/31/JavaScript03/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/jsfoundation/">jsfoundation</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2017/12/28/JavaScript02/">
+        初识JavaScript02
+      </a>
+    </h2>
+    
+    <time>
+      Dec 28, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="js中的事件"><a href="#js中的事件" class="headerlink" title="js中的事件"></a>js中的事件</h2><p>1 通过调用方法名或在“”内部写<br>2 通过id，使用<code>document.getElementById</code>实现事件</p>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/28/JavaScript02/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/jsfoundation/">jsfoundation</a>
+      
+	  </div>
     
   </section>
 </article>
@@ -180,6 +560,11 @@
     </a>
     
     
+    <a class="next" rel="next" href="/page/4/">
+      <span class="text">Next</span>
+      <span class="icon icon-chevron-right"></span>
+    </a>
+    
   </nav>
   
 
@@ -188,9 +573,11 @@
         
   <section class='m_widget about'>
 
+<img class='avatar waves-image' src='/images/avatar.jpg' />
+
 <div class='header'>luox78</div>
 <div class='content'>
-<div class='desc'>Tempora mutantur, nos et mutamur in illis ...</div>
+<div class='desc'>2018's dream is to make 2014's dream come true</div>
 </div>
 </section>
 
@@ -199,20 +586,12 @@
 <div class='content'>
     <ul class="entry">
     
-        <li><a class="flat-box" target="_blank" href="https://ccoooss.com">
-            <div class='name'>ClassicOldSong</div>
+        <li><a class="flat-box" target="_blank" href="https://github.com/luox78">
+            <div class='name'>Github</div>
         </a></li>
     
-        <li><a class="flat-box" target="_blank" href="https://frantic1048.logdown.com/">
-            <div class='name'>Frantic1048</div>
-        </a></li>
-    
-        <li><a class="flat-box" target="_blank" href="https://hclmaster.github.io/">
-            <div class='name'>Hclmaster</div>
-        </a></li>
-    
-        <li><a class="flat-box" target="_blank" href="https://whst.github.io/">
-            <div class='name'>WANG Hsü-Tung</div>
+        <li><a class="flat-box" target="_blank" href="https://www.baidu.com">
+            <div class='name'>Baidu</div>
         </a></li>
     
     </ul>
@@ -225,9 +604,9 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>3</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>5</div></a></li>
     
-        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>18</div></a></li>
     
     </ul>
     
@@ -238,7 +617,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 20px; color: #000">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a>
+        <a href="/tags/C-特性/" style="font-size: 16px; color: #555">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/jsfoundation/" style="font-size: 18px; color: #2b2b2b">jsfoundation</a> <a href="/tags/thread/" style="font-size: 16px; color: #555">thread</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
     </div>
 </div>
 
@@ -253,12 +632,12 @@
 	<div class="social-wrapper">
   	
       
-        <a href="https://github.com/stkevintan" class="social github"
+        <a href="https://github.com/luox78" class="social github"
           target="_blank" rel="external">
           <span class="icon icon-github"></span>
         </a>
       
-        <a href="https://twitter.com/kevinsfork" class="social twitter"
+        <a href="/" class="social twitter"
           target="_blank" rel="external">
           <span class="icon icon-twitter"></span>
         </a>
@@ -271,7 +650,24 @@
     
   </div>
   
-  <div>Theme <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename">MaterialFlow</a> designed by <a href="http://keyin.me/" target="_blank">Kevin Tan</a>.</div>
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量：
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
   
 </footer>
 
