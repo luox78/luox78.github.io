@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScript 代码执行一段可执行代码(executa">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="04JavaScript深入之变量对象">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之变量对象/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScript 代码执行一段可执行代码(executa">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:29:47.806Z">
+<meta property="og:updated_time" content="2018-01-04T12:46:23.366Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="04JavaScript深入之变量对象">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言在上篇《JavaScript深入之执行上下文栈》中讲到，当 JavaScript 代码执行一段可执行代码(executa">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！  前言">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -160,7 +160,8 @@
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
 <p>JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！</p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在上篇<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当 JavaScript 代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><a id="more"></a>
+<p>在上篇<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当 JavaScript 代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。</p>
 <p>对于每个执行上下文，都有三个重要属性：</p>
 <ul>
 <li>变量对象(Variable object，VO)</li>
@@ -270,15 +271,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之从原型到原型链/" rel="prev" title="01JavaScript深入之从原型到原型链">
-						 01JavaScript深入之从原型到原型链
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/" rel="prev" title="14JavaScript深入之创建对象的多种方式以及优缺点">
+						 14JavaScript深入之创建对象的多种方式以及优缺点
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/" rel="next" title="02JavaScript深入之词法作用域和动态作用域">
-						 02JavaScript深入之词法作用域和动态作用域
+				 next：<a href="/2018/01/04/JavaScript深入之参数按值传递/" rel="next" title="09JavaScript深入之参数按值传递">
+						 09JavaScript深入之参数按值传递
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 

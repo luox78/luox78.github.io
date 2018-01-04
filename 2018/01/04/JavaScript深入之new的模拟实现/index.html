@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相  new一句话介绍 new:  new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一  也许有点难懂，我们在模拟 new 之前，先看看 new 实现了哪些功能。 举个例子： 1234567">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相  new一句话介绍 new:  new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="12JavaScript深入之new的模拟实现">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之new的模拟实现/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相  new一句话介绍 new:  new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一  也许有点难懂，我们在模拟 new 之前，先看看 new 实现了哪些功能。 举个例子： 1234567">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相  new一句话介绍 new:  new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:29:08.836Z">
+<meta property="og:updated_time" content="2018-01-04T12:46:08.214Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="12JavaScript深入之new的模拟实现">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相  new一句话介绍 new:  new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一  也许有点难懂，我们在模拟 new 之前，先看看 new 实现了哪些功能。 举个例子： 1234567">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相  new一句话介绍 new:  new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -162,9 +162,8 @@
 </blockquote>
 <h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>一句话介绍 new:</p>
 <blockquote>
-<p>new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一</p>
+<p>new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一<br><a id="more"></a><br>也许有点难懂，我们在模拟 new 之前，先看看 new 实现了哪些功能。</p>
 </blockquote>
-<p>也许有点难懂，我们在模拟 new 之前，先看看 new 实现了哪些功能。</p>
 <p>举个例子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Otaku 御宅族，简称宅</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Otaku</span> (<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.habit = <span class="string">'Games'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 因为缺乏锻炼的缘故，身体强度让人担忧</span></span><br><span class="line">Otaku.prototype.strength = <span class="number">60</span>;</span><br><span class="line"></span><br><span class="line">Otaku.prototype.sayYourName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'I am '</span> + <span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Otaku(<span class="string">'Kevin'</span>, <span class="string">'18'</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(person.name) <span class="comment">// Kevin</span></span><br><span class="line"><span class="built_in">console</span>.log(person.habit) <span class="comment">// Games</span></span><br><span class="line"><span class="built_in">console</span>.log(person.strength) <span class="comment">// 60</span></span><br><span class="line"></span><br><span class="line">person.sayYourName(); <span class="comment">// I am Kevin</span></span><br></pre></td></tr></table></figure>
 <p>从这个例子中，我们可以看到，实例 person 可以：</p>
@@ -226,15 +225,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之参数按值传递/" rel="prev" title="09JavaScript深入之参数按值传递">
-						 09JavaScript深入之参数按值传递
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/" rel="prev" title="02JavaScript深入之词法作用域和动态作用域">
+						 02JavaScript深入之词法作用域和动态作用域
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/02/CS_Thread02/" rel="next" title="同步基础">
-						 同步基础
+				 next：<a href="/2018/01/04/JavaScript深入之从原型到原型链/" rel="next" title="01JavaScript深入之从原型到原型链">
+						 01JavaScript深入之从原型到原型链
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 

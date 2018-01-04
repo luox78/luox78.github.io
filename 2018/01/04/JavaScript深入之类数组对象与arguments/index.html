@@ -13,19 +13,19 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点  类数组对象所谓的类数组对象:  拥有一个 length 属性和若干索引属性的对象  举个例子： 12345678var array = [&apos;name&apos;, &apos;age&apos;, &apos;sex&apos;];var arrayLike =">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点  类数组对象">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="13JavaScript深入之类数组对象与arguments">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之类数组对象与arguments/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点  类数组对象所谓的类数组对象:  拥有一个 length 属性和若干索引属性的对象  举个例子： 12345678var array = [&apos;name&apos;, &apos;age&apos;, &apos;sex&apos;];var arrayLike =">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点  类数组对象">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/arguments.png">
-<meta property="og:updated_time" content="2018-01-04T12:31:35.679Z">
+<meta property="og:updated_time" content="2018-01-04T12:47:03.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="13JavaScript深入之类数组对象与arguments">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点  类数组对象所谓的类数组对象:  拥有一个 length 属性和若干索引属性的对象  举个例子： 12345678var array = [&apos;name&apos;, &apos;age&apos;, &apos;sex&apos;];var arrayLike =">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点  类数组对象">
 <meta name="twitter:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/arguments.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -162,7 +162,8 @@
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
 <p>JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点</p>
 </blockquote>
-<h2 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h2><p>所谓的类数组对象:</p>
+<h2 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h2><a id="more"></a>
+<p>所谓的类数组对象:</p>
 <blockquote>
 <p>拥有一个 length 属性和若干索引属性的对象</p>
 </blockquote>

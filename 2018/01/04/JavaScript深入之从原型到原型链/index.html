@@ -13,23 +13,23 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#125;var person = new Per">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01JavaScript深入之从原型到原型链">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之从原型到原型链/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#125;var person = new Per">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype1.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype2.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype3.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype4.png">
 <meta property="og:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype5.png">
-<meta property="og:updated_time" content="2018-01-04T12:31:12.040Z">
+<meta property="og:updated_time" content="2018-01-04T12:46:53.275Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="01JavaScript深入之从原型到原型链">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象我们先使用构造函数创建一个对象： 123456function Person() &amp;#123;&amp;#125;var person = new Per">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。  构造函数创建对象">
 <meta name="twitter:image" content="https://github.com/mqyqingfeng/Blog/raw/master/Images/prototype1.png">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -166,7 +166,8 @@
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
 <p>JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。</p>
 </blockquote>
-<h2 id="构造函数创建对象"><a href="#构造函数创建对象" class="headerlink" title="构造函数创建对象"></a>构造函数创建对象</h2><p>我们先使用构造函数创建一个对象：</p>
+<h2 id="构造函数创建对象"><a href="#构造函数创建对象" class="headerlink" title="构造函数创建对象"></a>构造函数创建对象</h2><a id="more"></a>
+<p>我们先使用构造函数创建一个对象：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line">person.name = <span class="string">'Kevin'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(person.name) <span class="comment">// Kevin</span></span><br></pre></td></tr></table></figure>
 <p>在这个例子中，Person 就是一个构造函数，我们使用 new 创建了一个实例对象 person。</p>
 <p>很简单吧，接下来进入正题：</p>
@@ -242,15 +243,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/" rel="prev" title="14JavaScript深入之创建对象的多种方式以及优缺点">
-						 14JavaScript深入之创建对象的多种方式以及优缺点
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之new的模拟实现/" rel="prev" title="12JavaScript深入之new的模拟实现">
+						 12JavaScript深入之new的模拟实现
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之变量对象/" rel="next" title="04JavaScript深入之变量对象">
-						 04JavaScript深入之变量对象
+				 next：<a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/" rel="next" title="14JavaScript深入之创建对象的多种方式以及优缺点">
+						 14JavaScript深入之创建对象的多种方式以及优缺点
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 

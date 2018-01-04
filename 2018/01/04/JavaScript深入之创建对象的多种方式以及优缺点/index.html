@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。  写在前面这篇文章讲解创建对象的各种方式，以及优缺点。 但是注意： 这篇文章更像是笔记，因为《JavaScript高级程序设计》写得真是太好了！ 1. 工厂模式1234567891011function createPerson(name)">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。  写在前面这篇文章讲解创建对象的各种方式，以及优缺点。">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="14JavaScript深入之创建对象的多种方式以及优缺点">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。  写在前面这篇文章讲解创建对象的各种方式，以及优缺点。 但是注意： 这篇文章更像是笔记，因为《JavaScript高级程序设计》写得真是太好了！ 1. 工厂模式1234567891011function createPerson(name)">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。  写在前面这篇文章讲解创建对象的各种方式，以及优缺点。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:30:29.612Z">
+<meta property="og:updated_time" content="2018-01-04T12:46:36.114Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="14JavaScript深入之创建对象的多种方式以及优缺点">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。  写在前面这篇文章讲解创建对象的各种方式，以及优缺点。 但是注意： 这篇文章更像是笔记，因为《JavaScript高级程序设计》写得真是太好了！ 1. 工厂模式1234567891011function createPerson(name)">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。  写在前面这篇文章讲解创建对象的各种方式，以及优缺点。">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -160,8 +160,7 @@
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
 <p>JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。</p>
 </blockquote>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这篇文章讲解创建对象的各种方式，以及优缺点。</p>
-<p>但是注意：</p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这篇文章讲解创建对象的各种方式，以及优缺点。<br><a id="more"></a><br>但是注意：</p>
 <p>这篇文章更像是笔记，因为《JavaScript高级程序设计》写得真是太好了！</p>
 <h2 id="1-工厂模式"><a href="#1-工厂模式" class="headerlink" title="1. 工厂模式"></a>1. 工厂模式</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createPerson</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    o.name = name;</span><br><span class="line">    o.getName = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> o;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person1 = createPerson(<span class="string">'kevin'</span>);</span><br></pre></td></tr></table></figure>
 <p>缺点：对象无法识别，因为所有的实例都指向一个原型</p>
@@ -243,15 +242,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/" rel="prev" title="06JavaScript深入之从ECMAScript规范解读this">
-						 06JavaScript深入之从ECMAScript规范解读this
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之从原型到原型链/" rel="prev" title="01JavaScript深入之从原型到原型链">
+						 01JavaScript深入之从原型到原型链
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之从原型到原型链/" rel="next" title="01JavaScript深入之从原型到原型链">
-						 01JavaScript深入之从原型到原型链
+				 next：<a href="/2018/01/04/JavaScript深入之变量对象/" rel="next" title="04JavaScript深入之变量对象">
+						 04JavaScript深入之变量对象
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 

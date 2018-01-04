@@ -13,18 +13,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相  call一句话介绍 call：  call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。  举个例子： 123456789var foo = &amp;#123;">
+  <meta name="description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相  call一句话介绍 call：">
 <meta name="keywords" content="深入理解JS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10JavaScript深入之call和apply的模拟实现">
 <meta property="og:url" content="https://luox78.github.io/2018/01/04/JavaScript深入之call和apply的模拟实现/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相  call一句话介绍 call：  call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。  举个例子： 123456789var foo = &amp;#123;">
+<meta property="og:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相  call一句话介绍 call：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T12:28:47.880Z">
+<meta property="og:updated_time" content="2018-01-04T12:45:55.246Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10JavaScript深入之call和apply的模拟实现">
-<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相  call一句话介绍 call：  call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。  举个例子： 123456789var foo = &amp;#123;">
+<meta name="twitter:description" content="本文来自https://github.com/mqyqingfeng/Blog JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相  call一句话介绍 call：">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -160,7 +160,7 @@
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
 <p>JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相</p>
 </blockquote>
-<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：</p>
+<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：<br><a id="more"></a></p>
 <blockquote>
 <p>call() 方法在使用一个指定的 this 值和若干个指定的参数值的前提下调用某个函数或方法。</p>
 </blockquote>
