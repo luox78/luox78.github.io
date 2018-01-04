@@ -22,7 +22,7 @@
 <meta property="og:description" content="Array对象 js中的数组相当于C#中的集合，数组，哈希表集合体，是个动态数组 赋值">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://luox78.github.io/images/javascript/3.png">
-<meta property="og:updated_time" content="2018-01-03T14:04:31.589Z">
+<meta property="og:updated_time" content="2018-01-04T13:54:33.153Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识JavaScript03">
 <meta name="twitter:description" content="Array对象 js中的数组相当于C#中的集合，数组，哈希表集合体，是个动态数组 赋值">
@@ -210,7 +210,7 @@
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&lt;body&gt;</span></span><br><span class="line">    &lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">"btn"</span>/&gt;</span><br><span class="line">    &lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">"button"</span> onclick=<span class="string">"f1();"</span> /&gt;</span><br><span class="line">    &lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">"button"</span> onclick=f1 /&gt;</span><br><span class="line">    &lt;<span class="built_in">input</span> <span class="built_in">type</span>=<span class="string">"button"</span> id=<span class="string">"btn2"</span> value=<span class="string">"change method"</span>/&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>onclick=f1;</code>的意思就是说<code>onclick</code>触发的方法就是f1.</p>
-<p><code>onclick=“f1()”</code>的意思就是说<code>onclick</code><strong>触发的方法里调用了f1  </strong></p>
+<p><code>onclick=“f1();”</code>的意思就是说<code>onclick</code><strong>直接调用<code>window.f1();</code>  </strong></p>
 </blockquote>
 <p><code>&lt;script&gt;</code>中</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        alert(<span class="string">"f1"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">f3</span><span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        alert(<span class="string">"f3"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>).onclick = f1;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"btn2"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"btn"</span>).onclick = f3;</span></span><br><span class="line"><span class="actionscript">        alert(<span class="string">"change completed"</span>);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -360,7 +360,7 @@ window.subData = {
     
         <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>5</div></a></li>
     
-        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>18</div></a></li>
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>19</div></a></li>
     
     </ul>
     
