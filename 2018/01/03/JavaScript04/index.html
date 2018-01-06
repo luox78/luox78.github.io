@@ -21,7 +21,7 @@
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="window对象的属性 document.write()会覆盖原有的全部内容">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-04T15:10:04.660Z">
+<meta property="og:updated_time" content="2018-01-06T14:51:14.361Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="初识JavaScript04">
 <meta name="twitter:description" content="window对象的属性 document.write()会覆盖原有的全部内容">
@@ -147,7 +147,7 @@
 
  <span id="busuanzi_container_page_pv">
 		 
-		<a href="javascript:void(0)" class="cats">本文总阅读量<span id="busuanzi_value_page_pv"></span>
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
 		</a>
  </span>
 </section>
@@ -166,10 +166,6 @@
 <blockquote>
 <p>注意循环中使用<code>this</code>,javascript<a href="https://luox78.github.io/2018/01/04/JavaScript%E6%B7%B1%E5%85%A5%E4%B9%8B%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/">执行上下文</a></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> 	&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"btn"</span> value=<span class="string">"???????????"</span> /&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"btn"</span> value=<span class="string">"???????????"</span> /&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"btn"</span> value=<span class="string">"???????????"</span> /&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"btn"</span> value=<span class="string">"???????????"</span> /&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"btn"</span> value=<span class="string">"???????????"</span> /&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"btn"</span> value=<span class="string">"???????????"</span> /&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> name=<span class="string">"btn"</span> value=<span class="string">"???????????"</span> /&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &lt;script&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     //点击一个按钮，被点击的按钮显示“呜呜”，其他按钮显示“哈哈”</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     var inputs = document.getElementsByName(<span class="string">'btn'</span>);</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     <span class="keyword">for</span> (var i = 0; i &lt; inputs.length; i++) &#123;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">         <span class="keyword">if</span> (inputs[i].<span class="built_in">type</span> == <span class="string">'button'</span>) &#123;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">             inputs[i].onclick = <span class="function"><span class="title">function</span></span>() &#123;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">                 <span class="keyword">for</span> (var j = 0; j &lt; inputs.length; j++) &#123;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">                     <span class="keyword">if</span> (inputs[j].<span class="built_in">type</span> == <span class="string">'button'</span>) &#123;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">                         inputs[j].value = <span class="string">"哈哈"</span>;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">                     &#125;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">                 &#125;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">                 this.value = <span class="string">"呜呜"</span>;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">                 //inputs[i].value = <span class="string">"呜呜"</span>;  这样写不能达到预期的效果</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">             &#125;;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">         &#125;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">     &#125;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &lt;/script&gt;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
-<p>​</p>
 </blockquote>
 </li>
 </ul>
@@ -204,8 +200,8 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/" rel="prev" title="10JavaScript深入之call和apply的模拟实现">
-						 10JavaScript深入之call和apply的模拟实现
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之new的模拟实现/" rel="prev" title="12JavaScript深入之new的模拟实现">
+						 12JavaScript深入之new的模拟实现
 				 </a>
 		 </span>
 		 
@@ -322,7 +318,7 @@ window.subData = {
     </span>
     <span> - </span>
     <span id="busuanzi_container_site_pv">
-        本站总访问量：
+        本站总访问量:
         <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
             <span id="busuanzi_value_site_pv"></span>
         </a>
