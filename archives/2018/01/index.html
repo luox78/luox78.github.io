@@ -270,8 +270,8 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之变量对象/">
-        04JavaScript深入之变量对象
+      <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">
+        06JavaScript深入之从ECMAScript规范解读this
       </a>
     </h2>
     
@@ -288,101 +288,13 @@
   <section class="article typo">
 	  <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！</p>
+<p>JavaScript深入系列第六篇，本篇我们追根溯源，从ECMAScript5规范解读this在函数调用时到底是如何确定的。</p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。<br>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之变量对象/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">
-        10JavaScript深入之call和apply的模拟实现
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相</p>
-</blockquote>
-<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">
-        11JavaScript深入之bind的模拟实现
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性</p>
-</blockquote>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>一句话介绍 bind:<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">Read More</a>
+      <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">Read More</a>
     </div>
     
     
@@ -446,6 +358,138 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">
+        11JavaScript深入之bind的模拟实现
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性</p>
+</blockquote>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>一句话介绍 bind:<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之闭包/">
+        08JavaScript深入之闭包
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列第八篇，介绍理论上的闭包和实践上的闭包，以及从作用域链的角度解析经典的闭包题。</p>
+</blockquote>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>MDN 对闭包的定义为：<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之闭包/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/">
+        14JavaScript深入之创建对象的多种方式以及优缺点
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列第十四篇，讲解创建对象的各种方式，以及优缺点。</p>
+</blockquote>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>这篇文章讲解创建对象的各种方式，以及优缺点。<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/04/JavaScript深入之从原型到原型链/">
         01JavaScript深入之从原型到原型链
       </a>
@@ -471,52 +515,6 @@
     
 	  <div class="readmore">
       <a href="/2018/01/04/JavaScript深入之从原型到原型链/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之new的模拟实现/">
-        12JavaScript深入之new的模拟实现
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相</p>
-</blockquote>
-<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2><p>一句话介绍 new:</p>
-<blockquote>
-<p>new 运算符创建一个用户定义的对象类型的实例或具有构造函数的内置对象类型之一<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之new的模拟实现/">Read More</a>
     </div>
     
     
