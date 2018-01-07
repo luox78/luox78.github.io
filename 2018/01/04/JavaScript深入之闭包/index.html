@@ -10,6 +10,8 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="theme-color" content=" rgb(59,95,208)">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -39,12 +41,8 @@
   </script>
 </head>
 
+<script>setLoadingBarProgress(10)</script> 
 <body>
-  <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
-</div>
-
-
   <script>setLoadingBarProgress(20)</script> 
   <header class="l_header">
 	<div class='wrapper'>
@@ -122,6 +120,11 @@
 		
 	</nav>
 </aside>
+
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
 
     <script>setLoadingBarProgress(40);</script>
   <div class="l_body">
@@ -262,20 +265,34 @@
 		 
  </div>
  
-
+<div style="margin: 10px;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:['mm','identicon','monsterid','wavatar','retro','hide'] 
+                    });
+                        </script>
+</div>
  
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之从原型到原型链/" rel="prev" title="01JavaScript深入之从原型到原型链">
-						 01JavaScript深入之从原型到原型链
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之类数组对象与arguments/" rel="prev" title="13JavaScript深入之类数组对象与arguments">
+						 13JavaScript深入之类数组对象与arguments
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之参数按值传递/" rel="next" title="09JavaScript深入之参数按值传递">
-						 09JavaScript深入之参数按值传递
+				 next：<a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/" rel="next" title="14JavaScript深入之创建对象的多种方式以及优缺点">
+						 14JavaScript深入之创建对象的多种方式以及优缺点
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -420,6 +437,7 @@ window.subData = {
 <script src="/js/app.js"></script>
 
 
-  <script>setLoadingBarProgress(100);</script>
+  <script>setLoadingBarProgress(90);</script>
 </body>
 </html>
+<script>setLoadingBarProgress(100);</script>

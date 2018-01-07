@@ -10,6 +10,8 @@
   <meta name="HandheldFriendly" content="True" />
   <meta name="theme-color" content=" rgb(59,95,208)">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -37,12 +39,8 @@
   </script>
 </head>
 
+<script>setLoadingBarProgress(10)</script> 
 <body>
-  <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
-</div>
-
-
   <script>setLoadingBarProgress(20)</script> 
   <header class="l_header">
 	<div class='wrapper'>
@@ -120,6 +118,11 @@
 		
 	</nav>
 </aside>
+
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
 
     <script>setLoadingBarProgress(40);</script>
   <div class="l_body">
@@ -269,6 +272,50 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之继承的多种方式和优缺点/">
+        15JavaScript深入之继承的多种方式和优缺点
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列第十五篇，讲解JavaScript各种继承方式和优缺点。</p>
+</blockquote>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之继承的多种方式和优缺点/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/04/JavaScript深入之从原型到原型链/">
         01JavaScript深入之从原型到原型链
       </a>
@@ -294,94 +341,6 @@
     
 	  <div class="readmore">
       <a href="/2018/01/04/JavaScript深入之从原型到原型链/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">
-        11JavaScript深入之bind的模拟实现
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性</p>
-</blockquote>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>一句话介绍 bind:<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">
-        10JavaScript深入之call和apply的模拟实现
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相</p>
-</blockquote>
-<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">Read More</a>
     </div>
     
     
@@ -491,6 +450,50 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">
+        10JavaScript深入之call和apply的模拟实现
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相</p>
+</blockquote>
+<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/">
         02JavaScript深入之词法作用域和动态作用域
       </a>
@@ -535,8 +538,8 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">
-        13JavaScript深入之类数组对象与arguments
+      <a href="/2018/01/04/JavaScript深入之变量对象/">
+        04JavaScript深入之变量对象
       </a>
     </h2>
     
@@ -553,13 +556,13 @@
   <section class="article typo">
 	  <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点</p>
+<p>JavaScript深入系列第四篇，具体讲解执行上下文中的变量对象与活动对象。全局上下文下的变量对象是什么？函数上下文下的活动对象是如何分析和执行的？还有两个思考题帮你加深印象，快来看看吧！</p>
 </blockquote>
-<h2 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h2>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">Read More</a>
+      <a href="/2018/01/04/JavaScript深入之变量对象/">Read More</a>
     </div>
     
     
@@ -717,6 +720,7 @@
 <script src="/js/app.js"></script>
 
 
-  <script>setLoadingBarProgress(100);</script>
+  <script>setLoadingBarProgress(90);</script>
 </body>
 </html>
+<script>setLoadingBarProgress(100);</script>
