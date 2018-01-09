@@ -167,6 +167,13 @@
           </div>
       
           <div class="archive-item archive-post mark">
+            <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">
+              <time>01-04</time>
+              <span class="title"><span>06JavaScript深入之从ECMAScript规范解读this</span></span>
+            </a>
+          </div>
+      
+          <div class="archive-item archive-post mark">
             <a href="/2018/01/04/JavaScript深入之继承的多种方式和优缺点/">
               <time>01-04</time>
               <span class="title"><span>15JavaScript深入之继承的多种方式和优缺点</span></span>
@@ -174,16 +181,9 @@
           </div>
       
           <div class="archive-item archive-post mark">
-            <a href="/2018/01/04/JavaScript深入之变量对象/">
+            <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">
               <time>01-04</time>
-              <span class="title"><span>04JavaScript深入之变量对象</span></span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/01/04/JavaScript深入之参数按值传递/">
-              <time>01-04</time>
-              <span class="title"><span>09JavaScript深入之参数按值传递</span></span>
+              <span class="title"><span>13JavaScript深入之类数组对象与arguments</span></span>
             </a>
           </div>
       
@@ -195,9 +195,9 @@
           </div>
       
           <div class="archive-item archive-post mark">
-            <a href="/2018/01/04/JavaScript深入之new的模拟实现/">
+            <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">
               <time>01-04</time>
-              <span class="title"><span>12JavaScript深入之new的模拟实现</span></span>
+              <span class="title"><span>10JavaScript深入之call和apply的模拟实现</span></span>
             </a>
           </div>
       
@@ -209,9 +209,9 @@
           </div>
       
           <div class="archive-item archive-post mark">
-            <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">
+            <a href="/2018/01/04/JavaScript深入之变量对象/">
               <time>01-04</time>
-              <span class="title"><span>06JavaScript深入之从ECMAScript规范解读this</span></span>
+              <span class="title"><span>04JavaScript深入之变量对象</span></span>
             </a>
           </div>
       
@@ -219,13 +219,6 @@
             <a href="/2018/01/04/JavaScript深入之从原型到原型链/">
               <time>01-04</time>
               <span class="title"><span>01JavaScript深入之从原型到原型链</span></span>
-            </a>
-          </div>
-      
-          <div class="archive-item archive-post mark">
-            <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">
-              <time>01-04</time>
-              <span class="title"><span>13JavaScript深入之类数组对象与arguments</span></span>
             </a>
           </div>
       
@@ -244,9 +237,16 @@
           </div>
       
           <div class="archive-item archive-post mark">
-            <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">
+            <a href="/2018/01/04/JavaScript深入之参数按值传递/">
               <time>01-04</time>
-              <span class="title"><span>10JavaScript深入之call和apply的模拟实现</span></span>
+              <span class="title"><span>09JavaScript深入之参数按值传递</span></span>
+            </a>
+          </div>
+      
+          <div class="archive-item archive-post mark">
+            <a href="/2018/01/04/JavaScript深入之new的模拟实现/">
+              <time>01-04</time>
+              <span class="title"><span>12JavaScript深入之new的模拟实现</span></span>
             </a>
           </div>
       
@@ -479,10 +479,10 @@
   if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/"){
     var foo = document.getElementsByTagName("aside");
     for (let index = 0; index < foo.length; index++) {
-      foo[index].style.visibility="hidden";
+      foo[index].style.display="none";
     }
   }
-
+  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
   Waves.attach(".u-search-form", ['.waves-circle']);
   Waves.init();
 </script>

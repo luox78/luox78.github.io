@@ -364,10 +364,10 @@ window.subData = {
   if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/"){
     var foo = document.getElementsByTagName("aside");
     for (let index = 0; index < foo.length; index++) {
-      foo[index].style.visibility="hidden";
+      foo[index].style.display="none";
     }
   }
-
+  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
   Waves.attach(".u-search-form", ['.waves-circle']);
   Waves.init();
 </script>
