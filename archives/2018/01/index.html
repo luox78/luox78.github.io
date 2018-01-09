@@ -159,44 +159,12 @@
   <section class="article typo">
 	  <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>通过<code>document.getElementById(&quot;XXX&quot;).style.display</code>隐藏的是真正的使层消失</p>
 <p>通过<code>document.getElementById(&quot;div1&quot;).style.visibility</code>实现的隐藏位置仍然占着，不过没有显示</p>
-<p>以下演示了这一过程</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"hide div via display"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"btn2"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"hide div via visibility"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span> <span class="attr">style</span>=<span class="string">"background-color: black;height: 200px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"btn1"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.display !== <span class="string">"none"</span>) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.display = <span class="string">"none"</span>;</span></span><br><span class="line"><span class="actionscript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.display = <span class="string">"block"</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"btn2"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.visibility !== <span class="string">"hidden"</span>) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.visibility = <span class="string">"hidden"</span>;</span></span><br><span class="line"><span class="actionscript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.visibility = <span class="string">"visible"</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>动态添加层</strong></p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;a id=<span class="string">"a1"</span> href=<span class="string">"javascript:void(0)"</span>&gt;luox78&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"> document.getElementById(<span class="string">"a1"</span>).onmouseover= <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> divObj = document.createElement(<span class="string">"div"</span>);</span><br><span class="line">        divObj.style.height = <span class="string">"200px"</span>;</span><br><span class="line">        divObj.style.backgroundColor = <span class="string">"blue"</span>;</span><br><span class="line">        divObj.style.positon = <span class="string">"absolute"</span>;</span><br><span class="line">        divObj.style.left = <span class="keyword">this</span>.offsetLeft + <span class="string">'px'</span>;</span><br><span class="line">        document.body.appendChild(divObj);</span><br><span class="line">        <span class="comment">//删除才创建的层</span></span><br><span class="line">        document.getElementById(<span class="string">"a1"</span>).onmouseleave = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            document.body.removeChild(divObj);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>动态隐藏层</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span> <span class="attr">style</span>=<span class="string">"height: 1000px; border: black 3px solid"</span>&gt;</span></span><br><span class="line">？？？？？？？？？？？？、、、、、、、、、、、、、</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> height = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.height;<span class="comment">//记录一开始的高度</span></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"btn1"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>);</span></span><br><span class="line"><span class="actionscript">        div.style.overflow = <span class="string">"hidden"</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//点击时先判断是否隐藏</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (div.style.display === <span class="string">"none"</span>) &#123;</span></span><br><span class="line"><span class="actionscript">            div.style.display = <span class="string">"block"</span>;</span></span><br><span class="line"><span class="undefined">            div.style.height = height;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">return</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> setId = <span class="built_in">window</span>.setInterval(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">if</span> (<span class="built_in">parseInt</span>(div.style.height) &lt; <span class="number">100</span>) &#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">window</span>.clearInterval(setId);</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//document.body.removeChild(div);</span></span></span><br><span class="line"><span class="actionscript">                    div.style.display = <span class="string">"none"</span>;<span class="comment">//隐藏</span></span></span><br><span class="line"><span class="javascript">                    <span class="built_in">console</span>.log(<span class="string">"div has been removed"</span>);</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="actionscript">                div.style.height = (div.offsetHeight - <span class="number">100</span>) + <span class="string">"px"</span>;<span class="comment">//高度减100px</span></span></span><br><span class="line"><span class="undefined">            &#125;,</span></span><br><span class="line"><span class="undefined">            100);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>案例：图片跟着鼠标移动</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;img id=<span class="string">"img"</span> src=<span class="string">"TIM截图20180108210345.png"</span>/&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.onmousemove= <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> img = <span class="built_in">document</span>.getElementById(<span class="string">"img"</span>);</span><br><span class="line">        img.style.position = <span class="string">"absolute"</span>;</span><br><span class="line">        img.style.left = <span class="built_in">window</span>.event.clientX - img.width/<span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">        img.style.top = <span class="built_in">window</span>.event.clientY - img.height/<span class="number">2</span> + <span class="string">"px"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><strong>给标签设置属性值</strong></p>
-<p><code>label.setAttribute(&quot;属性名&quot;,&quot;属性值&quot;);</code>设置属性值</p>
-<p><code>this.getAttribute(&quot;属性名&quot;)</code>获取属性值</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> tds = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"td"</span>);</span></span><br><span class="line"><span class="actionscript">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; tds.length; i++) &#123;</span></span><br><span class="line"><span class="actionscript">        tds[i].setAttribute(<span class="string">"innerText"</span>, tds[i].innerText);</span></span><br><span class="line"><span class="actionscript">       tds[i].onclick = <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">            alert(<span class="keyword">this</span>.getAttribute(<span class="string">"innerText"</span>));</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>显示浏览器型号</strong></p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="built_in">window</span>.navigator.userAgent);<span class="comment">//检测浏览器</span></span><br></pre></td></tr></table></figure>
-<p><strong>文本显示</strong></p>
-<p><code>word-break: break-all;</code>实现自动换行</p>
-<p><code>overflow: hidden;</code>超出边框隐藏</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">div</span> style=<span class="string">"height: 100px; width: 100px; border: black 2px solid; word-break: break-all;overflow: hidden"</span>&gt;</span><br><span class="line">luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78luox78</span><br><span class="line">&lt;/<span class="keyword">div</span>&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="JS中的正则表达式"><a href="#JS中的正则表达式" class="headerlink" title="JS中的正则表达式"></a>JS中的正则表达式</h2><ul>
-<li><p><code>var reg = new RegExp(/Pattern/);</code>先创建正则对象</p>
-<p><code>reg.test(&quot;string&quot;)</code>判断string是否满足pattern</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">reg</span> = new RegExp(/^[0-9]&#123;3&#125;$/);</span><br><span class="line">console.<span class="built_in">log</span>(<span class="keyword">reg</span>.<span class="keyword">test</span>(<span class="string">"122"</span>));<span class="comment">//true</span></span><br><span class="line">console.<span class="built_in">log</span>(<span class="keyword">reg</span>.<span class="keyword">test</span>(<span class="string">"1221"</span>));<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>var reg=/pattern/</code>(/pattern/<code>g</code>)全局模式</p>
-<p><code>var result=reg.exec(&quot;string&quot;)</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> msg=<span class="string">"cmcc 10086;union 10010"</span>;</span><br><span class="line"><span class="keyword">var</span> pattern=<span class="regexp">/\d+/</span>;</span><br><span class="line"><span class="keyword">while</span>(<span class="keyword">var</span> res=pattern.exec(msg))&#123;</span><br><span class="line">  alert(res);<span class="comment">//10086	10010</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><code>match(regexp)</code>，非全局模式下相当于调用exec(),全局模式下相当于调用c#的<code>matches()</code>，返回数组中是所有的匹配结果（不包含提取组的信息）</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s = <span class="string">"aaa@163.com"</span>;</span><br><span class="line"><span class="keyword">var</span> regex = /(.+)@(.+)/;</span><br><span class="line"><span class="keyword">var</span> match = s.<span class="built_in">match</span>(regex);</span><br><span class="line">alert(RegExp.<span class="variable">$1</span> + “，服务器：” + RegExp.<span class="variable">$2</span>);（<span class="variable">$1</span>…<span class="variable">$9</span>）</span><br></pre></td></tr></table></figure>
-<p><code>字符串.replace(/pattern/g,”要替换的字符串$1”);</code></p>
-</li>
-</ul>
-<p><strong>模拟Trim()方法</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'           aaaaaaaaaaa         '</span>;</span><br><span class="line">alert(<span class="string">'---'</span> + exTrim(str) + <span class="string">'-----'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">exTrim</span>(<span class="params">s</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> s.replace(<span class="regexp">/(^\s+)|(\s+$)/g</span>, <span class="string">''</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>密码强度</strong></p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"txt"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">id</span>=<span class="string">"tb"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                弱</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                中</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                强</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">'txt'</span>).onkeyup = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">            <span class="comment">//获取td</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> tds = <span class="built_in">document</span>.getElementById(<span class="string">'tb'</span>).getElementsByTagName(<span class="string">'td'</span>);</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; tds.length; i++) &#123;</span></span><br><span class="line"><span class="actionscript">                tds[i].style.backgroundColor = <span class="string">'#E6E6E6'</span>;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">            <span class="comment">//获取密码</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> pwd = <span class="keyword">this</span>.value;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (pwd.length &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//根据密码验证强度</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> result = getPassWord(pwd);</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//强度设置颜色</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">if</span> (result &lt;= <span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//弱</span></span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">0</span>].style.backgroundColor = <span class="string">'red'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (result == <span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//中</span></span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">0</span>].style.backgroundColor = <span class="string">'orange'</span>;</span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">1</span>].style.backgroundColor = <span class="string">'orange'</span>;</span></span><br><span class="line"><span class="actionscript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (result == <span class="number">3</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//强</span></span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">0</span>].style.backgroundColor = <span class="string">'green'</span>;</span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">1</span>].style.backgroundColor = <span class="string">'green'</span>;</span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">2</span>].style.backgroundColor = <span class="string">'green'</span>;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">getPassWord</span><span class="params">(pwdMsg)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> lvl = <span class="number">0</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码中有数字lvl+1</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (pwdMsg.match(<span class="regexp">/\d/</span>)) &#123;</span></span><br><span class="line"><span class="actionscript">            lvl++; <span class="comment">//这么写简单</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码中有字母lvl+1</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (pwdMsg.match(<span class="regexp">/[a-zA-Z]/</span>)) &#123;</span></span><br><span class="line"><span class="undefined">            lvl++;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码中有其他符号lvl+1</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (pwdMsg.match(<span class="regexp">/[^0-9a-zA-Z]/</span>)) &#123;</span></span><br><span class="line"><span class="undefined">            lvl++;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码小于6位lvl-1</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (pwdMsg.length &lt;= <span class="number">6</span>) &#123;</span></span><br><span class="line"><span class="undefined">            lvl--;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> lvl;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>以下演示了这一过程<br>
 
-
+    
+	  <div class="readmore">
+      <a href="/2018/01/06/JavaScript05/">Read More</a>
+    </div>
     
     
     
@@ -391,138 +359,6 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">
-        13JavaScript深入之类数组对象与arguments
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点</p>
-</blockquote>
-<h2 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h2>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">
-        06JavaScript深入之从ECMAScript规范解读this
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第六篇，本篇我们追根溯源，从ECMAScript5规范解读this在函数调用时到底是如何确定的。</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">
-        10JavaScript深入之call和apply的模拟实现
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相</p>
-</blockquote>
-<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
       <a href="/2018/01/04/JavaScript深入之闭包/">
         08JavaScript深入之闭包
       </a>
@@ -567,8 +403,8 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之new的模拟实现/">
-        12JavaScript深入之new的模拟实现
+      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">
+        13JavaScript深入之类数组对象与arguments
       </a>
     </h2>
     
@@ -585,13 +421,145 @@
   <section class="article typo">
 	  <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十二篇，通过new的模拟实现，带大家揭开使用new获得构造函数实例的真相</p>
+<p>JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点</p>
 </blockquote>
-<h2 id="new"><a href="#new" class="headerlink" title="new"></a>new</h2>
+<h2 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h2>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之new的模拟实现/">Read More</a>
+      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">
+        11JavaScript深入之bind的模拟实现
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列第十一篇，通过bind函数的模拟实现，带大家真正了解bind的特性</p>
+</blockquote>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><p>一句话介绍 bind:<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之bind的模拟实现/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/">
+        02JavaScript深入之词法作用域和动态作用域
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列的第二篇，JavaScript采用词法作用域，什么语言采用了动态作用域？两者的区别又是什么？还有一个略难的思考题，快来看看吧。</p>
+</blockquote>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/深入理解JS/">深入理解JS</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">
+        10JavaScript深入之call和apply的模拟实现
+      </a>
+    </h2>
+    
+    <time>
+      Jan 4, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <blockquote>
+<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
+<p>JavaScript深入系列第十篇，通过call和apply的模拟实现，带你揭开call和apply改变this的真相</p>
+</blockquote>
+<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><p>一句话介绍 call：<br>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/04/JavaScript深入之call和apply的模拟实现/">Read More</a>
     </div>
     
     
