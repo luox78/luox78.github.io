@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: jsfoundation | luox78</title>
+  <title>初识JavaScript05 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,16 +15,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog for luox78">
-<meta property="og:type" content="website">
-<meta property="og:title" content="luox78">
-<meta property="og:url" content="https://luox78.github.io/tags/jsfoundation/index.html">
+  <meta name="description" content="练习通过document.getElementById(&amp;quot;XXX&amp;quot;).style.display隐藏的是真正的使层消失 通过document.getElementById(&amp;quot;div1&amp;quot;).style.visibility实现的隐藏位置仍然占着，不过没有显示 以下演示了这一过程 1234567891011121314151617181920212223&amp;lt;">
+<meta name="keywords" content="jsfoundation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识JavaScript05">
+<meta property="og:url" content="https://luox78.github.io/2018/01/06/JavaScript05/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="Blog for luox78">
+<meta property="og:description" content="练习通过document.getElementById(&amp;quot;XXX&amp;quot;).style.display隐藏的是真正的使层消失 通过document.getElementById(&amp;quot;div1&amp;quot;).style.visibility实现的隐藏位置仍然占着，不过没有显示 以下演示了这一过程 1234567891011121314151617181920212223&amp;lt;">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-09T15:45:54.242Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="Blog for luox78">
+<meta name="twitter:title" content="初识JavaScript05">
+<meta name="twitter:description" content="练习通过document.getElementById(&amp;quot;XXX&amp;quot;).style.display隐藏的是真正的使层消失 通过document.getElementById(&amp;quot;div1&amp;quot;).style.visibility实现的隐藏位置仍然占着，不过没有显示 以下演示了这一过程 1234567891011121314151617181920212223&amp;lt;">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -128,35 +130,36 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-  <script>
-    window.subData= { title:'Tag : jsfoundation'}
-  </script>
-
-<section class="post-list">
-	
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/06/JavaScript05/">
-        初识JavaScript05
-      </a>
-    </h2>
-    
-    <time>
-      Jan 6, 2018
-    </time>
-		
+        <article id="post-JavaScript05"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/01/06/JavaScript05/">
+				 初识JavaScript05
+		 </a>
+ </h2>
+ <time>
+		 Jan 6, 2018
+ </time>
+ 
     
     <div class='cats'>
         <a href="/categories/JavaScript/">JavaScript</a>
     </div>
 
-  </section>
-  <section class="article typo">
-	  <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>通过<code>document.getElementById(&quot;XXX&quot;).style.display</code>隐藏的是真正的使层消失</p>
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#练习"><span class="toc-number">1.</span> <span class="toc-text">练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS中的正则表达式"><span class="toc-number">3.</span> <span class="toc-text">JS中的正则表达式</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>通过<code>document.getElementById(&quot;XXX&quot;).style.display</code>隐藏的是真正的使层消失</p>
 <p>通过<code>document.getElementById(&quot;div1&quot;).style.visibility</code>实现的隐藏位置仍然占着，不过没有显示</p>
 <p>以下演示了这一过程</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"btn1"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"hide div via display"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"btn2"</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">value</span>=<span class="string">"hide div via visibility"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div1"</span> <span class="attr">style</span>=<span class="string">"background-color: black;height: 200px"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"btn1"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.display !== <span class="string">"none"</span>) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.display = <span class="string">"none"</span>;</span></span><br><span class="line"><span class="actionscript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.display = <span class="string">"block"</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">document</span>.getElementById(<span class="string">"btn2"</span>).onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.visibility !== <span class="string">"hidden"</span>) &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.visibility = <span class="string">"hidden"</span>;</span></span><br><span class="line"><span class="actionscript">        &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">document</span>.getElementById(<span class="string">"div1"</span>).style.visibility = <span class="string">"visible"</span>;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -195,185 +198,50 @@
 <p><strong>密码强度</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"txt"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">id</span>=<span class="string">"tb"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                弱</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                中</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">                强</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">'txt'</span>).onkeyup = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">            <span class="comment">//获取td</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> tds = <span class="built_in">document</span>.getElementById(<span class="string">'tb'</span>).getElementsByTagName(<span class="string">'td'</span>);</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; tds.length; i++) &#123;</span></span><br><span class="line"><span class="actionscript">                tds[i].style.backgroundColor = <span class="string">'#E6E6E6'</span>;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">            <span class="comment">//获取密码</span></span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> pwd = <span class="keyword">this</span>.value;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (pwd.length &gt; <span class="number">0</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//根据密码验证强度</span></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">var</span> result = getPassWord(pwd);</span></span><br><span class="line"><span class="actionscript">                <span class="comment">//强度设置颜色</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">if</span> (result &lt;= <span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//弱</span></span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">0</span>].style.backgroundColor = <span class="string">'red'</span>;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (result == <span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//中</span></span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">0</span>].style.backgroundColor = <span class="string">'orange'</span>;</span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">1</span>].style.backgroundColor = <span class="string">'orange'</span>;</span></span><br><span class="line"><span class="actionscript">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (result == <span class="number">3</span>) &#123;</span></span><br><span class="line"><span class="actionscript">                    <span class="comment">//强</span></span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">0</span>].style.backgroundColor = <span class="string">'green'</span>;</span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">1</span>].style.backgroundColor = <span class="string">'green'</span>;</span></span><br><span class="line"><span class="actionscript">                    tds[<span class="number">2</span>].style.backgroundColor = <span class="string">'green'</span>;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">        &#125;;</span></span><br><span class="line"><span class="undefined">    &#125;;</span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">getPassWord</span><span class="params">(pwdMsg)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> lvl = <span class="number">0</span>;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码中有数字lvl+1</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (pwdMsg.match(<span class="regexp">/\d/</span>)) &#123;</span></span><br><span class="line"><span class="actionscript">            lvl++; <span class="comment">//这么写简单</span></span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码中有字母lvl+1</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (pwdMsg.match(<span class="regexp">/[a-zA-Z]/</span>)) &#123;</span></span><br><span class="line"><span class="undefined">            lvl++;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码中有其他符号lvl+1</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">if</span> (pwdMsg.match(<span class="regexp">/[^0-9a-zA-Z]/</span>)) &#123;</span></span><br><span class="line"><span class="undefined">            lvl++;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="comment">//密码小于6位lvl-1</span></span></span><br><span class="line"><span class="actionscript">        <span class="keyword">if</span> (pwdMsg.length &lt;= <span class="number">6</span>) &#123;</span></span><br><span class="line"><span class="undefined">            lvl--;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">return</span> lvl;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/03/JavaScript04/">
-        初识JavaScript04
-      </a>
-    </h2>
-    
-    <time>
-      Jan 3, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="window对象的属性"><a href="#window对象的属性" class="headerlink" title="window对象的属性"></a>window对象的属性</h2><ul>
-<li><p><code>document.write()</code>会覆盖原有的全部内容</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/03/JavaScript04/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/31/JavaScript03/">
-        初识JavaScript03
-      </a>
-    </h2>
-    
-    <time>
-      Dec 31, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h2><blockquote>
-<p>js中的数组相当于C#中的集合，数组，哈希表集合体，是个动态数组</p>
-<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3></blockquote>
-
-    
-	  <div class="readmore">
-      <a href="/2017/12/31/JavaScript03/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/28/JavaScript02/">
-        初识JavaScript02
-      </a>
-    </h2>
-    
-    <time>
-      Dec 28, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="js中的事件"><a href="#js中的事件" class="headerlink" title="js中的事件"></a>js中的事件</h2><p>1 通过调用方法名或在“”内部写<br>2 通过id，使用<code>document.getElementById</code>实现事件</p>
-
-    
-	  <div class="readmore">
-      <a href="/2017/12/28/JavaScript02/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2017/12/27/JavaScript01/">
-        初识JavaScript01
-      </a>
-    </h2>
-    
-    <time>
-      Dec 27, 2017
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h3 id="js作用域"><a href="#js作用域" class="headerlink" title="js作用域"></a>js作用域</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span></span><br><span class="line"><span class="undefined">        </span></span><br><span class="line"><span class="actionscript">    &#125;               <span class="comment">//js没有块级作用域</span></span></span><br><span class="line"><span class="actionscript">    alert(i);       <span class="comment">//10</span></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">    <span class="function"><span class="keyword">function</span> <span class="title">f1</span><span class="params">(parameters)</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">        <span class="keyword">var</span> n = <span class="number">1</span>;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="actionscript">    <span class="comment">//因为页面一开始加载并不会执行f1方法</span></span></span><br><span class="line"><span class="actionscript">    <span class="comment">//alert(n); undefined</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2017/12/27/JavaScript01/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/jsfoundation/">jsfoundation</a>
+		 
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/01/04/JavaScript深入之作用域链/" rel="next" title="05JavaScript深入之作用域链">
+						 05JavaScript深入之作用域链
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
 </section>
 
+</article>
+<script>
+window.subData = {
+ title: '初识JavaScript05',
+ tools: true
+}
+</script>
 
       </div>
       <aside class='l_side'>
