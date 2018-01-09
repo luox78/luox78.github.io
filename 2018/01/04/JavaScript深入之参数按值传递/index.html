@@ -224,15 +224,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之类数组对象与arguments/" rel="prev" title="13JavaScript深入之类数组对象与arguments">
-						 13JavaScript深入之类数组对象与arguments
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之变量对象/" rel="prev" title="04JavaScript深入之变量对象">
+						 04JavaScript深入之变量对象
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之bind的模拟实现/" rel="next" title="11JavaScript深入之bind的模拟实现">
-						 11JavaScript深入之bind的模拟实现
+				 next：<a href="/2018/01/04/JavaScript深入之闭包/" rel="next" title="08JavaScript深入之闭包">
+						 08JavaScript深入之闭包
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -377,11 +377,12 @@ window.subData = {
 <script src="/js/app.js"></script>
 <!--隐藏不是主页的wiget-->
 <script>
-  if(document.location.href != "https://luox78.github.io/" || document.location.href != "https://luox78.github.io/archives/"){
+  if(document.location.href !== "https://luox78.github.io/" && document.location.href != "https://luox78.github.io/archives/"){
     var foo = document.getElementsByTagName("aside");
     for (let index = 0; index < foo.length; index++) {
       foo[index].style.visibility="hidden";
     }
+    return;
   }
 </script>
 
