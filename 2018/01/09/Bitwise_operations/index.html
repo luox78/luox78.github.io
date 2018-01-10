@@ -15,18 +15,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="位操作   符号 名称 演示     &amp;amp; 与 1 &amp;amp; 1 = 11 &amp;amp; 0 = 00 &amp;amp; 0 = 0   \  或 1 \ 1 = 11 \ 0 = 10 \ 0 = 0   ^ 异或 1 ^ 1 = 01 ^ 0 = 10 ^ 0 = 0   ~ 非 ~1 = 0~0 = 1   &amp;lt;&amp;lt; 左移 10101 &amp;lt;&amp;lt; 2 =10100(相当于乘2)">
+  <meta name="description" content="位操作">
 <meta name="keywords" content="bitwiseOperations">
 <meta property="og:type" content="article">
 <meta property="og:title" content="位操作">
 <meta property="og:url" content="https://luox78.github.io/2018/01/09/Bitwise_operations/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="位操作   符号 名称 演示     &amp;amp; 与 1 &amp;amp; 1 = 11 &amp;amp; 0 = 00 &amp;amp; 0 = 0   \  或 1 \ 1 = 11 \ 0 = 10 \ 0 = 0   ^ 异或 1 ^ 1 = 01 ^ 0 = 10 ^ 0 = 0   ~ 非 ~1 = 0~0 = 1   &amp;lt;&amp;lt; 左移 10101 &amp;lt;&amp;lt; 2 =10100(相当于乘2)">
+<meta property="og:description" content="位操作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-10T16:27:42.348Z">
+<meta property="og:updated_time" content="2018-01-10T16:33:26.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="位操作">
-<meta name="twitter:description" content="位操作   符号 名称 演示     &amp;amp; 与 1 &amp;amp; 1 = 11 &amp;amp; 0 = 00 &amp;amp; 0 = 0   \  或 1 \ 1 = 11 \ 0 = 10 \ 0 = 0   ^ 异或 1 ^ 1 = 01 ^ 0 = 10 ^ 0 = 0   ~ 非 ~1 = 0~0 = 1   &amp;lt;&amp;lt; 左移 10101 &amp;lt;&amp;lt; 2 =10100(相当于乘2)">
+<meta name="twitter:description" content="位操作">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -177,7 +177,8 @@
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
-		 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a><a href="https://www.youtube.com/watch?v=7jkIUgLC29I" target="_blank" rel="noopener">位操作</a></h2><table>
+		 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a><a href="https://www.youtube.com/watch?v=7jkIUgLC29I" target="_blank" rel="noopener">位操作</a></h2><a id="more"></a>
+<table>
 <thead>
 <tr>
 <th>符号</th>
@@ -192,13 +193,9 @@
 <td>1 &amp; 1 = 1<br>1 &amp; 0 = 0<br>0 &amp; 0 = 0</td>
 </tr>
 <tr>
-<td>\</td>
-<td></td>
+<td>｜</td>
 <td>或</td>
-<td>1 \</td>
-<td>1 = 1<br>1 \</td>
-<td>0 = 1<br>0 \</td>
-<td>0 = 0</td>
+<td>1｜1 = 1<br>1｜0 = 1<br>0｜0 = 0</td>
 </tr>
 <tr>
 <td>^</td>
@@ -222,7 +219,6 @@
 </tr>
 </tbody>
 </table>
-<a id="more"></a>
 <h2 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h2><h3 id="set-bit"><a href="#set-bit" class="headerlink" title="set_bit"></a>set_bit</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给position位设置为1</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> set_bit(<span class="keyword">int</span> i,<span class="keyword">int</span> <span class="built_in">position</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">return</span> i | <span class="number">1</span> &lt;&lt; <span class="built_in">position</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="clear-bit"><a href="#clear-bit" class="headerlink" title="clear_bit"></a>clear_bit</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给position位设置为0</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> clear_bit(<span class="keyword">int</span> i,<span class="keyword">int</span> <span class="built_in">position</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">return</span> i &amp; ~(<span class="number">1</span> &lt;&lt; <span class="built_in">position</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="flip-bit"><a href="#flip-bit" class="headerlink" title="flip_bit"></a>flip_bit</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//翻转position位的值</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> flip_bit(<span class="keyword">int</span> i,<span class="keyword">int</span> <span class="built_in">position</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">return</span> i ^ (<span class="number">1</span> &lt;&lt; <span class="built_in">position</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
