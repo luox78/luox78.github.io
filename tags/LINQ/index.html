@@ -32,16 +32,26 @@
   <link rel="stylesheet" href="/style.css">
   <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
   </script>
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
 </head>
 
-<script>setLoadingBarProgress(10)</script> 
 <body>
-  <script>setLoadingBarProgress(20)</script> 
+    <div id="loading">
+        <div id="loading-center">
+        <div id="loading-center-absolute">
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        </div>
+        </div>
+         
+        </div>
   <header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
@@ -124,7 +134,15 @@
 </div>
 
 
-    <script>setLoadingBarProgress(40);</script>
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
@@ -234,7 +252,6 @@
 
 
       </aside>
-      <script>setLoadingBarProgress(60);</script>
     </div>
   </div>
   <footer id="footer" class="clearfix">
@@ -282,7 +299,6 @@
 </footer>
 
 
-  <script>setLoadingBarProgress(80);</script>
   
 
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -316,9 +332,10 @@
   Waves.attach('.vbtn', ['waves-button', 'waves-float']);
   Waves.attach(".u-search-form", ['.waves-circle']);
   Waves.init();
+
+	$("#loading").fadeOut(700);
 </script>
 
-  <script>setLoadingBarProgress(90);</script>
+
 </body>
 </html>
-<script>setLoadingBarProgress(100);</script>

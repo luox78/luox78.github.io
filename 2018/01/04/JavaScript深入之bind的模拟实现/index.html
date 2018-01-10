@@ -34,16 +34,26 @@
   <link rel="stylesheet" href="/style.css">
   <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
   </script>
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
 </head>
 
-<script>setLoadingBarProgress(10)</script> 
 <body>
-  <script>setLoadingBarProgress(20)</script> 
+    <div id="loading">
+        <div id="loading-center">
+        <div id="loading-center-absolute">
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        </div>
+        </div>
+         
+        </div>
   <header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
@@ -126,7 +136,15 @@
 </div>
 
 
-    <script>setLoadingBarProgress(40);</script>
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
@@ -250,15 +268,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之类数组对象与arguments/" rel="prev" title="13JavaScript深入之类数组对象与arguments">
-						 13JavaScript深入之类数组对象与arguments
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之继承的多种方式和优缺点/" rel="prev" title="15JavaScript深入之继承的多种方式和优缺点">
+						 15JavaScript深入之继承的多种方式和优缺点
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之词法作用域和动态作用域/" rel="next" title="02JavaScript深入之词法作用域和动态作用域">
-						 02JavaScript深入之词法作用域和动态作用域
+				 next：<a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/" rel="next" title="06JavaScript深入之从ECMAScript规范解读this">
+						 06JavaScript深入之从ECMAScript规范解读this
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -330,7 +348,6 @@ window.subData = {
 
 
       </aside>
-      <script>setLoadingBarProgress(60);</script>
     </div>
   </div>
   <footer id="footer" class="clearfix">
@@ -378,7 +395,6 @@ window.subData = {
 </footer>
 
 
-  <script>setLoadingBarProgress(80);</script>
   
 
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -412,9 +428,10 @@ window.subData = {
   Waves.attach('.vbtn', ['waves-button', 'waves-float']);
   Waves.attach(".u-search-form", ['.waves-circle']);
   Waves.init();
+
+	$("#loading").fadeOut(700);
 </script>
 
-  <script>setLoadingBarProgress(90);</script>
+
 </body>
 </html>
-<script>setLoadingBarProgress(100);</script>

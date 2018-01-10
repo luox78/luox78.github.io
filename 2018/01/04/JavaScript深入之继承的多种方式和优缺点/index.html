@@ -34,16 +34,26 @@
   <link rel="stylesheet" href="/style.css">
   <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
   </script>
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
 </head>
 
-<script>setLoadingBarProgress(10)</script> 
 <body>
-  <script>setLoadingBarProgress(20)</script> 
+    <div id="loading">
+        <div id="loading-center">
+        <div id="loading-center-absolute">
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        <div class="object"></div>
+        </div>
+        </div>
+         
+        </div>
   <header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
@@ -126,7 +136,15 @@
 </div>
 
 
-    <script>setLoadingBarProgress(40);</script>
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
@@ -246,15 +264,15 @@
  <div class="art-item-footer">
 		 
 		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之从原型到原型链/" rel="prev" title="01JavaScript深入之从原型到原型链">
-						 01JavaScript深入之从原型到原型链
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/04/JavaScript深入之执行上下文/" rel="prev" title="07JavaScript深入之执行上下文">
+						 07JavaScript深入之执行上下文
 				 </a>
 		 </span>
 		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/04/JavaScript深入之创建对象的多种方式以及优缺点/" rel="next" title="14JavaScript深入之创建对象的多种方式以及优缺点">
-						 14JavaScript深入之创建对象的多种方式以及优缺点
+				 next：<a href="/2018/01/04/JavaScript深入之bind的模拟实现/" rel="next" title="11JavaScript深入之bind的模拟实现">
+						 11JavaScript深入之bind的模拟实现
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -326,7 +344,6 @@ window.subData = {
 
 
       </aside>
-      <script>setLoadingBarProgress(60);</script>
     </div>
   </div>
   <footer id="footer" class="clearfix">
@@ -374,7 +391,6 @@ window.subData = {
 </footer>
 
 
-  <script>setLoadingBarProgress(80);</script>
   
 
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -408,9 +424,10 @@ window.subData = {
   Waves.attach('.vbtn', ['waves-button', 'waves-float']);
   Waves.attach(".u-search-form", ['.waves-circle']);
   Waves.init();
+
+	$("#loading").fadeOut(700);
 </script>
 
-  <script>setLoadingBarProgress(90);</script>
+
 </body>
 </html>
-<script>setLoadingBarProgress(100);</script>

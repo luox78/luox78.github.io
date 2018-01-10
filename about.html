@@ -1,18 +1,16 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="shortcut icon" href="https://luox78.github.io/images/dev.ico">
+    <link rel="shortcut icon" href="/images/dev.ico">
     <title>About | luox78</title>
     <meta name="description" content="Blog for luox78" />
     <meta name="keywords" content="" />
     <meta name="HandheldFriendly" content="True" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="shortcut icon" href="/">
-    <link rel="alternate" href="https://luox78.github.io/atom.xml" title="luox78">
+    <link rel="alternate" href="/atom.xml" title="luox78">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="Blog for luox78">
     <meta property="og:type" content="website">
@@ -31,12 +29,7 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://luox78.github.io/style.css">
-    <script>
-        function setLoadingBarProgress(num) {
-            document.getElementById('loading-bar').style.width = num + "%";
-        }
-    </script>
+    <link rel="stylesheet" href="/style.css">
     <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
     </script>
 </head>
@@ -45,9 +38,23 @@
     <div id="loading-bar-wrapper">
         <div id="loading-bar"></div>
     </div>
-
-
-    <script>setLoadingBarProgress(20)</script>
+    <div id="loading">
+            <div id="loading-center">
+            <div id="loading-center-absolute">
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            <div class="object"></div>
+            </div>
+            </div>
+             
+            </div>
     <header class="l_header">
         <div class='wrapper'>
             <div class="nav-main container container--flex">
@@ -58,19 +65,19 @@
                     <ul class='h-list'>
 
                         <li>
-                            <a class='flat-box nav-home' href='https://luox78.github.io/'>
+                            <a class='flat-box nav-home' href='/'>
                                 Home
                             </a>
                         </li>
 
                         <li>
-                            <a class='flat-box nav-archives' href='https://luox78.github.io/archives'>
+                            <a class='flat-box nav-archives' href='/archives'>
                                 Archives
                             </a>
                         </li>
 
                         <li>
-                            <a class='flat-box nav-about' href='https://luox78.github.io/about'>
+                            <a class='flat-box nav-about' href='/about'>
                                 About
                             </a>
                         </li>
@@ -103,7 +110,6 @@
         </div>
     </header>
 
-    <script>setLoadingBarProgress(40);</script>
     <div class="l_body">
         <div class='container clearfix'>
             <div class='l_main'>
@@ -170,7 +176,6 @@
                     </div>
                 </section>
             </aside>
-            <script>setLoadingBarProgress(60);</script>
         </div>
     </div>
     <footer id="footer" class="clearfix">
@@ -218,10 +223,6 @@
 
     </footer>
 
-
-    <script>setLoadingBarProgress(80);</script>
-
-
     <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
     <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
@@ -247,5 +248,14 @@
     <script>setLoadingBarProgress(100);</script>
 </body>
 </html>
-<script>setLoadingBarProgress(0)</script>
+<script> 
+ Waves.attach('.vbtn', ['waves-button', 'waves-float']);
+        Waves.attach(".u-search-form", ['.waves-circle']);
+        Waves.init();
+      
+          $("#loading").fadeOut(700);
+      </script>
 
+<script>
+        document.getElementsByClassName("logo").style.width=2/3 * document.body.clientWidth;
+      </script>
