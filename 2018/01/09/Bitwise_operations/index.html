@@ -15,18 +15,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="位操作">
+  <meta name="description" content="位操作   符号 名称 演示     &amp;amp; 与 1 &amp;amp; 1 = 11 &amp;amp; 0 = 00 &amp;amp; 0 = 0   ｜ 或 1｜1 = 11｜0 = 10｜0 = 0   ^ 异或 1 ^ 1 = 01 ^ 0 = 10 ^ 0 = 0   ~ 非 ~1 = 0~0 = 1   &amp;lt;&amp;lt; 左移 10101 &amp;lt;&amp;lt; 2 =10100(相当于乘2)   &amp;gt;">
 <meta name="keywords" content="bitwiseOperations">
 <meta property="og:type" content="article">
 <meta property="og:title" content="位操作">
 <meta property="og:url" content="https://luox78.github.io/2018/01/09/Bitwise_operations/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="位操作">
+<meta property="og:description" content="位操作   符号 名称 演示     &amp;amp; 与 1 &amp;amp; 1 = 11 &amp;amp; 0 = 00 &amp;amp; 0 = 0   ｜ 或 1｜1 = 11｜0 = 10｜0 = 0   ^ 异或 1 ^ 1 = 01 ^ 0 = 10 ^ 0 = 0   ~ 非 ~1 = 0~0 = 1   &amp;lt;&amp;lt; 左移 10101 &amp;lt;&amp;lt; 2 =10100(相当于乘2)   &amp;gt;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-10T16:33:26.906Z">
+<meta property="og:updated_time" content="2018-01-11T12:38:16.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="位操作">
-<meta name="twitter:description" content="位操作">
+<meta name="twitter:description" content="位操作   符号 名称 演示     &amp;amp; 与 1 &amp;amp; 1 = 11 &amp;amp; 0 = 00 &amp;amp; 0 = 0   ｜ 或 1｜1 = 11｜0 = 10｜0 = 0   ^ 异或 1 ^ 1 = 01 ^ 0 = 10 ^ 0 = 0   ~ 非 ~1 = 0~0 = 1   &amp;lt;&amp;lt; 左移 10101 &amp;lt;&amp;lt; 2 =10100(相当于乘2)   &amp;gt;">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -37,23 +37,22 @@
 </head>
 
 <body>
-    <div id="loading">
-        <div id="loading-center">
-        <div id="loading-center-absolute">
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        </div>
-        </div>
-         
-        </div>
+  <div id="loading">
+    <div id="loading-center">
+    <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+    </div>
+    </div>
+     
+    </div>
   <header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
@@ -173,12 +172,11 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#位操作"><span class="toc-number">1.</span> <span class="toc-text">位操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见函数"><span class="toc-number">2.</span> <span class="toc-text">常见函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set-bit"><span class="toc-number">2.1.</span> <span class="toc-text">set_bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clear-bit"><span class="toc-number">2.2.</span> <span class="toc-text">clear_bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flip-bit"><span class="toc-number">2.3.</span> <span class="toc-text">flip_bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#is-bit-set"><span class="toc-number">2.4.</span> <span class="toc-text">is_bit_set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#modify-bit-见补码"><span class="toc-number">2.5.</span> <span class="toc-text">modify_bit(见补码)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补码（二补数）"><span class="toc-number">3.</span> <span class="toc-text">补码（二补数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些位操作"><span class="toc-number">4.</span> <span class="toc-text">一些位操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#是否为偶数"><span class="toc-number">4.1.</span> <span class="toc-text">是否为偶数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#返回有多少位不同"><span class="toc-number">4.2.</span> <span class="toc-text">返回有多少位不同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四舍五入2的幂数"><span class="toc-number">4.3.</span> <span class="toc-text">四舍五入2的幂数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换两个数-效率比附tmp值低"><span class="toc-number">4.4.</span> <span class="toc-text">交换两个数,效率比附tmp值低</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取绝对值"><span class="toc-number">4.5.</span> <span class="toc-text">取绝对值</span></a></li></ol></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#位操作"><span class="toc-number">1.</span> <span class="toc-text">位操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见函数"><span class="toc-number">2.</span> <span class="toc-text">常见函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#set-bit"><span class="toc-number">2.1.</span> <span class="toc-text">set_bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#clear-bit"><span class="toc-number">2.2.</span> <span class="toc-text">clear_bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#flip-bit"><span class="toc-number">2.3.</span> <span class="toc-text">flip_bit</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#is-bit-set"><span class="toc-number">2.4.</span> <span class="toc-text">is_bit_set</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#modify-bit-见补码"><span class="toc-number">2.5.</span> <span class="toc-text">modify_bit(见补码)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#补码（二补数）"><span class="toc-number">3.</span> <span class="toc-text">补码（二补数）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些位操作"><span class="toc-number">4.</span> <span class="toc-text">一些位操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#返回有多少位不同"><span class="toc-number">4.1.</span> <span class="toc-text">返回有多少位不同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四舍五入2的幂数"><span class="toc-number">4.2.</span> <span class="toc-text">四舍五入2的幂数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换两个数-效率比附tmp值低"><span class="toc-number">4.3.</span> <span class="toc-text">交换两个数,效率比附tmp值低</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取绝对值"><span class="toc-number">4.4.</span> <span class="toc-text">取绝对值</span></a></li></ol></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
-		 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a><a href="https://www.youtube.com/watch?v=7jkIUgLC29I" target="_blank" rel="noopener">位操作</a></h2><a id="more"></a>
-<table>
+		 <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a><a href="https://www.youtube.com/watch?v=7jkIUgLC29I" target="_blank" rel="noopener">位操作</a></h2><table>
 <thead>
 <tr>
 <th>符号</th>
@@ -219,6 +217,7 @@
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h2 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h2><h3 id="set-bit"><a href="#set-bit" class="headerlink" title="set_bit"></a>set_bit</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 给position位设置为1</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> set_bit(<span class="keyword">int</span> i,<span class="keyword">int</span> <span class="built_in">position</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">return</span> i | <span class="number">1</span> &lt;&lt; <span class="built_in">position</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="clear-bit"><a href="#clear-bit" class="headerlink" title="clear_bit"></a>clear_bit</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//给position位设置为0</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> clear_bit(<span class="keyword">int</span> i,<span class="keyword">int</span> <span class="built_in">position</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">return</span> i &amp; ~(<span class="number">1</span> &lt;&lt; <span class="built_in">position</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="flip-bit"><a href="#flip-bit" class="headerlink" title="flip_bit"></a>flip_bit</h3><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//翻转position位的值</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> flip_bit(<span class="keyword">int</span> i,<span class="keyword">int</span> <span class="built_in">position</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="built_in">return</span> i ^ (<span class="number">1</span> &lt;&lt; <span class="built_in">position</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -228,6 +227,69 @@
 <p>补码用来表示负数的</p>
 <p><a href="https://zh.wikipedia.org/wiki/二補數" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/二補數</a></p>
 </blockquote>
+<p><strong>表示</strong></p>
+<p>补码使用有符号第一位表示正负，1为负 0为正，所以8有符号位数范围+-127，无符号位数255-0，无符号位数在C#中<code>UInt32</code>代表无符号32位</p>
+<table>
+<thead>
+<tr>
+<th>十进制值</th>
+<th>二进制（二进制补码表示）</th>
+<th>二补（2  - <em>n</em>）2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0000 0000</td>
+<td>0000 0000</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0000 0001</td>
+<td>1111 1111</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0000 0010</td>
+<td>1111 1110</td>
+</tr>
+<tr>
+<td>126</td>
+<td>0111 1110</td>
+<td>1000 0010</td>
+</tr>
+<tr>
+<td>127</td>
+<td>0111 1111</td>
+<td>1000 0001</td>
+</tr>
+<tr>
+<td>-128</td>
+<td>1000 0000</td>
+<td>1000 0000</td>
+</tr>
+<tr>
+<td>-127</td>
+<td>1000 0001</td>
+<td>0111 1111</td>
+</tr>
+<tr>
+<td>-126</td>
+<td>1000 0010</td>
+<td>0111 1110</td>
+</tr>
+<tr>
+<td>-2</td>
+<td>1111 1110</td>
+<td>0000 0010</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>1111 1111</td>
+<td>0000 0001</td>
+</tr>
+</tbody>
+</table>
 <p><strong>为什么使用补码</strong></p>
 <blockquote>
 <p>二补数系统的最大优点是可以在加法或减法处理中，不需因为数字的正负而使用不同的计算方式。只要一种加法电路就可以处理各种有号数加法，而且减法可以用一个数加上另一个数的二补数来表示，因此只要有加法电路及二补数电路即可完成各种有号数加法及减法，在电路设计上相当方便。</p>
@@ -252,7 +314,12 @@
 <p> 0011 1100  1100 0100（其馀位元直接反相） </p>
 <p> ^</p>
 <p>因此其结果为1100 0100</p>
-<h2 id="一些位操作"><a href="#一些位操作" class="headerlink" title="一些位操作"></a>一些位操作</h2><h3 id="是否为偶数"><a href="#是否为偶数" class="headerlink" title="是否为偶数"></a>是否为偶数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">is_even</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (i &amp; <span class="number">1</span>) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="一些位操作"><a href="#一些位操作" class="headerlink" title="一些位操作"></a>一些位操作</h2><p><strong>一些提示</strong></p>
+<p>C#中不能直接将一串二进制数赋值给int32，可以用一下转换</p>
+<p><code>Convert.ToInt32(&quot;1111&quot;,2)</code>1111的二进制，即15 int32类型</p>
+<p><code>Convert.ToString(15,2)</code>15的二进制字符串，”1111“</p>
+<p>###是否为偶数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">is_even</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> (i &amp; <span class="number">1</span>) == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="返回有多少位不同"><a href="#返回有多少位不同" class="headerlink" title="返回有多少位不同"></a>返回有多少位不同</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">diff_bit</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> Convert.ToString(a ^ b, <span class="number">2</span>).Where(m =&gt; m == <span class="string">'1'</span>).Count();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="四舍五入2的幂数"><a href="#四舍五入2的幂数" class="headerlink" title="四舍五入2的幂数"></a>四舍五入2的幂数</h3><figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">static int roundUpToNextPowerOfTwo(int <span class="keyword">x</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">x</span>--<span class="comment">;</span></span><br><span class="line"><span class="comment">	x |= x &gt;&gt; 1;  // handle  2 bit </span></span><br><span class="line"><span class="comment">	x |= x &gt;&gt; 2;  // handle  4 bit numbers</span></span><br><span class="line"><span class="comment">	x |= x &gt;&gt; 4;  // handle  8 bit numbers</span></span><br><span class="line"><span class="comment">	x |= x &gt;&gt; 8;  // handle 16 bit numbers</span></span><br><span class="line"><span class="comment">	x |= x &gt;&gt; 16; // handle 32 bit numbers</span></span><br><span class="line"><span class="comment">	x++;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	return x;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
 <h3 id="交换两个数-效率比附tmp值低"><a href="#交换两个数-效率比附tmp值低" class="headerlink" title="交换两个数,效率比附tmp值低"></a>交换两个数,效率比附tmp值低</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">swapXor</span>(<span class="params"><span class="keyword">ref</span> <span class="keyword">int</span> a,<span class="keyword">ref</span> <span class="keyword">int</span> b</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a ^= b;</span><br><span class="line">	b ^= a;</span><br><span class="line">	a ^= b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -433,7 +500,7 @@ window.subData = {
 <!--隐藏不是主页的wiget-->
 <script>
   if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/"){
-    var foo = document.getElementsByTagName("aside");
+    var foo = document.getElementsByClassName("l_side");
     for (let index = 0; index < foo.length; index++) {
       foo[index].style.display="none";
     }
@@ -442,7 +509,7 @@ window.subData = {
   Waves.attach(".u-search-form", ['.waves-circle']);
   Waves.init();
 
-	$("#loading").fadeOut(700);
+	$("#loading").fadeOut(1000);
 </script>
 
 

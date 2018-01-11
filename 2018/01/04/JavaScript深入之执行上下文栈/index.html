@@ -37,23 +37,22 @@
 </head>
 
 <body>
-    <div id="loading">
-        <div id="loading-center">
-        <div id="loading-center-absolute">
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        <div class="object"></div>
-        </div>
-        </div>
-         
-        </div>
+  <div id="loading">
+    <div id="loading-center">
+    <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+    </div>
+    </div>
+     
+    </div>
   <header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
@@ -400,7 +399,7 @@ window.subData = {
 <!--隐藏不是主页的wiget-->
 <script>
   if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/"){
-    var foo = document.getElementsByTagName("aside");
+    var foo = document.getElementsByClassName("l_side");
     for (let index = 0; index < foo.length; index++) {
       foo[index].style.display="none";
     }
@@ -409,7 +408,7 @@ window.subData = {
   Waves.attach(".u-search-form", ['.waves-circle']);
   Waves.init();
 
-	$("#loading").fadeOut(700);
+	$("#loading").fadeOut(1000);
 </script>
 
 
