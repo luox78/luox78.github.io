@@ -173,40 +173,12 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><pre><code>string str1=Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。 
-string str2=Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程
-&lt;!--more--&gt;
-在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。 
-string str3=Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。 
-string str4=AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。 
-string str5=Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。 
-string str6=Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。 
-string str7=AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
-1.     `System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName `
-   获取模块的完整路径。
- 2.     `System.Environment.CurrentDirectory `
- 获取和设置当前目录(该进程从中启动的目录)的完全限定目录。
- 3.     `System.IO.Directory.GetCurrentDirectory() `
- 获取应用程序的当前工作目录。这个不一定是程序从中启动的目录啊，有可能程序放在C:\www里,这个函数有可能返回C:\Documents and Settings\ZYB\,或者C:\Program Files\Adobe\,有时不一定返回什么东东，这是任何应用程序最后一次操作过的目录，比如你用Word打开了E:\doc\my.doc这个文件，此时执行这个方法就返回了E:\doc了。
- 4.     `System.AppDomain.CurrentDomain.BaseDirectory`
- 获取程序的基目录。
- 5.     `System.Windows.Forms.Application.StartupPath `
- 获取启动了应用程序的可执行文件的路径。效果和2、5一样。只是5返回的字符串后面多了一个&quot;\&quot;而已。
- 6.     `System.Windows.Forms.Application.ExecutablePath `
- 获取启动了应用程序的可执行文件的路径及文件名，效果和1一样。
- 7.     `System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase`
- 获取和设置包括该应用程序的目录的名称。
-</code></pre><h2 id="操作环境变量"><a href="#操作环境变量" class="headerlink" title="操作环境变量"></a>操作环境变量</h2><p>利用<code>System.Environment.GetEnvironmentVariable()</code>方法可以很方便地取得系统环境变量，如：    <code>System.Environment.GetEnvironmentVariable(&quot;windir&quot;)</code>就可以取得windows系统目录的路径。<br>以下是一些常用的环境变量取值：<br>    System.Environment.GetEnvironmentVariable(“windir”);<br>    System.Environment.GetEnvironmentVariable(“INCLUDE”);<br>    System.Environment.GetEnvironmentVariable(“TMP”);<br>    System.Environment.GetEnvironmentVariable(“TEMP”);<br>    System.Environment.GetEnvironmentVariable(“Path”);</p>
-<h2 id="获取上级目录"><a href="#获取上级目录" class="headerlink" title="获取上级目录"></a>获取上级目录</h2><p>本文实例讲述了C#的path.GetFullPath 获取上级目录实现方法，分享给大家供大家参考。具体实现方法如下：</p>
-<pre><code>string path = new directoryinfo(&quot;../&quot;).fullname;//当前应用程序路径的上级目录
-</code></pre><p>获取当前目录可以使用</p>
-<pre><code>appdomain.currentdomain.basedirectory
-</code></pre><p>获取当前目录的上级目录</p>
-<pre><code>path.getfullpath(&quot;..&quot;)
-</code></pre><p>asp就比.net简单了，直接../就行了</p>
-<pre><code>如果是asp.net直接用server.mappath(&quot;~/bg/&quot;)就可以了。
-</code></pre>
+	  <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><p><code>string str1=Process.GetCurrentProcess().MainModule.FileName;</code>//可获得当前执行的exe的文件名。<br><code>string str2=Environment.CurrentDirectory;</code>//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。
 
+    
+	  <div class="readmore">
+      <a href="/2018/01/11/CS_path/">Read More</a>
+    </div>
     
     
     

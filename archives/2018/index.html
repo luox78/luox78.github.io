@@ -174,40 +174,12 @@
 
   </section>
   <section class="article typo">
-	  <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><pre><code>string str1=Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。 
-string str2=Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程
-&lt;!--more--&gt;
-在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。 
-string str3=Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。 
-string str4=AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。 
-string str5=Application.StartupPath;//获取启动了应用程序的可执行文件的路径，不包括可执行文件的名称。 
-string str6=Application.ExecutablePath;//获取启动了应用程序的可执行文件的路径，包括可执行文件的名称。 
-string str7=AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或设置包含该应用程序的目录的名称。
-1.     `System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName `
-   获取模块的完整路径。
- 2.     `System.Environment.CurrentDirectory `
- 获取和设置当前目录(该进程从中启动的目录)的完全限定目录。
- 3.     `System.IO.Directory.GetCurrentDirectory() `
- 获取应用程序的当前工作目录。这个不一定是程序从中启动的目录啊，有可能程序放在C:\www里,这个函数有可能返回C:\Documents and Settings\ZYB\,或者C:\Program Files\Adobe\,有时不一定返回什么东东，这是任何应用程序最后一次操作过的目录，比如你用Word打开了E:\doc\my.doc这个文件，此时执行这个方法就返回了E:\doc了。
- 4.     `System.AppDomain.CurrentDomain.BaseDirectory`
- 获取程序的基目录。
- 5.     `System.Windows.Forms.Application.StartupPath `
- 获取启动了应用程序的可执行文件的路径。效果和2、5一样。只是5返回的字符串后面多了一个&quot;\&quot;而已。
- 6.     `System.Windows.Forms.Application.ExecutablePath `
- 获取启动了应用程序的可执行文件的路径及文件名，效果和1一样。
- 7.     `System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase`
- 获取和设置包括该应用程序的目录的名称。
-</code></pre><h2 id="操作环境变量"><a href="#操作环境变量" class="headerlink" title="操作环境变量"></a>操作环境变量</h2><p>利用<code>System.Environment.GetEnvironmentVariable()</code>方法可以很方便地取得系统环境变量，如：    <code>System.Environment.GetEnvironmentVariable(&quot;windir&quot;)</code>就可以取得windows系统目录的路径。<br>以下是一些常用的环境变量取值：<br>    System.Environment.GetEnvironmentVariable(“windir”);<br>    System.Environment.GetEnvironmentVariable(“INCLUDE”);<br>    System.Environment.GetEnvironmentVariable(“TMP”);<br>    System.Environment.GetEnvironmentVariable(“TEMP”);<br>    System.Environment.GetEnvironmentVariable(“Path”);</p>
-<h2 id="获取上级目录"><a href="#获取上级目录" class="headerlink" title="获取上级目录"></a>获取上级目录</h2><p>本文实例讲述了C#的path.GetFullPath 获取上级目录实现方法，分享给大家供大家参考。具体实现方法如下：</p>
-<pre><code>string path = new directoryinfo(&quot;../&quot;).fullname;//当前应用程序路径的上级目录
-</code></pre><p>获取当前目录可以使用</p>
-<pre><code>appdomain.currentdomain.basedirectory
-</code></pre><p>获取当前目录的上级目录</p>
-<pre><code>path.getfullpath(&quot;..&quot;)
-</code></pre><p>asp就比.net简单了，直接../就行了</p>
-<pre><code>如果是asp.net直接用server.mappath(&quot;~/bg/&quot;)就可以了。
-</code></pre>
+	  <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><p><code>string str1=Process.GetCurrentProcess().MainModule.FileName;</code>//可获得当前执行的exe的文件名。<br><code>string str2=Environment.CurrentDirectory;</code>//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。
 
+    
+	  <div class="readmore">
+      <a href="/2018/01/11/CS_path/">Read More</a>
+    </div>
     
     
     
@@ -480,8 +452,8 @@ string str7=AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之继承的多种方式和优缺点/">
-        15JavaScript深入之继承的多种方式和优缺点
+      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">
+        13JavaScript深入之类数组对象与arguments
       </a>
     </h2>
     
@@ -498,13 +470,13 @@ string str7=AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或
   <section class="article typo">
 	  <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第十五篇，讲解JavaScript各种继承方式和优缺点。</p>
+<p>JavaScript深入系列第十三篇，讲解类数组对象与对象的相似与差异以及arguments的注意要点</p>
 </blockquote>
-<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2>
+<h2 id="类数组对象"><a href="#类数组对象" class="headerlink" title="类数组对象"></a>类数组对象</h2>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之继承的多种方式和优缺点/">Read More</a>
+      <a href="/2018/01/04/JavaScript深入之类数组对象与arguments/">Read More</a>
     </div>
     
     
@@ -568,8 +540,8 @@ string str7=AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">
-        06JavaScript深入之从ECMAScript规范解读this
+      <a href="/2018/01/04/JavaScript深入之从原型到原型链/">
+        01JavaScript深入之从原型到原型链
       </a>
     </h2>
     
@@ -586,13 +558,13 @@ string str7=AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或
   <section class="article typo">
 	  <blockquote>
 <p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第六篇，本篇我们追根溯源，从ECMAScript5规范解读this在函数调用时到底是如何确定的。</p>
+<p>JavaScript深入系列的第一篇，从原型与原型链开始讲起，如果你想知道构造函数的实例的原型，原型的原型，原型的原型的原型是什么，就来看看这篇文章吧。</p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="noopener">《JavaScript深入之执行上下文栈》</a>中讲到，当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)。<br>
+<h2 id="构造函数创建对象"><a href="#构造函数创建对象" class="headerlink" title="构造函数创建对象"></a>构造函数创建对象</h2>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之从ECMAScript规范解读this/">Read More</a>
+      <a href="/2018/01/04/JavaScript深入之从原型到原型链/">Read More</a>
     </div>
     
     
