@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>luox78</title>
+  <title>C#路径 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,16 +15,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog for luox78">
-<meta property="og:type" content="website">
-<meta property="og:title" content="luox78">
-<meta property="og:url" content="https://luox78.github.io/index.html">
+  <meta name="description" content="获取当前文件的路径string str1=Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。  string str2=Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为">
+<meta name="keywords" content="path">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#路径">
+<meta property="og:url" content="https://luox78.github.io/2018/01/11/CS_path/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="Blog for luox78">
+<meta property="og:description" content="获取当前文件的路径string str1=Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。  string str2=Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-11T14:58:34.442Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="Blog for luox78">
+<meta name="twitter:title" content="C#路径">
+<meta name="twitter:description" content="获取当前文件的路径string str1=Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。  string str2=Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -145,31 +147,36 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-<section class="post-list">
-	
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/11/CS_path/">
-        C#路径
-      </a>
-    </h2>
-    
-    <time>
-      Jan 11, 2018
-    </time>
-		
+        <article id="post-CS_path"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/01/11/CS_path/">
+				 C#路径
+		 </a>
+ </h2>
+ <time>
+		 Jan 11, 2018
+ </time>
+ 
     
     <div class='cats'>
         <a href="/categories/C/">C#</a>
     </div>
 
-  </section>
-  <section class="article typo">
-	  <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><pre><code>string str1=Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。 
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#获取当前文件的路径"><span class="toc-number">1.</span> <span class="toc-text">获取当前文件的路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作环境变量"><span class="toc-number">2.</span> <span class="toc-text">操作环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取上级目录"><span class="toc-number">3.</span> <span class="toc-text">获取上级目录</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><pre><code>string str1=Process.GetCurrentProcess().MainModule.FileName;//可获得当前执行的exe的文件名。 
 string str2=Environment.CurrentDirectory;//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。(备注:按照定义，如果该进程在本地或网络驱动器的根目录中启动，则此属性的值为驱动器名称后跟一个尾部反斜杠（如“C:\”）。如果该进程在子目录中启动，则此属性的值为不带尾部反斜杠的驱动器和子目录路径[如“C:\mySubDirectory”])。 
 string str3=Directory.GetCurrentDirectory(); //获取应用程序的当前工作目录。 
 string str4=AppDomain.CurrentDomain.BaseDirectory;//获取基目录，它由程序集冲突解决程序用来探测程序集。 
@@ -200,287 +207,50 @@ string str7=AppDomain.CurrentDomain.SetupInformation.ApplicationBase;//获取或
 </code></pre><p>asp就比.net简单了，直接../就行了</p>
 <pre><code>如果是asp.net直接用server.mappath(&quot;~/bg/&quot;)就可以了。
 </code></pre>
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/path/">path</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/09/Bitwise_operations/">
-        位操作
-      </a>
-    </h2>
-    
-    <time>
-      Jan 9, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/DailyLearning/">DailyLearning</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a><a href="https://www.youtube.com/watch?v=7jkIUgLC29I" target="_blank" rel="noopener">位操作</a></h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>名称</th>
-<th>演示</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&amp;</td>
-<td>与</td>
-<td>1 &amp; 1 = 1<br>1 &amp; 0 = 0<br>0 &amp; 0 = 0</td>
-</tr>
-<tr>
-<td>｜</td>
-<td>或</td>
-<td>1｜1 = 1<br>1｜0 = 1<br>0｜0 = 0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>异或</td>
-<td>1 ^ 1 = 0<br>1 ^ 0 = 1<br>0 ^ 0 = 0</td>
-</tr>
-<tr>
-<td>~</td>
-<td>非</td>
-<td>~1 = 0<br>~0 = 1</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>左移</td>
-<td>10101 &lt;&lt; 2 =10100(相当于乘2)</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>右移</td>
-<td>10101 &gt;&gt; 2 =00101(相当于除2)</td>
-</tr>
-</tbody>
-</table>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/09/Bitwise_operations/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/bitwiseOperations/">bitwiseOperations</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/06/JavaScript05/">
-        初识JavaScript05
-      </a>
-    </h2>
-    
-    <time>
-      Jan 6, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>通过<code>document.getElementById(&quot;XXX&quot;).style.display</code>隐藏的是真正的使层消失</p>
-<p>通过<code>document.getElementById(&quot;div1&quot;).style.visibility</code>实现的隐藏位置仍然占着，不过没有显示</p>
-<p>以下演示了这一过程<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/06/JavaScript05/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之作用域链/">
-        05JavaScript深入之作用域链
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第五篇，讲述作用链的创建过程，最后结合着变量对象，执行上下文栈，让我们一起捋一捋函数创建和执行的过程中到底发生了什么？</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之作用域链/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之执行上下文栈/">
-        03JavaScript深入之执行上下文栈
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第三篇，讲解执行上下文栈的是如何执行的，也回答了第二篇中的略难的思考题。</p>
-</blockquote>
-<h2 id="顺序执行？"><a href="#顺序执行？" class="headerlink" title="顺序执行？"></a>顺序执行？</h2>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之执行上下文栈/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/04/JavaScript深入之执行上下文/">
-        07JavaScript深入之执行上下文
-      </a>
-    </h2>
-    
-    <time>
-      Jan 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <blockquote>
-<p>本文来自<a href="https://github.com/mqyqingfeng/Blog" target="_blank" rel="noopener">https://github.com/mqyqingfeng/Blog</a></p>
-<p>JavaScript深入系列第七篇，结合之前所讲的四篇文章，以权威指南的demo为例，具体讲解当函数执行的时候，执行上下文栈、变量对象、作用域链是如何变化的。</p>
-</blockquote>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/04/JavaScript深入之执行上下文/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/深入理解JS/">深入理解JS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/path/">path</a>
+		 
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/01/09/Bitwise_operations/" rel="next" title="位操作">
+						 位操作
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
 </section>
 
-
-  <nav id="page-nav">
-    
-    
-    <a class="next" rel="next" href="/page/2/">
-      <span class="text">Next</span>
-      <span class="icon icon-chevron-right"></span>
-    </a>
-    
-  </nav>
-  
+</article>
+<script>
+window.subData = {
+ title: 'C#路径',
+ tools: true
+}
+</script>
 
       </div>
       <aside class='l_side'>

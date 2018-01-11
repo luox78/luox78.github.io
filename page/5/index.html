@@ -153,6 +153,46 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2017/12/26/Ten_LINQ_Myth/">
+        LINQ
+      </a>
+    </h2>
+    
+    <time>
+      Dec 26, 2017
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="1-All-LINQ-queries-must-start-with-the-‘var’-keyword-In-fact-the-very-purpose-of-the-‘var’-keyword-is-to-start-a-LINQ-query"><a href="#1-All-LINQ-queries-must-start-with-the-‘var’-keyword-In-fact-the-very-purpose-of-the-‘var’-keyword-is-to-start-a-LINQ-query" class="headerlink" title="1 All LINQ queries must start with the ‘var’ keyword. In fact, the very purpose of the ‘var’ keyword is to start a LINQ query!"></a>1 All LINQ queries must start with the ‘var’ keyword. In fact, the very purpose of the ‘var’ keyword is to start a LINQ query!</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>[] people = <span class="keyword">new</span> [] &#123; <span class="string">"Tom"</span>, <span class="string">"Dick"</span>, <span class="string">"Harry"</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> filteredPeople = people.Where (<span class="function"><span class="params">p</span> =&gt;</span> p.Length &gt; <span class="number">3</span>); </span><br><span class="line"><span class="comment">//is precisely equivalent to:</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span>[] people = <span class="keyword">new</span> [] &#123; <span class="string">"Tom"</span>, <span class="string">"Dick"</span>, <span class="string">"Harry"</span> &#125;;</span><br><span class="line">IEnumerable&lt;<span class="built_in">string</span>&gt; filteredPeople = people.Where (<span class="function"><span class="params">p</span> =&gt;</span> p.Length &gt; <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/26/Ten_LINQ_Myth/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/LINQ/">LINQ</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2017/12/26/CS6/">
         C#6 特性
       </a>
@@ -312,7 +352,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>5</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>6</div></a></li>
     
         <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>1</div></a></li>
     
@@ -327,7 +367,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 16px; color: #555">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jsfoundation/" style="font-size: 18px; color: #2b2b2b">jsfoundation</a> <a href="/tags/thread/" style="font-size: 16px; color: #555">thread</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
+        <a href="/tags/C-特性/" style="font-size: 16px; color: #555">C#特性</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jsfoundation/" style="font-size: 18px; color: #2b2b2b">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/thread/" style="font-size: 16px; color: #555">thread</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
     </div>
 </div>
 
