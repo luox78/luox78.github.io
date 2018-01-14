@@ -42,3 +42,5 @@
 1/10 添加新的loading动画
 
 1/11 更改loading样式；修复bug
+
+1/14 添加tr style
