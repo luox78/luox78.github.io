@@ -153,6 +153,129 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/01/15/JQuery02/">
+        初始JQuery01
+      </a>
+    </h2>
+    
+    <time>
+      Jan 15, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JQuery/">JQuery</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h2><h3 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h3><p>不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$(this) 代表tr，在tr下面找td</span></span><br><span class="line">$(<span class="string">"tr"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       $(<span class="string">"td:even"</span>, $(<span class="keyword">this</span>)).css(<span class="string">"backgroundColor"</span>, <span class="string">"red"</span>);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/15/JQuery02/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/jsfoundation/">jsfoundation</a>
+      
+        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/15/get_post/">
+        GET，POST，PUT，DELETE的区别
+      </a>
+    </h2>
+    
+    <time>
+      Jan 15, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/DailyLearning/">DailyLearning</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p>Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。到这里，大家应该有个大概的了解了，GET一般用于获取/查询资源信息，而POST一般用于更新资源信息。
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/15/get_post/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/request/">request</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/15/swagger/">
+        Swagger - 前后端分离后的契约
+      </a>
+    </h2>
+    
+    <time>
+      Jan 15, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/DailyLearning/">DailyLearning</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h3 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h3><p>按照现在的趋势，前后端分离几乎已经是业界对开发和部署方式所达成的一种共识。所谓的前后端分离，并不是传统行业中的按部门划分，一部分人只做前端（HTML/CSS/JavaScript等等），另一部分人只做后端（或者叫服务端），因为这种方式是不工作的：比如很多团队采取了后端的模板技术（JSP, FreeMarker, ERB等等），前端的开发和调试需要一个后台Web容器的支持，从而无法将前后端开发和部署做到真正的分离。
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/15/swagger/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/swagger/">swagger</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/14/JQuery01/">
         初始JQuery01
       </a>
@@ -276,168 +399,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/11/CS_path/">
-        C#路径
-      </a>
-    </h2>
-    
-    <time>
-      Jan 11, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><p><code>string str1=Process.GetCurrentProcess().MainModule.FileName;</code>//可获得当前执行的exe的文件名。<br><code>string str2=Environment.CurrentDirectory;</code>//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/11/CS_path/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/path/">path</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/09/Bitwise_operations/">
-        位操作
-      </a>
-    </h2>
-    
-    <time>
-      Jan 9, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/DailyLearning/">DailyLearning</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a><a href="https://www.youtube.com/watch?v=7jkIUgLC29I" target="_blank" rel="noopener">位操作</a></h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>名称</th>
-<th>演示</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&amp;</td>
-<td>与</td>
-<td>1 &amp; 1 = 1<br>1 &amp; 0 = 0<br>0 &amp; 0 = 0</td>
-</tr>
-<tr>
-<td>｜</td>
-<td>或</td>
-<td>1｜1 = 1<br>1｜0 = 1<br>0｜0 = 0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>异或</td>
-<td>1 ^ 1 = 0<br>1 ^ 0 = 1<br>0 ^ 0 = 0</td>
-</tr>
-<tr>
-<td>~</td>
-<td>非</td>
-<td>~1 = 0<br>~0 = 1</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>左移</td>
-<td>10101 &lt;&lt; 2 =10100(相当于乘2)</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>右移</td>
-<td>10101 &gt;&gt; 2 =00101(相当于除2)</td>
-</tr>
-</tbody>
-</table>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/09/Bitwise_operations/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/bitwiseOperations/">bitwiseOperations</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/06/JavaScript05/">
-        初识JavaScript05
-      </a>
-    </h2>
-    
-    <time>
-      Jan 6, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>通过<code>document.getElementById(&quot;XXX&quot;).style.display</code>隐藏的是真正的使层消失</p>
-<p>通过<code>document.getElementById(&quot;div1&quot;).style.visibility</code>实现的隐藏位置仍然占着，不过没有显示</p>
-<p>以下演示了这一过程<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/06/JavaScript05/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -490,9 +451,9 @@
     
         <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>6</div></a></li>
     
-        <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>2</div></a></li>
+        <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>4</div></a></li>
     
-        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>2</div></a></li>
     
         <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>21</div></a></li>
     
@@ -505,7 +466,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 16px; color: #555">C#特性</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jQueryfoundation/" style="font-size: 14px; color: #808080">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18px; color: #2b2b2b">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/thread/" style="font-size: 16px; color: #555">thread</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
+        <a href="/tags/C-特性/" style="font-size: 16px; color: #555">C#特性</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jQueryfoundation/" style="font-size: 16px; color: #555">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18px; color: #2b2b2b">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 16px; color: #555">thread</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
     </div>
 </div>
 
