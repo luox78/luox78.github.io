@@ -158,6 +158,96 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/01/18/Entity Framework Code First to a Update model and migrate/">
+        Entity Framework01-code first修改模型，迁移数据库
+      </a>
+    </h2>
+    
+    <time>
+      Jan 18, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p> 本文以<code>asp.net mvc</code>自己提供的身份验证为例</p>
+<h2 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h2><p>在<code>Models\IdentityModels.cs</code> 里 <code>ApplicationUser</code>类下添加你想添加的属性，比如生日</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> DateTime BirthDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/18/Entity Framework Code First to a Update model and migrate/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/Entity-Framework/">Entity Framework</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/17/JQuery03/">
+        初始JQuery03
+      </a>
+    </h2>
+    
+    <time>
+      Jan 17, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/JQuery/">JQuery</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="RadioButton-checkbox"><a href="#RadioButton-checkbox" class="headerlink" title="RadioButton|checkbox"></a>RadioButton|checkbox</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio2"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"男"</span> /&gt;男</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio1"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"女"</span> /&gt;女</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio3"</span>checked="checked" <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"未知"</span> /&gt;未知</span><br></pre></td></tr></table></figure>
+<p>如何取选中的值</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(<span class="string">"input[name=gender]:checked"</span>).val()</span></span><br></pre></td></tr></table></figure>
+<p>设置<code>RadioButton</code>的选中值</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.attr(‘<span class="keyword">checked</span>’,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<p><code>$(&quot;input[name=gender]&quot;).val([&quot;女&quot;]);</code>也可以直接设置，注意val中参数的[]不能省略,val()的参数必须是一个数组。</p>
+<p><code>RadioButton</code>的选择技巧对于<code>CheckBox</code>和<code>Select</code>列表框也适用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(‘<span class="comment">#selOne’).val([‘1’,’2’,’3’]);//同时设置多个下拉菜单选中</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">(<span class="string">"#btn1"</span>).attr(<span class="string">"checked"</span>,<span class="literal">true</span>)</span></span><br></pre></td></tr></table></figure>
+<p>实现全选部不选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btn1"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">"input:checkbox"</span>).prop(<span class="string">"checked"</span>,<span class="literal">true</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">"#btn2"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">"input:checkbox"</span>).prop(&#123; <span class="attr">checked</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
+      
+        <a href="/tags/jsfoundation/">jsfoundation</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/16/Entity Framework Code First to a New Database/">
         Entity Framework01-code first建立一个新数据库
       </a>
@@ -484,128 +574,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/09/Bitwise_operations/">
-        位操作
-      </a>
-    </h2>
-    
-    <time>
-      Jan 9, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/DailyLearning/">DailyLearning</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="位操作"><a href="#位操作" class="headerlink" title="位操作"></a><a href="https://www.youtube.com/watch?v=7jkIUgLC29I" target="_blank" rel="noopener">位操作</a></h2><table>
-<thead>
-<tr>
-<th>符号</th>
-<th>名称</th>
-<th>演示</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&amp;</td>
-<td>与</td>
-<td>1 &amp; 1 = 1<br>1 &amp; 0 = 0<br>0 &amp; 0 = 0</td>
-</tr>
-<tr>
-<td>｜</td>
-<td>或</td>
-<td>1｜1 = 1<br>1｜0 = 1<br>0｜0 = 0</td>
-</tr>
-<tr>
-<td>^</td>
-<td>异或</td>
-<td>1 ^ 1 = 0<br>1 ^ 0 = 1<br>0 ^ 0 = 0</td>
-</tr>
-<tr>
-<td>~</td>
-<td>非</td>
-<td>~1 = 0<br>~0 = 1</td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>左移</td>
-<td>10101 &lt;&lt; 2 =10100(相当于乘2)</td>
-</tr>
-<tr>
-<td>&gt;&gt;</td>
-<td>右移</td>
-<td>10101 &gt;&gt; 2 =00101(相当于除2)</td>
-</tr>
-</tbody>
-</table>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/09/Bitwise_operations/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/bitwiseOperations/">bitwiseOperations</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/06/JavaScript05/">
-        初识JavaScript05
-      </a>
-    </h2>
-    
-    <time>
-      Jan 6, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JavaScript/">JavaScript</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>通过<code>document.getElementById(&quot;XXX&quot;).style.display</code>隐藏的是真正的使层消失</p>
-<p>通过<code>document.getElementById(&quot;div1&quot;).style.visibility</code>实现的隐藏位置仍然占着，不过没有显示</p>
-<p>以下演示了这一过程<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/06/JavaScript05/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -657,11 +625,11 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>7</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>8</div></a></li>
     
         <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>4</div></a></li>
     
-        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>2</div></a></li>
+        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>3</div></a></li>
     
         <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>21</div></a></li>
     
@@ -674,7 +642,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 16px; color: #555">C#特性</a> <a href="/tags/Entity-Framework/" style="font-size: 14px; color: #808080">Entity Framework</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jQueryfoundation/" style="font-size: 16px; color: #555">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18px; color: #2b2b2b">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 16px; color: #555">thread</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
+        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 14px; color: #808080">LINQ</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
     </div>
 </div>
 

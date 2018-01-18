@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Category: JQuery | luox78</title>
+  <title>luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -18,7 +18,7 @@
   <meta name="description" content="Blog for luox78">
 <meta property="og:type" content="website">
 <meta property="og:title" content="luox78">
-<meta property="og:url" content="https://luox78.github.io/categories/JQuery/index.html">
+<meta property="og:url" content="https://luox78.github.io/page/7/index.html">
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="Blog for luox78">
 <meta property="og:locale" content="zh-Hans">
@@ -146,10 +146,6 @@
     <div class='container clearfix'>
       <div class='l_main'>
         
-  <script>
-    window.subData= { title:'Category : JQuery'}
-  </script>
-
 <section class="post-list">
 	
     <div class='post-wrapper'>
@@ -157,130 +153,27 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/17/JQuery03/">
-        初始JQuery03
+      <a href="/2017/12/25/hello-world/">
+        Hello World
       </a>
     </h2>
     
     <time>
-      Jan 17, 2018
+      Dec 25, 2017
     </time>
 		
-    
-    <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
-    </div>
-
   </section>
   <section class="article typo">
-	  <h2 id="RadioButton-checkbox"><a href="#RadioButton-checkbox" class="headerlink" title="RadioButton|checkbox"></a>RadioButton|checkbox</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio2"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"男"</span> /&gt;男</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio1"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"女"</span> /&gt;女</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio3"</span>checked="checked" <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"未知"</span> /&gt;未知</span><br></pre></td></tr></table></figure>
-<p>如何取选中的值</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(<span class="string">"input[name=gender]:checked"</span>).val()</span></span><br></pre></td></tr></table></figure>
-<p>设置<code>RadioButton</code>的选中值</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.attr(‘<span class="keyword">checked</span>’,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-<p><code>$(&quot;input[name=gender]&quot;).val([&quot;女&quot;]);</code>也可以直接设置，注意val中参数的[]不能省略,val()的参数必须是一个数组。</p>
-<p><code>RadioButton</code>的选择技巧对于<code>CheckBox</code>和<code>Select</code>列表框也适用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(‘<span class="comment">#selOne’).val([‘1’,’2’,’3’]);//同时设置多个下拉菜单选中</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">(<span class="string">"#btn1"</span>).attr(<span class="string">"checked"</span>,<span class="literal">true</span>)</span></span><br></pre></td></tr></table></figure>
-<p>实现全选部不选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btn1"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">"input:checkbox"</span>).prop(<span class="string">"checked"</span>,<span class="literal">true</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">"#btn2"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">"input:checkbox"</span>).prop(&#123; <span class="attr">checked</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/JQuery02/">
-        初始JQuery02
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h2><h3 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h3><p>不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$(this) 代表tr，在tr下面找td</span></span><br><span class="line">$(<span class="string">"tr"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       $(<span class="string">"td:even"</span>, $(<span class="keyword">this</span>)).css(<span class="string">"backgroundColor"</span>, <span class="string">"red"</span>);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+	  <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a><br>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/15/JQuery02/">Read More</a>
+      <a href="/2017/12/25/hello-world/">Read More</a>
     </div>
     
     
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/14/JQuery01/">
-        初始JQuery01
-      </a>
-    </h2>
-    
-    <time>
-      Jan 14, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="常见的JavaScript框架库"><a href="#常见的JavaScript框架库" class="headerlink" title="常见的JavaScript框架库"></a>常见的JavaScript框架库</h2><p><strong>为什么使用JavaScript框架库？</strong></p>
-<p>普通JavaScript的缺点：每种控件的操作方式不统一，不同浏览器下有区别，要编写跨浏览器的程序非常麻烦。因此出现了很多对JavaScript的封装库</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/14/JQuery01/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
     
   </section>
 </article>
@@ -288,6 +181,17 @@
   
 </section>
 
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/page/6/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+  </nav>
+  
 
       </div>
       <aside class='l_side'>

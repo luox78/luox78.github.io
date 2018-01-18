@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Entity Framework01-code first建立一个新数据库 | luox78</title>
+  <title>Entity Framework01-code first修改模型，迁移数据库 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,21 +15,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="建立model编写.net class建立model">
+  <meta name="description" content="本文以asp.net mvc自己提供的身份验证为例 添加属性在Models\IdentityModels.cs 里 ApplicationUser类下添加你想添加的属性，比如生日 1public DateTime BirthDate &amp;#123; get; set; &amp;#125;">
 <meta name="keywords" content="Entity Framework">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Entity Framework01-code first建立一个新数据库">
-<meta property="og:url" content="https://luox78.github.io/2018/01/16/Entity Framework Code First to a New Database/index.html">
+<meta property="og:title" content="Entity Framework01-code first修改模型，迁移数据库">
+<meta property="og:url" content="https://luox78.github.io/2018/01/18/Entity Framework Code First to a Update model and migrate/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="建立model编写.net class建立model">
+<meta property="og:description" content="本文以asp.net mvc自己提供的身份验证为例 添加属性在Models\IdentityModels.cs 里 ApplicationUser类下添加你想添加的属性，比如生日 1public DateTime BirthDate &amp;#123; get; set; &amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://luox78.github.io/images/entity1.png">
-<meta property="og:image" content="https://luox78.github.io/images/entity2.png">
-<meta property="og:updated_time" content="2018-01-16T12:42:21.729Z">
+<meta property="og:updated_time" content="2018-01-18T14:50:16.489Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Entity Framework01-code first建立一个新数据库">
-<meta name="twitter:description" content="建立model编写.net class建立model">
-<meta name="twitter:image" content="https://luox78.github.io/images/entity1.png">
+<meta name="twitter:title" content="Entity Framework01-code first修改模型，迁移数据库">
+<meta name="twitter:description" content="本文以asp.net mvc自己提供的身份验证为例 添加属性在Models\IdentityModels.cs 里 ApplicationUser类下添加你想添加的属性，比如生日 1public DateTime BirthDate &amp;#123; get; set; &amp;#125;">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -150,17 +147,17 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-Entity Framework Code First to a New Database"
+        <article id="post-Entity Framework Code First to a Update model and migrate"
 	class="post white-box article-type-post"
 	itemscope itemprop="blogPost">
 <section class='meta'>
  <h2 class="title">
-		 <a href="/2018/01/16/Entity Framework Code First to a New Database/">
-				 Entity Framework01-code first建立一个新数据库
+		 <a href="/2018/01/18/Entity Framework Code First to a Update model and migrate/">
+				 Entity Framework01-code first修改模型，迁移数据库
 		 </a>
  </h2>
  <time>
-		 Jan 16, 2018
+		 Jan 18, 2018
  </time>
  
     
@@ -175,41 +172,44 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#建立model"><span class="toc-number">1.</span> <span class="toc-text">建立model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立上下文（Context）"><span class="toc-number">2.</span> <span class="toc-text">建立上下文（Context）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取-存入数据"><span class="toc-number">3.</span> <span class="toc-text">读取 存入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接下来我会分别介绍各个部分"><span class="toc-number">4.</span> <span class="toc-text">接下来我会分别介绍各个部分</span></a></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加属性"><span class="toc-number">1.</span> <span class="toc-text">添加属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用Migrations修改数据库"><span class="toc-number">2.</span> <span class="toc-text">使用Migrations修改数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改你的view对应的model"><span class="toc-number">3.</span> <span class="toc-text">修改你的view对应的model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改对应的view展示"><span class="toc-number">4.</span> <span class="toc-text">修改对应的view展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何展示新的信息"><span class="toc-number">5.</span> <span class="toc-text">如何展示新的信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自己创建新的model，展示想显示的信息"><span class="toc-number">6.</span> <span class="toc-text">自己创建新的model，展示想显示的信息</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
-		 <h2 id="建立model"><a href="#建立model" class="headerlink" title="建立model"></a>建立model</h2><p>编写.net class建立model</p>
+		 <p> 本文以<code>asp.net mvc</code>自己提供的身份验证为例</p>
+<h2 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h2><p>在<code>Models\IdentityModels.cs</code> 里 <code>ApplicationUser</code>类下添加你想添加的属性，比如生日</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> DateTime BirthDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Blog</span> </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> BlogId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> List&lt;Post&gt; Posts &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Post</span> </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> PostId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Title &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Content &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> BlogId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> Blog Blog &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>类中带id的会自动标志成主键</li>
-<li>两个导航属性 (Blog.Posts and Post.Blog) virtual，这是entity framework懒加载（ Lazy Loading </li>
-<li>）的特征，懒加载值得是这些属性内容会自动从数据库中加载出来</li>
+<h2 id="使用Migrations修改数据库"><a href="#使用Migrations修改数据库" class="headerlink" title="使用Migrations修改数据库"></a>使用<strong>Migrations</strong>修改数据库</h2><ul>
+<li><p>由于已经改变了model的属性所以应该修改之前的数据库</p>
+</li>
+<li><p>前往工具/NUGET/程序包管理器控制台</p>
+</li>
+<li><p>输入<code>Enable-Migrations</code>初始化迁移</p>
+<p><code>Add-Migration &quot;Birthdate&quot;</code> 添加名为Birthdate的迁移文件进你的工程</p>
+<p><code>Update-Database</code>执行你的迁移文件更新数据库</p>
+</li>
 </ul>
-<h2 id="建立上下文（Context）"><a href="#建立上下文（Context）" class="headerlink" title="建立上下文（Context）"></a>建立上下文（Context）</h2><p>添加引用</p>
-<figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.<span class="built_in">Data</span>.Entity;</span><br></pre></td></tr></table></figure>
-<p>建立数据库上下文，继承自<code>DbContext</code></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BloggingContext</span> : <span class="type">DbContext</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> DbSet&lt;Blog&gt; Blogs &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> DbSet&lt;Post&gt; Posts &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>DbSet</code>代表数据库中的表，上下文中存储就是关系表</p>
-<h2 id="读取-存入数据"><a href="#读取-存入数据" class="headerlink" title="读取 存入数据"></a>读取 存入数据</h2><p>存入</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tmpBlog = <span class="keyword">new</span> <span class="type">Blog</span>() &#123; Name = <span class="string">"luox78's blog"</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> db = <span class="keyword">new</span> <span class="type">BloggingContext</span>();</span><br><span class="line">db.Blogs.Add(tmpBlog);</span><br><span class="line">db.SaveChanges();</span><br></pre></td></tr></table></figure>
-<p>读取</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = db.Blogs.Where(<span class="function"><span class="params">blog</span> =&gt;</span> blog.BlogId == <span class="number">1</span>);</span><br><span class="line">foreach (<span class="keyword">var</span> blog <span class="keyword">in</span> obj)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(blog.Name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//luox78's blog</span></span><br></pre></td></tr></table></figure>
-<p>数据在哪儿？</p>
-<ul>
-<li>Visual Studio 2010数据库一般建在 local SQL Express</li>
-<li>Visual Studio 2012以上一般在 <a href="https://msdn.microsoft.com/library/hh510202(v=sql.110" target="_blank" rel="noopener">LocalDb</a>.aspx)</li>
-<li>数据库命名是项目名加上建立的上下文名字</li>
+<h2 id="修改你的view对应的model"><a href="#修改你的view对应的model" class="headerlink" title="修改你的view对应的model"></a>修改你的view对应的model</h2><p>在 <code>Models\AccountViewModels.cs</code>中找到<code>RegisterViewModel</code>类添加属性，当然也可以添加你想要的特性</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> DateTime BirthDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="修改对应的view展示"><a href="#修改对应的view展示" class="headerlink" title="修改对应的view展示"></a>修改对应的view展示</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"input-field col s12 m3 l3"</span>&gt;</span><br><span class="line">      &lt;i <span class="class"><span class="keyword">class</span></span>=<span class="string">"material-icons prefix"</span>&gt;date_range&lt;<span class="regexp">/i&gt;</span></span><br><span class="line"><span class="regexp">       @Html.LabelFor(m =&gt; m.BirthDate)</span></span><br><span class="line"><span class="regexp">       @Html.TextBoxFor(m =&gt; m.BirthDate, new &#123; @class = "datepicker" &#125;)</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<p>运行就能看到修改后的结果了</p>
+<h2 id="如何展示新的信息"><a href="#如何展示新的信息" class="headerlink" title="如何展示新的信息"></a>如何展示新的信息</h2><ul>
+<li><p>得到 <code>UserId</code>, 可以通过 <code>ASP.NET Identity system</code></p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var currentUserId</span> = User.Identity.GetUserId();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实例化<code>UserManager</code>在ASP.Identity system命名空间下</p>
+</li>
+<li><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> manager = <span class="keyword">new</span> <span class="type">UserManager</span>&lt;MyUser&gt;(<span class="keyword">new</span> <span class="type">UserStore</span>&lt;MyUser&gt;(<span class="keyword">new</span> <span class="type">MyDbContext</span>()));</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>得到当前用户实例</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">var currentUser</span> = manager.FindById(User.Identity.GetUserId());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过实例展现修改的信息</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> birthdate = currentUser.BirthDate</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><img src="https://luox78.github.io/images/entity1.png" alt="https://luox78.github.io/images/entity1.png"></p>
-<p>执行完写入之后数据已经进入数据库</p>
-<p><img src="https://luox78.github.io/images/entity2.png" alt="https://luox78.github.io/images/entity2.png"></p>
-<h2 id="接下来我会分别介绍各个部分"><a href="#接下来我会分别介绍各个部分" class="headerlink" title="接下来我会分别介绍各个部分"></a>接下来我会分别介绍各个部分</h2><blockquote>
-<p>原文：<a href="https://msdn.microsoft.com/en-us/library/jj193542(v=vs.113" target="_blank" rel="noopener">Entity Framework Code First to a New Database</a>.aspx)</p>
-<p>翻译：luox78</p>
-</blockquote>
-
+<h2 id="自己创建新的model，展示想显示的信息"><a href="#自己创建新的model，展示想显示的信息" class="headerlink" title="自己创建新的model，展示想显示的信息"></a>自己创建新的model，展示想显示的信息</h2>
  </div>
  
  <div class="article-tags tags">
@@ -236,16 +236,10 @@
  
  <div class="art-item-footer">
 		 
-		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/17/JQuery03/" rel="prev" title="初始JQuery03">
-						 初始JQuery03
-				 </a>
-		 </span>
-		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/15/JQuery02/" rel="next" title="初始JQuery02">
-						 初始JQuery02
+				 next：<a href="/2018/01/17/JQuery03/" rel="next" title="初始JQuery03">
+						 初始JQuery03
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -256,7 +250,7 @@
 </article>
 <script>
 window.subData = {
- title: 'Entity Framework01-code first建立一个新数据库',
+ title: 'Entity Framework01-code first修改模型，迁移数据库',
  tools: true
 }
 </script>
