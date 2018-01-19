@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="本文以asp.net mvc自己提供的身份验证为例 添加属性在Models\IdentityModels.cs 里 ApplicationUser类下添加你想添加的属性，比如生日 1public DateTime BirthDate &amp;#123; get; set; &amp;#125;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-18T15:05:03.533Z">
+<meta property="og:updated_time" content="2018-01-19T15:39:15.091Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Entity Framework02-code first修改模型，迁移数据库">
 <meta name="twitter:description" content="本文以asp.net mvc自己提供的身份验证为例 添加属性在Models\IdentityModels.cs 里 ApplicationUser类下添加你想添加的属性，比如生日 1public DateTime BirthDate &amp;#123; get; set; &amp;#125;">
@@ -209,7 +209,37 @@
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">var</span> birthdate = currentUser.BirthDate</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="自己创建新的model，展示想显示的信息"><a href="#自己创建新的model，展示想显示的信息" class="headerlink" title="自己创建新的model，展示想显示的信息"></a>自己创建新的model，展示想显示的信息</h2>
+<h2 id="自己创建新的model，展示想显示的信息"><a href="#自己创建新的model，展示想显示的信息" class="headerlink" title="自己创建新的model，展示想显示的信息"></a>自己创建新的model，展示想显示的信息</h2><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUser</span> : <span class="type">IdentityUser</span></span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">public</span> virtual MyUserInfo MyUserInfo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyUserInfo</span></span>&#123;</span><br><span class="line">       <span class="keyword">public</span> int Id &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">       <span class="keyword">public</span> string FirstName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">       <span class="keyword">public</span> string LastName &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyDbContext</span> : <span class="type">IdentityDbContext</span>&lt;<span class="type">MyUser</span>&gt;</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">public</span> MyDbContext()</span><br><span class="line">           : base(<span class="string">"DefaultConnection"</span>)</span><br><span class="line">       &#123;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">public</span> System.Data.Entity.DbSet&lt;MyUserInfo&gt; MyUserInfo &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Getting Profile information</strong></p>
+<ul>
+<li><p>When the User Logs in, you can display the profile information by doing the following</p>
+</li>
+<li><p>Get the current logged in UserId, so you can look the user up in ASP.NET Identity system</p>
+</li>
+<li><ul>
+<li>var currentUserId = User.Identity.GetUserId();</li>
+</ul>
+</li>
+<li><p>Instantiate the UserManager in ASP.Identity system so you can look up the user in the system</p>
+</li>
+<li><ul>
+<li>var manager = new UserManager<myuser>(new UserStore<myuser>(new MyDbContext()));</myuser></myuser></li>
+</ul>
+</li>
+<li><p>Get the User object</p>
+</li>
+<li><ul>
+<li>var currentUser = manager.FindById(User.Identity.GetUserId());</li>
+</ul>
+</li>
+<li><p>Get the profile information about the user</p>
+</li>
+<li><ul>
+<li>currentUser.MyUserInfo.FirstName</li>
+</ul>
+</li>
+</ul>
+
  </div>
  
  <div class="article-tags tags">
