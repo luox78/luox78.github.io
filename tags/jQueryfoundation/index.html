@@ -174,17 +174,11 @@
   </section>
   <section class="article typo">
 	  <h2 id="RadioButton-checkbox"><a href="#RadioButton-checkbox" class="headerlink" title="RadioButton|checkbox"></a>RadioButton|checkbox</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio2"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"男"</span> /&gt;男</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio1"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"女"</span> /&gt;女</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio3"</span>checked="checked" <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"未知"</span> /&gt;未知</span><br></pre></td></tr></table></figure>
-<p>如何取选中的值</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(<span class="string">"input[name=gender]:checked"</span>).val()</span></span><br></pre></td></tr></table></figure>
-<p>设置<code>RadioButton</code>的选中值</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.attr(‘<span class="keyword">checked</span>’,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
-<p><code>$(&quot;input[name=gender]&quot;).val([&quot;女&quot;]);</code>也可以直接设置，注意val中参数的[]不能省略,val()的参数必须是一个数组。</p>
-<p><code>RadioButton</code>的选择技巧对于<code>CheckBox</code>和<code>Select</code>列表框也适用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash">(‘<span class="comment">#selOne’).val([‘1’,’2’,’3’]);//同时设置多个下拉菜单选中</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash">(<span class="string">"#btn1"</span>).attr(<span class="string">"checked"</span>,<span class="literal">true</span>)</span></span><br></pre></td></tr></table></figure>
-<p>实现全选部不选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">"#btn1"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">"input:checkbox"</span>).prop(<span class="string">"checked"</span>,<span class="literal">true</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="string">"#btn2"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        $(<span class="string">"input:checkbox"</span>).prop(&#123; <span class="attr">checked</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
 
-
+    
+	  <div class="readmore">
+      <a href="/2018/01/17/JQuery03/">Read More</a>
+    </div>
     
     
     
