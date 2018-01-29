@@ -173,19 +173,12 @@
 
   </section>
   <section class="article typo">
-	  <p>今天看到了一句话<br>the Where() LINQ extension method is used to filter for a particular set of URLs.  Where(), like most LINQ methods, returns an IEnumerable<t> value<br>让我好奇IEnumerable<t> Icollection Ilist list之间到底是什么关系<br>顺带IEnumerable<t>可以直接调用ToList变成list</t></t></t></p>
-<p>首先我看看 IEnumerable：<br>1    // 摘要:<br>2      //   公开枚举器，该枚举器支持在指定类型的集合上进行简单迭代。<br>3      //<br>4      // 类型参数:<br>5      //  T:<br>6      //   要枚举的对象的类型。<br>7      [TypeDependency(“System.SZArrayHelper”)]<br>8      public interface IEnumerable<out t=""> : IEnumerable<br>9      {<br>10        // 摘要:<br>11        //   返回一个循环访问集合的枚举器。<br>12        //<br>13        // 返回结果:<br>14        //   可用于循环访问集合的 System.Collections.Generic.IEnumerator<t>。<br>15        IEnumerator<t> GetEnumerator();<br>16      }<br>IEnumerable<t> 实现IEnumerable接口方法，那IEnumberable做什么的，其实就提高可以循环访问的集合。说白了就是一个迭代。</t></t></t></out></p>
-<p>再来看看ICollection:<br>1    // 摘要:<br>2     //   定义操作泛型集合的方法。<br>3     //<br>4     // 类型参数:<br>5     //  T:<br>6     //   集合中元素的类型。<br>7     [TypeDependency(“System.SZArrayHelper”)]<br>8     public interface ICollection<t> : IEnumerable<t>, IEnumerable<br>原来ICollection<t> 同时继承IEnumerable<t>和IEnumerable两个接口，按我的理解就是，ICollection继续它们2个接口而且扩展了方法，功能强多了。<br>由原来的步枪变成半自动步枪<br>我们继续看IList:</t></t></t></t></p>
-<p>public interface IList<t> : ICollection<t>, IEnumerable<t>, IEnumerable<br>靠 IList 继承它们三个接口，怪不得功能这么多啊，那应该属于全自动步枪了<br>最后来看看List:</t></t></t></p>
-<p>public class List<t> : IList<t>, ICollection<t>, IEnumerable<t>, IList, ICollection, IEnumerable<br>这个时候大家仔细看看，它们都是接口，只有List 是类，不仅实现它们的接口，而且还扩展了太多的方法给我利用。哇靠，几乎所有功能都能实现了，简直是激光步枪</t></t></t></t></p>
-<p><strong>总结</strong>：IEnumerable接口就是规定了可以使用foreach遍历的集合，C#中几乎？所有集合都实现了该接口，linq查询出来的可以直接用IEnumerable引用</p>
-<p>101个linq例子<a href="https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b" target="_blank" rel="noopener">https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b</a></p>
-<p><strong>关于linq  to entity一个注意点</strong></p>
-<p>今天通过linq查询发现linq使用时</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">new</span> XXclass</span><br><span class="line">&#123;</span><br><span class="line">  XX = <span class="string">"1"</span> + <span class="string">"2"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>会报错，原因是linq to entity 转成tolist时并不支持C#里面<code>string.format</code>方法，所以查询的时候并不能使用字符串拼接</p>
+	  <p>今天看到了一句话<br>the Where() LINQ extension method is used to filter for a particular set of URLs.  Where(), like most LINQ methods, returns an IEnumerable<t> value<br>让我好奇IEnumerable<t> Icollection Ilist list之间到底是什么关系<br>顺带IEnumerable<t>可以直接调用ToList变成list
 
-
+    
+	  <div class="readmore">
+      <a href="/2018/01/29/IEnumerableECT/">Read More</a>
+    </div>
     
     
     
