@@ -15,16 +15,17 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Blog for luox78">
-<meta property="og:type" content="website">
+  <meta name="description" content="ado.net使用事务1234567891011121314151617181920string constr = &quot;&quot;;            using (SqlConnection con = new SqlConnection(constr))            &amp;#123;                con.Open();                using (SqlTra">
+<meta property="og:type" content="article">
 <meta property="og:title" content="luox78">
-<meta property="og:url" content="https://luox78.github.io/index.html">
+<meta property="og:url" content="https://luox78.github.io/2018/01/25/sanchen02/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="Blog for luox78">
+<meta property="og:description" content="ado.net使用事务1234567891011121314151617181920string constr = &quot;&quot;;            using (SqlConnection con = new SqlConnection(constr))            &amp;#123;                con.Open();                using (SqlTra">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-27T06:43:00.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="luox78">
-<meta name="twitter:description" content="Blog for luox78">
+<meta name="twitter:description" content="ado.net使用事务1234567891011121314151617181920string constr = &quot;&quot;;            using (SqlConnection con = new SqlConnection(constr))            &amp;#123;                con.Open();                using (SqlTra">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -145,67 +146,31 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        
-<section class="post-list">
-	
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/29/IEnumerableECT/">
-        CSharp中的集合接口，类之间的关系
-      </a>
-    </h2>
-    
-    <time>
-      Jan 29, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
+        <article id="post-sanchen02"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/01/25/sanchen02/">
+				 
+		 </a>
+ </h2>
+ <time>
+		 Jan 25, 2018
+ </time>
+ 
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
 
-  </section>
-  <section class="article typo">
-	  <p>今天看到了一句话<br>the Where() LINQ extension method is used to filter for a particular set of URLs.  Where(), like most LINQ methods, returns an IEnumerable<t> value<br>让我好奇IEnumerable<t> Icollection Ilist list之间到底是什么关系<br>顺带IEnumerable<t>可以直接调用ToList变成list</t></t></t></p>
-<p>首先我看看 IEnumerable：<br>1    // 摘要:<br>2      //   公开枚举器，该枚举器支持在指定类型的集合上进行简单迭代。<br>3      //<br>4      // 类型参数:<br>5      //  T:<br>6      //   要枚举的对象的类型。<br>7      [TypeDependency(“System.SZArrayHelper”)]<br>8      public interface IEnumerable<out t=""> : IEnumerable<br>9      {<br>10        // 摘要:<br>11        //   返回一个循环访问集合的枚举器。<br>12        //<br>13        // 返回结果:<br>14        //   可用于循环访问集合的 System.Collections.Generic.IEnumerator<t>。<br>15        IEnumerator<t> GetEnumerator();<br>16      }<br>IEnumerable<t> 实现IEnumerable接口方法，那IEnumberable做什么的，其实就提高可以循环访问的集合。说白了就是一个迭代。</t></t></t></out></p>
-<p>再来看看ICollection:<br>1    // 摘要:<br>2     //   定义操作泛型集合的方法。<br>3     //<br>4     // 类型参数:<br>5     //  T:<br>6     //   集合中元素的类型。<br>7     [TypeDependency(“System.SZArrayHelper”)]<br>8     public interface ICollection<t> : IEnumerable<t>, IEnumerable<br>原来ICollection<t> 同时继承IEnumerable<t>和IEnumerable两个接口，按我的理解就是，ICollection继续它们2个接口而且扩展了方法，功能强多了。<br>由原来的步枪变成半自动步枪<br>我们继续看IList:</t></t></t></t></p>
-<p>public interface IList<t> : ICollection<t>, IEnumerable<t>, IEnumerable<br>靠 IList 继承它们三个接口，怪不得功能这么多啊，那应该属于全自动步枪了<br>最后来看看List:</t></t></t></p>
-<p>public class List<t> : IList<t>, ICollection<t>, IEnumerable<t>, IList, ICollection, IEnumerable<br>这个时候大家仔细看看，它们都是接口，只有List 是类，不仅实现它们的接口，而且还扩展了太多的方法给我利用。哇靠，几乎所有功能都能实现了，简直是激光步枪</t></t></t></t></p>
-<p><strong>总结</strong>：IEnumerable接口就是规定了可以使用foreach遍历的集合，C#中几乎？所有集合都实现了该接口，linq查询出来的可以直接用IEnumerable引用</p>
-<p>101个linq例子<a href="https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b" target="_blank" rel="noopener">https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b</a></p>
-<p><strong>关于linq  to entity一个注意点</strong></p>
-<p>今天通过linq查询发现linq使用时</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">new</span> XXclass</span><br><span class="line">&#123;</span><br><span class="line">  XX = <span class="string">"1"</span> + <span class="string">"2"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>会报错，原因是linq to entity 转成tolist时并不支持C#里面<code>string.format</code>方法，所以查询的时候并不能使用字符串拼接</p>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#ado-net使用事务"><span class="toc-number">1.</span> <span class="toc-text">ado.net使用事务</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分层"><span class="toc-number"></span> <span class="toc-text">分层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#单例模式"><span class="toc-number"></span> <span class="toc-text">单例模式</span></a></section>
 
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/LINQ/">LINQ</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post revealno-title">
-  <section class="meta">
-    
-    <time>
-      Jan 25, 2018
-    </time>
-		
-  </section>
-  <section class="article typo">
-	  <h3 id="ado-net使用事务"><a href="#ado-net使用事务" class="headerlink" title="ado.net使用事务"></a>ado.net使用事务</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string constr = <span class="string">""</span>;</span><br><span class="line">            using (SqlConnection con = new SqlConnection(constr))</span><br><span class="line">            &#123;</span><br><span class="line">                con.Open();</span><br><span class="line">                using (SqlTransaction tran = con.BeginTransaction())</span><br><span class="line">                &#123;</span><br><span class="line">                    using (SqlCommand <span class="keyword">cmd</span><span class="bash"> = new SqlCommand(<span class="string">"sql"</span>, con))</span></span><br><span class="line"><span class="bash">                    &#123;</span></span><br><span class="line"><span class="bash">                        cmd.Transaction = tran;</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                        cmd.CommandText = <span class="string">"sql"</span>;</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.Clear();</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.AddRange(null);</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                    &#125;</span></span><br><span class="line"><span class="bash">                    //tran.Commit();无异常提交</span></span><br><span class="line"><span class="bash">                    tran.Rollback();//异常回滚</span></span><br><span class="line"><span class="bash">                &#125;</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">            &#125;</span></span><br></pre></td></tr></table></figure>
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h3 id="ado-net使用事务"><a href="#ado-net使用事务" class="headerlink" title="ado.net使用事务"></a>ado.net使用事务</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string constr = <span class="string">""</span>;</span><br><span class="line">            using (SqlConnection con = new SqlConnection(constr))</span><br><span class="line">            &#123;</span><br><span class="line">                con.Open();</span><br><span class="line">                using (SqlTransaction tran = con.BeginTransaction())</span><br><span class="line">                &#123;</span><br><span class="line">                    using (SqlCommand <span class="keyword">cmd</span><span class="bash"> = new SqlCommand(<span class="string">"sql"</span>, con))</span></span><br><span class="line"><span class="bash">                    &#123;</span></span><br><span class="line"><span class="bash">                        cmd.Transaction = tran;</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                        cmd.CommandText = <span class="string">"sql"</span>;</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.Clear();</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.AddRange(null);</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                    &#125;</span></span><br><span class="line"><span class="bash">                    //tran.Commit();无异常提交</span></span><br><span class="line"><span class="bash">                    tran.Rollback();//异常回滚</span></span><br><span class="line"><span class="bash">                &#125;</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">            &#125;</span></span><br></pre></td></tr></table></figure>
 <h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><p>理解分层：<br>逻辑分层N-Layer<br>​    逻辑上将系统中的不同功能模块、不同子系统等进行分层<br>​    好的逻辑分层可以让后续选择物理架构更灵活，选择性更大<br>​    我们学习的”三层架构”属于逻辑分层（three-layer）<br>物理分层N-Tier<br>​    物理部署时将系统的不同模块部署在不同的服务器上</p>
 <p>三层架构</p>
 <p>​    界面层UI；<br>​    数据访问层DAL（Data Access Layer）；<br>​    业务逻辑层BLL（business logic layer ）</p>
@@ -213,208 +178,50 @@
 <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>构造函数变私有，通过静态方法只创建同一个对象，本质控制该类对象的创建</p>
 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Singleton</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Singleton _instance;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="keyword">object</span> syn = <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.当把类的构造函数设置为private的以后，则该类不能在外界被new了。</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2.在当前类型中创建一个静态方法，用该静态方法来返回一个对象</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">CreateInstance</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            </span><br><span class="line">                <span class="keyword">lock</span> (syn)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (_instance==<span class="literal">null</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        _instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> _instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/22/paginginfo/">
-        动态创建分页
-      </a>
-    </h2>
-    
-    <time>
-      Jan 22, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h3 id="接着上一个demo"><a href="#接着上一个demo" class="headerlink" title="接着上一个demo"></a>接着上一个demo</h3><p>现在controller中创建一个新的action</p>
-<p>先添加两个私有字段分别表示每页条数，和整个一组多少个，为了方便演示，设置小点</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> PageSize = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> PageGroupSize = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/22/paginginfo/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/分页/">分页</a>
-      
-        <a href="/tags/asp-net-mvc/">asp.net mvc</a>
-      
-        <a href="/tags/HtmlHelper拓展/">HtmlHelper拓展</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/22/Autofac_IOC/">
-        autofac依赖注入
-      </a>
-    </h2>
-    
-    <time>
-      Jan 22, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h3 id="C-Asp-net-autofac依赖注入"><a href="#C-Asp-net-autofac依赖注入" class="headerlink" title="C# Asp.net autofac依赖注入"></a>C# Asp.net autofac依赖注入</h3><h4 id="service类创建实体，接口，具体实现类"><a href="#service类创建实体，接口，具体实现类" class="headerlink" title="service类创建实体，接口，具体实现类"></a>service类创建实体，接口，具体实现类</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Product</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">int</span> ProductID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> Description &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">decimal</span> Price &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/22/Autofac_IOC/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/autofac/">autofac</a>
-      
-        <a href="/tags/IOC/">IOC</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/22/IOC/">
-        控制反转与依赖注入
-      </a>
-    </h2>
-    
-    <time>
-      Jan 22, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/Learning/">Learning</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="一、分享Iteye的开涛对Ioc的精彩讲解"><a href="#一、分享Iteye的开涛对Ioc的精彩讲解" class="headerlink" title="一、分享Iteye的开涛对Ioc的精彩讲解"></a>一、分享Iteye的开涛对Ioc的精彩讲解</h2><p>　　首先要分享的是Iteye的开涛这位技术牛人对Spring框架的IOC的理解，写得非常通俗易懂，以下内容全部来自原文，原文地址：<a href="http://jinnianshilongnian.iteye.com/blog/1413846" target="_blank" rel="noopener">http://jinnianshilongnian.iteye.com/blog/1413846</a></p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/22/IOC/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/IOC/">IOC</a>
-      
-        <a href="/tags/DI/">DI</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/21/sanchen01/">
-        三层01
-      </a>
-    </h2>
-    
-    <time>
-      Jan 21, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="SqlHelper实现"><a href="#SqlHelper实现" class="headerlink" title="SqlHelper实现"></a>SqlHelper实现</h2><ol>
-<li><strong>往app.config中添加connectionstrings</strong></li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">connectionStrings</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">add</span> <span class="attr">name</span>=<span class="string">"constr"</span> <span class="attr">connectionString</span>=<span class="string">"data source=”LUOX78“的WIN;initial catalog=school;integrated security=true"</span>/&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">connectionStrings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>创建SqlHelper类
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/21/sanchen01/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/三层/">三层</a>
-      
-        <a href="/tags/MD5/">MD5</a>
-      
-        <a href="/tags/NOPI/">NOPI</a>
-      
-        <a href="/tags/SqlHelper/">SqlHelper</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/29/IEnumerableECT/" rel="prev" title="CSharp中的集合接口，类之间的关系">
+						 CSharp中的集合接口，类之间的关系
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/01/22/paginginfo/" rel="next" title="动态创建分页">
+						 动态创建分页
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
 </section>
 
-
-  <nav id="page-nav">
-    
-    
-    <a class="next" rel="next" href="/page/2/">
-      <span class="text">Next</span>
-      <span class="icon icon-chevron-right"></span>
-    </a>
-    
-  </nav>
-  
+</article>
+<script>
+window.subData = {
+ title: '',
+ tools: true
+}
+</script>
 
       </div>
       <aside class='l_side'>
