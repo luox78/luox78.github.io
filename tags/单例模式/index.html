@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>luox78</title>
+  <title>Tag: 单例模式 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -18,7 +18,7 @@
   <meta name="description" content="Blog for luox78">
 <meta property="og:type" content="website">
 <meta property="og:title" content="luox78">
-<meta property="og:url" content="https://luox78.github.io/page/2/index.html">
+<meta property="og:url" content="https://luox78.github.io/tags/单例模式/index.html">
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="Blog for luox78">
 <meta property="og:locale" content="zh-Hans">
@@ -146,6 +146,10 @@
     <div class='container clearfix'>
       <div class='l_main'>
         
+  <script>
+    window.subData= { title:'Tag : 单例模式'}
+  </script>
+
 <section class="post-list">
 	
     <div class='post-wrapper'>
@@ -153,13 +157,13 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/18/Entity Framework Code First to a Update model and migrate/">
-        Entity Framework02-code first修改模型，迁移数据库
+      <a href="/2018/01/25/sanchen02/">
+        三层02
       </a>
     </h2>
     
     <time>
-      Jan 18, 2018
+      Jan 25, 2018
     </time>
 		
     
@@ -169,225 +173,22 @@
 
   </section>
   <section class="article typo">
-	  <p> 本文以<code>asp.net mvc</code>自己提供的身份验证为例</p>
-<h2 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h2><p>在<code>Models\IdentityModels.cs</code> 里 <code>ApplicationUser</code>类下添加你想添加的属性，比如生日</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> DateTime BirthDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
+	  <h3 id="ado-net使用事务"><a href="#ado-net使用事务" class="headerlink" title="ado.net使用事务"></a>ado.net使用事务</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string constr = <span class="string">""</span>;</span><br><span class="line">            using (SqlConnection con = new SqlConnection(constr))</span><br><span class="line">            &#123;</span><br><span class="line">                con.Open();</span><br><span class="line">                using (SqlTransaction tran = con.BeginTransaction())</span><br><span class="line">                &#123;</span><br><span class="line">                    using (SqlCommand <span class="keyword">cmd</span><span class="bash"> = new SqlCommand(<span class="string">"sql"</span>, con))</span></span><br><span class="line"><span class="bash">                    &#123;</span></span><br><span class="line"><span class="bash">                        cmd.Transaction = tran;</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                        cmd.CommandText = <span class="string">"sql"</span>;</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.Clear();</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.AddRange(null);</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                    &#125;</span></span><br><span class="line"><span class="bash">                    //tran.Commit();无异常提交</span></span><br><span class="line"><span class="bash">                    tran.Rollback();//异常回滚</span></span><br><span class="line"><span class="bash">                &#125;</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">            &#125;</span></span><br></pre></td></tr></table></figure>
 
     
 	  <div class="readmore">
-      <a href="/2018/01/18/Entity Framework Code First to a Update model and migrate/">Read More</a>
+      <a href="/2018/01/25/sanchen02/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/Entity-Framework/">Entity Framework</a>
+        <a href="/tags/三层/">三层</a>
       
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/17/JQuery03/">
-        初始JQuery03
-      </a>
-    </h2>
-    
-    <time>
-      Jan 17, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="RadioButton-checkbox"><a href="#RadioButton-checkbox" class="headerlink" title="RadioButton|checkbox"></a>RadioButton|checkbox</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio2"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"男"</span> /&gt;男</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio1"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"女"</span> /&gt;女</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio3"</span>checked="checked" <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"未知"</span> /&gt;未知</span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/17/JQuery03/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
+        <a href="/tags/单例模式/">单例模式</a>
       
-        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/16/Entity Framework Code First to a New Database/">
-        Entity Framework01-code first建立一个新数据库
-      </a>
-    </h2>
-    
-    <time>
-      Jan 16, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="建立model"><a href="#建立model" class="headerlink" title="建立model"></a>建立model</h2><p>编写.net class建立model</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/16/Entity Framework Code First to a New Database/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/Entity-Framework/">Entity Framework</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/JQuery02/">
-        初始JQuery02
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h2><h3 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h3><p>不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$(this) 代表tr，在tr下面找td</span></span><br><span class="line">$(<span class="string">"tr"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       $(<span class="string">"td:even"</span>, $(<span class="keyword">this</span>)).css(<span class="string">"backgroundColor"</span>, <span class="string">"red"</span>);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/15/JQuery02/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/get_post/">
-        GET，POST，PUT，DELETE的区别
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/DailyLearning/">DailyLearning</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。到这里，大家应该有个大概的了解了，GET一般用于获取/查询资源信息，而POST一般用于更新资源信息。
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/15/get_post/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/request/">request</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/swagger/">
-        Swagger - 前后端分离后的契约
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/DailyLearning/">DailyLearning</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h3 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h3><p>按照现在的趋势，前后端分离几乎已经是业界对开发和部署方式所达成的一种共识。所谓的前后端分离，并不是传统行业中的按部门划分，一部分人只做前端（HTML/CSS/JavaScript等等），另一部分人只做后端（或者叫服务端），因为这种方式是不工作的：比如很多团队采取了后端的模板技术（JSP, FreeMarker, ERB等等），前端的开发和调试需要一个后台Web容器的支持，从而无法将前后端开发和部署做到真正的分离。
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/15/swagger/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/swagger/">swagger</a>
+        <a href="/tags/发邮件/">发邮件</a>
       
 	  </div>
     
@@ -397,22 +198,6 @@
   
 </section>
 
-
-  <nav id="page-nav">
-    
-    <a class="prev" rel="prev" href="/">
-      <span class="icon icon-chevron-left"></span>
-      <span class="text">Previous</span>
-    </a>
-    
-    
-    <a class="next" rel="next" href="/page/3/">
-      <span class="text">Next</span>
-      <span class="icon icon-chevron-right"></span>
-    </a>
-    
-  </nav>
-  
 
       </div>
       <aside class='l_side'>

@@ -189,26 +189,44 @@
     </div>
   
     <div class='post-wrapper'>
-      <article class="post revealno-title">
+      <article class="post reveal">
   <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/25/sanchen02/">
+        三层02
+      </a>
+    </h2>
     
     <time>
       Jan 25, 2018
     </time>
 		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
   </section>
   <section class="article typo">
 	  <h3 id="ado-net使用事务"><a href="#ado-net使用事务" class="headerlink" title="ado.net使用事务"></a>ado.net使用事务</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string constr = <span class="string">""</span>;</span><br><span class="line">            using (SqlConnection con = new SqlConnection(constr))</span><br><span class="line">            &#123;</span><br><span class="line">                con.Open();</span><br><span class="line">                using (SqlTransaction tran = con.BeginTransaction())</span><br><span class="line">                &#123;</span><br><span class="line">                    using (SqlCommand <span class="keyword">cmd</span><span class="bash"> = new SqlCommand(<span class="string">"sql"</span>, con))</span></span><br><span class="line"><span class="bash">                    &#123;</span></span><br><span class="line"><span class="bash">                        cmd.Transaction = tran;</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                        cmd.CommandText = <span class="string">"sql"</span>;</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.Clear();</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.AddRange(null);</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                    &#125;</span></span><br><span class="line"><span class="bash">                    //tran.Commit();无异常提交</span></span><br><span class="line"><span class="bash">                    tran.Rollback();//异常回滚</span></span><br><span class="line"><span class="bash">                &#125;</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">            &#125;</span></span><br></pre></td></tr></table></figure>
-<h2 id="分层"><a href="#分层" class="headerlink" title="分层"></a>分层</h2><p>理解分层：<br>逻辑分层N-Layer<br>​    逻辑上将系统中的不同功能模块、不同子系统等进行分层<br>​    好的逻辑分层可以让后续选择物理架构更灵活，选择性更大<br>​    我们学习的”三层架构”属于逻辑分层（three-layer）<br>物理分层N-Tier<br>​    物理部署时将系统的不同模块部署在不同的服务器上</p>
-<p>三层架构</p>
-<p>​    界面层UI；<br>​    数据访问层DAL（Data Access Layer）；<br>​    业务逻辑层BLL（business logic layer ）</p>
-<p>三层结构的程序不是说把项目分成DAL,BLL,WebUI三个模块就叫三层了，下面几个问题在你的项目里面：<br>⒈ UILayer里面只有少量（或者没有）SQL语句或者存储过程调用，并且这些语句保证不会修改数据?<br>⒉ 如果把UILayer拿掉，你的项目还能在Interface/API的层次上提供所有功能吗?<br>⒊ 你的DAL可以移植到其他类似环境的项目吗?<br>⒋ 三个模块，可以分别运行于不同的服务器吗?<br>如果不是所有答案都为YES，那么你的项目还不能算是严格意义上的三层程序. 三层程序有一些需要约定遵守的规则：<br>⒈ 最关键的，UI层只能作为一个外壳，不能包含任何业务逻辑(BizLogic)的处理过程<br>⒉ 设计时应该从BLL出发，而不是UI出发. BLL层在API上应该实现所有BizLogic，以面向对象的方式<br>⒊ 不管数据层是一个简单的SqlHelper也好，还是带有Mapping过的Classes也好，应该在一定的抽象程度上做到系统无关<br>⒋ 不管使用COM+(Enterprise Service），还是Remoting，还是WebService之类的远程对象技术，不管部署的时候是不是真的分别部署到不同的服务器上，最起码在设计的时候要做这样的考虑，更远的，还得考虑多台服务器通过负载均衡作集群<br>所以考虑一个项目是不是应该应用三层/多层设计时，先得考虑下是不是真的需要? 实际上大部分程序就开个WebApplication就足够了，完全没必要作的这么复杂. 而多层结构，是用于解决真正复杂的项目需求的。</p>
-<h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>构造函数变私有，通过静态方法只创建同一个对象，本质控制该类对象的创建</p>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Singleton</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Singleton _instance;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="keyword">object</span> syn = <span class="keyword">new</span> <span class="keyword">object</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.当把类的构造函数设置为private的以后，则该类不能在外界被new了。</span></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//2.在当前类型中创建一个静态方法，用该静态方法来返回一个对象</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">CreateInstance</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            </span><br><span class="line">                <span class="keyword">lock</span> (syn)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (_instance==<span class="literal">null</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        _instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> _instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
 
     
+	  <div class="readmore">
+      <a href="/2018/01/25/sanchen02/">Read More</a>
+    </div>
     
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/三层/">三层</a>
+      
+        <a href="/tags/单例模式/">单例模式</a>
+      
+        <a href="/tags/发邮件/">发邮件</a>
+      
+	  </div>
     
   </section>
 </article>
@@ -445,7 +463,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>12</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>13</div></a></li>
     
         <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>4</div></a></li>
     
@@ -464,7 +482,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/三层/" style="font-size: 14px; color: #808080">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
+        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a>
     </div>
 </div>
 
