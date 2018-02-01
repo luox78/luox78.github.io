@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>细说 ASP.NET Cache 及其高级用法 | luox78</title>
+  <meta name="description" content="Blog for luox78" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="theme-color" content=" rgb(59,95,208)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <link rel="shortcut icon" href="/images/dev.ico">
+  <link rel="alternate" href="/atom.xml" title="luox78">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="许多做过程序性能优化的人，或者关注过程程序性能的人，应该都使用过各类缓存技术。 而我今天所说的Cache是专指ASP.NET的Cache，我们可以使用HttpRuntime.Cache访问到的那个Cache，而不是其它的缓存技术。 以前我在【我心目中的Asp.net核心对象】 这篇博客中简单地提过它，今天我打算为它写篇专题博客，专门来谈谈它，因为它实在是太重要了。在这篇博客中， 我不仅要介绍它的一">
+<meta name="keywords" content="cache">
+<meta property="og:type" content="article">
+<meta property="og:title" content="细说 ASP.NET Cache 及其高级用法">
+<meta property="og:url" content="https://luox78.github.io/2018/02/01/cache/index.html">
+<meta property="og:site_name" content="luox78">
+<meta property="og:description" content="许多做过程序性能优化的人，或者关注过程程序性能的人，应该都使用过各类缓存技术。 而我今天所说的Cache是专指ASP.NET的Cache，我们可以使用HttpRuntime.Cache访问到的那个Cache，而不是其它的缓存技术。 以前我在【我心目中的Asp.net核心对象】 这篇博客中简单地提过它，今天我打算为它写篇专题博客，专门来谈谈它，因为它实在是太重要了。在这篇博客中， 我不仅要介绍它的一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/281816/2011122722172062.gif">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/281816/2011123011080183.gif">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/281816/2011123011083424.gif">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/281816/2011123011085942.gif">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/281816/2011122722184225.gif">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:image" content="https://pic002.cnblogs.com/images/2011/281816/2011122722185820.gif">
+<meta property="og:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+<meta property="og:updated_time" content="2018-02-01T12:04:03.034Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="细说 ASP.NET Cache 及其高级用法">
+<meta name="twitter:description" content="许多做过程序性能优化的人，或者关注过程程序性能的人，应该都使用过各类缓存技术。 而我今天所说的Cache是专指ASP.NET的Cache，我们可以使用HttpRuntime.Cache访问到的那个Cache，而不是其它的缓存技术。 以前我在【我心目中的Asp.net核心对象】 这篇博客中简单地提过它，今天我打算为它写篇专题博客，专门来谈谈它，因为它实在是太重要了。在这篇博客中， 我不仅要介绍它的一">
+<meta name="twitter:image" content="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+</head>
+
+<body>
+  <div id="loading">
+    <div id="loading-center">
+    <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+    </div>
+    </div>
+     
+    </div>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				luox78
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about.html'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about.html" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-cache"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/02/01/cache/">
+				 细说 ASP.NET Cache 及其高级用法
+		 </a>
+ </h2>
+ <time>
+		 Feb 1, 2018
+ </time>
+ 
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET/">ASP.NET</a>
+    </div>
+
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cache的基本用途"><span class="toc-number">1.</span> <span class="toc-text">Cache的基本用途</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cache的定义"><span class="toc-number">2.</span> <span class="toc-text">Cache的定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cache常见用法"><span class="toc-number">3.</span> <span class="toc-text">Cache常见用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cache类的特点"><span class="toc-number">4.</span> <span class="toc-text">Cache类的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存项的过期时间"><span class="toc-number">5.</span> <span class="toc-text">缓存项的过期时间</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存项的依赖关系-依赖其它缓存项"><span class="toc-number">6.</span> <span class="toc-text">缓存项的依赖关系 - 依赖其它缓存项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存项的依赖关系-文件依赖"><span class="toc-number">7.</span> <span class="toc-text">缓存项的依赖关系 - 文件依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存项的移除优先级"><span class="toc-number">8.</span> <span class="toc-text">缓存项的移除优先级</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#缓存项的移除通知"><span class="toc-number">9.</span> <span class="toc-text">缓存项的移除通知</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#巧用缓存项的移除通知-实现【延迟操作】"><span class="toc-number">10.</span> <span class="toc-text">巧用缓存项的移除通知 实现【延迟操作】</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#巧用缓存项的移除通知-实现【自动加载配置文件】"><span class="toc-number">11.</span> <span class="toc-text">巧用缓存项的移除通知 实现【自动加载配置文件】</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件监视技术的选择"><span class="toc-number">12.</span> <span class="toc-text">文件监视技术的选择</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#各种缓存方案的共存"><span class="toc-number">13.</span> <span class="toc-text">各种缓存方案的共存</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <p>许多做过程序性能优化的人，或者关注过程程序性能的人，应该都使用过各类缓存技术。 而我今天所说的Cache是专指ASP.NET的Cache，我们可以使用HttpRuntime.Cache访问到的那个Cache，而不是其它的缓存技术。</p>
+<p>以前我在<a href="http://www.cnblogs.com/fish-li/archive/2011/08/21/2148640.html" target="_blank" rel="noopener">【我心目中的Asp.net核心对象】</a> 这篇博客中简单地提过它，今天我打算为它写篇专题博客，专门来谈谈它，因为它实在是太重要了。在这篇博客中， 我不仅要介绍它的一些常见用法，还将介绍它的一些高级用法。 在上篇博客<a href="http://www.cnblogs.com/fish-li/archive/2011/12/18/2292037.html" target="_blank" rel="noopener">【在.net中读写config文件的各种方法】</a> 的结尾处，我给大家留了一个问题，今天，我将在这篇博客中给出一个我认为较为完美的答案。<a id="more"></a></p>
+<p>本文提到的【延迟操作】方法（如：延迟合并写入数据库）属于我的经验总结，希望大家能喜欢这个思路。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="Cache的基本用途"><a href="#Cache的基本用途" class="headerlink" title="Cache的基本用途"></a>Cache的基本用途</h1><p>提到Cache，不得不说说它的主要功能：改善程序性能。<br>ASP.NET是一种动态页面技术，用ASP.NET技术做出来的网页几乎都是动态的，所谓动态是指：页面的内容会随着不同的用户或者持续更新的数据， 而呈现出不同的显示结果。既然是动态的，那么这些动态的内容是从哪里来的呢？我想绝大多数网站都有自己的数据源， 程序通过访问数据源获取页面所需的数据，然后根据一些业务规则的计算处理，最后变成适合页面展示的内容。</p>
+<p>由于这种动态页面技术通常需要从数据源获取数据，并经过一些计算逻辑，最终变成一些HTML代码发给客户端显示。而这些计算过程显然也是有成本的。 这些处理成本最直接可表现为影响服务器的响应速度，尤其是当数据的处理过程变得复杂以及访问量变大时，会变得比较明显。 另一方面，有些数据并非时刻在发生变化，如果我们可以将一些变化不频繁的数据的最终计算结果（包括页面输出）缓存起来， 就可以非常明显地提升程序的性能，缓存的最常见且最重要的用途就体现在这个方面。 这也是为什么一说到性能优化时，一般都将缓存摆在第一位的原因。 我今天要说到的ASP.NET Cache也是可以实现这种缓存的一种技术。 不过，它还有其它的一些功能，有些是其它缓存技术所没有的。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="Cache的定义"><a href="#Cache的定义" class="headerlink" title="Cache的定义"></a>Cache的定义</h1><p>在介绍Cache的用法前，我们先来看一下Cache的定义：（说明：我忽略了一些意义不大的成员） <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>ASP.NET为了方便我们访问Cache，在HttpRuntime类中加了一个静态属性Cache，这样，我们就可以在任意地方使用Cache的功能。 而且，ASP.NET还给它增加了二个“快捷方式”：Page.Cache, HttpContext.Cache，我们通过这二个对象也可以访问到HttpRuntime.Cache， 注意：这三者是在访问同一个对象。Page.Cache访问了HttpContext.Cache，而HttpContext.Cache又直接访问HttpRuntime.Cache</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="Cache常见用法"><a href="#Cache常见用法" class="headerlink" title="Cache常见用法"></a>Cache常见用法</h1><p>通常，我们使用Cache时，一般只有二个操作：读，写。<br>要从Cache中获取一个缓存项，我们可以调用Cache.Get(key)方法，要将一个对象放入缓存，我们可以调用Add, Insert方法。 然而，Add, Insert方法都有许多参数，有时我们或许只是想简单地放入缓存，一切接受默认值，那么还可以调用它的默认索引器， 我们来看一下这个索引器是如何工作的：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">object</span> <span class="keyword">this</span>[string key]</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">get</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.Get(key);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">set</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>.Insert(key, value);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到：读缓存，其实是在调用Get方法，而写缓存则是在调用Insert方法的最简单的那个重载版本。</p>
+<p>注意了：Add方法也可以将一个对象放入缓存，这个方法有7个参数，而Insert也有一个签名类似的重载版本， 它们有着类似的功能：<strong>将指定项添加到 System.Web.Caching.Cache 对象，该对象具有依赖项、过期和优先级策略以及一个委托（可用于在从 Cache 移除插入项时通知应用程序）。</strong> 然而，它们有一点小的区别：<strong>当要加入的缓存项已经在Cache中存在时，Insert将会覆盖原有的缓存项目，而Add则不会修改原有缓存项。</strong></p>
+<p>也就是说：如果您希望某个缓存项目一旦放入缓存后，就不要再被修改，那么调用Add确实可以防止后来的修改操作。 而调用Insert方法，则永远会覆盖已存在项（哪怕以前是调用Add加入的）。</p>
+<p>从另一个角度看，Add的效果更像是 static readonly 的行为，而Insert的效果则像 static 的行为。<br>注意：我只是说【像】，事实上它们比一般的static成员有着更灵活的用法。</p>
+<p>由于缓存项可以让我们随时访问，看起来确实有点static成员的味道，但它们有着更高级的特性，比如： 缓存过期（绝对过期，滑动过期），缓存依赖（依赖文件，依赖其它缓存项），移除优先级，缓存移除前后的通知等等。 后面我将会分别介绍这四大类特性。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="Cache类的特点"><a href="#Cache类的特点" class="headerlink" title="Cache类的特点"></a>Cache类的特点</h1><p>Cache类有一个很难得的优点，用MSDN上的说话就是：</p>
+<p>此类型是线程安全的。</p>
+<p>为什么这是个难得的优点呢？因为在.net中，绝大多数类在实现时，都只是保证静态类型的方法是线程安全， 而不考虑实例方法是线程安全。这也算是一条基本的.NET设计规范原则。<br>对于那些类型，MSDN通常会用这样的话来描述：</p>
+<p>此类型的公共静态（在 Visual Basic 中为 Shared）成员是线程安全的。但不能保证任何实例成员是线程安全的。</p>
+<p>所以，这就意味着我们可以在任何地方读写Cache都不用担心Cache的数据在多线程环境下的数据同步问题。 多线程编程中，最复杂的问题就是数据的同步问题，而Cache已经为我们解决了这些问题。</p>
+<p>不过我要提醒您：ASP.NET本身就是一个多线程的编程模型，所有的请求是由线程池的线程来处理的。 通常，我们在多线程环境中为了解决数据同步问题，一般是采用锁来保证数据同步， 自然地，ASP.NET也不例外，它为了解决数据的同步问题，内部也是采用了锁。</p>
+<p>说到这里，或许有些人会想：既然只一个Cache的静态实例，那么这种锁会不会影响并发？<br>答案是肯定的，有锁肯定会在一定程度上影响并发，这是没有办法的事情。<br>然而，ASP.NET在实现Cache时，会根据CPU的个数创建多个缓存容器，尽量可能地减小冲突， 以下就是Cache创建的核心过程：<a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>说明：CacheInternal是个内部用的包装类，Cache的许多操作都要由它来完成。</p>
+<p>在上面的代码中，numSingleCaches的计算过程很重要，如果上面代码不容易理解，那么请看我下面的示例代码： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>程序将会输出：</p>
+<p>1,2,4,4,8,8,8,8,16,16,16,16,16,16,16,16,32,32,32,32</p>
+<p>CacheMultiple的构造函数如下：<a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>现在您应该明白了吧：CacheSingle其实是ASP.NET内部使用的缓存容器，多个CPU时，它会创建多个缓存容器。<br>在写入时，它是如何定位这些容器的呢？请继续看代码：<a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>说明：参数中的hashCode是直接调用我们传的key.GetHashCode() ，GetHashCode是由Object类定义的。</p>
+<p>所以，从这个角度看，虽然ASP.NET的Cache只有一个HttpRuntime.Cache静态成员，但它的内部却可能会包含多个缓存容器， 这种设计可以在一定程度上减少并发的影响。</p>
+<p>不管如何设计，在多线程环境下，共用一个容器，冲突是免不了的。如果您只是希望简单的缓存一些数据， 不需要Cache的许多高级特性，那么，可以考虑不用Cache 。 比如：可以创建一个Dictionary或者Hashtable的静态实例，它也可以完成一些基本的缓存工作， 不过，我要提醒您：您要自己处理多线程访问数据时的数据同步问题。<br>顺便说一句：Hashtable.Synchronized(new Hashtable())也是一个线程安全的集合，如果想简单点，可以考虑它。</p>
+<p>接下来，我们来看一下Cache的高级特性，这些都是Dictionary或者Hashtable不能完成的。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="缓存项的过期时间"><a href="#缓存项的过期时间" class="headerlink" title="缓存项的过期时间"></a>缓存项的过期时间</h1><p>ASP.NET支持二种缓存项的过期策略：绝对过期和滑动过期。<br>\1. 绝对过期，这个容易理解：就是在缓存放入Cache时，指定一个具体的时间。当时间到达指定的时间的时，缓存项自动从Cache中移除。<br>\2. 滑动过期：某些缓存项，我们可能只希望在有用户在访问时，就尽量保留在缓存中，只有当一段时间内用户不再访问该缓存项时，才移除它， 这样可以优化内存的使用，因为这种策略可以保证缓存的内容都是【很热门】的。 操作系统的内存以及磁盘的缓存不都是这样设计的吗？而这一非常有用的特性，Cache也为我们准备好了，只要在将缓存项放入缓存时， 指定一个滑动过期时间就可以实现了。</p>
+<p>以上二个选项分别对应Add, Insert方法中的DateTime absoluteExpiration, TimeSpan slidingExpiration这二个参数。<br>注意：这二个参数都是成对使用的，但不能同时指定它们为一个【有效】值，最多只能一个参数值有效。 当不使用另一个参数项时，请用Cache类定义二个static readonly字段赋值。</p>
+<p>这二个参数比较简单，我就不多说了，只说一句：如果都使用Noxxxxx这二个选项，那么缓存项就一直保存在缓存中。（或许也会被移除）</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="缓存项的依赖关系-依赖其它缓存项"><a href="#缓存项的依赖关系-依赖其它缓存项" class="headerlink" title="缓存项的依赖关系 - 依赖其它缓存项"></a>缓存项的依赖关系 - 依赖其它缓存项</h1><p>ASP.NET Cache有个很强大的功能，那就是缓存依赖。一个缓存项可以依赖于另一个缓存项。 以下示例代码创建了二个缓存项，且它们间有依赖关系。首先请看页面代码： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>页面后台代码：<a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>当运行这个示例页面时，运行结果如下图所示， 点击按钮【设置Key1的值】时，将会出现缓存项的内容（左图）。点击按钮【设置Key2的值】时，此时将获取不到缓存项的内容（右图）。</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/281816/2011122722172062.gif" alt="img"></p>
+<p>根据结果并分析代码，我们可以看出，在创建Key1的缓存项时，我们使用了这种缓存依赖关系：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CacheDependency dep = <span class="keyword">new</span> <span class="type">CacheDependency</span>(<span class="literal">null</span>, <span class="keyword">new</span> <span class="type">string</span>[] &#123; <span class="string">"key2"</span> &#125;);</span><br></pre></td></tr></table></figure>
+<p>所以，当我们更新Key2的缓存项时，Key1的缓存就失效了（不存在）。</p>
+<p>不要小看了这个示例。的确，仅看这几行示例代码，或许它们实在是没有什么意义。 那么，我就举个实际的使用场景来说明它的使用价值。</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/281816/2011123011080183.gif" alt="img"></p>
+<p>上面这幅图是我写的一个小工具。在示意图中，左下角是一个缓存表CacheTable，它由一个叫Table1BLL的类来维护。 CacheTable的数据来源于Table1，由Table1.aspx页面显示出来。 同时，ReportA, ReportB的数据也主要来源于Table1，由于Table1的访问几乎绝大多数都是读多写少，所以，我将Table1的数据缓存起来了。 而且，ReportA, ReportB这二个报表采用GDI直接画出（由报表模块生成，可认是Table1BLL的上层类），鉴于这二个报表的浏览次数较多且数据源是读多写少， 因此，这二个报表的输出结果，我也将它们缓存起来。</p>
+<p>在这个场景中，我们可以想像一下：如果希望在Table1的数据发生修改后，如何让二个报表的缓存结果失效？<br>让Table1BLL去通知那二个报表模块，还是Table1BLL去直接删除二个报表的缓存？<br>其实，不管是选择前者还是后者，当以后还需要在Table1的CacheTable上做其它的缓存实现时（可能是其它的新报表）， 那么，势必都要修改Table1BLL，那绝对是个失败的设计。 这也算是模块间耦合的所带来的恶果。</p>
+<p>幸好，ASP.NET Cache支持一种叫做缓存依赖的特性，我们只需要让Table1BLL公开它缓存CacheTable的KEY就可以了（假设KEY为 CacheTableKey）， 然后，其它的缓存结果如果要基于CacheTable，设置一下对【<strong>CacheTableKey</strong>】的依赖就可以实现这样的效果： <strong>当CacheTable更新后，被依赖的缓存结果将会自动清除。</strong>这样就彻底地解决了模块间的缓存数据依赖问题。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="缓存项的依赖关系-文件依赖"><a href="#缓存项的依赖关系-文件依赖" class="headerlink" title="缓存项的依赖关系 - 文件依赖"></a>缓存项的依赖关系 - 文件依赖</h1><p>在上篇博客<a href="http://www.cnblogs.com/fish-li/archive/2011/12/18/2292037.html" target="_blank" rel="noopener">【在.net中读写config文件的各种方法】</a>的结尾， 我给大家留了一个问题：<br><strong>我希望在用户修改了配置文件后，程序能立刻以最新的参数运行，而且不用重启网站。</strong><br>今天我就来回答这个问题，并给出所需的全部实现代码。</p>
+<p>首先，我要说明一点：上次博客的问题，虽然解决方案与Cache的文件依赖有关，但还需与缓存的移除通知配合使用才能完美的解决问题。 为了便于内容的安排，我先使用Cache的文件依赖来简单的实现一个粗糙的版本，在本文的后续部分再来完善这个实现。</p>
+<p>先来看个粗糙的版本。假如我的网站中有这样一个配置参数类型： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>我可以将它配置在这样一个XML文件中：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">RunOptions</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> </span></span><br><span class="line"><span class="tag">            <span class="attr">xmlns:xsd</span>=<span class="string">"http://www.w3.org/2001/XMLSchema"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">WebSiteUrl</span>&gt;</span>http://www.cnblogs.com/fish-li<span class="tag">&lt;/<span class="name">WebSiteUrl</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">UserName</span>&gt;</span>fish li<span class="tag">&lt;/<span class="name">UserName</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">RunOptions</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>再来一个用于显示运行参数的页面： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>下面的代码就可以实现：<strong>在XML修改后，浏览页面就能立即看到最新的参数值</strong>： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>注意：这里仍然是在使用CacheDependency，只是我们现在是给它的构造函数的第一个参数传递要依赖的文件名。</p>
+<p>在即将结束对缓存的依赖介绍之前，还要补充二点：<br>\1. CacheDependency还支持【嵌套】，即：CacheDependency的构造函数中支持传入其它的CacheDependency实例，这样可以构成一种非常复杂的树状依赖关系。<br>\2. 缓存依赖的对象还可以是SQL SERVER，具体可参考SqlCacheDependency</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="缓存项的移除优先级"><a href="#缓存项的移除优先级" class="headerlink" title="缓存项的移除优先级"></a>缓存项的移除优先级</h1><p>缓存的做法有很多种，一个静态变量也可以称为是一个缓存。一个静态的集合就是一个缓存的容器了。 我想很多人都用Dictionary，List，或者Hashtable做过缓存容器，我们可以使用它们来保存各种数据，改善程序的性能。 一般情况下，如果我们直接使用这类集合去缓存各类数据，那么，那些数据所占用的内存将不会被回收，哪怕它们的使用机会并不是很多。 当缓存数据越来越多时，它们所消耗的内存自然也会越来越多。那么，能不能在内存不充足时，释放掉一些访问不频繁的缓存项呢？</p>
+<p>这个问题也确实是个较现实的问题。虽然，使用缓存会使用程序运行更快，但是，我们数据会无限大，不可能统统缓存起来， 毕竟，内存空间是有限的。因此，我们可以使用前面所说的<strong>基于一段时间内不再访问</strong>就删除的策略来解决这个问题。 然而，在我们编码时，根本不知道我们的程序会运行在什么配置标准的计算机上，因此，根本不可能会对内存的大小作出任何假设， 此时，我们可能会希望当缓存占用过多的内存时，且当内存不够时，能自动移除一些不太重要的缓存项，这或许也比较有意义。</p>
+<p>对于这个需求，在.net framework提供了二种解决办法，一种是使用WeakReference类，另一种是使用Cache 。 不过，既然我们是在使用ASP.NET，选择Cache当然会更方便。 在Cache的Add, Insert方法的某些重载版本中，可以指定缓存项的保存优先级策略，由参数CacheItemPriority priority来传入。 其中，CacheItemPriority是一个枚举类型，它包含了如下枚举值： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>说明：当我们调用Cache的Add, Insert方法时，如果不指定CacheItemPriority选项，最终使用Normal所代表的优先级。 如果我们希望将某个可能不太重要的数据放入缓存时，可以指定优先级为Low或者BelowNormal。 如果想让缓存项在内存不足时，也不会被移除（除非到期或者依赖项有改变），可使用NotRemovable。</p>
+<p>显然，我们可以使用这个特性来控制缓存对内存压力的影响。 其它的缓存方案，如static Collection + WeakReference也较难实现这样灵活的控制。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="缓存项的移除通知"><a href="#缓存项的移除通知" class="headerlink" title="缓存项的移除通知"></a>缓存项的移除通知</h1><p>ASP.NET Cache与一些static变量所实现的缓存效果并不相同，它的缓存项是可以根据一些特定的条件失效的，那些失效的缓存将会从内存中移除。 虽然，某些移除条件并不是由我们的代码直接解发的，但ASP.NET还是提供一种方法让我们可以在缓存项在移除时，能通知我们的代码。</p>
+<p>注意哦：ASP.NET Cache支持移除【前】通知 和 移除【后】通知二种通知方式。</p>
+<p>我们可以在调用Add, Insert方法时，通过参数onRemoveCallback传递一个CacheItemRemovedCallback类型的委托，以便在移除指定的缓存项时， 能够通知我们。这个委托的定义如下： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>委托的各个参数的含义以及移除原因，在注释中都有明确的解释，我也不再重复了。<br>我想：有很多人知道Cache的Add, Insert方法有这个参数，也知道有这个委托，但是，它们有什么用呢？ 在后面的二个小节中，我将提供二个示例来演示这一强大的功能。</p>
+<p>通常，我们会以下面这种方式从Cache中获取结果：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">RunOptions <span class="keyword">options</span> = HttpRuntime.Cache[RunOptionsCacheKey] as RunOptions;</span><br><span class="line"><span class="keyword">if</span>( <span class="keyword">options</span> == <span class="keyword">null</span> ) &#123;</span><br><span class="line">    <span class="comment">// 缓存中没有，则从文件中加载</span></span><br><span class="line">    <span class="comment">// ..................................</span></span><br><span class="line"></span><br><span class="line">    HttpRuntime.Cache.Insert(RunOptionsCacheKey, <span class="keyword">options</span>, dep);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">options</span>;</span><br></pre></td></tr></table></figure>
+<p>这其实也是一个惯用法了：先尝试从缓存中获取，如果没有，则从数据源中加载，并再次放入缓存。</p>
+<p>为什么会在访问Cache时返回null呢？答案无非就是二种原因：1. 根本没有放入Cache，2. 缓存项失效被移除了。<br>这种写法本身是没有问题，可是，如果从数据源中加载数据的时间较长，情况会怎样呢？<br>显然，会影响后面第一次的访问请求。您有没有想过，如果缓存项能一直放在Cache中，那不就可以了嘛。 是的，通常来说，只要您在将一个对象放入Cache时，不指定过期时间，不指定缓存依赖，且设置为永不移除，那么对象确实会一直在Cache中， 可是，过期时间和缓存依赖也很有用哦。如何能二者兼得呢？</p>
+<p>为了解决这个问题，微软在.net framework的3.5 SP1、3.0 SP1、2.0 SP1版本中，加入了【移除前通知】功能，不过，这个方法仅受Insert支持， 随之而来的还有一个委托和一个移除原因的枚举定义： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>注意：CacheItemUpdateReason这个枚举只有二项。原因请看MSDN的解释：</p>
+<p>与 CacheItemRemovedReason 枚举不同，此枚举不包含 Removed 或 Underused 值。可更新的缓存项是不可移除的，因而绝不会被 ASP.NET 自动移除，即使需要释放内存也是如此。</p>
+<p><strong>再一次提醒：</strong>有时我们确实需要缓存失效这个特性，但是，缓存失效后会被移除。 虽然我们可以让后续的请求在获取不到缓存数据时，从数据源中加载，也可以在CacheItemRemovedCallback回调委托中， 重新加载缓存数据到Cache中，<strong>但是在数据的加载过程中，Cache并不包含我们所期望的缓存数据，如果加载时间越长，这种【空缺】效果也会越明显。</strong> 这样会影响（后续的）其它请求的访问。为了保证让我们所期望的缓存数据能够一直存在于Cahce中，且仍有失效机制，我们可以使用【移除前通知】功能。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="巧用缓存项的移除通知-实现【延迟操作】"><a href="#巧用缓存项的移除通知-实现【延迟操作】" class="headerlink" title="巧用缓存项的移除通知 实现【延迟操作】"></a>巧用缓存项的移除通知 实现【延迟操作】</h1><p>我看过一些ASP.NET的书，也看过一些人写的关于Cache方面的文章，基本上，要么是一带而过，要么只是举个毫无实际意义的示例。 可惜啊，这么强大的特性，我很少见到有人把它用起来。</p>
+<p>今天，我就举个有实际意义的示例，再现Cache的强大功能！</p>
+<p>我有这样一个页面，可以让用户调整（上下移动）某个项目分支记录的上线顺序：</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/281816/2011123011083424.gif" alt="img"></p>
+<p>当用户需要调整某条记录的位置时，页面会弹出一个对话框，要求输入一个调整原因，并会发邮件通知所有相关人员。</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/281816/2011123011085942.gif" alt="img"></p>
+<p>由于界面的限制，一次操作（点击上下键头）只是将一条记录移动一个位置，当要对某条记录执行跨越多行移动时，必须进行多次移动。 考虑到操作的方便性以及不受重复邮件的影响，程序需要实现这样一个需求： 页面只要求输入一次原因便可以对一条记录执行多次移动操作，并且不要多次发重复邮件，而且要求将最后的移动结果在邮件中发出来。</p>
+<p>这个需求很合理，毕竟谁都希望操作简单。</p>
+<p>那么如何实现这个需求呢？这里要从二个方面来实现，首先，在页面上我们应该要完成这个功能，对一条记录只弹一次对话框。 由于页面与服务端的交互全部采用Ajax方式进行（不刷新），状态可以采用JS变量来维持，所以这个功能在页面中是很容易实现。 再来看一下服务端，由于服务端并没有任何状态，当然也可以由页面把它的状态传给服务端，但是，哪次操作是最后一次呢？ 显然，这是无法知道的，最后只能修改需求，如果用户在2分钟之内不再操作某条记录时，便将最近一次操作视为最后一次操作。</p>
+<p>基于新的需求，程序必须记录用户的最近一次操作，以便在2分钟不操作后，发出一次邮件，但要包含第一次输入的原因， 还应包含最后的修改结果哦。</p>
+<p>该怎么实现这个需求呢？ 我立即就想到了ASP.NET Cache，因为我了解它，知道它能帮我完成这个功能。下面我来说说在服务端是如何实现的。</p>
+<p><strong>整个实现的思路是：</strong><br>\1. 客户端页面还是每次将记录的RowGuid, 调整方向，调整原因，这三个参数发到服务端。<br>\2. 服务端在处理完顺序调整操作后，将要发送的邮件信息Insert到Cache中，同时提供slidingExpiration和onRemoveCallback参数。<br>\3. 在CacheItemRemovedCallback回调委托中，忽略CacheItemRemovedReason.Removed的通知，如果是其它的通知，则发邮件。</p>
+<p>为了便于理解，我特意为大家准备了一个示例。整个示例由三部分组成：一个页面，一个JS文件，服务端代码。先来看页面代码： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>页面的显示效果如下：</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/281816/2011122722184225.gif" alt="img"></p>
+<p>处理页面中二个按钮的JS代码如下： </p>
+<p>说明：在服务端，我使用了我在<a href="http://www.cnblogs.com/fish-li/archive/2011/09/05/2168073.html" target="_blank" rel="noopener">【用Asp.net写自己的服务框架】</a>那篇博客中提供的服务框架， 服务端的全部代码是这个样子的：<strong>（注意代码中的注释）</strong> </p>
+<p>为了能让JavaScript能直接调用C#中的方法，还需要在web.config中加入如下配置：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">&lt;httpHandlers&gt;</span></span><br><span class="line">    &lt;<span class="built_in">add</span> path=<span class="string">"*.fish"</span> <span class="keyword">verb</span>=<span class="string">"*"</span> validate=<span class="string">"false"</span> <span class="built_in">type</span>=<span class="string">"MySimpleServiceFramework.AjaxServiceHandler"</span>/&gt;</span><br><span class="line">&lt;/httpHandlers&gt;</span><br></pre></td></tr></table></figure>
+<p>好了，示例代码就是这些。如果您有兴趣，可以在本文的结尾处下载这些示例代码，自己亲自感受一下利用Cache实现的【延迟处理】的功能。</p>
+<p>其实这种【延迟处理】的功能是很有用的，比如还有一种适用场景：有些数据记录可能需要频繁更新，如果每次更新都去写数据库，肯定会对数据库造成一定的压力， <strong>但由于这些数据也不是特别重要</strong>，因此，我们可以利用这种【延迟处理】来将写数据库的时机进行<strong>合并处理</strong>， 最终我们可以实现：将多次的写入变成一次或者少量的写入操作，我称这样效果为：<strong>延迟合并写入</strong></p>
+<p>这里我就对数据库的<strong>延迟合并写入</strong>提供一个思路：将需要写入的数据记录放入Cache，调用Insert方法并提供slidingExpiration和onRemoveCallback参数， 然后在CacheItemRemovedCallback回调委托中，模仿我前面的示例代码，将多次变成一次。不过，这样可能会有一个问题：如果数据是一直在修改，那么就一直不会写入数据库。 最后如果网站重启了，数据可能会丢失。如果担心这个问题，那么，可以在回调委托中，遇到CacheItemRemovedReason.Removed时，使用计数累加的方式，当到达一定数量后， 再写入数据库。比如：遇到10次CacheItemRemovedReason.Removed我就写一次数据库，这样就会将原来需要写10次的数据库操作变成一次了。 当然了，如果是其它移除原因，写数据库总是必要的。注意：<strong>对于金额这类敏感的数据，绝对不要使用这种方法。</strong></p>
+<p>再补充二点：<br>\1. 当CacheItemRemovedCallback回调委托被调用时，缓存项已经不在Cache中了。<br>\2. 在CacheItemRemovedCallback回调委托中，我们还可以将缓存项重新放入缓存。<br>有没有想过：这种设计可以构成一个循环？如果再结合参数slidingExpiration便可实现一个定时器的效果。</p>
+<p>关于缓存的失效时间，我要再提醒一点：通过absoluteExpiration, slidingExpiration参数所传入的时间，当缓存时间生效时，缓存对象并不会立即移除， <strong>ASP.NET Cache大约以20秒的频率去检查这些已过时的缓存项。</strong></p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="巧用缓存项的移除通知-实现【自动加载配置文件】"><a href="#巧用缓存项的移除通知-实现【自动加载配置文件】" class="headerlink" title="巧用缓存项的移除通知 实现【自动加载配置文件】"></a>巧用缓存项的移除通知 实现【自动加载配置文件】</h1><p>在本文的前部分的【文件依赖】小节中，有一个示例演示了：当配置文件更新后，页面可以显示最新的修改结果。 在那个示例中，为了简单，我直接将配置参数放在Cache中，每次使用时再从Cache中获取。 如果配置参数较多，这种做法或许也会影响性能，毕竟配置参数并不会经常修改，如果能直接访问一个静态变量就能获取到，应该会更快。 通常，我们可能会这样做： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>但是，这种做法有一缺点就是：不能在配置文件更新后，自动加载最新的配置结果。</p>
+<p>为了解决这个问题，我们可以使用Cache提供的文件依赖以及移除通知功能。 前面的示例演示了移除后通知功能，这里我再演示一下移除前通知功能。<br><strong>说明：事实上，完成这个功能，可以仍然使用移除后通知，只是移除前通知我还没有演示，然而，这里使用移除前通知并没有显示它的独有的功能。</strong></p>
+<p>下面的代码演示了在配置文件修改后，自动更新运行参数的实现方式：<strong>（注意代码中的注释）</strong> <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>改动很小，只是LoadRunOptions方法做了修改了而已，但是效果却很酷。</p>
+<p>还记得我在上篇博客<a href="http://www.cnblogs.com/fish-li/archive/2011/12/18/2292037.html" target="_blank" rel="noopener">【在.net中读写config文件的各种方法】</a>的结尾处留下来的问题吗？ 这个示例就是我的解决方案。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="文件监视技术的选择"><a href="#文件监视技术的选择" class="headerlink" title="文件监视技术的选择"></a>文件监视技术的选择</h1><p>对于文件监视，我想有人或许会想到FileSystemWatcher。正好我就来说说关于【文件监视技术】的选择问题。<br>说明，本文所有结论均为我个人的观点，仅供参考。</p>
+<p>这个组件，早在做WinForm开发时就用过了，对它也是印象比较深的。<br>它有一个包装不好的地方是：<strong>事件会重复发出。</strong>比如：一次文件的保存操作，它却引发了二次事件。<br>什么，你不信？ 正好，我还准备了一个示例程序。</p>
+<p><img src="https://pic002.cnblogs.com/images/2011/281816/2011122722185820.gif" alt="img"></p>
+<p>说明：图片中显示了发生过二次事件，但我只是在修改了文件后，做了一次保存操作而已。 本文的结尾处有我的示例程序，您可以自己去试一下。这里为了方便，还是贴出相关代码： <a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://images.cnblogs.com/cnblogs_com/fish-li/297352/r_expand.png" alt="img"></a>;)</p>
+<p>对于这个类的使用，只想说一点：会引发的事件很多，因此一定要注意过滤。以下引用MSDN的一段说明：</p>
+<p>Windows 操作系统在 FileSystemWatcher 创建的缓冲区中通知组件文件发生更改。如果短时间内有很多更改，则缓冲区可能会溢出。这将导致组件失去对目录更改的跟踪，并且它将只提供一般性通知。使用 InternalBufferSize 属性来增加缓冲区大小的开销较大，因为它来自无法换出到磁盘的非页面内存，所以应确保缓冲区大小适中（尽量小，但也要有足够大小以便不会丢失任何文件更改事件）。若要避免缓冲区溢出，请使用 NotifyFilter 和 IncludeSubdirectories 属性，以便可以筛选掉不想要的更改通知。</p>
+<p>幸运的是，ASP.NET Cache并没有使用这个组件，我们不用担心文件依赖而引发的重复操作问题。 它直接依赖于webengine.dll所提供的API，因此，建议在ASP.NET应用程序中，优先使用Cache所提供的文件依赖功能。</p>
+<p><a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html#_labelTop" target="_blank" rel="noopener">回到顶部</a></p>
+<h1 id="各种缓存方案的共存"><a href="#各种缓存方案的共存" class="headerlink" title="各种缓存方案的共存"></a>各种缓存方案的共存</h1><p>ASP.NET Cache是一种缓存技术，然而，我们在ASP.NET程序中还可以使用其它的缓存技术， 这些不同的缓存也各有各自的长处。由于ASP.NET Cache不能提供对外访问能力，因此，它不可能取代以memcached为代表的分布式缓存技术， 但它由于是不需要跨进程访问，效率也比分布式缓存的速度更快。如果将ASP.NET Cache设计成【一级缓存】， 分布式缓存设计成【二级缓存】，就像CPU的缓存那样，那么将能同时利用二者的所有的优点，实现更完美的功能以及速度。</p>
+<p>其实缓存是没有一个明确定义的技术，一个static变量也是一个缓存，一个static集合就是一个缓存容器了。 这种缓存与ASP.NET Cache相比起来，显然static变量的访问速度会更快，如果static集合不是设计得很差的话， 并发的冲突也可能会比ASP.NET Cache小，也正是因为这一点，static集合也有着广泛的使用。 然而，ASP.NET Cache的一些高级功能，如：过期时间，缓存依赖（包含文件依赖），移除通知，也是static集合不具备的。 因此，合理地同时使用它们，会让程序有着最好的性能，也同时拥有更强大的功能。</p>
+<blockquote>
+<p>原文<a href="http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html" target="_blank" rel="noopener">http://www.cnblogs.com/fish-li/archive/2011/12/27/2304063.html</a></p>
+</blockquote>
+
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/cache/">cache</a>
+		 
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/02/01/thread01/" rel="prev" title="多线程01">
+						 多线程01
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/01/29/IEnumerableECT/" rel="next" title="CSharp中的集合接口，类之间的关系">
+						 CSharp中的集合接口，类之间的关系
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
+</article>
+<script>
+window.subData = {
+ title: '细说 ASP.NET Cache 及其高级用法',
+ tools: true
+}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/avatar.jpg' />
+
+<div class='header'>luox78</div>
+<div class='content'>
+<div class='desc'>It's always not too late to learn</div>
+</div>
+</section>
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://github.com/luox78">
+            <div class='name'>Github</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://www.baidu.com">
+            <div class='name'>Baidu</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>14</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Learning/"><div class='name'>Learning</div><div class='badget'>1</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a>
+    </div>
+</div>
+
+
+
+      </aside>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/luox78" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量:
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
+  
+</footer>
+
+
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+<!--隐藏不是主页的wiget-->
+<script>
+  if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/"){
+    var foo = document.getElementsByClassName("l_side");
+    for (let index = 0; index < foo.length; index++) {
+      foo[index].style.display="none";
+    }
+  }
+  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
+  Waves.attach(".u-search-form", ['.waves-circle']);
+  Waves.init();
+
+  //添加tr显示效果
+  $(".article-entry>table tbody tr:odd").css("backgroundColor","rgb(235,236,238)");
+	$("#loading").fadeOut(1000);
+</script>
+
+
+</body>
+</html>
