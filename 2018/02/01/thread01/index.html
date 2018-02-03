@@ -23,7 +23,7 @@
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="进程线程应用程序域概念进程，线程略 应用程序域（AppDomain）：它提供安全而通用的处理单元，公共语言运行库可使用它来提供应用程序之间的隔离。您可以在具有同等隔离级别（存在于单独的进程中）的单个进程中运行几个应用程序域，而不会造成进程间调用或进程间切换等方面的额外开销。优势： 在一个应用程序中出现的错误不会影响其他应用程序。能够在不停止整个进程的情况下停止单个应用程序。应用程序域形成了托管代码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-01T12:37:18.991Z">
+<meta property="og:updated_time" content="2018-02-03T05:40:43.478Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程01">
 <meta name="twitter:description" content="进程线程应用程序域概念进程，线程略 应用程序域（AppDomain）：它提供安全而通用的处理单元，公共语言运行库可使用它来提供应用程序之间的隔离。您可以在具有同等隔离级别（存在于单独的进程中）的单个进程中运行几个应用程序域，而不会造成进程间调用或进程间切换等方面的额外开销。优势： 在一个应用程序中出现的错误不会影响其他应用程序。能够在不停止整个进程的情况下停止单个应用程序。应用程序域形成了托管代码">
@@ -172,7 +172,7 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程线程应用程序域概念"><span class="toc-number">1.</span> <span class="toc-text">进程线程应用程序域概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关进程操作"><span class="toc-number">2.</span> <span class="toc-text">相关进程操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程操作见https-luox78-github-io-tags-thread"><span class="toc-number">3.</span> <span class="toc-text">线程操作见https://luox78.github.io/tags/thread/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WinForm中跨线程访问控件"><span class="toc-number">4.</span> <span class="toc-text">WinForm中跨线程访问控件</span></a></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进程线程应用程序域概念"><span class="toc-number">1.</span> <span class="toc-text">进程线程应用程序域概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关进程操作"><span class="toc-number">2.</span> <span class="toc-text">相关进程操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线程操作见https-luox78-github-io-tags-thread"><span class="toc-number">3.</span> <span class="toc-text">线程操作见https://luox78.github.io/tags/thread/</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WinForm中跨线程访问控件"><span class="toc-number">4.</span> <span class="toc-text">WinForm中跨线程访问控件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Thread类的一些常用成员"><span class="toc-number">5.</span> <span class="toc-text">Thread类的一些常用成员</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
@@ -193,8 +193,7 @@
 <p>method可以为<code>new Action&lt;string&gt;(methodName)</code>,根据传入的参数不同设置</p>
 <p>案例：大文件拷贝显示进度条</p>
 <p>new thread来进行拷贝，控件访问使用invoke</p>
-<p>##　Thread类的一些常用成员</p>
-<p>Start()启动线程，导致操作系统将当前实例的状态更改为 ThreadState.Running<br>Abort()终止线程,请求操作系统请终止该线程。<br>Join()在继续执行之前，阻塞调用线程，直到某个线程终止为止。带参数的重载表示超时时间，如果超过超时时间，则线程不再阻塞继续执行。<br>IsAlive如果此线程已启动并且尚未正常终止或中止，则为 true；否则为 false。<br>IsBackground指示某个线程是否为后台线程。<br>ManagedThreadId获取当前托管线程的唯一标识符。<br>Priority获取或设置一个值，该值指示线程的调度优先级。<br>ThreadState获取一个值，该值包含当前线程的状态。<br>Name获取或设置线程的名称。</p>
+<h2 id="Thread类的一些常用成员"><a href="#Thread类的一些常用成员" class="headerlink" title="Thread类的一些常用成员"></a>Thread类的一些常用成员</h2><p>Start()启动线程，导致操作系统将当前实例的状态更改为 ThreadState.Running<br>Abort()终止线程,请求操作系统请终止该线程。<br>Join()在继续执行之前，阻塞调用线程，直到某个线程终止为止。带参数的重载表示超时时间，如果超过超时时间，则线程不再阻塞继续执行。<br>IsAlive如果此线程已启动并且尚未正常终止或中止，则为 true；否则为 false。<br>IsBackground指示某个线程是否为后台线程。<br>ManagedThreadId获取当前托管线程的唯一标识符。<br>Priority获取或设置一个值，该值指示线程的调度优先级。<br>ThreadState获取一个值，该值包含当前线程的状态。<br>Name获取或设置线程的名称。</p>
 
  </div>
  
@@ -221,6 +220,12 @@
 </div>
  
  <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/02/03/ASP.NET01-及其高级用法/" rel="prev" title="ASP.NET01">
+						 ASP.NET01
+				 </a>
+		 </span>
 		 
 		 
 		 <span class="art-item-right">
@@ -277,7 +282,7 @@ window.subData = {
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>1</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>2</div></a></li>
     
         <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>14</div></a></li>
     
@@ -298,7 +303,7 @@ window.subData = {
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a>
+        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a>
     </div>
 </div>
 
