@@ -153,6 +153,74 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/02/05/ASP.NET03/">
+        ASP.NET03
+      </a>
+    </h2>
+    
+    <time>
+      Feb 5, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET/">ASP.NET</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="ASP-NET简单三层步骤"><a href="#ASP-NET简单三层步骤" class="headerlink" title="ASP.NET简单三层步骤"></a>ASP.NET简单三层步骤</h2><ol>
+<li>建立好相应的文件夹</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>文件夹</th>
+<th>用处</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CURD.BLL</td>
+<td>CURD的业务逻辑层</td>
+</tr>
+<tr>
+<td>CURD.DAL</td>
+<td>CURD的数据访问层</td>
+</tr>
+<tr>
+<td>CURD.Model</td>
+<td>CURD的传输层模型（本次将数据库模型与dto混为一谈）</td>
+</tr>
+<tr>
+<td>CURD.UI</td>
+<td>CURD的网页端</td>
+</tr>
+</tbody>
+</table>
+
+    
+	  <div class="readmore">
+      <a href="/2018/02/05/ASP.NET03/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/简单三层/">简单三层</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/02/04/ASP.NET02/">
         ASP.NET02
       </a>
@@ -361,50 +429,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/25/sanchen02/">
-        三层02
-      </a>
-    </h2>
-    
-    <time>
-      Jan 25, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h3 id="ado-net使用事务"><a href="#ado-net使用事务" class="headerlink" title="ado.net使用事务"></a>ado.net使用事务</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string constr = <span class="string">""</span>;</span><br><span class="line">            using (SqlConnection con = new SqlConnection(constr))</span><br><span class="line">            &#123;</span><br><span class="line">                con.Open();</span><br><span class="line">                using (SqlTransaction tran = con.BeginTransaction())</span><br><span class="line">                &#123;</span><br><span class="line">                    using (SqlCommand <span class="keyword">cmd</span><span class="bash"> = new SqlCommand(<span class="string">"sql"</span>, con))</span></span><br><span class="line"><span class="bash">                    &#123;</span></span><br><span class="line"><span class="bash">                        cmd.Transaction = tran;</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                        cmd.CommandText = <span class="string">"sql"</span>;</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.Clear();</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.AddRange(null);</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                    &#125;</span></span><br><span class="line"><span class="bash">                    //tran.Commit();无异常提交</span></span><br><span class="line"><span class="bash">                    tran.Rollback();//异常回滚</span></span><br><span class="line"><span class="bash">                &#125;</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">            &#125;</span></span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/25/sanchen02/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/三层/">三层</a>
-      
-        <a href="/tags/单例模式/">单例模式</a>
-      
-        <a href="/tags/发邮件/">发邮件</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -447,7 +471,7 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>3</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>4</div></a></li>
     
         <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>14</div></a></li>
     
@@ -468,7 +492,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a>
+        <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a>
     </div>
 </div>
 
