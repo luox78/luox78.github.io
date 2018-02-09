@@ -15,18 +15,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人么总说事件会改变一切，当实际上你必须自己动手去改变一切——Andy Warhol 对输入请求进行路由在软件中，URI（同意资源标识符）是指通过一个位置或者名称来引用资源。 当URI通过位置来识别资源是，就叫做URL（统一定位符） 当URI通过名称标志资源时，就叫做URN（统一资源名称） ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源">
+  <meta name="description" content="人么总说事件会改变一切，当实际上你必须自己动手去改变一切——Andy Warhol 对输入请求进行路由在软件中，URI（统一资源标识符）是指通过一个位置或者名称来引用资源。 当URI通过位置来识别资源是，就叫做URL（统一定位符） 当URI通过名称标志资源时，就叫做URN（统一资源名称） ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源">
 <meta name="keywords" content="ASP.NET MVC5 编程实战">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ASP.NET MVC 控制器">
 <meta property="og:url" content="https://luox78.github.io/2018/02/07/ASP.NET MVC 控制器/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="人么总说事件会改变一切，当实际上你必须自己动手去改变一切——Andy Warhol 对输入请求进行路由在软件中，URI（同意资源标识符）是指通过一个位置或者名称来引用资源。 当URI通过位置来识别资源是，就叫做URL（统一定位符） 当URI通过名称标志资源时，就叫做URN（统一资源名称） ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源">
+<meta property="og:description" content="人么总说事件会改变一切，当实际上你必须自己动手去改变一切——Andy Warhol 对输入请求进行路由在软件中，URI（统一资源标识符）是指通过一个位置或者名称来引用资源。 当URI通过位置来识别资源是，就叫做URL（统一定位符） 当URI通过名称标志资源时，就叫做URN（统一资源名称） ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-07T16:27:31.709Z">
+<meta property="og:updated_time" content="2018-02-09T13:42:53.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ASP.NET MVC 控制器">
-<meta name="twitter:description" content="人么总说事件会改变一切，当实际上你必须自己动手去改变一切——Andy Warhol 对输入请求进行路由在软件中，URI（同意资源标识符）是指通过一个位置或者名称来引用资源。 当URI通过位置来识别资源是，就叫做URL（统一定位符） 当URI通过名称标志资源时，就叫做URN（统一资源名称） ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源">
+<meta name="twitter:description" content="人么总说事件会改变一切，当实际上你必须自己动手去改变一切——Andy Warhol 对输入请求进行路由在软件中，URI（统一资源标识符）是指通过一个位置或者名称来引用资源。 当URI通过位置来识别资源是，就叫做URL（统一定位符） 当URI通过名称标志资源时，就叫做URN（统一资源名称） ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -177,7 +177,7 @@
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
 		 <p> 人么总说事件会改变一切，当实际上你必须自己动手去改变一切——<em>Andy Warhol</em></p>
-<h2 id="对输入请求进行路由"><a href="#对输入请求进行路由" class="headerlink" title="对输入请求进行路由"></a>对输入请求进行路由</h2><p>在软件中，URI（同意资源标识符）是指通过一个位置或者名称来引用资源。</p>
+<h2 id="对输入请求进行路由"><a href="#对输入请求进行路由" class="headerlink" title="对输入请求进行路由"></a>对输入请求进行路由</h2><p>在软件中，URI（统一资源标识符）是指通过一个位置或者名称来引用资源。</p>
 <p>当URI通过位置来识别资源是，就叫做URL（统一定位符）</p>
 <p>当URI通过名称标志资源时，就叫做URN（统一资源名称）</p>
 <p>ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源<a id="more"></a></p>
@@ -186,7 +186,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> _0101</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HomeController</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">Test</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"hello world"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这个简单的例子模拟了ASP.NET MVC使用的基本机制，处理请求的组件是控制器类，通过request的url映射到专门的控制器类进行处理</p>
 <h3 id="应用程序路由"><a href="#应用程序路由" class="headerlink" title="应用程序路由"></a>应用程序路由</h3><h4 id="url模式与路由"><a href="#url模式与路由" class="headerlink" title="url模式与路由"></a>url模式与路由</h4><p>路由：代表URL绝对路径的模式匹配字符串，即没有协议，IP地址，端口号的url字符串</p>
-<p>比如：<a href="http://localhost:3462/home/test=》/home/test" target="_blank" rel="noopener">http://localhost:3462/home/test=》/home/test</a></p>
+<p>比如：<a href="http://localhost:3462/home/test" target="_blank" rel="noopener">http://localhost:3462/home/test</a>    ==&gt;    /home/test</p>
 <p>路由可以是常量也可以是占位符，mvc系统默认的路由是{controller}/{action}/{id}，它可以匹配如Home/Index/1子类的路由</p>
 <h4 id="定义应用程序路由"><a href="#定义应用程序路由" class="headerlink" title="定义应用程序路由"></a>定义应用程序路由</h4><p>mvc中路由是在<code>Global.asax</code>下被注册</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MvcApplication</span> :</span> System.Web.HttpApplication</span><br><span class="line">   &#123;</span><br><span class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Application_Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">       </span>&#123;</span><br><span class="line">           RouteConfig.RegisterRoutes(RouteTable.Routes);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
@@ -291,6 +291,12 @@
  
  <div class="art-item-footer">
 		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/02/09/ASP.NET05/" rel="prev" title="ASP.NET05">
+						 ASP.NET05
+				 </a>
+		 </span>
+		 
 		 
 		 <span class="art-item-right">
 				 next：<a href="/2018/02/07/C#高效编程摘记/" rel="next" title="C#高效编程摘记">
@@ -338,7 +344,7 @@ window.subData = {
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>5</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>6</div></a></li>
     
         <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>1</div></a></li>
     
@@ -361,7 +367,7 @@ window.subData = {
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 14px; color: #808080">ASP.NET MVC5 编程实战</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 14px; color: #808080">ASP.NET MVC5 编程实战</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a>
     </div>
 </div>
 

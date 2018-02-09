@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>ASP.NET05 | luox78</title>
+  <meta name="description" content="Blog for luox78" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="theme-color" content=" rgb(59,95,208)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <link rel="shortcut icon" href="/images/dev.ico">
+  <link rel="alternate" href="/atom.xml" title="luox78">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="创建缩略图1234567891011121314151617var file = context.Request.Files[0]; //从上传图片创建大图 using (var bigImage = Image.FromStream(file.InputStream))        &amp;#123;            //等比创建小图            using (var smallIm">
+<meta name="keywords" content="缩略图,viewstate,深入理解aspx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASP.NET05">
+<meta property="og:url" content="https://luox78.github.io/2018/02/09/ASP.NET05/index.html">
+<meta property="og:site_name" content="luox78">
+<meta property="og:description" content="创建缩略图1234567891011121314151617var file = context.Request.Files[0]; //从上传图片创建大图 using (var bigImage = Image.FromStream(file.InputStream))        &amp;#123;            //等比创建小图            using (var smallIm">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luox78.github.io/images/cs_dll.png">
+<meta property="og:image" content="https://luox78.github.io/images/aspx_dll.png">
+<meta property="og:image" content="https://luox78.github.io/images/IHttpHandler.png">
+<meta property="og:updated_time" content="2018-02-09T15:53:51.222Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASP.NET05">
+<meta name="twitter:description" content="创建缩略图1234567891011121314151617var file = context.Request.Files[0]; //从上传图片创建大图 using (var bigImage = Image.FromStream(file.InputStream))        &amp;#123;            //等比创建小图            using (var smallIm">
+<meta name="twitter:image" content="https://luox78.github.io/images/cs_dll.png">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+</head>
+
+<body>
+  <div id="loading">
+    <div id="loading-center">
+    <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+    </div>
+    </div>
+     
+    </div>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				luox78
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about.html'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about.html" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ASP.NET05"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/02/09/ASP.NET05/">
+				 ASP.NET05
+		 </a>
+ </h2>
+ <time>
+		 Feb 9, 2018
+ </time>
+ 
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET/">ASP.NET</a>
+    </div>
+
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建缩略图"><span class="toc-number">1.</span> <span class="toc-text">创建缩略图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebForm介绍"><span class="toc-number">2.</span> <span class="toc-text">WebForm介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#深入理解aspx"><span class="toc-number">2.1.</span> <span class="toc-text">深入理解aspx</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IsPostBack"><span class="toc-number">3.</span> <span class="toc-text">IsPostBack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#验证"><span class="toc-number">3.1.</span> <span class="toc-text">验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何实现的"><span class="toc-number">3.2.</span> <span class="toc-text">如何实现的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">3.3.</span> <span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewState"><span class="toc-number">4.</span> <span class="toc-text">ViewState</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h2 id="创建缩略图"><a href="#创建缩略图" class="headerlink" title="创建缩略图"></a>创建缩略图</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = context.Request.Files[<span class="number">0</span>]; </span><br><span class="line"><span class="comment">//从上传图片创建大图</span></span><br><span class="line"> <span class="keyword">using</span> (<span class="keyword">var</span> bigImage = Image.FromStream(file.InputStream))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//等比创建小图</span></span><br><span class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> smallImage = <span class="keyword">new</span> <span class="type">Bitmap</span>(<span class="number">200</span>, <span class="number">200</span> * bigImage.Height / bigImage.Width))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//创建画布将大图画入小图</span></span><br><span class="line">                <span class="keyword">using</span> (<span class="keyword">var</span> graphics = Graphics.FromImage(smallImage))</span><br><span class="line">                &#123;</span><br><span class="line">                    graphics.DrawImage(bigImage, <span class="number">0</span>, <span class="number">0</span>, smallImage.Width, smallImage.Height);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//保存</span></span><br><span class="line">                bigImage.Save(context.Server.MapPath(Guid.NewGuid() + <span class="string">"_big.jpg"</span>));</span><br><span class="line">                smallImage.Save(context.Server.MapPath(Guid.NewGuid() + <span class="string">"_small.jpg"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="WebForm介绍"><a href="#WebForm介绍" class="headerlink" title="WebForm介绍"></a>WebForm介绍</h2><p>WebForm分为两个文件aspx和aspx.cs</p>
+<p>aspx是页面模板，是页面描述文件，就是html+js+css的内容，和aspx.cs结合的更好，不用像一般处理程序那样程序员自己去输出HTML字符串或读取填充模板，控件都是定义在aspx中，内联的JavaScript、CSS也是写在aspx中的</p>
+<p>前台页面上的@Page指令集。</p>
+<p>服务端的C#代码是定义在aspx.cs中。aspx控制页面长相，cs控制程序逻辑，这种“前aspx后cs”的方式就被称为CodeBehind(代码后置)。</p>
+<p>强调：后台页面可以把Page_Load看成是WinForm里的Load事件(“最先运行”)。</p>
+<p>1.直接在后台通过Response.Write(“内容”);</p>
+<ul>
+<li>aspx中也可以访问cs中定义的非私有的成员</li>
+<li>缺点：全都输出在页面的最上面。</li>
+</ul>
+<p>2.使用&lt;%%&gt;在前台页面指定输出。</p>
+<ul>
+<li>可以编写复杂的C#代码， for等所有C#代码都可以写在aspx中</li>
+</ul>
+<p>如：&lt;%=UserName %&gt;&lt;%=SayHello(); %&gt;&lt;%if (UserName == “aaa”) { UserName = “bbb”; } %&gt;    </p>
+<h3 id="深入理解aspx"><a href="#深入理解aspx" class="headerlink" title="深入理解aspx"></a>深入理解aspx</h3><p>创建一个webform，对应的aspx.cs：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> partial <span class="class"><span class="keyword">class</span> <span class="title">WebForm1</span> :</span> System.Web.UI.Page</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span><span class="params">(object sender, EventArgs e)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到它集成System.Web.UI.Page，转到page元数据看到</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public class<span class="built_in"> Page </span>: TemplateControl, IHttpHandler</span><br></pre></td></tr></table></figure>
+<p><strong>Page继承自IHttpHandler</strong>，可以得出其实Page就是一个进一步封装的类，这时候我向class WebForm1中添加protected字段</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">int</span> _num = <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>aspx页面添加一句</p>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby">_num </span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>运行可以看到10出现在html页面，为什么aspx可以访问cs里面的内容呢，看aspx头部有一个<code>Inherits=&quot;_43.WebForm1&quot;</code>从字面上看，它是再说继承自_43.WebForm1，事实上aspx编译之后确实如此，</p>
+<p>为了证明这一点，我向aspx里添加一句并拖一个控件进去，为了获取页面编译完成后dll的位置</p>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">asp:Button</span> <span class="attr">ID</span>=<span class="string">"Button1"</span> <span class="attr">runat</span>=<span class="string">"server"</span> <span class="attr">Text</span>=<span class="string">"Button"</span> /&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby">System.Reflection.Assembly.GetExecutingAssembly().Location </span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>同时往pageload中添加</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Response.Write(System.Reflection.Assembly.GetExecutingAssembly().Location);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>html显示的是</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:<span class="symbol">\U</span>sers<span class="symbol">\l</span>uox78<span class="symbol">\A</span>ppData<span class="symbol">\L</span>ocal<span class="symbol">\T</span>emp<span class="symbol">\T</span>emporary<span class="symbol">\A</span>SP.NET<span class="symbol">\F</span>iles<span class="symbol">\r</span>oot<span class="symbol">\2</span>d000352<span class="symbol">\6</span>7fdd243<span class="symbol">\a</span>ssembly<span class="symbol">\d</span>l3<span class="symbol">\f</span>d7cca4a<span class="symbol">\c</span>f2ad37e_aea1d301<span class="symbol">\4</span>3.dll</span><br><span class="line">10  Button C:<span class="symbol">\U</span>sers<span class="symbol">\l</span>uox78<span class="symbol">\A</span>ppData<span class="symbol">\L</span>ocal<span class="symbol">\T</span>emp<span class="symbol">\T</span>emporary<span class="symbol">\A</span>SP.NET<span class="symbol">\F</span>iles<span class="symbol">\r</span>oot<span class="symbol">\2</span>d000352<span class="symbol">\6</span>7fdd243<span class="symbol">\A</span>pp_Web_amvk3cjo.dll</span><br></pre></td></tr></table></figure>
+<p>分别用reflector打开，看到<strong>cs派生类里是ASP.webform1_aspx，而page页面程序集ASP命名空间下就是webform1_aspx</strong>，所以aspx页面可以访问cs里面的字段可以解释了，这时候打开ASP.webform1_aspx里面有一个方法</p>
+<p><img src="https://luox78.github.io/images/cs_dll.png" alt="https://luox78.github.io/images/cs_dll.png"></p>
+<p><img src="https://luox78.github.io/images/aspx_dll.png" alt="https://luox78.github.io/images/aspx_dll.png"></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[<span class="meta">DebuggerNonUserCode</span>]</span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">FrameworkInitialize</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">base</span>.FrameworkInitialize();</span><br><span class="line">    <span class="keyword">this</span>.__BuildControlTree(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">base</span>.AddWrappedFileDependencies(__fileDependencies);</span><br><span class="line">    <span class="keyword">base</span>.Request.ValidateInput();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>this.__BuildControlTree(this);这句代表aspx里面的所有空间都被编译成了控件树，点开</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[DebuggerNonUserCode]</span><br><span class="line"><span class="keyword">private</span> void __BuildControlTree(webform1_aspx __ctrl)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">this</span>.InitializeCulture();</span><br><span class="line">    LiteralControl control = <span class="keyword">this</span>.__BuildControl__control2();</span><br><span class="line">    IParserAccessor accessor = __ctrl;</span><br><span class="line">    accessor.AddParsedSubObject(control);</span><br><span class="line">    HtmlHead head = <span class="keyword">this</span>.__BuildControl__control3();</span><br><span class="line">    accessor.AddParsedSubObject(head);</span><br><span class="line">    LiteralControl control2 = <span class="keyword">this</span>.__BuildControl__control6();</span><br><span class="line">    accessor.AddParsedSubObject(control2);</span><br><span class="line">    HtmlForm form = <span class="keyword">this</span>.__BuildControlform1();</span><br><span class="line">    accessor.AddParsedSubObject(form);</span><br><span class="line">    LiteralControl control3 = <span class="keyword">this</span>.__BuildControl__control7();</span><br><span class="line">    accessor.AddParsedSubObject(control3);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>貌似里面创建很多html元素对象，这里我们就知道，所有的aspx页面里面的东西都会被编译成对应的对象，这时候回顾一下aspx页面body里面的内容</p>
+<figure class="highlight erb"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"form1"</span> <span class="attr">runat</span>=<span class="string">"server"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby">_num </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml"> </span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">asp:Button</span> <span class="attr">ID</span>=<span class="string">"Button1"</span> <span class="attr">runat</span>=<span class="string">"server"</span> <span class="attr">Text</span>=<span class="string">"Button"</span> /&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby">System.Reflection.Assembly.GetExecutingAssembly().Location </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>显示body，然后form，form里面有button，<code>__BuildControlTree</code>，里面也印证了这一点，我们打开创建form的方法</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[DebuggerNonUserCode]</span><br><span class="line">private HtmlForm __BuildControlform1()</span><br><span class="line">&#123;</span><br><span class="line">    HtmlForm form = new HtmlForm()<span class="comment">;</span></span><br><span class="line">    <span class="keyword">base.form1 </span>= form<span class="comment">;</span></span><br><span class="line">    form.ID = <span class="string">"form1"</span><span class="comment">;</span></span><br><span class="line">    <span class="keyword">Button </span><span class="keyword">button </span>= this.__BuildControlButton1()<span class="comment">;</span></span><br><span class="line">    IParserAccessor accessor = form<span class="comment">;</span></span><br><span class="line">    accessor.<span class="keyword">AddParsedSubObject(button);</span></span><br><span class="line"><span class="keyword"> </span>   form.SetRenderMethodDelegate(new RenderMethod(this.__Renderform1))<span class="comment">;</span></span><br><span class="line">    object[] parameters = new object[<span class="number">5</span>]<span class="comment">;</span></span><br><span class="line">    parameters[<span class="number">0</span>] = form<span class="comment">;</span></span><br><span class="line">    parameters[<span class="number">2</span>] = <span class="number">0x131</span><span class="comment">;</span></span><br><span class="line">    parameters[<span class="number">3</span>] = <span class="number">0x20</span><span class="comment">;</span></span><br><span class="line">    parameters[<span class="number">4</span>] = false<span class="comment">;</span></span><br><span class="line">    this.__PageInspector_SetTraceData(parameters)<span class="comment">;</span></span><br><span class="line">    return form<span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>里面设置了form的一些属性同时创建了button，此时我们往html添加新的代码</p>
+<figure class="highlight mojolicious"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">%</span></span></span><span class="perl"> <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span></span><br><span class="line"><span class="perl">        &#123;</span><span class="xml">%&gt;</span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>nihao<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">%</span></span></span><span class="perl"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"form1"</span> <span class="attr">runat</span>=<span class="string">"server"</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">%=</span></span></span><span class="perl">_num </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">asp:Button</span> <span class="attr">ID</span>=<span class="string">"Button1"</span> <span class="attr">runat</span>=<span class="string">"server"</span> <span class="attr">Text</span>=<span class="string">"Button"</span> /&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">%=</span></span></span><span class="perl">System.Reflection.Assembly.GetExecutingAssembly().Location </span><span class="xml"><span class="tag">%&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>添加了一个循环以便我们查看dll里面如何处理C#代码的，编译之后发现__BuildControlTree里面多了一句</p>
+<pre><code>__ctrl.SetRenderMethodDelegate(new RenderMethod(this.__Render__control1));
+</code></pre><p>点开 _Render_control1</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> void __Render__control1(<span class="type">HtmlTextWriter</span> __w, <span class="type">Control</span> parameterContainer)</span><br><span class="line">&#123;</span><br><span class="line">    int num2;</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">parameters</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w, <span class="string">"/WebForm1.aspx"</span>, <span class="number">160</span>, <span class="number">0x44</span>, <span class="literal">true</span> &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_BeginRenderTracing(parameters);</span><br><span class="line">    __w.<span class="type">Write</span>(<span class="string">"\r\n\r\n&lt;!DOCTYPE html&gt;\r\n\r\n&lt;html xmlns=\"http://www.w3.org/1999/xhtml\"&gt;\r\n"</span>);</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">objArray2</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_EndRenderTracing(objArray2);</span><br><span class="line">    parameterContainer.<span class="type">Controls</span>[<span class="number">0</span>].<span class="type">RenderControl</span>(__w);</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">objArray3</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w, <span class="string">"/WebForm1.aspx"</span>, <span class="number">0x162</span>, <span class="number">14</span>, <span class="literal">true</span> &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_BeginRenderTracing(objArray3);</span><br><span class="line">    __w.<span class="type">Write</span>(<span class="string">"\r\n&lt;body&gt;\r\n    "</span>);</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">objArray4</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_EndRenderTracing(objArray4);</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">objArray5</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w, <span class="string">"/WebForm1.aspx"</span>, <span class="number">0x170</span>, <span class="number">0x2c</span>, <span class="literal">false</span> &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_BeginRenderTracing(objArray5);</span><br><span class="line">    <span class="keyword">for</span> (int i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i = num2 + <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="class"><span class="keyword">object</span>[] <span class="title">objArray6</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w &#125;;</span><br><span class="line">        <span class="keyword">this</span>.__PageInspector_EndRenderTracing(objArray6);</span><br><span class="line">        <span class="class"><span class="keyword">object</span>[] <span class="title">objArray7</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w, <span class="string">"/WebForm1.aspx"</span>, <span class="number">0x19c</span>, <span class="number">0x1a</span>, <span class="literal">true</span> &#125;;</span><br><span class="line">        <span class="keyword">this</span>.__PageInspector_BeginRenderTracing(objArray7);</span><br><span class="line">        __w.<span class="type">Write</span>(<span class="string">"\r\n    &lt;h1&gt;nihao&lt;/h1&gt;\r\n    "</span>);</span><br><span class="line">        <span class="class"><span class="keyword">object</span>[] <span class="title">objArray8</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w &#125;;</span><br><span class="line">        <span class="keyword">this</span>.__PageInspector_EndRenderTracing(objArray8);</span><br><span class="line">        <span class="class"><span class="keyword">object</span>[] <span class="title">objArray9</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w, <span class="string">"/WebForm1.aspx"</span>, <span class="number">0x1b6</span>, <span class="number">7</span>, <span class="literal">false</span> &#125;;</span><br><span class="line">        <span class="keyword">this</span>.__PageInspector_BeginRenderTracing(objArray9);</span><br><span class="line">        num2 = i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">objArray10</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_EndRenderTracing(objArray10);</span><br><span class="line">    parameterContainer.<span class="type">Controls</span>[<span class="number">1</span>].<span class="type">RenderControl</span>(__w);</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">objArray11</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w, <span class="string">"/WebForm1.aspx"</span>, <span class="number">0x2c1</span>, <span class="number">20</span>, <span class="literal">true</span> &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_BeginRenderTracing(objArray11);</span><br><span class="line">    __w.<span class="type">Write</span>(<span class="string">"\r\n&lt;/body&gt;\r\n&lt;/html&gt;\r\n"</span>);</span><br><span class="line">    <span class="class"><span class="keyword">object</span>[] <span class="title">objArray12</span> </span>= <span class="keyword">new</span> <span class="class"><span class="keyword">object</span>[] </span>&#123; __w &#125;;</span><br><span class="line">    <span class="keyword">this</span>.__PageInspector_EndRenderTracing(objArray12);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到for循环直接在里面，<strong>原来C#是直接和html元素一起编译成方法，最后转换成元素对象的</strong>，这时候或许你会有疑问cs里面是如何访问这些控件的，查看cs的dll可以看到</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">WebForm1</span> : <span class="title">Page</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">protected</span> <span class="keyword">int</span> _num = <span class="number">10</span>;</span><br><span class="line">       <span class="keyword">protected</span> Button Button1;</span><br><span class="line">       <span class="keyword">protected</span> HtmlForm form1;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function">       </span>&#123;</span><br><span class="line">           <span class="keyword">base</span>.Response.Write(Assembly.GetExecutingAssembly().Location);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>一旦你在aspx中创建了控件，cs里面就会有对应的protected字段（在designer.cs中），cs里对控件属性的修改继承自他的aspx的那个类会进行相应的更改，并将它反应到最终生成的页面上</p>
+<p><strong>总结：</strong></p>
+<p><img src="https://luox78.github.io/images/IHttpHandler.png" alt="https://luox78.github.io/images/IHttpHandler.png"></p>
+<h2 id="IsPostBack"><a href="#IsPostBack" class="headerlink" title="IsPostBack"></a>IsPostBack</h2><p>用于判断是第一次get页面还是post回发</p>
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>cs里pageload时</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Page_Load</span>(<span class="params"><span class="keyword">object</span> sender, EventArgs e</span>)</span></span><br><span class="line"><span class="function">       </span>&#123;</span><br><span class="line">           Response.Write(<span class="keyword">this</span>.IsPostBack);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>aspx中（aspx中form里面的button控件只会生成submit不会生成button）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"form1"</span> <span class="attr">runat</span>=<span class="string">"server"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">asp:Button</span> <span class="attr">ID</span>=<span class="string">"Button1"</span> <span class="attr">runat</span>=<span class="string">"server"</span> <span class="attr">Text</span>=<span class="string">"Button"</span> /&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>浏览会看到只有第一次get是false，回发的都是true</p>
+<h3 id="如何实现的"><a href="#如何实现的" class="headerlink" title="如何实现的"></a>如何实现的</h3><p>既然服务器控件生成的是html form那我自己写一个</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">form</span> id=<span class="string">"form1"</span> method=<span class="string">"post"</span> action=<span class="string">"WebForm3.aspx"</span>&gt;</span><br><span class="line">       &lt;<span class="keyword">input</span> <span class="keyword">type</span>=<span class="string">"submit"</span> name=<span class="string">"name"</span> value=<span class="string">"tijiao"</span> /&gt;</span><br><span class="line">   &lt;/<span class="keyword">form</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>cs里面跟上面一样，这时候运行会发现永远都是false，浏览器查看source我们就可以看出问题，runat serve的html里面多出了很多隐藏域，先将结果 IsPostBack是通过form中的隐藏域提交给服务器，如果没有接受到，那就是第一次请求，收到了肯定是回发。同时引出我们的下一部分viewstate</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>1.IsPostBack用来判断表单是否是回发。（不是第一次请求），是点击表单的提交按钮回发过来的。是否是回发与get请求还是Post请求无关。但是一般情况下回发都是Post请求。一般Get请求都是第一次加载。</p>
+<p>2.只有当使用服务器端表单<code>&lt;form runat=&quot;server&quot;&gt;</code>IsPostBack才可以使用。如果使用客户端表单，则IsPostBack永远都是False.因为当使用服务器端表单的时候会自动生成一个隐藏域,才该隐藏域中，服务器写入了一些内容，通过这些内容就可以判断是否是回发。如果使用的是普通html表单，则需要自己写代码来判断是否是回发。</p>
+<p>3.IsPostBack的使用方式，为什么要使用IsPostBack</p>
+<p>4.<strong>用处</strong>：使用IsPostBack可以知道是不是第一次请求，通过viewstate可以将第一次加载的数据停留在页面中减少数据加载的次数。避免了每次点击按钮回发都重新加载一次数据。</p>
+<h2 id="ViewState"><a href="#ViewState" class="headerlink" title="ViewState"></a>ViewState</h2><p>viewstate（视图状态），顾名思义就是view的aspx空间的值状态</p>
+<p>pageload中添加</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ViewState[<span class="string">"key"</span>] = <span class="string">"nihao"</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>生成html里面有一个隐藏域为viewstate</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">type</span>=<span class="string">"hidden"</span> <span class="attribute">name</span>=<span class="string">"__VIEWSTATE"</span> <span class="attribute">id</span>=<span class="string">"__VIEWSTATE"</span> <span class="attribute">value</span>=<span class="string">"P2yIH8jxqJKNyRGQn/BloDXHiGVvbfXBTzveFGTePfqct88mOSTSDiAJmfi3kLBaX+RRjSBf0RgEBmgfYTh1nQOXlqCGoRY2ccoHhM5M+buITfYkgxbsmXLRjBckuKji"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>value里面的值中就包含了nihao，下次解析的时候，我们不需要再次向页面传值也会显示，cs中的事件里面的改值就是通过这样实现的</p>
+<p><strong>缺点：</strong> 加大网站的流量、降低访问速度、机密数据放到表单中会有数据欺骗等安全性问题。</p>
+<p><strong>禁用ViewState</strong> ：在asp顶部添加EnableViewState=”false”</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@<span class="built_in"> Page </span><span class="attribute">Language</span>=<span class="string">"C#"</span> <span class="attribute">AutoEventWireup</span>=<span class="string">"true"</span> <span class="attribute">CodeBehind</span>=<span class="string">"WebForm2.aspx.cs"</span> <span class="attribute">Inherits</span>=<span class="string">"_43.WebForm2"</span> <span class="attribute">EnableViewState</span>=<span class="string">"false"</span>%&gt;</span><br></pre></td></tr></table></figure>
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/缩略图/">缩略图</a>
+		 
+		 <a href="/tags/viewstate/">viewstate</a>
+		 
+		 <a href="/tags/深入理解aspx/">深入理解aspx</a>
+		 
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/02/07/ASP.NET MVC 控制器/" rel="next" title="ASP.NET MVC 控制器">
+						 ASP.NET MVC 控制器
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
+</article>
+<script>
+window.subData = {
+ title: 'ASP.NET05',
+ tools: true
+}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/avatar.jpg' />
+
+<div class='header'>luox78</div>
+<div class='content'>
+<div class='desc'>It's always not too late to learn</div>
+</div>
+</section>
+
+  <section class='m_widget'>
+        <div class='header'>田馥甄-你就不要想起我</div>
+<div>
+    <audio src="https://luox78.github.io/images/田馥甄-你就不要想起我.mp3" controls="controls" style="width:250px;">
+        田馥甄-你就不要想起我
+    </audio>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>6</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>15</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>4</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Learning/"><div class='name'>Learning</div><div class='badget'>1</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 14px; color: #808080">ASP.NET MVC5 编程实战</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a>
+    </div>
+</div>
+
+
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://github.com/luox78">
+            <div class='name'>Github</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://www.baidu.com">
+            <div class='name'>Baidu</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+      </aside>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/luox78" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量:
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
+  
+</footer>
+
+
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+<!--隐藏不是主页的wiget-->
+<script>
+  if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/" && document.location.href !== "http://localhost:4000/"){
+    var foo = document.getElementsByClassName("l_side");
+    for (let index = 0; index < foo.length; index++) {
+      foo[index].style.display="none";
+    }
+  }
+  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
+  Waves.attach(".u-search-form", ['.waves-circle']);
+  Waves.init();
+
+  //添加tr显示效果
+  $(".article-entry>table tbody tr:odd").css("backgroundColor","rgb(235,236,238)");
+	$("#loading").fadeOut(1000);
+</script>
+
+
+</body>
+</html>
