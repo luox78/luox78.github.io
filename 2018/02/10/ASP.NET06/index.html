@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>ASP.NET06 | luox78</title>
+  <meta name="description" content="Blog for luox78" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="theme-color" content=" rgb(59,95,208)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <link rel="shortcut icon" href="/images/dev.ico">
+  <link rel="alternate" href="/atom.xml" title="luox78">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="httprequest一些成员 Request.UrlReferrer获取请求该资源的原地址 用处：判断host是否为本站 123456789101112public void ProcessRequest(HttpContext context)        &amp;#123;            var uri = context.Request.UrlReferrer;">
+<meta name="keywords" content="HttpRequest,HttpResponse,HttpUtility">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASP.NET06">
+<meta property="og:url" content="https://luox78.github.io/2018/02/10/ASP.NET06/index.html">
+<meta property="og:site_name" content="luox78">
+<meta property="og:description" content="httprequest一些成员 Request.UrlReferrer获取请求该资源的原地址 用处：判断host是否为本站 123456789101112public void ProcessRequest(HttpContext context)        &amp;#123;            var uri = context.Request.UrlReferrer;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-12T13:35:02.465Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASP.NET06">
+<meta name="twitter:description" content="httprequest一些成员 Request.UrlReferrer获取请求该资源的原地址 用处：判断host是否为本站 123456789101112public void ProcessRequest(HttpContext context)        &amp;#123;            var uri = context.Request.UrlReferrer;">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+</head>
+
+<body>
+  <div id="loading">
+    <div id="loading-center">
+    <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+    </div>
+    </div>
+     
+    </div>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				luox78
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about.html'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about.html" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ASP.NET06"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/02/10/ASP.NET06/">
+				 ASP.NET06
+		 </a>
+ </h2>
+ <time>
+		 Feb 10, 2018
+ </time>
+ 
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET/">ASP.NET</a>
+    </div>
+
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#httprequest一些成员"><span class="toc-number">1.</span> <span class="toc-text">httprequest一些成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#httpresponse一些成员"><span class="toc-number">2.</span> <span class="toc-text">httpresponse一些成员</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Server属性-Type-HttpServerUtility"><span class="toc-number">3.</span> <span class="toc-text">Server属性(Type HttpServerUtility)</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <h2 id="httprequest一些成员"><a href="#httprequest一些成员" class="headerlink" title="httprequest一些成员"></a>httprequest一些成员</h2><ul>
+<li><p><code>Request.UrlReferrer</code>获取请求该资源的原地址</p>
+<p>用处：判断host是否为本站</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public void ProcessRequest(HttpContext <span class="built_in">context</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            var uri = <span class="built_in">context</span>.Request.UrlReferrer<span class="comment">;</span></span><br><span class="line">            if (uri == null <span class="title">||</span> uri.Host != <span class="string">"localhost"</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">context</span>.Response.ContentType = <span class="string">"text/plain"</span><span class="comment">;</span></span><br><span class="line">                <span class="built_in">context</span>.Response.Write(<span class="string">"forbid"</span>)<span class="comment">;</span></span><br><span class="line">                <span class="built_in">context</span>.Response<span class="meta">.End</span>()<span class="comment">;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">context</span>.Response.ContentType = <span class="string">"image/jpg"</span><span class="comment">;</span></span><br><span class="line">            <span class="built_in">context</span>.Response.WriteFile(<span class="string">"536896a693f71.jpg"</span>)<span class="comment">;</span></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>只有在img请求和localhost下才能访问</p>
+</li>
+<li><p><code>Request.UserHostAddress</code>获得访问者的IP地址<a id="more"></a></p>
+</li>
+</ul>
+<ul>
+<li><code>context.Request.MapPath()</code>将虚拟路径转换为磁盘上的物理路径</li>
+</ul>
+<p>其他：</p>
+<p>1、 （*）<code>Request.AppRelativeCurrentExecutionFilePath</code>，获取当前执行请求相对于应用根目录的虚拟路径，以~开头，比如“~/Handler.ashx”，</p>
+<p>2、 （*）<code>Request.PhysicalApplicationPath</code>，获取当前应用的物理路径，比如D:\我的文档\VisualStudio 2008\WebSites\WebSite4\</p>
+<p>3、 （*）<code>Request.PhysicalPath，</code>获取当前请求的物理路径，比如D:\我的文档\VisualStudio 2008\WebSites\WebSite4\Handler.ashx</p>
+<p>4、 （*） <code>Request.RawUrl</code>获得原始请求URL、Request.Url获得请求的URL，区别涉及到URL重写的问题</p>
+<p>5、 （*） <code>Request.UserLanguages</code>获得访问者浏览器支持的语言，可以通过这个实现对不同语言的人显示不同语言的页面。</p>
+<p>6、    <code>Request.Url.GetComponents(UriComponents.HostAndPort,UriFormat.SafeUnescaped)</code>获取当前请求的网站的域名和端口号</p>
+<h2 id="httpresponse一些成员"><a href="#httpresponse一些成员" class="headerlink" title="httpresponse一些成员"></a>httpresponse一些成员</h2><ol>
+<li><p><code>Response.Buffer、Response.BufferOutput</code></p>
+<p>类型bool，设置response是否通过内部缓冲区进行输出，默认true</p>
+</li>
+<li><p><code>Response.Flush()</code></p>
+<p>将服务器缓冲区的数据直接返回到浏览器</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void ProcessRequest(HttpContext <span class="built_in">context</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">context</span>.Response.ContentType = <span class="string">"text/html"</span><span class="comment">;</span></span><br><span class="line">            for (int i = <span class="number">0</span><span class="comment">; i &lt; 10; i++)</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">context</span>.Response.Write(<span class="string">"这是第"</span> + i + <span class="string">"个输出&lt;br&gt;"</span>)<span class="comment">;</span></span><br><span class="line">                System.Threading.Thread.Sleep(<span class="number">400</span>)<span class="comment">;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>循环里面添加一句<code>context.Response.Flush();</code>，实际上会连续发送，从监视工具可以看出，第一次全是等待时间，第二次全是接受时间，但浏览器自身会等待全部接受完成之后才显示</p>
+</li>
+<li><p><code>Response.Clear()</code></p>
+<p>直接清空缓冲区，没有发送的数据会丢失</p>
+</li>
+<li><p><code>Response.ContentEncoding</code></p>
+<p>输出流的编码</p>
+</li>
+<li><p><code>Response.OutputStream</code></p>
+<p>输出流</p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void ProcessRequest(HttpContext <span class="built_in">context</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">context</span>.Response.ContentType = <span class="string">"image/jpg"</span>;</span><br><span class="line">           //以下载的方式</span><br><span class="line">           //<span class="built_in">context</span>.Response.AppendHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;filename=\""</span> + HttpUtility.UrlEncode(<span class="string">"536896a693f71.jpg"</span>, System.Text.Encoding.UTF8) + <span class="string">"\""</span>);        <span class="built_in">context</span>.Response.OutputStream.Write(File.ReadAllBytes(<span class="built_in">context</span>.Request.MapPath(<span class="string">"536896a693f71.jpg"</span>)), <span class="number">0</span>, File.ReadAllBytes(<span class="built_in">context</span>.Request.MapPath(<span class="string">"536896a693f71.jpg"</span>)).Length);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>Response.End()</code></p>
+<p>终止响应，将之前缓存中的数据发给浏览器，End()之后的代码不会被继续执行,End方法里调用了Flush()方法。</p>
+</li>
+</ol>
+<h2 id="Server属性-Type-HttpServerUtility"><a href="#Server属性-Type-HttpServerUtility" class="headerlink" title="Server属性(Type HttpServerUtility)"></a>Server属性(Type HttpServerUtility)</h2><p>注意：Server里面的方法基本上都是调用<code>HttpUtility</code>类中相应方法。推荐使用<code>HttpUtility</code>，因为有的地方很难拿到Server对象，而且Server的存在是为以前ASP程序员习惯而留的。</p>
+<ol>
+<li><p><code>MapPath</code></p>
+<p>取得文件的物理路径</p>
+</li>
+<li><p><code>Execute</code> 方法和 <code>Transfer</code>方法</p>
+<p>两个都是服务器里执行动态页面，跟重定向有本质区别，不能内部重定向到ashx，否则会报错“执行子请求出错”</p>
+<p><code>Transfer</code>：第一个页面直接调用第二个页面，执行完第二个页面后不再返回第一个页面，立即响应到客户端浏览器。<br><code>Execute</code>：第一个页面直接调用第二个页面，执行完第二个页面后再返回第一个页面执行，最后响应到客户端浏览器。</p>
+</li>
+<li><p><code>HtmlEncode</code>方法和<code>HtmlDecode</code>方法</p>
+<p><code>HtmlEncode</code>将string以html编码，即将html里面特殊的符号用&amp;XX替换</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void ProcessRequest(HttpContext <span class="built_in">context</span>)</span><br><span class="line">       &#123;</span><br><span class="line">           <span class="built_in">context</span>.Response.ContentType = <span class="string">"text/html"</span><span class="comment">;</span></span><br><span class="line">           string str = <span class="string">"&lt;script&gt;alert('nihao')&lt;/script&gt;"</span><span class="comment">;</span></span><br><span class="line">           <span class="built_in">context</span>.Response.Write(str)<span class="comment">;</span></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>不加<code>HtmlEncode</code>会执行script代码，加上<code>HttpUtility.HtmlEncode(str)</code>之后源文件会变成</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;<span class="keyword">lt</span>;script&amp;<span class="keyword">gt</span>;alert<span class="comment">(&amp;#39;nihao&amp;#39;)</span>&amp;<span class="keyword">lt</span>;/script&amp;<span class="keyword">gt</span>;<span class="keyword">gt</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>UrlEncode</code>方法和<code>UrlDecode</code>方法</p>
+<p>将url进行编码（解码）成http认识的格式（ASCII码），中文规定使用UTF-8，又称作百分号编码（percent encoding）</p>
+<p>使用时应该对正确的位置进行编码，如参数位置，参数路由等</p>
+<p><strong>编码方式</strong>：字符对应的ASCII码 =&gt; 转成对应的16进制 =&gt; 前面加上百分号（%）</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">string search</span> = <span class="string">"你好呀"</span>;</span><br><span class="line"><span class="attribute">string url</span> = <span class="string">"https://www.baidu.com?search="</span> + HttpUtility.UrlEncode(search);</span><br></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com?search=<span class="symbol">%e4</span><span class="symbol">%bd</span><span class="symbol">%a0</span><span class="symbol">%e5</span><span class="symbol">%a5</span><span class="symbol">%bd</span><span class="symbol">%e5</span><span class="symbol">%91</span><span class="symbol">%80</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/HttpRequest/">HttpRequest</a>
+		 
+		 <a href="/tags/HttpResponse/">HttpResponse</a>
+		 
+		 <a href="/tags/HttpUtility/">HttpUtility</a>
+		 
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/02/09/ASP.NET05/" rel="next" title="ASP.NET05">
+						 ASP.NET05
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
+</article>
+<script>
+window.subData = {
+ title: 'ASP.NET06',
+ tools: true
+}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/avatar.jpg' />
+
+<div class='header'>luox78</div>
+<div class='content'>
+<div class='desc'>It's always not too late to learn</div>
+</div>
+</section>
+
+  <section class='m_widget'>
+        <div class='header'>田馥甄-你就不要想起我</div>
+<div>
+    <audio src="https://luox78.github.io/images/田馥甄-你就不要想起我.mp3" controls="controls" style="width:250px;">
+        田馥甄-你就不要想起我
+    </audio>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>7</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>1</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>15</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>5</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>21</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/Learning/"><div class='name'>Learning</div><div class='badget'>0</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 14px; color: #808080">ASP.NET MVC5 编程实战</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a>
+    </div>
+</div>
+
+
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://github.com/luox78">
+            <div class='name'>Github</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://www.baidu.com">
+            <div class='name'>Baidu</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+      </aside>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/luox78" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量:
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
+  
+</footer>
+
+
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+<!--隐藏不是主页的wiget-->
+<script>
+  if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/" && document.location.href !== "http://localhost:4000/"){
+    var foo = document.getElementsByClassName("l_side");
+    for (let index = 0; index < foo.length; index++) {
+      foo[index].style.display="none";
+    }
+  }
+  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
+  Waves.attach(".u-search-form", ['.waves-circle']);
+  Waves.init();
+
+  //添加tr显示效果
+  $(".article-entry>table tbody tr:odd").css("backgroundColor","rgb(235,236,238)");
+	$("#loading").fadeOut(1000);
+  $("ol").attr("type",1);
+</script>
+
+
+</body>
+</html>
