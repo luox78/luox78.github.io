@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Entity Framework01-code first建立一个新数据库 | luox78</title>
+  <title>luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,21 +15,16 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="建立model编写.net class建立model">
-<meta name="keywords" content="Entity Framework">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Entity Framework01-code first建立一个新数据库">
-<meta property="og:url" content="https://luox78.github.io/2018/01/16/Entity Framework Code First to a New Database/index.html">
+  <meta name="description" content="Blog for luox78">
+<meta property="og:type" content="website">
+<meta property="og:title" content="luox78">
+<meta property="og:url" content="https://luox78.github.io/page/10/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="建立model编写.net class建立model">
+<meta property="og:description" content="Blog for luox78">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://luox78.github.io/images/entity1.png">
-<meta property="og:image" content="https://luox78.github.io/images/entity2.png">
-<meta property="og:updated_time" content="2018-01-16T12:42:21.729Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Entity Framework01-code first建立一个新数据库">
-<meta name="twitter:description" content="建立model编写.net class建立model">
-<meta name="twitter:image" content="https://luox78.github.io/images/entity1.png">
+<meta name="twitter:title" content="luox78">
+<meta name="twitter:description" content="Blog for luox78">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -150,116 +145,53 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-Entity Framework Code First to a New Database"
-	class="post white-box article-type-post"
-	itemscope itemprop="blogPost">
-<section class='meta'>
- <h2 class="title">
-		 <a href="/2018/01/16/Entity Framework Code First to a New Database/">
-				 Entity Framework01-code first建立一个新数据库
-		 </a>
- </h2>
- <time>
-		 Jan 16, 2018
- </time>
- 
+        
+<section class="post-list">
+	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
     
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
+    <h2 class="title">
+      <a href="/2017/12/25/hello-world/">
+        Hello World
+      </a>
+    </h2>
+    
+    <time>
+      Dec 25, 2017
+    </time>
+		
+  </section>
+  <section class="article typo">
+	  <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a><br>
+
+    
+	  <div class="readmore">
+      <a href="/2017/12/25/hello-world/">Read More</a>
     </div>
-
- <span id="busuanzi_container_page_pv">
-		 
-		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
-		</a>
- </span>
-</section>
-
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#建立model"><span class="toc-number">1.</span> <span class="toc-text">建立model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#建立上下文（Context）"><span class="toc-number">2.</span> <span class="toc-text">建立上下文（Context）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#读取-存入数据"><span class="toc-number">3.</span> <span class="toc-text">读取 存入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接下来我会分别介绍各个部分"><span class="toc-number">4.</span> <span class="toc-text">接下来我会分别介绍各个部分</span></a></li></ol></section>
-
-<section class="article typo">
- <div class="article-entry" itemprop="articleBody">
-		 <h2 id="建立model"><a href="#建立model" class="headerlink" title="建立model"></a>建立model</h2><p>编写.net class建立model</p>
-<a id="more"></a>
-<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Blog</span> </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> BlogId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> List&lt;Post&gt; Posts &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">&#125; </span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Post</span> </span><br><span class="line">&#123; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> PostId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Title &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">string</span> Content &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> BlogId &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">virtual</span> Blog Blog &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>类中带id的会自动标志成主键</li>
-<li>两个导航属性 (Blog.Posts and Post.Blog) virtual，这是entity framework懒加载（ Lazy Loading </li>
-<li>）的特征，懒加载值得是这些属性内容会自动从数据库中加载出来</li>
-</ul>
-<h2 id="建立上下文（Context）"><a href="#建立上下文（Context）" class="headerlink" title="建立上下文（Context）"></a>建立上下文（Context）</h2><p>添加引用</p>
-<figure class="highlight capnproto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.<span class="built_in">Data</span>.Entity;</span><br></pre></td></tr></table></figure>
-<p>建立数据库上下文，继承自<code>DbContext</code></p>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BloggingContext</span> : <span class="type">DbContext</span></span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> DbSet&lt;Blog&gt; Blogs &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    <span class="keyword">public</span> DbSet&lt;Post&gt; Posts &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>DbSet</code>代表数据库中的表，上下文中存储就是关系表</p>
-<h2 id="读取-存入数据"><a href="#读取-存入数据" class="headerlink" title="读取 存入数据"></a>读取 存入数据</h2><p>存入</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tmpBlog = <span class="keyword">new</span> <span class="type">Blog</span>() &#123; Name = <span class="string">"luox78's blog"</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> db = <span class="keyword">new</span> <span class="type">BloggingContext</span>();</span><br><span class="line">db.Blogs.Add(tmpBlog);</span><br><span class="line">db.SaveChanges();</span><br></pre></td></tr></table></figure>
-<p>读取</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = db.Blogs.Where(<span class="function"><span class="params">blog</span> =&gt;</span> blog.BlogId == <span class="number">1</span>);</span><br><span class="line">foreach (<span class="keyword">var</span> blog <span class="keyword">in</span> obj)</span><br><span class="line">&#123;</span><br><span class="line">	Console.WriteLine(blog.Name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//luox78's blog</span></span><br></pre></td></tr></table></figure>
-<p>数据在哪儿？</p>
-<ul>
-<li>Visual Studio 2010数据库一般建在 local SQL Express</li>
-<li>Visual Studio 2012以上一般在 <a href="https://msdn.microsoft.com/library/hh510202(v=sql.110" target="_blank" rel="noopener">LocalDb</a>.aspx)</li>
-<li>数据库命名是项目名加上建立的上下文名字</li>
-</ul>
-<p><img src="https://luox78.github.io/images/entity1.png" alt="https://luox78.github.io/images/entity1.png"></p>
-<p>执行完写入之后数据已经进入数据库</p>
-<p><img src="https://luox78.github.io/images/entity2.png" alt="https://luox78.github.io/images/entity2.png"></p>
-<h2 id="接下来我会分别介绍各个部分"><a href="#接下来我会分别介绍各个部分" class="headerlink" title="接下来我会分别介绍各个部分"></a>接下来我会分别介绍各个部分</h2><blockquote>
-<p>原文：<a href="https://msdn.microsoft.com/en-us/library/jj193542(v=vs.113" target="_blank" rel="noopener">Entity Framework Code First to a New Database</a>.aspx)</p>
-<p>翻译：luox78</p>
-</blockquote>
-
- </div>
- 
- <div class="article-tags tags">
-		 
-		 <a href="/tags/Entity-Framework/">Entity Framework</a>
-		 
- </div>
- 
-<div id="comments" style="margin: 5px auto;">
-	<div id="comment"></div>
-                        <script>
-                            new Valine({
-                        el: '#comment' ,
-                        notify:false, 
-                        verify:false, 
-                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
-                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
-                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
-                        path:window.location.pathname, 
-						avatar:'retro'
-                    });
-                        </script>
-</div>
- 
- <div class="art-item-footer">
-		 
-		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/17/JQuery03/" rel="prev" title="初始JQuery03">
-						 初始JQuery03
-				 </a>
-		 </span>
-		 
-		 
-		 <span class="art-item-right">
-				 next：<a href="/2018/01/15/JQuery02/" rel="next" title="初始JQuery02">
-						 初始JQuery02
-				 </a><i class="icon icon-chevron-thin-right"></i>
-		 </span>
-		 
- </div>
- 
-</section>
-
+    
+    
+    
+  </section>
 </article>
-<script>
-window.subData = {
- title: 'Entity Framework01-code first建立一个新数据库',
- tools: true
-}
-</script>
+    </div>
+  
+</section>
+
+
+  <nav id="page-nav">
+    
+    <a class="prev" rel="prev" href="/page/9/">
+      <span class="icon icon-chevron-left"></span>
+      <span class="text">Previous</span>
+    </a>
+    
+    
+  </nav>
+  
 
       </div>
       <aside class='l_side'>
