@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>ASP.NET07 | luox78</title>
+  <meta name="description" content="Blog for luox78" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="theme-color" content=" rgb(59,95,208)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <link rel="shortcut icon" href="/images/dev.ico">
+  <link rel="alternate" href="/atom.xml" title="luox78">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="AJAX:”Asynchronous JavaScript and XML”中文意思：异步JavaScript和XML。指一种创建交互式网页应用的网页开发技术。">
+<meta name="keywords" content="Ajax,AjaxHelper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASP.NET07">
+<meta property="og:url" content="https://luox78.github.io/2018/02/27/ASP.NET07/index.html">
+<meta property="og:site_name" content="luox78">
+<meta property="og:description" content="AJAX:”Asynchronous JavaScript and XML”中文意思：异步JavaScript和XML。指一种创建交互式网页应用的网页开发技术。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2018-02-28T13:41:37.781Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASP.NET07">
+<meta name="twitter:description" content="AJAX:”Asynchronous JavaScript and XML”中文意思：异步JavaScript和XML。指一种创建交互式网页应用的网页开发技术。">
+<meta name="twitter:image" content="http://common.cnblogs.com/images/copycode.gif">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+</head>
+
+<body>
+  <div id="loading">
+    <div id="loading-center">
+    <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+    </div>
+    </div>
+     
+    </div>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				luox78
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about.html'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about.html" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-ASP.NET07"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/02/27/ASP.NET07/">
+				 ASP.NET07
+		 </a>
+ </h2>
+ <time>
+		 Feb 27, 2018
+ </time>
+ 
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET/">ASP.NET</a>
+    </div>
+
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
+
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#XmlHttpRequest对象"><span class="toc-number">1.</span> <span class="toc-text">XmlHttpRequest对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#AJAX优点"><span class="toc-number">1.1.</span> <span class="toc-text">AJAX优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#异步请求基本步骤"><span class="toc-number">1.2.</span> <span class="toc-text">异步请求基本步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#readyState属性"><span class="toc-number">1.3.</span> <span class="toc-text">readyState属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest对象属性"><span class="toc-number">1.4.</span> <span class="toc-text">XMLHttpRequest对象属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest对象常用方法"><span class="toc-number">1.5.</span> <span class="toc-text">XMLHttpRequest对象常用方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax使用注意"><span class="toc-number">1.6.</span> <span class="toc-text">Ajax使用注意</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#演示"><span class="toc-number">1.7.</span> <span class="toc-text">演示</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于AjaxHelper的Ajax"><span class="toc-number">2.</span> <span class="toc-text">基于AjaxHelper的Ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#导入js"><span class="toc-number">2.1.</span> <span class="toc-text">导入js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax-ActionLink-："><span class="toc-number">2.2.</span> <span class="toc-text">Ajax.ActionLink()：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实际应用："><span class="toc-number">2.3.</span> <span class="toc-text">实际应用：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Ajax-ActionLink请求返回值为-Json格式的Controller方法"><span class="toc-number">2.3.1.</span> <span class="toc-text">使用Ajax.ActionLink请求返回值为 Json格式的Controller方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Ajax-ActionLink-请求返回值为PartialView格式的Controller方法"><span class="toc-number">2.3.2.</span> <span class="toc-text">使用Ajax.ActionLink 请求返回值为PartialView格式的Controller方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ajax-BeginForm"><span class="toc-number">2.4.</span> <span class="toc-text">Ajax.BeginForm</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基于JQuery的Ajax"><span class="toc-number">3.</span> <span class="toc-text">基于JQuery的Ajax</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用JQuery的Ajax请求返回值为-Json格式的Controller方法"><span class="toc-number">3.1.</span> <span class="toc-text">使用JQuery的Ajax请求返回值为 Json格式的Controller方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用JQuery的Ajax-请求返回值为PartialView格式的Controller方法"><span class="toc-number">3.2.</span> <span class="toc-text">使用JQuery的Ajax 请求返回值为PartialView格式的Controller方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何提高Ajax性能"><span class="toc-number">4.</span> <span class="toc-text">如何提高Ajax性能</span></a></li></ol></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <p>AJAX:”Asynchronous JavaScript and XML”<br>中文意思：异步JavaScript和XML。<br>指一种创建交互式网页应用的网页开发技术。<a id="more"></a></p>
+<h2 id="XmlHttpRequest对象"><a href="#XmlHttpRequest对象" class="headerlink" title="XmlHttpRequest对象"></a>XmlHttpRequest对象</h2><h3 id="AJAX优点"><a href="#AJAX优点" class="headerlink" title="AJAX优点"></a>AJAX优点</h3><p>Ajax在本质上是一个浏览器端的技术<br>Ajax技术之主要目的在于局部交换客户端及服务器间之数据<br>这个技术的主角XMLHttpRequest 的最主要特点，在于能够不用重新载入整个版面来更新资料，也就是所谓的Refresh without Reload(轻刷新)<br>与服务器之间的沟通，完全是透过Javascript 来实行<br>使用XMLHttpRequest 本身传送的数据量很小，所以反应会更快，也就让网络程式更像一个桌面应用程序<br>AJAX 就是运用Javascript 在后台悄悄帮你去跟服务器要资料，最后再由Javascript 或DOM 来帮你呈现结果，因为所有动作都是由Javascript 代劳，所以省去了网页重载的麻烦，使用者也感受不到等待的痛苦</p>
+<h3 id="异步请求基本步骤"><a href="#异步请求基本步骤" class="headerlink" title="异步请求基本步骤"></a>异步请求基本步骤</h3><p>使用XMLHttpRequest对象</p>
+<p>按照下面模式，可以同步地XMLHttpRequest对象：</p>
+<p>创建对象； - new  (叫助手过来)<br>创建请求； - open (告诉他要去做的事情)<br>发送请求； - send (去吧)</p>
+<h3 id="readyState属性"><a href="#readyState属性" class="headerlink" title="readyState属性"></a>readyState属性</h3><p>readyState属性指出了XMLHttpRequest对象在发送/接收数据过程中所处的几个状态。XMLHttpRequest对象会经历5种不同的状态。</p>
+<p>0：未初始化。new完后;<br>1：已打开。对象已经创建并初始化，但还未调用send方法<br>2：已发送。已经调用send 方法，但该对象正在等待状态码和头的返回；<br>3：正在接收。已经接收了部分数据，但还不能使用该对象的属性和方法，因为状态和响应头不完整；<br>4：已加载。所有数据接收完毕</p>
+<h3 id="XMLHttpRequest对象属性"><a href="#XMLHttpRequest对象属性" class="headerlink" title="XMLHttpRequest对象属性"></a>XMLHttpRequest对象属性</h3><p>一、onreadystatechange属性，设置回调函数。<br>二、readyState属性，获取当前XMLHttpRequest对象执行的状态：</p>
+<pre><code>1&gt; 0表示以创建XMLHttpRequest对象，但是还没有初始化，即没有调用open()方法设置XMLHttpRequest对象。
+2&gt;1表示创建了XMLHttpRequest对象，并且调用了open()方法进行初始化，但是还没有调用send()方法。
+3&gt;3表示浏览器正在接受服务器的响应数据。
+4&gt;所有数据已经被接受完毕。
+</code></pre><p>三、status属性，服务器返回的http状态码。（&gt;=200 and &lt;300、304未修改，读取缓存。都表示成功）<br>四、statusText属性，服务器返回的状态码对应的友好的文字说明，比如200对应的OK.<br>五、responseText属性，以字符串方式获取服务器对客户端的响应。<br>六、responseXml属性，当请求的是一个xml文件时，或者响应头中Content-Type为：text/xml或application/xml时，返回一个XmlDocument对象（Dom节点对象），支持标准的dom的成员，比如：childNodes、documentElement、firstChild、lastChild、nextSibling、nodeName、nodeType、nodeValue、parentNode、doctype等。</p>
+<h3 id="XMLHttpRequest对象常用方法"><a href="#XMLHttpRequest对象常用方法" class="headerlink" title="XMLHttpRequest对象常用方法"></a>XMLHttpRequest对象常用方法</h3><p>一、open(“get”,”url”,true)初始化，如果第三个参数为false,则js等待请求完毕后才会继续执行。<br>二、setRequestHeader(“”,””)增加http请求头信息。在open()之后，send()之前调用。<br>三、send(null);发送请求。send()方法的参数表示为在请求报文体中发送的数据内容。为了最大化的浏览器兼容问题，如果没有请求报文体就传递null。get请求没有请求报文体，所以一般为null。使用post请求时才需要设置报文体。<br>四、getResponseHeader(“Content-Type”),根据响应的报文头获得报文内容。<br>五、getAllResponseHeaders();获取所有的响应报文头内容。<br>六、abort();取消当前的http请求，取消之后如果要重新发起请求，建议重新创建一个XMLHttpRequest对象。</p>
+<h3 id="Ajax使用注意"><a href="#Ajax使用注意" class="headerlink" title="Ajax使用注意"></a>Ajax使用注意</h3><ol>
+<li>xhr只能向同一个域中的相同端口号、相同协议的url发起请求，不能跨域,否则会引起错误。</li>
+<li>为了浏览器兼容,get请求时最好为send()传递null参数。</li>
+<li>在创建了xhr对象后立刻设置onreadystatechange事件，这样就能监视到所有的状态。如果不需要监视其他状态只监视readyState==4的状态则可以在send()之前设置。</li>
+<li>get请求时，请求中的QueryString的参数名称与参数值最好使用encodeURIComponent()进行编码。否则在某些浏览器下无法获取该值，比如IE.</li>
+<li>post请求时，为了像表单那样提交数据需要设置请求的Content-Type为：application/x-www-form-urlencoded。send(“键=值&amp;键=值”)</li>
+<li>解析json格式时eval(“(“+json+”)”)。但有安全性问题</li>
+</ol>
+<h3 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h3><p>cshtml：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">@&#123;</span><br><span class="line">    Layout = "~/Views/Shared/_Layout.cshtml";</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn1"</span>&gt;</span>click(get)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"dv1"</span>&gt;</span>Time<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn2"</span>&gt;</span>click(post)<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"dv2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">@section scripts&#123;</span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//Get</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"btn1"</span>).onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> xhr;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (XMLHttpRequest) &#123;</span></span><br><span class="line"><span class="actionscript">                xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="actionscript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">                xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHttp"</span>);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="actionscript">            xhr.open(<span class="string">"get"</span>,<span class="string">"@Url.Action("</span>GetTime<span class="string">")"</span>);</span></span><br><span class="line"><span class="actionscript">            xhr.onreadystatechange=<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">"dv1"</span>).innerText=xhr.responseText;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="undefined">            xhr.send();</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">        <span class="comment">//Post</span></span></span><br><span class="line"><span class="javascript">        <span class="built_in">document</span>.getElementById(<span class="string">"btn2"</span>).onclick=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">var</span> xhr;</span></span><br><span class="line"><span class="actionscript">            <span class="keyword">if</span> (XMLHttpRequest) &#123;</span></span><br><span class="line"><span class="actionscript">                xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="actionscript">            &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line"><span class="actionscript">                xhr = <span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHttp"</span>);</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="actionscript">            xhr.open(<span class="string">"post"</span>, <span class="string">"@Url.Action("</span>GetName<span class="string">")"</span>);</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//加头</span></span></span><br><span class="line"><span class="actionscript">            xhr.setRequestHeader(<span class="string">"Content-Type"</span>, <span class="string">"application/x-www-form-urlencoded"</span>);</span></span><br><span class="line"><span class="actionscript">            xhr.onreadystatechange=<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span></span><br><span class="line"><span class="actionscript">                <span class="keyword">if</span>(xhr.readyState == <span class="number">4</span>)&#123;</span></span><br><span class="line"><span class="javascript">                    <span class="built_in">document</span>.getElementById(<span class="string">"dv2"</span>).innerText=xhr.responseText;</span></span><br><span class="line"><span class="undefined">                &#125;</span></span><br><span class="line"><span class="undefined">            &#125;</span></span><br><span class="line"><span class="actionscript">            <span class="comment">//send里面发送数据</span></span></span><br><span class="line"><span class="actionscript">            xhr.send(<span class="string">"name=luox78"</span>);</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>controller：</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//get</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> ActionResult <span class="title">AjaxTest</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">     </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> View();</span><br><span class="line">     &#125;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetTime</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">     </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> DateTime.Now.ToString();</span><br><span class="line">     &#125;</span><br><span class="line">[<span class="meta">HttpPost</span>]</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">string</span> <span class="title">GetName</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function">     </span>&#123;</span><br><span class="line">         <span class="keyword">return</span> name;</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="基于AjaxHelper的Ajax"><a href="#基于AjaxHelper的Ajax" class="headerlink" title="基于AjaxHelper的Ajax"></a>基于AjaxHelper的Ajax</h2><p>MVC框架本身提供了AjaxHelper类用于Ajax异步请求，所以如果你想省事，就用这种方式吧~</p>
+<p>AjaxHelper帮助器方法：</p>
+<table>
+<thead>
+<tr>
+<th>Helper method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ajax.ActionLink</td>
+<td>Creates a hyperlink to a controller action that fires an Ajax request when clicked</td>
+</tr>
+<tr>
+<td>Ajax.RouteLink</td>
+<td>Similar to Ajax.ActionLink, but generates a link to a particular route instead of a named controller action</td>
+</tr>
+<tr>
+<td>Ajax.BeginForm</td>
+<td>Creates a form element that submits its data to a particular controller action using Ajax</td>
+</tr>
+<tr>
+<td>Ajax.BeginRouteForm</td>
+<td>Similar to Ajax.BeginForm, but creates a form that sub- mits its data to a particular route instead of a named control- ler action</td>
+</tr>
+<tr>
+<td>Ajax.GlobalizationScript</td>
+<td>Creates an HTML script element that references a script that contains culture information</td>
+</tr>
+<tr>
+<td>Ajax.JavaScriptStringEncode</td>
+<td>Encodes a string to make sure that it can safely be used inside JavaScript</td>
+</tr>
+</tbody>
+</table>
+<p>上面的方法貌似很多，但是实际开发中用到的就两个帮助器方法而已：</p>
+<p> Ajax.ActionLink()和Ajax.BeginForm()</p>
+<p>这里有个问题：怎样让项目知道我们用的是MVC自带的Ajax呢？</p>
+<h3 id="导入js"><a href="#导入js" class="headerlink" title="导入js"></a>导入js</h3><p>A、在Web.config里边配置：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="builtin-name">add</span> <span class="attribute">key</span>=<span class="string">"UnobtrusiveJavaScriptEnabled"</span> <span class="attribute">value</span>=<span class="string">"true"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<p>B、在页面中引用下面的js类库即可：</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="selector-tag">section</span> scripts&#123;</span><br><span class="line">    &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">" @Url.Content("</span>~/Scripts/jquery<span class="selector-class">.unobtrusive-ajax</span><span class="selector-class">.js</span><span class="string">")"</span>&gt;&lt;/script&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一般更为常见的是在布局页/Views/Shared/_Layout.cshtml 中引入，例如：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>＠ViewBag.Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/jquery-1.8.2.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"~/Scripts/jquery.unobtrusive-ajax.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    ＠RenderBody（）</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<h3 id="Ajax-ActionLink-："><a href="#Ajax-ActionLink-：" class="headerlink" title="Ajax.ActionLink()："></a><strong>Ajax.ActionLink()：</strong></h3><p>　　向客户端输出一个链接地址，当单击这个链接时可以Ajax调用Controller中的方法，Ajax.ActionLink()方法有许多重载，下面是其重载之一：</p>
+<p>　 public static string ActionLink(this AjaxHelper ajaxHelper, string linkText, string actionName, object routeValues, AjaxOptions ajaxOptions);</p>
+<p><em>　　linkText</em>：是显示在客户端的文本</p>
+<p><em>　　actionName</em>：是Action的名字，默认情况下我们会使用当前的Controller。</p>
+<p><em>　　routeValues</em>：将传入到Controller中方法的参数</p>
+<p><em>　　ajaxOptions</em>：配置Ajax的一些选项</p>
+<table>
+<thead>
+<tr>
+<th>Confirm</th>
+<th>获取或设置提交请求之前，显示在确认窗口中的消息。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HttpMethod</td>
+<td>获取或设置 HTTP 请求方法（“Get”或“Post”）。</td>
+</tr>
+<tr>
+<td>InsertionMode</td>
+<td>获取或设置指定如何将响应插入目标 DOM 元素的模式。</td>
+</tr>
+<tr>
+<td>LoadingElementId</td>
+<td>获取或设置加载 Ajax 函数时要显示的 HTML 元素的 <strong>id</strong> 特性。</td>
+</tr>
+<tr>
+<td>OnBegin</td>
+<td>获取或设置更新页面之前，恰好调用的 JavaScript 函数的名称。</td>
+</tr>
+<tr>
+<td>OnComplete</td>
+<td>获取或设置实例化响应数据之后但更新页面之前，要调用的 JavaScript 函数。</td>
+</tr>
+<tr>
+<td>OnFailure</td>
+<td>获取或设置页面更新失败时，要调用的 JavaScript 函数。</td>
+</tr>
+<tr>
+<td>OnSuccess</td>
+<td>获取或设置成功更新页面之后，要调用的 JavaScript 函数。</td>
+</tr>
+<tr>
+<td>UpdateTargetId</td>
+<td>获取或设置要使用服务器响应来更新的 DOM 元素的 ID。</td>
+</tr>
+<tr>
+<td>Url</td>
+<td>获取或设置要向其发送请求的 URL。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><strong>备注：</strong></p>
+<ul>
+<li>OnComplete和OnSuccess的区别：OnComplete是获取了Http请求时引发的，此时页面还没有进行更新，OnSuccess是在页面已经更新后引发的。</li>
+<li>当加载数据须要花较长时候，为了避免假死状况，该当给用户一个反馈信息，如“正在加载…”字样。在 MVC 的 Unobtrusive Ajax 中经用AjaxOptions选项的 LoadingElementId 和 LoadingElementDuration 两个属性可轻松做到这一点，例如下面的设置：</li>
+</ul>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">AjaxOptions <span class="attr">ajaxOpts</span> = new AjaxOptions &#123;</span><br><span class="line">        <span class="attr">UpdateTargetId</span> = <span class="string">"tableBody"</span>，</span><br><span class="line">        <span class="attr">Url</span> = Url.Action（<span class="string">"GetPeopleData"</span>），</span><br><span class="line">        <span class="attr">LoadingElementId</span> = <span class="string">"loading"</span>，</span><br><span class="line">        <span class="attr">LoadingElementDuration</span> = <span class="number">1000</span>，</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<ul>
+<li>对于URL，如果我们设置如下：</li>
+</ul>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AjaxOptions <span class="attr">ajaxOpts</span> = new AjaxOptions &#123;</span><br><span class="line">        <span class="attr">UpdateTargetId</span> = <span class="string">"tableBody"</span>，</span><br><span class="line">        <span class="attr">Url</span> = Url.Action（<span class="string">"GetPeopleData"</span>）</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>然后查看它生成的 form 属性：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;form <span class="attribute">id</span>=<span class="string">"form0"</span> <span class="attribute">action</span>=<span class="string">"/People/GetPeople"</span> <span class="attribute">method</span>=<span class="string">"post"</span> <span class="attribute">data-ajax-url</span>=<span class="string">"/People/GetPeopleData"</span> <span class="attribute">data-ajax-</span>=<span class="string">"＃tableBody"</span> </span><br><span class="line"><span class="attribute">data-ajax-mode</span>=<span class="string">"replace"</span> <span class="attribute">data-ajax</span>=<span class="string">"true"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>它生成了两个 Url，分别为 action 属性 和 data-ajax-url 属性的值，前者是 Ajax.BeginForm（） 办法按照当前 controller 和 action 名称生成的，后者是 AjaxOptions 的 Url 属性生成的。当浏览器没有禁用 JavaScript 时，Unobtrusive Ajax JS库会获取 data-ajax-url 属性的值作为 Url 产生 ajax 恳求。当浏览器禁用了 JavaScript 时，天然 action 属性的值决定了默示提交的 Url，自然访问该页面。固然局部未能刷新，但不会让用户体验很差。</p>
+<hr>
+<p> 使用Html.ActionLink方法的一个栗子：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Ajax.ActionLink(<span class="string">"点击我"</span>, <span class="string">"getEntry"</span>, <span class="keyword">new</span> <span class="type"></span>&#123; id = item.Id &#125;, <span class="keyword">new</span> <span class="type">AjaxOptions</span> </span><br><span class="line">&#123; HttpMethod = <span class="string">"Post"</span>, UpdateTargetId = <span class="string">"detailsID"</span>, InsertionMode = InsertionMode.Replace &#125;)</span><br></pre></td></tr></table></figure>
+<p>说明：“点击我”是生产的超链接文字；“getEntry”是当前控制器的Action方法；id = item.Id是向Action方法传递的参数；HttpMethod = “Post”, 说明Ajax请求是post方式的；UpdateTargetId = “detailsID”说明了要更新的html块的Id标记元素；InsertionMode = InsertionMode.Replace说明是替换ID为detailsID的元素里边的内容。</p>
+<h3 id="实际应用："><a href="#实际应用：" class="headerlink" title="实际应用："></a><strong>实际应用：</strong></h3><h4 id="使用Ajax-ActionLink请求返回值为-Json格式的Controller方法"><a href="#使用Ajax-ActionLink请求返回值为-Json格式的Controller方法" class="headerlink" title="使用Ajax.ActionLink请求返回值为 Json格式的Controller方法"></a>使用Ajax.ActionLink请求返回值为 Json格式的Controller方法</h4><p> 在Index.cshtml中使用ActionLink，如下：</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Ajax.ActionLink(<span class="string">"点击我"</span>, <span class="string">"JsonDetails"</span>, <span class="keyword">new</span> <span class="type"></span>&#123; id = item.Id &#125;, </span><br><span class="line"><span class="keyword">new</span> <span class="type">AjaxOptions</span> &#123; HttpMethod = <span class="string">"Post"</span>, InsertionMode = InsertionMode.Replace, OnSuccess = <span class="string">"Show"</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>相应的Controller：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ActionResult JsonDetails(<span class="keyword">int</span> id = <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            GuestbookEntry entry = _db.Entries.First(c =&gt; c.Id == id);</span><br><span class="line">            <span class="function"><span class="keyword">return</span> <span class="title">Json</span><span class="params">(entry, JsonRequestBehavior.AllowGet)</span></span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>同时需要在Index.cshtml中添加请求成功的相应js函数Show，以便更新ID属性为detailsID的DIV内容：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="actionscript"><span class="function"><span class="keyword">function</span> <span class="title">Show</span><span class="params">(data)</span> </span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">"#detailsID"</span>).html(<span class="string">"姓名："</span> + data.Name + <span class="string">" 消息："</span> + data.Message);</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="使用Ajax-ActionLink-请求返回值为PartialView格式的Controller方法"><a href="#使用Ajax-ActionLink-请求返回值为PartialView格式的Controller方法" class="headerlink" title="使用Ajax.ActionLink 请求返回值为PartialView格式的Controller方法"></a>使用Ajax.ActionLink 请求返回值为PartialView格式的Controller方法</h4><p> 在Index.cshtml中</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@Ajax.ActionLink(<span class="string">"AjaxPartialView"</span>, <span class="string">"Details"</span>, <span class="keyword">new</span> <span class="type"></span>&#123; id = item.Id &#125;, </span><br><span class="line"><span class="keyword">new</span> <span class="type">AjaxOptions</span> &#123; HttpMethod = <span class="string">"Get"</span>, UpdateTargetId = <span class="string">"detailsID"</span> &#125;)</span><br></pre></td></tr></table></figure>
+<p>相应的Controller：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> ActionResult Details(<span class="keyword">int</span> id = <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            GuestbookEntry entry = _db.Entries.First(c =&gt; c.Id == id);</span><br><span class="line">            <span class="keyword">if</span> (Request.IsAjaxRequest())</span><br><span class="line">           &#123;</span><br><span class="line">                <span class="function"><span class="keyword">return</span> <span class="title">PartialView</span><span class="params">(entry)</span></span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">return</span> <span class="title">View</span><span class="params">(entry)</span></span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>在这里我们使用Request.IsAjaxRequest()来判断是否为Ajax请求，如果是则返回PartialView，否则返回View。最后，返回的内容会直接更新到ID属性为detailsID的DIV中。</p>
+<h3 id="Ajax-BeginForm"><a href="#Ajax-BeginForm" class="headerlink" title="Ajax.BeginForm"></a><strong>Ajax.BeginForm</strong></h3><p> 这个方法用于异步提交表单，比如一个新增信息的页面Create.cshtml，下面的代码会使表单以Ajax方式提交</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@model</span> <span class="type">MvcApplication5</span>.<span class="type">Models</span>.<span class="type">GuestbookEntry</span></span><br><span class="line">&lt;script <span class="class"><span class="keyword">type</span></span>=<span class="string">"text/javascript"</span> src=<span class="string">" @Url.Content("</span>~/<span class="type">Scripts</span>/jquery.unobtrusive-ajax.<span class="string">js")"</span>&gt;&lt;/script&gt;</span><br><span class="line">&lt;script <span class="class"><span class="keyword">type</span></span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    function success(data) &#123;</span><br><span class="line">        alert(data);</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">@&#123;</span><br><span class="line">    <span class="type">ViewBag</span>.<span class="type">Title</span> = <span class="string">"Create"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;h2&gt;<span class="type">Create</span>&lt;/h2&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">@using</span> (<span class="type">Ajax</span>.<span class="type">BeginForm</span>(<span class="keyword">new</span> <span class="type">AjaxOptions</span> &#123; </span><br><span class="line">    <span class="type">HttpMethod</span>=<span class="string">"Post"</span>,</span><br><span class="line">    <span class="type">OnSuccess</span> = <span class="string">"success"</span></span><br><span class="line">&#125;))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="meta">@Html</span>.<span class="type">ValidationSummary</span>(<span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">    &lt;fieldset&gt;</span><br><span class="line">        &lt;legend&gt;<span class="type">GuestbookEntry</span>&lt;/legend&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"editor-label"</span>&gt;</span><br><span class="line">            <span class="meta">@Html</span>.<span class="type">LabelFor</span>(model =&gt; model.<span class="type">Name</span>)</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"editor-field"</span>&gt;</span><br><span class="line">            <span class="meta">@Html</span>.<span class="type">EditorFor</span>(model =&gt; model.<span class="type">Name</span>)</span><br><span class="line">            <span class="meta">@Html</span>.<span class="type">ValidationMessageFor</span>(model =&gt; model.<span class="type">Name</span>)</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"editor-label"</span>&gt;</span><br><span class="line">            <span class="meta">@Html</span>.<span class="type">LabelFor</span>(model =&gt; model.<span class="type">Message</span>)</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"editor-field"</span>&gt;</span><br><span class="line">            <span class="meta">@Html</span>.<span class="type">EditorFor</span>(model =&gt; model.<span class="type">Message</span>)</span><br><span class="line">            <span class="meta">@Html</span>.<span class="type">ValidationMessageFor</span>(model =&gt; model.<span class="type">Message</span>)</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;p&gt;</span><br><span class="line">            &lt;input <span class="class"><span class="keyword">type</span></span>=<span class="string">"submit"</span> value=<span class="string">"Create"</span> /&gt;</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">    &lt;/fieldset&gt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>控制器的代码如下：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[HttpPost]</span><br><span class="line"><span class="keyword">public</span> ActionResult Create(GuestbookEntry entry)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (ModelState.IsValid)</span><br><span class="line">    &#123;</span><br><span class="line">        entry.DateAdded = DateTime.Now;</span><br><span class="line">        _db.Entries.Add(entry);</span><br><span class="line">        _db.SaveChanges();</span><br><span class="line">        <span class="function"><span class="keyword">return</span> <span class="title">Content</span><span class="params">(<span class="string">"New Entry successfully added."</span>)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">return</span> <span class="title">View</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>注：</p>
+<p>貌似上面的Ajax方法很方便，但是它的工作原理可能大家不是很清楚，这里就大概说一下吧~</p>
+<p>当调用 Ajax.BeginForm 方法后，经由选项 AjaxOptions 对象设置的属性将会被转化成 form 表单的属性，这些属性以 data-ajax 开首，如本示例生成的 form 表单：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form <span class="attribute">action</span>=<span class="string">"/GuestBook/Create"</span> <span class="attribute">data-ajax</span>=<span class="string">"true"</span> <span class="attribute">data-ajax-mode</span>=<span class="string">"replace"</span> <span class="attribute">data-ajax-</span>=<span class="string">"＃tableBody"</span> <span class="attribute">id</span>=<span class="string">"form0"</span> <span class="attribute">method</span>=<span class="string">"post"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>当 Create.cshtml 视图加载完成并浮现 Html 页面时，jquery.unobtrusive-ajax.js 库会寻找所有 data-ajax == true的元素，然后按照其它以 data-ajax 开头的属性值，jQuery 库中的函数将知道如何去执行 Ajax 请求。</p>
+<h2 id="基于JQuery的Ajax"><a href="#基于JQuery的Ajax" class="headerlink" title="基于JQuery的Ajax"></a>基于JQuery的Ajax</h2><h3 id="使用JQuery的Ajax请求返回值为-Json格式的Controller方法"><a href="#使用JQuery的Ajax请求返回值为-Json格式的Controller方法" class="headerlink" title="使用JQuery的Ajax请求返回值为 Json格式的Controller方法"></a>使用JQuery的Ajax请求返回值为 Json格式的Controller方法</h3><p> 原理就是用JQuery的Ajax方法请求Action方法，返回值设为JSON，然后对JSON数据进行处理，例如用js函数进行处理</p>
+<p> 举个栗子： </p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> language=<span class="string">"javascript"</span>&gt;</span><br><span class="line">        $(<span class="function"><span class="keyword">function</span><span class="params">()</span>&#123;</span></span><br><span class="line">                GetRoomInfoList();</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">GetRoomInfoList</span><span class="params">()</span> &#123;</span></span><br><span class="line">        showDivLoading();<span class="comment">//异步加载数据时的浮层</span></span><br><span class="line">         $.ajax(&#123;</span><br><span class="line">             type: <span class="string">"Post"</span>,</span><br><span class="line">             url: <span class="string">"@Url.Content("</span>~/Room/GetRoomInfoShipId<span class="string">")"</span>,<span class="comment">//异步请求的URL,就是Room控制器方法GetRoomInfoShipId（long shipId）</span></span><br><span class="line">               dataType: <span class="string">"json"</span>,<span class="comment">//要求返回数据为JSON格式</span></span><br><span class="line">             data:&#123;shipId:$(<span class="string">"#ShipIdForSearch"</span>).val()&#125;,<span class="comment">//异步请求的参数</span></span><br><span class="line">               success: <span class="function"><span class="keyword">function</span><span class="params">(data)</span>&#123;</span></span><br><span class="line">             $(<span class="string">"#RoomInfoListTable"</span>).empty();   <span class="comment">//清空里面的所有内容</span></span><br><span class="line">               $.each(data, <span class="function"><span class="keyword">function</span><span class="params">(i, item)</span>&#123;</span> <span class="comment">//用js拼字符串处理数据，这里是显示所有房型列表信息</span></span><br><span class="line"></span><br><span class="line">                                 var <span class="built_in">str</span>=<span class="string">"&lt;tr&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">" &lt;td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;span style=\" width:150px;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\"&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=item.BaseRoomId;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;/span&gt;"</span></span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;/td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;span style=\" width:150px;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\"&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=item.ShipId;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;/span&gt;"</span></span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">" &lt;/td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">" &lt;td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;span style=\" width:150px;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\"&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=item.RoomType;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;/span&gt;"</span></span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">" &lt;/td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">" &lt;td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;span style=\" width:150px;display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;\"&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=item.RoomName;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"  &lt;/span&gt;"</span></span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">" &lt;/td&gt;"</span>;</span><br><span class="line">                                 <span class="built_in">str</span>+=<span class="string">"&lt;/tr&gt;"</span>;</span><br><span class="line">                                 $(<span class="string">"#RoomInfoListTable"</span>).append(<span class="built_in">str</span>);        </span><br><span class="line">                         &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">             &#125;);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<h3 id="使用JQuery的Ajax-请求返回值为PartialView格式的Controller方法"><a href="#使用JQuery的Ajax-请求返回值为PartialView格式的Controller方法" class="headerlink" title="使用JQuery的Ajax 请求返回值为PartialView格式的Controller方法"></a>使用JQuery的Ajax 请求返回值为PartialView格式的Controller方法</h3><p> 假设有这样的一个Model:</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title">MvcApplication1.Models</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Team</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Preletter &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p> 通过JQuery异步加载分部视图，Home/Index.cshtml：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">@&#123;</span><br><span class="line">    ViewBag.Title = "Index";</span><br><span class="line">    Layout = "~/Views/Shared/_Layout.cshtml";</span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Index<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span>通过jQuery异步<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"result"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">@section scripts</span><br><span class="line">&#123;</span><br><span class="line">   <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">     $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">     $(<span class="string">'#a'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">         $.ajax(&#123;</span></span><br><span class="line"><span class="actionscript">         url: <span class="string">'@Url.Action("Index","Home")'</span>,</span></span><br><span class="line"><span class="actionscript">         data: &#123; pre: <span class="string">'B'</span> &#125;,</span></span><br><span class="line"><span class="actionscript">         type: <span class="string">'POST'</span>,</span></span><br><span class="line"><span class="actionscript">         success: <span class="function"><span class="keyword">function</span><span class="params">(data)</span> </span>&#123;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="javascript">                        $(<span class="string">'#result'</span>).empty().append(data);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">                    &#125;</span></span><br><span class="line"><span class="undefined">                &#125;);</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="actionscript">                <span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">            &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>HomeController控制器中：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> System.Web.Mvc;</span><br><span class="line"><span class="keyword">using</span> MvcApplication1.Models;</span><br><span class="line"><span class="keyword">namespace</span> <span class="title">MvcApplication1.Controllers</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">HomeController</span> : <span class="title">Controller</span></span><br><span class="line">       &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">Index</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> View();</span><br><span class="line">        &#125;</span><br><span class="line">        [<span class="meta">HttpPost</span>]</span><br><span class="line">        <span class="function"><span class="keyword">public</span> ActionResult <span class="title">Index</span>(<span class="params"><span class="keyword">string</span> pre</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> result = GetAllTeams().Where(t =&gt; t.Preletter == pre).ToList();</span><br><span class="line">            ViewBag.msg = <span class="string">"通过jQuery异步方式到达这里~~"</span>;</span><br><span class="line">            <span class="keyword">return</span> PartialView(<span class="string">"TeamY"</span>, result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">private</span> List&lt;Team&gt; <span class="title">GetAllTeams</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> List&lt;Team&gt;()</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">new</span> Team()&#123;Name = <span class="string">"巴西队"</span>, Preletter = <span class="string">"B"</span>&#125;,</span><br><span class="line">                <span class="keyword">new</span> Team()&#123;Name = <span class="string">"克罗地亚队"</span>, Preletter = <span class="string">"K"</span>&#125;,</span><br><span class="line">                <span class="keyword">new</span> Team()&#123;Name = <span class="string">"巴拉圭"</span>, Preletter = <span class="string">"B"</span>&#125;,</span><br><span class="line">                <span class="keyword">new</span> Team()&#123;Name = <span class="string">"韩国"</span>, Preletter = <span class="string">"K"</span>&#125;</span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>分部视图TeamY.cshtml：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@model IEnumerable&lt;MvcApplication1.Models.Team&gt; </span><br><span class="line">@&#123;</span><br><span class="line">    var <span class="literal">result</span> = <span class="built_in">string</span>.Empty;</span><br><span class="line">    foreach (var <span class="built_in">item</span> <span class="keyword">in</span> Model)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="literal">result</span> += <span class="built_in">item</span>.Name + <span class="string">","</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">@ViewBag.msg.ToString()</span><br><span class="line">&lt;br/&gt;</span><br><span class="line">@<span class="literal">result</span>.Substring(<span class="number">0</span>,<span class="literal">result</span>.Length - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p><strong>3、基于JQuery的表单异步提交</strong></p>
+<p> 举个栗子吧：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    $(document).ready(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        $(<span class="string">"#form1"</span>).submit(<span class="function"><span class="keyword">function</span> <span class="params">(event)</span> </span>&#123;</span><br><span class="line">            event.preventDefault();<span class="comment">//阻止默认提交事件，改用JS处理提交事件</span></span><br><span class="line">            $.ajax(&#123;</span><br><span class="line">             type:<span class="string">"Post//表单提交类型 </span></span><br><span class="line"><span class="string">             url: "</span>@Url.Content(<span class="string">"~/User/Create"</span>)<span class="string">",//表单提交的Action方法</span></span><br><span class="line"><span class="string">             data:$("</span><span class="comment">#form1").serialize(), //序列化表单的值为字符串，前提是表单里边的输入标签都要有name属性才可以，序列化后的形式大概是这样的：a=1&amp;b=2&amp;c=3&amp;d=4&amp;e=5</span></span><br><span class="line">             success:<span class="function"><span class="keyword">function</span><span class="params">(msg)</span></span>&#123;</span><br><span class="line">                        $(<span class="string">"#result"</span>).html(msg);     </span><br><span class="line">                    &#125; </span><br><span class="line">                 &#125;); </span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">              &#125;);    </span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>但是我觉得如果表单提交的数据少的话，可以用这种，如果多的话，就没有必要了，用MVC自带的更好</p>
+<h2 id="如何提高Ajax性能"><a href="#如何提高Ajax性能" class="headerlink" title="如何提高Ajax性能"></a>如何提高Ajax性能</h2><p>1、适当使用缓存机制</p>
+<p>2、使用CDN内容分发来访问Jquery脚本：</p>
+<p>​     （1）自己公司架设CDN服务器</p>
+<p>​     （2）使用第三方公司的，比如微软，谷歌等公司的CDN，但有时候不太靠谱</p>
+<p>3、JS/CSS文件的打包合并（Bundling）及压缩（Minification）</p>
+<p>将多个JS或CSS文件打包合并成一个文件，并在网站发布之后进行压缩，从而减少HTTP请求次数，提高网络加载速度和页面解析速度。压缩功能实现了对javascript脚本和CSS进行压缩的功能，它能够去除脚本或样式中不必要的空白和注释，同时能够优化脚本变量名的长度</p>
+<p>例如在BundleConfig.cs里面配置捆绑js和css文件：</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Web;</span><br><span class="line"><span class="keyword">using</span> System.Web.Optimization;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">MvcExample</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">BundleConfig</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">RegisterBundles</span>(<span class="params">BundleCollection bundles</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            bundles.Add(<span class="keyword">new</span> ScriptBundle(<span class="string">"~/bundles/jquery"</span>).Include(</span><br><span class="line">                        <span class="string">"~/Scripts/jquery-&#123;version&#125;.js"</span>));</span><br><span class="line"></span><br><span class="line">            bundles.Add(<span class="keyword">new</span> StyleBundle(<span class="string">"~/Content/css"</span>).Include(<span class="string">"~/Content/site.css"</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p> 记得在Global.asax中注册一下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">BundleConfig</span><span class="selector-class">.RegisterBundles</span>(<span class="selector-tag">BundleTable</span><span class="selector-class">.Bundles</span>);</span><br></pre></td></tr></table></figure>
+<p>页面引用时可以这样引用:</p>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>@ViewBag.Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    @Styles.Render("~/Content/css")</span><br><span class="line">    @Scripts.Render("~/bundles/jquery")</span><br><span class="line">    @RenderSection("scripts", required: false)</span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    @RenderBody()</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><a href=""><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>启用JS/CSS文件压缩合并：</p>
+<ul>
+<li>Web.config中配置</li>
+</ul>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;compilation <span class="attribute">debug</span>=<span class="string">"false"</span> <span class="attribute">targetFramework</span>=<span class="string">"4.0"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在BundleConfig.cs或Global.asax中添加以下代码即可：</li>
+</ul>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BundleTable.EnableOptimizations </span>= true<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>4、最好将js脚本文件放在view页面下面一点</p>
+<p>关于ASP.NET MVC和Ajax的故事，暂且讲到这里吧！</p>
+
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/Ajax/">Ajax</a>
+		 
+		 <a href="/tags/AjaxHelper/">AjaxHelper</a>
+		 
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/02/28/ASP.NET08/" rel="prev" title="ASP.NET08">
+						 ASP.NET08
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/02/26/【HTTP】HTTPS 原理详解/" rel="next" title="【HTTP】HTTPS 原理详解">
+						 【HTTP】HTTPS 原理详解
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
+</article>
+<script>
+window.subData = {
+ title: 'ASP.NET07',
+ tools: true
+}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/avatar.jpg' />
+
+<div class='header'>luox78</div>
+<div class='content'>
+<div class='desc'>It's always not too late to learn</div>
+</div>
+</section>
+
+  <section class='m_widget'>
+        <div class='header'>田馥甄-你就不要想起我</div>
+<div>
+    <audio src="https://luox78.github.io/images/田馥甄-你就不要想起我.mp3" controls="controls" style="width:250px;">
+        田馥甄-你就不要想起我
+    </audio>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>9</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>15</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>6</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 15.5px; color: #606060">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 14px; color: #808080">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/filters/" style="font-size: 14px; color: #808080">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
+    </div>
+</div>
+
+
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://github.com/luox78">
+            <div class='name'>Github</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://www.baidu.com">
+            <div class='name'>Baidu</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+      </aside>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/luox78" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量:
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
+  
+</footer>
+
+
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+<!--隐藏不是主页的wiget-->
+<script>
+  if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/" && document.location.href !== "http://localhost:4000/"){
+    var foo = document.getElementsByClassName("l_side");
+    for (let index = 0; index < foo.length; index++) {
+      foo[index].style.display="none";
+    }
+  }
+  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
+  Waves.attach(".u-search-form", ['.waves-circle']);
+  Waves.init();
+
+  //添加tr显示效果
+  $(".article-entry>table tbody tr:odd").css("backgroundColor","rgb(235,236,238)");
+	$("#loading").fadeOut(1000);
+  $("ol").attr("type",1);
+</script>
+
+
+</body>
+</html>

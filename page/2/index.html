@@ -153,6 +153,138 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/02/09/ASP.NET05/">
+        ASP.NET05
+      </a>
+    </h2>
+    
+    <time>
+      Feb 9, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET/">ASP.NET</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="创建缩略图"><a href="#创建缩略图" class="headerlink" title="创建缩略图"></a>创建缩略图</h2><figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> file = context.Request.Files[<span class="number">0</span>]; </span><br><span class="line"><span class="comment">//从上传图片创建大图</span></span><br><span class="line"> <span class="keyword">using</span> (<span class="keyword">var</span> bigImage = Image.FromStream(file.InputStream))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//等比创建小图</span></span><br><span class="line">            <span class="keyword">using</span> (<span class="keyword">var</span> smallImage = <span class="keyword">new</span> <span class="type">Bitmap</span>(<span class="number">200</span>, <span class="number">200</span> * bigImage.Height / bigImage.Width))</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//创建画布将大图画入小图</span></span><br><span class="line">                <span class="keyword">using</span> (<span class="keyword">var</span> graphics = Graphics.FromImage(smallImage))</span><br><span class="line">                &#123;</span><br><span class="line">                    graphics.DrawImage(bigImage, <span class="number">0</span>, <span class="number">0</span>, smallImage.Width, smallImage.Height);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//保存</span></span><br><span class="line">                bigImage.Save(context.Server.MapPath(Guid.NewGuid() + <span class="string">"_big.jpg"</span>));</span><br><span class="line">                smallImage.Save(context.Server.MapPath(Guid.NewGuid() + <span class="string">"_small.jpg"</span>));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2018/02/09/ASP.NET05/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/缩略图/">缩略图</a>
+      
+        <a href="/tags/viewstate/">viewstate</a>
+      
+        <a href="/tags/深入理解aspx/">深入理解aspx</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/02/07/ASP.NET MVC 控制器/">
+        ASP.NET MVC 控制器
+      </a>
+    </h2>
+    
+    <time>
+      Feb 7, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET-MVC/">ASP.NET MVC</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p> 人么总说事件会改变一切，当实际上你必须自己动手去改变一切——<em>Andy Warhol</em></p>
+<h2 id="对输入请求进行路由"><a href="#对输入请求进行路由" class="headerlink" title="对输入请求进行路由"></a>对输入请求进行路由</h2><p>在软件中，URI（统一资源标识符）是指通过一个位置或者名称来引用资源。</p>
+<p>当URI通过位置来识别资源是，就叫做URL（统一定位符）</p>
+<p>当URI通过名称标志资源时，就叫做URN（统一资源名称）</p>
+<p>ASP.NET MVC 旨在处理更通用的URI，ASP.NET Web Forms只要处理位置感知的物理资源
+
+    
+	  <div class="readmore">
+      <a href="/2018/02/07/ASP.NET MVC 控制器/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/ASP-NET-MVC5-编程实战/">ASP.NET MVC5 编程实战</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/02/07/CSharp高效编程摘记/">
+        CSharp高效编程摘记
+      </a>
+    </h2>
+    
+    <time>
+      Feb 7, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="查询语法-query-syntax-的一个用处"><a href="#查询语法-query-syntax-的一个用处" class="headerlink" title="查询语法(query syntax)的一个用处"></a>查询语法(query syntax)的一个用处</h2><p><strong>循环创建集合|数组</strong>时，用查询语法(query syntax)会比普通控制流程的结构好点，</p>
+<p>主要体现在：</p>
+<ul>
+<li>命令式的版本有时非常难以理解，要是没有注释或文档，后续维护人员将要重读整段代码才能进行开发。</li>
+<li>另外，查询语法比循环结构能提供更具组合性的API。查询语法将很自然的把代码分解成小块代码，每一块仅仅对序列中元素进行单一的操作。查询语法的延迟执行模型也让开发者能将这些单一的操作组合成多步操作，且在一次遍历序列时完整执行。
+
+    
+	  <div class="readmore">
+      <a href="/2018/02/07/CSharp高效编程摘记/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/tips/">tips</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/02/06/ASP.NET04/">
         ASP.NET04
       </a>
@@ -304,136 +436,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/02/03/ASP.NET01/">
-        ASP.NET01
-      </a>
-    </h2>
-    
-    <time>
-      Feb 3, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/ASP-NET/">ASP.NET</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="输入域名发送过程"><a href="#输入域名发送过程" class="headerlink" title="输入域名发送过程"></a>输入域名发送过程</h2><ol>
-<li>输入域名后，浏览器会先发送给DNS解析得到IP地址</li>
-<li>浏览器封装http报文发送服务器</li>
-<li>服务器根据报文，返回相对应的（静态，动态）网页</li>
-</ol>
-<p>静态页面：在服务器就相当于直接读取文件字符串然后返回客户端浏览器；（任何时候访问看到的都是一样的界面。）
-
-    
-	  <div class="readmore">
-      <a href="/2018/02/03/ASP.NET01/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/http协议/">http协议</a>
-      
-        <a href="/tags/模拟IIS/">模拟IIS</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/02/01/thread01/">
-        多线程01
-      </a>
-    </h2>
-    
-    <time>
-      Feb 1, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="进程线程应用程序域概念"><a href="#进程线程应用程序域概念" class="headerlink" title="进程线程应用程序域概念"></a>进程线程应用程序域概念</h2><p>进程，线程略</p>
-<p>应用程序域（AppDomain）：它提供安全而通用的处理单元，公共语言运行库可使用它来提供应用程序之间的隔离。您可以在具有同等隔离级别（存在于单独的进程中）的单个进程中运行几个应用程序域，而不会造成进程间调用或进程间切换等方面的额外开销。优势： 在一个应用程序中出现的错误不会影响其他应用程序。能够在不停止整个进程的情况下停止单个应用程序。应用程序域形成了托管代码的隔离、卸载和安全边界。在任意给定时间，每一线程都在一个应用程序域中执行。</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/02/01/thread01/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/线程/">线程</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/02/01/cache/">
-        细说 ASP.NET Cache 及其高级用法
-      </a>
-    </h2>
-    
-    <time>
-      Feb 1, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/ASP-NET/">ASP.NET</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>许多做过程序性能优化的人，或者关注过程程序性能的人，应该都使用过各类缓存技术。 而我今天所说的Cache是专指ASP.NET的Cache，我们可以使用HttpRuntime.Cache访问到的那个Cache，而不是其它的缓存技术。</p>
-<p>以前我在<a href="http://www.cnblogs.com/fish-li/archive/2011/08/21/2148640.html" target="_blank" rel="noopener">【我心目中的Asp.net核心对象】</a> 这篇博客中简单地提过它，今天我打算为它写篇专题博客，专门来谈谈它，因为它实在是太重要了。在这篇博客中， 我不仅要介绍它的一些常见用法，还将介绍它的一些高级用法。 在上篇博客<a href="http://www.cnblogs.com/fish-li/archive/2011/12/18/2292037.html" target="_blank" rel="noopener">【在.net中读写config文件的各种方法】</a> 的结尾处，我给大家留了一个问题，今天，我将在这篇博客中给出一个我认为较为完美的答案。</p>
-<p>本文提到的【延迟操作】方法（如：延迟合并写入数据库）属于我的经验总结，希望大家能喜欢这个思路。<br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/02/01/cache/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/cache/">cache</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -481,9 +483,9 @@
     
     <ul class="entry">
     
-        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>7</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>9</div></a></li>
     
-        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>2</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>3</div></a></li>
     
         <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>15</div></a></li>
     
@@ -502,7 +504,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 15.5px; color: #606060">ASP.NET MVC5 编程实战</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 14px; color: #808080">cache</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 15.5px; color: #606060">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 14px; color: #808080">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/filters/" style="font-size: 14px; color: #808080">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
     </div>
 </div>
 
