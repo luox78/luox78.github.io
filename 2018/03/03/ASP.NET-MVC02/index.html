@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>初始JQuery02 | luox78</title>
+  <title>ASP.NET MVC02 | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -15,18 +15,18 @@
   <link rel="shortcut icon" href="/images/dev.ico">
   <link rel="alternate" href="/atom.xml" title="luox78">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="selector相对定位不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素. 1234//$(this) 代表tr，在tr下面找td$(&quot;tr&quot;).click(function() &amp;#123;       $(&quot;td:even&quot;, $(this)).css(&quot;backgroundColor&quot;, &quot;red&quot;);   &amp;#125;);">
-<meta name="keywords" content="jsfoundation,jQueryfoundation">
+  <meta name="description" content="接上篇更新，删除可以先找出实体，然后直接更改属性保存即可，删除直接调用remove 1234567var db = new luox78_成绩管理系统Entities();var college = db.College.FirstOrDefault(m =&amp;gt; m.Autoid == 1);//更新college.CollegeName = &quot;changed&quot;;//删除db.College.">
+<meta name="keywords" content="entity framework">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初始JQuery02">
-<meta property="og:url" content="https://luox78.github.io/2018/01/15/JQuery02/index.html">
+<meta property="og:title" content="ASP.NET MVC02">
+<meta property="og:url" content="https://luox78.github.io/2018/03/03/ASP.NET-MVC02/index.html">
 <meta property="og:site_name" content="luox78">
-<meta property="og:description" content="selector相对定位不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素. 1234//$(this) 代表tr，在tr下面找td$(&quot;tr&quot;).click(function() &amp;#123;       $(&quot;td:even&quot;, $(this)).css(&quot;backgroundColor&quot;, &quot;red&quot;);   &amp;#125;);">
+<meta property="og:description" content="接上篇更新，删除可以先找出实体，然后直接更改属性保存即可，删除直接调用remove 1234567var db = new luox78_成绩管理系统Entities();var college = db.College.FirstOrDefault(m =&amp;gt; m.Autoid == 1);//更新college.CollegeName = &quot;changed&quot;;//删除db.College.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-15T15:20:34.568Z">
+<meta property="og:updated_time" content="2018-03-03T15:32:07.454Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初始JQuery02">
-<meta name="twitter:description" content="selector相对定位不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素. 1234//$(this) 代表tr，在tr下面找td$(&quot;tr&quot;).click(function() &amp;#123;       $(&quot;td:even&quot;, $(this)).css(&quot;backgroundColor&quot;, &quot;red&quot;);   &amp;#125;);">
+<meta name="twitter:title" content="ASP.NET MVC02">
+<meta name="twitter:description" content="接上篇更新，删除可以先找出实体，然后直接更改属性保存即可，删除直接调用remove 1234567var db = new luox78_成绩管理系统Entities();var college = db.College.FirstOrDefault(m =&amp;gt; m.Autoid == 1);//更新college.CollegeName = &quot;changed&quot;;//删除db.College.">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
@@ -147,22 +147,22 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="post-JQuery02"
+        <article id="post-ASP.NET-MVC02"
 	class="post white-box article-type-post"
 	itemscope itemprop="blogPost">
 <section class='meta'>
  <h2 class="title">
-		 <a href="/2018/01/15/JQuery02/">
-				 初始JQuery02
+		 <a href="/2018/03/03/ASP.NET-MVC02/">
+				 ASP.NET MVC02
 		 </a>
  </h2>
  <time>
-		 Jan 15, 2018
+		 Mar 3, 2018
  </time>
  
     
     <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
+        <a href="/categories/ASP-NET-MVC/">ASP.NET MVC</a>
     </div>
 
  <span id="busuanzi_container_page_pv">
@@ -172,70 +172,44 @@
  </span>
 </section>
 
-<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#selector"><span class="toc-number">1.</span> <span class="toc-text">selector</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#相对定位"><span class="toc-number">1.1.</span> <span class="toc-text">相对定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性过滤选择器"><span class="toc-number">1.2.</span> <span class="toc-text">属性过滤选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表单对象属性选择器（过滤器）"><span class="toc-number">1.3.</span> <span class="toc-text">表单对象属性选择器（过滤器）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery的Dom操作"><span class="toc-number">2.</span> <span class="toc-text">jQuery的Dom操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动态创建Dom节点"><span class="toc-number">2.1.</span> <span class="toc-text">动态创建Dom节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#删除节点"><span class="toc-number">2.2.</span> <span class="toc-text">删除节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#节点操作"><span class="toc-number">2.3.</span> <span class="toc-text">节点操作</span></a></li></ol></li></ol></section>
+<section class="toc-wrapper"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#接上篇"><span class="toc-number">1.</span> <span class="toc-text">接上篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#code-first"><span class="toc-number">2.</span> <span class="toc-text">code first</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上下文管理：实例管理"><span class="toc-number">3.</span> <span class="toc-text">上下文管理：实例管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么用EF而不用原生的Ado-Net"><span class="toc-number">4.</span> <span class="toc-text">为什么用EF而不用原生的Ado.Net</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MVC"><span class="toc-number">5.</span> <span class="toc-text">MVC</span></a></li></ol></section>
 
 <section class="article typo">
  <div class="article-entry" itemprop="articleBody">
-		 <h2 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h2><h3 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h3><p>不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$(this) 代表tr，在tr下面找td</span></span><br><span class="line">$(<span class="string">"tr"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       $(<span class="string">"td:even"</span>, $(<span class="keyword">this</span>)).css(<span class="string">"backgroundColor"</span>, <span class="string">"red"</span>);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h3 id="属性过滤选择器"><a href="#属性过滤选择器" class="headerlink" title="属性过滤选择器"></a>属性过滤选择器</h3><ul>
-<li><code>$(&quot;div[id]&quot;)</code>选取有id属性的<code>&lt;div&gt;</code></li>
-<li><code>$(&quot;div[title=test]&quot;)</code>选取title属性为“test”的<code>&lt;div&gt;</code>，jQuery中没有对<code>getElementsByName</code>进行封装，用<code>$(&quot;input[name=abc]&quot;)</code></li>
-<li><code>$(&quot;div[title!=test]&quot;)</code>选取title属性不为“test”的<code>&lt;div&gt;</code></li>
-<li>还可以选择开头<code>[name^=值]</code>、结束<code>[] name$=值]</code>、包含<code>[ name*=值]</code>等，条件还可以复合。【[属性1=a][属性2=b]…】</li>
-</ul>
-<h3 id="表单对象属性选择器（过滤器）"><a href="#表单对象属性选择器（过滤器）" class="headerlink" title="表单对象属性选择器（过滤器）"></a>表单对象属性选择器（过滤器）</h3><ul>
-<li><code>$(&quot;#form1:enabled&quot;)</code>选取id为form1的表单内所有启用的元素</li>
-<li><code>$(&quot;#form1:disabled&quot;)</code>选取id为form1的表单内所有禁用的元素</li>
-<li><code>$(“input:checked”)</code>选取所有选中的元素（Radio、CheckBox）,这个中间不能加空格.</li>
-<li><code>$(&quot;select:selected&quot;)</code>选取所有选中的选项元素（下拉列表）</li>
-<li><strong>注意</strong>：<code>$(&#39;&#39;:input&quot;)</code>选取所有<code>&lt;input&gt;</code>、<code>&lt;textarea&gt;</code>、<code>&lt;select&gt;</code>和<code>&lt;button&gt;</code>元素。和<code>$(&quot;input&quot;)</code>不一样， <code>$(&quot;input&quot;)</code>只获得<code>&lt;input&gt;</code></li>
-<li><code>$(&quot;:text&quot;)</code>选取所有单行文本框，等价于<code>$(&quot;input[type=text]&quot;)</code>,<code>$(‘input[type=text]’)</code>,<code>$(‘:text’)</code>;</li>
-<li>同理还有<code>:radio</code>、<code>:checkbox</code>、<code>:submit</code>、<code>:image</code>、<code>:reset</code>、<code>:button</code>、<code>:file</code>、<code>:hidden</code>。</li>
-</ul>
-<h2 id="jQuery的Dom操作"><a href="#jQuery的Dom操作" class="headerlink" title="jQuery的Dom操作"></a>jQuery的Dom操作</h2><ol>
-<li><p>使用<code>html()</code>方法读取或者设置元素的<code>innerHTML</code></p>
-</li>
-<li><p>使用<code>text()</code>方法读取或者设置元素的innerText：</p>
-</li>
-<li><p>使用<code>attr()</code>方法读取或者设置元素的属性，对于jQuery没有封装的属性（所有浏览器没有差异的属性）用attr进行操作。</p>
-<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取</span></span><br><span class="line">alert(<span class="symbol">$</span>(<span class="string">"a:first"</span>).attr(<span class="string">"href"</span>));</span><br><span class="line"><span class="comment">//设置</span></span><br><span class="line"><span class="symbol">$</span>(<span class="string">"a:first"</span>).attr(<span class="string">"href"</span>, <span class="string">"http://www.luox78.com"</span>);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用<code>removeAttr</code>删除属性。删除的属性在源代码中看不到，这是和清空属性的区别。attr(‘name’,’’)</p>
-</li>
-</ol>
-<h3 id="动态创建Dom节点"><a href="#动态创建Dom节点" class="headerlink" title="动态创建Dom节点"></a>动态创建Dom节点</h3><p>先创建jquery dom对象<code>var obj=$(&quot;&lt;div style=&quot;background-color:blue;&quot; /&gt;&quot;);</code></p>
-<p>再动态添加<code>$(&quot;body&quot;).append(obj);或者obj.appendTo($(&quot;body&quot;))</code></p>
-<p><code>append</code>方法用来在元素的末尾追加元素（最后一个子节点）。增加元素末尾(儿子)</p>
-<p><code>prepend</code>，在元素的开始添加元素（第一个子节点）。增加元素开始(儿子)</p>
-<p><code>after</code>，在元素之后添加元素（添加兄弟）增加元素后面(兄弟)</p>
-<p><code>before：</code>在元素之前添加元素（添加兄弟）增加元素前面(兄弟)</p>
-<p><code>子元素.appendTo(父元素);</code>//主动巴结!到最后一个</p>
-<p><code>子元素.prependTo(父元素);</code>//主动巴结到第一个。</p>
-<p><code>(*)A.insertBefore(B);</code>将A加到到B的前面，等同于B.before(A);</p>
-<p><code>(*)X.insertAfter(Y);</code>将X加到到Y的后面，等同于Y.after(X);</p>
-<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><p><code>empty();</code>清空某元素下的所有子节点</p>
-<p><code>remove(selector)</code><br>删除当前元素，返回值为被删除的元素。还可以继续使用被删除的节点。比如重新添加到其他节点下：</p>
-<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">lis</span> = $(<span class="string">"#ulSite li"</span>).remove();</span><br><span class="line">$(<span class="string">"#ulSite2"</span>).<span class="keyword">append</span>(<span class="keyword">lis</span>);</span><br></pre></td></tr></table></figure>
-<p><code>clone()</code>克隆节点，只复制节点，没事件</p>
-<h3 id="节点操作"><a href="#节点操作" class="headerlink" title="节点操作"></a>节点操作</h3><ul>
-<li>替换节点：</li>
-</ul>
-<p><code>$(&quot;br&quot;).replaceWith(&quot;&lt;hr/&gt;&quot;);</code>用<code>&lt;hr/&gt;</code>替换br<code>$(‘&lt;br/’).replaceAll(‘hr’);</code> //调用者也得是选择器选择到</p>
-<p>的元素。用<code>&lt;br/&gt;</code>元素替换所有的hr</p>
+		 <h2 id="接上篇"><a href="#接上篇" class="headerlink" title="接上篇"></a>接上篇</h2><p>更新，删除可以先找出实体，然后直接更改属性保存即可，删除直接调用<code>remove</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">db</span> = new luox78_成绩管理系统Entities();</span><br><span class="line"><span class="keyword">var</span> college = <span class="keyword">db</span>.College.FirstOrDefault(<span class="keyword">m</span> =&gt; <span class="keyword">m</span>.Autoid == 1);</span><br><span class="line"><span class="comment">//更新</span></span><br><span class="line">college.CollegeName = <span class="string">"changed"</span>;</span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="keyword">db</span>.College.Remove(college);</span><br><span class="line"><span class="keyword">db</span>.SaveChanges();</span><br></pre></td></tr></table></figure>
+<p>根据主键查询可以使用<code>Find</code>方法<a id="more"></a></p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var college1 = db.College.Find(<span class="number">1</span>, <span class="number">0</span>);<span class="comment">//这里College表中有两个主键</span></span><br></pre></td></tr></table></figure>
+<h2 id="code-first"><a href="#code-first" class="headerlink" title="code first"></a>code first</h2><p><a href="https://www.cnblogs.com/lsxqw2004/archive/2015/08/07/4701979.html" target="_blank" rel="noopener">https://www.cnblogs.com/lsxqw2004/archive/2015/08/07/4701979.html</a></p>
+<h2 id="上下文管理：实例管理"><a href="#上下文管理：实例管理" class="headerlink" title="上下文管理：实例管理"></a>上下文管理：实例管理</h2><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DbContext <span class="title">GetCurrentDbContext</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="comment">//第一次：</span></span><br><span class="line">            DbContext dbContext = HttpContext.Current.Items[<span class="string">"DbContext"</span>] <span class="keyword">as</span> DbContext;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (dbContext == <span class="literal">null</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                dbContext =<span class="keyword">new</span> DbContext(<span class="string">""</span>);</span><br><span class="line">                HttpContext.Current.Items[<span class="string">"DbContext"</span>] = dbContext;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> dbContext;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>利用<code>HttpContext.Current.Items</code>存入<code>DbContext</code></p>
+<h2 id="为什么用EF而不用原生的Ado-Net"><a href="#为什么用EF而不用原生的Ado-Net" class="headerlink" title="为什么用EF而不用原生的Ado.Net"></a>为什么用EF而不用原生的Ado.Net</h2><p>1、极大的提高开发效率：EF是微软自己的产品，跟VS开发工具集成度比较好，开发中代码都是强类型的，写代码效率非常高，自动化程度非常高，命令式的编程。</p>
+<p>2、EF提供的模型设计器非常强大，不仅仅带来了设计数据库的革命，也附带来的自动化生成模型代码的功能也极大的提高开发和架构设计的效率</p>
+<p>3、EF跨数据支持是ORM框架主要功能点之一，带来的是可以通过仅仅改变配置就可以做到跨数据库的能力。</p>
+<p>4、使开发人员远离sql脚本    </p>
+<p>5、缺陷：性能差（生成sql脚本阶段），在复杂查询的时候生成的sql脚本效率不是很高。</p>
+<h2 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h2><p>控制器： <a href="https://luox78.github.io/2018/02/07/ASP.NET%20MVC%20%E6%8E%A7%E5%88%B6%E5%99%A8/">https://luox78.github.io/2018/02/07/ASP.NET%20MVC%20%E6%8E%A7%E5%88%B6%E5%99%A8/</a></p>
+<p>视图： <a href="https://luox78.github.io/2018/02/13/ASP.NET-MVC-%E8%A7%86%E5%9B%BE/">https://luox78.github.io/2018/02/13/ASP.NET-MVC-%E8%A7%86%E5%9B%BE/</a></p>
+<p><strong>管道流程：</strong></p>
+<p><code>ISAPIRuntime.ProcessRequest()</code>创建<code>HttpWorkerRequest</code>对象</p>
+<p>→<code>HttpRuntime.ProcessRequest()</code>创建<code>HttpContext</code>，包含<code>HttpRequest</code>，<code>HttpResponse</code>等</p>
+<p>→<code>HttpAppicationFactory</code>获取<code>HttpApplication</code>（根据Gloable文件）→ASP.NET管道流程</p>
+<p>有关Application_Start()：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MvcApplication</span> :</span> System.Web.HttpApplication</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="built_in">string</span> Name &#123; get; <span class="built_in">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">Application_Start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            Name = <span class="string">"luox78"</span>;</span><br><span class="line">            。。。。</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>关于Name有可能拿的到有可能拿不到，原因：MvcApplication创建在IIS应用程序池，有缓存的时候会返回池里面第一个，没有则创建新的</p>
+<p><strong><code>HttpAppicationFactory</code>获取<code>HttpApplication</code>（根据Global文件）：</strong></p>
 <ul>
-<li>包裹节点</li>
+<li>初始化工厂：根据Global编译到<code>ApplicationType</code></li>
+<li>确保<code>Application_Start</code>被调用</li>
+<li>创建<code>HttpApplication</code>，先去缓存栈中取没有new</li>
 </ul>
-<p><code>wrap()</code>方法用来将所有元素逐个用指定标签包裹：<code>[wrapAll()]$(“b”).wrap(“&lt;font color=‘red’&gt;&lt;/font&gt;”)</code>将所粗体字红色显示<br>结果：<code>&lt;font color=‘red’&gt;&lt;b&gt;&lt;/b&gt;&lt;/font&gt;</code><br><code>wrapInner()</code>//在内部围绕</p>
-
+<p><strong>拓展方法使用一个技巧：</strong></p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过更改命名空间实现所有的view均可以使用自己定义的htmlhelper</span></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">System.Web.Mvc</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title">MyHelperExt</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> MvcHtmlString <span class="title">MyLabel</span>(<span class="params"><span class="keyword">this</span> HtmlHelper helper, <span class="keyword">string</span> text</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> MvcHtmlString.Create(<span class="string">$"&lt;span&gt;MyLabel:<span class="subst">&#123;text&#125;</span>&lt;/span&gt;"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
  </div>
  
  <div class="article-tags tags">
 		 
-		 <a href="/tags/jsfoundation/">jsfoundation</a>
-		 
-		 <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
+		 <a href="/tags/entity-framework/">entity framework</a>
 		 
  </div>
  
@@ -257,16 +231,10 @@
  
  <div class="art-item-footer">
 		 
-		 <span class="art-item-left">
-				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/01/16/Entity Framework Code First to a New Database/" rel="prev" title="Entity Framework01-code first建立一个新数据库">
-						 Entity Framework01-code first建立一个新数据库
-				 </a>
-		 </span>
-		 
 		 
 		 <span class="art-item-right">
-				 next：<a href="/2018/01/15/get_post/" rel="next" title="GET，POST，PUT，DELETE的区别">
-						 GET，POST，PUT，DELETE的区别
+				 next：<a href="/2018/03/02/ASP.NET-MVC01/" rel="next" title="ASP.NET MVC01">
+						 ASP.NET MVC01
 				 </a><i class="icon icon-chevron-thin-right"></i>
 		 </span>
 		 
@@ -277,7 +245,7 @@
 </article>
 <script>
 window.subData = {
- title: '初始JQuery02',
+ title: 'ASP.NET MVC02',
  tools: true
 }
 </script>
