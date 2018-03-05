@@ -157,6 +157,50 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/03/05/知识点01/">
+        知识点01
+      </a>
+    </h2>
+    
+    <time>
+      Mar 5, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="事件event"><a href="#事件event" class="headerlink" title="事件event"></a>事件event</h2><p>C# 中的委托是什么？事件是不是一种委托？事件和委托的关系。<br>委托可以把一个方法作为参数代入另一个方法。<br>委托可以理解为指向一个函数的指针。<br>委托和事件没有可比性，因为<strong>委托是类型，事件是对象</strong>，下面说的是委托的对象（用委托方式实现的事件）和（标准的 event 方式实现）事件的区别。事件的内部是用委托实现的。因为对于事件来讲，<strong>外部只能“注册自己+=、注销自己-=”，外界不可以注销其他的注册者</strong>，<strong>外界不可以主动调用事件</strong>，因此如果用 Delegate 就没法进行上面的控制，因此诞生了事件这种语法。事件是用来阉割委托实例的，类比用一个自定义类阉割 List。事件只能 add、remove自己，不能赋值。事件只能+=、-=，不能= 。事件内部就是一个 private的委托和 add、remove 两个方法
+
+    
+	  <div class="readmore">
+      <a href="/2018/03/05/知识点01/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/event/">event</a>
+      
+        <a href="/tags/TryCatch/">TryCatch</a>
+      
+        <a href="/tags/数据库三范式/">数据库三范式</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/02/07/CSharp高效编程摘记/">
         CSharp高效编程摘记
       </a>
@@ -542,46 +586,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/11/CS_path/">
-        C#路径
-      </a>
-    </h2>
-    
-    <time>
-      Jan 11, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="获取当前文件的路径"><a href="#获取当前文件的路径" class="headerlink" title="获取当前文件的路径"></a>获取当前文件的路径</h2><p><code>string str1=Process.GetCurrentProcess().MainModule.FileName;</code>//可获得当前执行的exe的文件名。<br><code>string str2=Environment.CurrentDirectory;</code>//获取和设置当前目录（即该进程从中启动的目录）的完全限定路径。
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/11/CS_path/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/path/">path</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -628,7 +632,7 @@
     
         <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>6</div></a></li>
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>15</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>16</div></a></li>
     
         <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>6</div></a></li>
     
@@ -645,7 +649,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 15.5px; color: #606060">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.5px; color: #606060">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.5px; color: #606060">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/filters/" style="font-size: 15.5px; color: #606060">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 15.5px; color: #606060">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.5px; color: #606060">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.5px; color: #606060">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.5px; color: #606060">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
     </div>
 </div>
 
