@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>redis nosql介绍 | luox78</title>
+  <meta name="description" content="Blog for luox78" />
+  <meta name="keywords" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="theme-color" content=" rgb(59,95,208)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  <link rel="shortcut icon" href="/images/dev.ico">
+  <link rel="alternate" href="/atom.xml" title="luox78">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="NoSQL简介 ​      介绍redis前，我想还是先认识下NoSQL,即not only sql, 是一种非关系型的数据存储，key/value键值对存储。现有Nosql DB 产品： Redis/MongoDB/Memcached/Hbase/Cassandra/ Tokyo Cabinet/Voldemort/Dynomite/Riak/ CouchDB/Hypertable/Flare">
+<meta name="keywords" content="redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis nosql介绍">
+<meta property="og:url" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/index.html">
+<meta property="og:site_name" content="luox78">
+<meta property="og:description" content="NoSQL简介 ​      介绍redis前，我想还是先认识下NoSQL,即not only sql, 是一种非关系型的数据存储，key/value键值对存储。现有Nosql DB 产品： Redis/MongoDB/Memcached/Hbase/Cassandra/ Tokyo Cabinet/Voldemort/Dynomite/Riak/ CouchDB/Hypertable/Flare">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/10224355-47f0d96a58084a81b23be44a19ada222.jpg">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/10225203-55da4b7f1f0e47ef87fff126a5581efa.jpg">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/10230036-2ad3da19c61b4b26a1628c05a691ea5d.jpg">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/10230720-ba98f3d305604969ae6269655e15eaff.jpg">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/10231210-93d8da2b10384a23948bd7e630c4a1f2.jpg">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/copycode.gif">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/copycode.gif">
+<meta property="og:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/10231833-91a17df43917437d962b146cfa6e7b51.jpg">
+<meta property="og:updated_time" content="2018-03-09T11:15:44.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="redis nosql介绍">
+<meta name="twitter:description" content="NoSQL简介 ​      介绍redis前，我想还是先认识下NoSQL,即not only sql, 是一种非关系型的数据存储，key/value键值对存储。现有Nosql DB 产品： Redis/MongoDB/Memcached/Hbase/Cassandra/ Tokyo Cabinet/Voldemort/Dynomite/Riak/ CouchDB/Hypertable/Flare">
+<meta name="twitter:image" content="https://luox78.github.io/2018/03/09/redis-nosql介绍/那点所谓的分布式——redis%20-%20一线码农%20-%20博客园_files/10224355-47f0d96a58084a81b23be44a19ada222.jpg">
+    
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="/style.css">
+  <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+  </script>
+</head>
+
+<body>
+  <div id="loading">
+    <div id="loading-center">
+    <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+    </div>
+    </div>
+     
+    </div>
+  <header class="l_header">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+			<a class="logo flat-box" href='/' >
+				luox78
+			</a>
+			<div class='menu'>
+				<ul class='h-list'>
+					
+						<li>
+							<a class='flat-box nav-home' href='/'>
+								Home
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-archives' href='/archives'>
+								Archives
+							</a>
+						</li>
+					
+						<li>
+							<a class='flat-box nav-about' href='/about.html'>
+								About
+							</a>
+						</li>
+					
+				</ul>
+				<div class='underline'></div>
+			</div>
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search" />
+						<span class="icon icon-search"></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a href='javascript:void(0)'><span class="icon icon-search flat-box"></span></a></li>
+				
+				<li class='s-menu'><a href='javascript:void(0)'><span class="icon icon-menu flat-box"></span></a></li>
+			</ul>
+		</div>
+		
+		<div class='nav-sub container container--flex'>
+			<a class="logo" class="flat-box" href='javascript:void(0)'>
+				Word of Forks
+			</a>
+
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a href='javascript:void(0)'><span class="icon icon-chat_bubble_outline flat-box"></span></a></li>
+				<li class='s-top'><a href='javascript:void(0)'><span class="icon icon-arrow_upward flat-box"></span></a></li>
+				<li class='s-toc'><a href='javascript:void(0)'><span class="icon icon-format_list_numbered flat-box"></span></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<aside class="menu-phone">
+	<nav>
+		
+			<a href="/" class="nav-home nav">
+				Home
+			</a>
+		
+			<a href="/archives" class="nav-archives nav">
+				Archives
+			</a>
+		
+			<a href="/about.html" class="nav-about nav">
+				About
+			</a>
+		
+	</nav>
+</aside>
+
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+
+
+  <!-- <script>
+      var count=0;
+      function setLoadingBarProgress() {
+          if(count==100){
+              count=0;
+          }
+          document.getElementById('loading-bar').style.width = count + "%";
+      }
+  </script> -->
+  <div class="l_body">
+    <div class='container clearfix'>
+      <div class='l_main'>
+        <article id="post-redis-nosql介绍"
+	class="post white-box article-type-post"
+	itemscope itemprop="blogPost">
+<section class='meta'>
+ <h2 class="title">
+		 <a href="/2018/03/09/redis-nosql介绍/">
+				 redis nosql介绍
+		 </a>
+ </h2>
+ <time>
+		 Mar 9, 2018
+ </time>
+ 
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET-MVC/">ASP.NET MVC</a>
+    </div>
+
+ <span id="busuanzi_container_page_pv">
+		 
+		<a href="javascript:void(0)" class="read_cats">本文总阅读量:<span id="busuanzi_value_page_pv"></span>
+		</a>
+ </span>
+</section>
+
+<section class="toc-wrapper"></section>
+
+<section class="article typo">
+ <div class="article-entry" itemprop="articleBody">
+		 <p><strong>NoSQL简介</strong></p>
+<p>​      介绍redis前，我想还是先认识下NoSQL,即not only sql, 是一种非关系型的数据存储，key/value键值对存储。现有Nosql DB 产品： Redis/MongoDB/Memcached/Hbase/Cassandra/ Tokyo Cabinet/Voldemort/Dynomite/Riak/ CouchDB/Hypertable/Flare/Tin/Lightcloud/ KiokuDB/Scalaris/Kai/ThruDB, 等等~~~<a id="more"></a></p>
+<p><strong>为什么需要NoSQL非关系型数据库？</strong></p>
+<ul>
+<li>High performance - 对数据库高并发读写的需求</li>
+<li>Huge Storage - 对海量数据的高效率存储和访问的需求</li>
+<li>High Scalability &amp;&amp; High Availability- 对数据库的高可扩展性和高可用性的需求</li>
+</ul>
+<p>​                                         <strong>Redis简介</strong></p>
+<p>　　已经有了Membercache和各种数据库，Redis为什么会产生？Redis纯粹为应用而产生，它是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类keyvalue存储的不足，解决了断电后数据完全丢失的情况；在部分场合可以对关系数据库起到很好的补充作用。性能测试结果表示SET操作每秒钟可达110000次，GET操作每秒81000次（当然不同的服务器配置性能不同）。</p>
+<p>　　Redis是一种面向“键/值”对类型数据的分布式NoSQL数据库系统，特点是高性能，持久存储，适应高并发的应用场景。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。 这些数据类型支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的，支持各种不同方式的排序。redis 与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改 操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。</p>
+<p>redis目前提供四种数据类型：string,list,set及zset(sorted set)。</p>
+<p>Redis的存储分为内存存储、磁盘存储和log文件三部分，配置文件中有三个参数对其进行配置。</p>
+<ol>
+<li>save seconds updates :指出在多长时间内，有多少次更新操作，就将数据同步到数据文件。</li>
+<li>appendonly yes/no :是否在每次更新操作后进行日志记录。如果不开启，可能会在断电时导致一段时间内的数据丢失。因为redis本身同步数据 文件是按上面的save条件来同步的，所以有的数据会在一段时间内只存在于内存中。</li>
+<li>appendfsync no/always/everysec ：数据缓存同步至磁盘的方式。no表示等操作系统进行数据缓存同步到磁盘，always表示每次更新操作后手动调用fsync()将数据写到磁盘，everysec表示每秒同步一次。</li>
+</ol>
+<p>一：快速搭建</p>
+<p>​    好了，我们知道redis比较适合做的事情了，现在我们可以进行快速搭建。</p>
+<p>第一步：下载<a href="http://servicestack.googlecode.com/files/redis-2.0.2.zip" target="_blank" rel="noopener">redis-2.0.2.zip (32 bit)</a>。然后改名为redis放在D盘中。</p>
+<p><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/10224355-47f0d96a58084a81b23be44a19ada222.jpg" alt="img"></p>
+<p>最重要的也就是下面两个：</p>
+<p>redis-server.exe：        这个就是redis的服务端程序。</p>
+<p>redis-cli.exe：             服务端开启后，我们的客户端就可以输入各种命令测试了。</p>
+<p><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/10225203-55da4b7f1f0e47ef87fff126a5581efa.jpg" alt="img"></p>
+<p>从图中我们可以看到两点：</p>
+<p>①：没有指定config file。</p>
+<p>​     原来redis建议我们做一个配置文件，那我就搞段配置。</p>
+<p><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/10230036-2ad3da19c61b4b26a1628c05a691ea5d.jpg" alt="img"></p>
+<p>daemonize:  是否以“守护进程”的方式开启，当是守护进程的时候就不受控制台的影响了。</p>
+<p>logfile:         log文件位置。</p>
+<p>database:    开启数据库的个数。</p>
+<p>dbfilename:  数据快照文件名。</p>
+<p>save <em> </em>:     保存快照的频率，第一个为时间，第二个为写操作。</p>
+<p>将这些配置好后，我们再看看：</p>
+<p><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/10230720-ba98f3d305604969ae6269655e15eaff.jpg" alt="img"></p>
+<p>②：我们看到redis默认的开放端口为6379。</p>
+<p>二：安装驱动</p>
+<p>好了，redis已经搭建完毕了，现在我们就要用C#去操作redis，这也是我最渴望的功能，优先队列~，先下载<a href="http://servicestack.googlecode.com/files/ServiceStack.zip" target="_blank" rel="noopener">C#驱动</a>，</p>
+<p>就可以看到如下3个dll。</p>
+<p><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/10231210-93d8da2b10384a23948bd7e630c4a1f2.jpg" alt="img"></p>
+<p>最后我们做下小测试：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/copycode.gif" alt="复制代码"></a>;)</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"> <span class="number">1</span>     class Program</span><br><span class="line"> <span class="number">2</span>     &#123;</span><br><span class="line"> <span class="number">3</span>         static void Main(<span class="type">string</span>[] args)</span><br><span class="line"> <span class="number">4</span>         &#123;</span><br><span class="line"> <span class="number">5</span>             var client = new RedisClient(<span class="string">"127.0.0.1"</span>, <span class="number">6379</span>);</span><br><span class="line"> <span class="number">6</span> </span><br><span class="line"> <span class="number">7</span>             <span class="comment">//最后一个参数为我们排序的依据</span></span><br><span class="line"> <span class="number">8</span>             var s = client.AddItemToSortedSet(<span class="string">"12"</span>, <span class="string">"百度"</span>, <span class="number">400</span>);</span><br><span class="line"> <span class="number">9</span> </span><br><span class="line"><span class="number">10</span>             client.AddItemToSortedSet(<span class="string">"12"</span>, <span class="string">"谷歌"</span>, <span class="number">300</span>);</span><br><span class="line"><span class="number">11</span>             client.AddItemToSortedSet(<span class="string">"12"</span>, <span class="string">"阿里"</span>, <span class="number">200</span>);</span><br><span class="line"><span class="number">12</span>             client.AddItemToSortedSet(<span class="string">"12"</span>, <span class="string">"新浪"</span>, <span class="number">100</span>);</span><br><span class="line"><span class="number">13</span>             client.AddItemToSortedSet(<span class="string">"12"</span>, <span class="string">"人人"</span>, <span class="number">500</span>);</span><br><span class="line"><span class="number">14</span> </span><br><span class="line"><span class="number">15</span>             <span class="comment">//升序获取最一个值:"新浪"</span></span><br><span class="line"><span class="number">16</span>             var <span class="type">list</span> = client.GetRangeFromSortedSet(<span class="string">"12"</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="number">17</span> </span><br><span class="line"><span class="number">18</span>             foreach (var item in <span class="type">list</span>)</span><br><span class="line"><span class="number">19</span>             &#123;</span><br><span class="line"><span class="number">20</span>                 Console.WriteLine(item);</span><br><span class="line"><span class="number">21</span>             &#125;</span><br><span class="line"><span class="number">22</span> </span><br><span class="line"><span class="number">23</span>             <span class="comment">//降序获取最一个值:"人人"</span></span><br><span class="line"><span class="number">24</span>             <span class="type">list</span> = client.GetRangeFromSortedSetDesc(<span class="string">"12"</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"><span class="number">25</span> </span><br><span class="line"><span class="number">26</span>             foreach (var item in <span class="type">list</span>)</span><br><span class="line"><span class="number">27</span>             &#123;</span><br><span class="line"><span class="number">28</span>                 Console.WriteLine(item);</span><br><span class="line"><span class="number">29</span>             &#125;</span><br><span class="line"><span class="number">30</span> </span><br><span class="line"><span class="number">31</span>             Console.Read();</span><br><span class="line"><span class="number">32</span>         &#125;</span><br><span class="line"><span class="number">33</span>     &#125;</span><br></pre></td></tr></table></figure>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/copycode.gif" alt="复制代码"></a>;)</p>
+<p>AddItemToSortedSet： 第三个参数也就是我们要排序的依据，这也非常适合我们做topK的问题，非常爽~</p>
+<p><img src="./那点所谓的分布式——redis - 一线码农 - 博客园_files/10231833-91a17df43917437d962b146cfa6e7b51.jpg" alt="img"></p>
+<p><strong>Redis和Memcached比较</strong></p>
+<p>（1） 如果存储的数据不是很大的情况下，两者几乎没太大区别。性能都非常高。如果存储的数据非常大情况下，那么memcached性能高点，因为mm是多线程的。redis是单线程。</p>
+<p>（2）断电Redis可以通过日志恢复数据，或者是通过本身自带的数据文件恢复数据。</p>
+<p>（3)memcached是通过客户端驱动实现了集群的配置的。而Redis是通过服务器端配置实现集群的。而且Redis有主从的复制功能（同步数据。）</p>
+<p>（4）mm数据没有类型。redis：包括string(字符串)、list(链表)、set(集合)和zset(有序集合)。高级的数据结构。可以把集合做成队列，栈等高级数据结构。</p>
+<p>（5）redis 与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改 操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。</p>
+
+ </div>
+ 
+ <div class="article-tags tags">
+		 
+		 <a href="/tags/redis/">redis</a>
+		 
+ </div>
+ 
+<div id="comments" style="margin: 5px auto;">
+	<div id="comment"></div>
+                        <script>
+                            new Valine({
+                        el: '#comment' ,
+                        notify:false, 
+                        verify:false, 
+                        appId: 'oTcHLJ1mpOGAcKcahsaQEBaQ-gzGzoHsz',
+                        appKey: 'Jq4QEoyIo2Y40s3PHny873nz',
+                        placeholder: ' ( *￣▽￣)((≧︶≦*)',
+                        path:window.location.pathname, 
+						avatar:'retro'
+                    });
+                        </script>
+</div>
+ 
+ <div class="art-item-footer">
+		 
+		 <span class="art-item-left">
+				 <i class="icon icon-chevron-thin-left"></i>prev：<a href="/2018/03/10/知识点02/" rel="prev" title="知识点02">
+						 知识点02
+				 </a>
+		 </span>
+		 
+		 
+		 <span class="art-item-right">
+				 next：<a href="/2018/03/08/ASP.NET-MVC-异常记录/" rel="next" title="ASP.NET MVC 异常记录">
+						 ASP.NET MVC 异常记录
+				 </a><i class="icon icon-chevron-thin-right"></i>
+		 </span>
+		 
+ </div>
+ 
+</section>
+
+</article>
+<script>
+window.subData = {
+ title: 'redis nosql介绍',
+ tools: true
+}
+</script>
+
+      </div>
+      <aside class='l_side'>
+        
+  <section class='m_widget about'>
+
+<img class='avatar waves-image' src='/images/avatar.jpg' />
+
+<div class='header'>luox78</div>
+<div class='content'>
+<div class='desc'>It's always not too late to learn</div>
+</div>
+</section>
+
+  <section class='m_widget'>
+        <div class='header'>田馥甄-你就不要想起我</div>
+<div>
+    <audio src="https://luox78.github.io/images/田馥甄-你就不要想起我.mp3" controls="controls" style="width:250px;">
+        田馥甄-你就不要想起我
+    </audio>
+</div>
+</section>
+
+  <section class='m_widget categories'>
+<div class='header'>Categories</div>
+<div class='content'>
+    
+    <ul class="entry">
+    
+        <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>9</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>9</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>17</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>6</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JQuery/"><div class='name'>JQuery</div><div class='badget'>3</div></a></li>
+    
+        <li><a class="flat-box" href="/categories/JavaScript/"><div class='name'>JavaScript</div><div class='badget'>21</div></a></li>
+    
+    </ul>
+    
+</div>
+</section>
+
+  
+<div class="m_widget tagcloud">
+    <div class="header">Tags</div>
+    <div class='content'>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 17px; color: #404040">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.5px; color: #606060">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.5px; color: #606060">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.5px; color: #606060">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/log/" style="font-size: 14px; color: #808080">log</a> <a href="/tags/log4net/" style="font-size: 14px; color: #808080">log4net</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/redis/" style="font-size: 14px; color: #808080">redis</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
+    </div>
+</div>
+
+
+
+  <section class='m_widget links'>
+<div class='header'>Links</div>
+<div class='content'>
+    <ul class="entry">
+    
+        <li><a class="flat-box" target="_blank" href="https://github.com/luox78">
+            <div class='name'>Github</div>
+        </a></li>
+    
+        <li><a class="flat-box" target="_blank" href="https://www.baidu.com">
+            <div class='name'>Baidu</div>
+        </a></li>
+    
+    </ul>
+</div>
+</section>
+
+      </aside>
+    </div>
+  </div>
+  <footer id="footer" class="clearfix">
+
+	<div class="social-wrapper">
+  	
+      
+        <a href="https://github.com/luox78" class="social github"
+          target="_blank" rel="external">
+          <span class="icon icon-github"></span>
+        </a>
+      
+        <a href="/" class="social twitter"
+          target="_blank" rel="external">
+          <span class="icon icon-twitter"></span>
+        </a>
+      
+        <a href="/atom.xml" class="social rss"
+          target="_blank" rel="external">
+          <span class="icon icon-rss"></span>
+        </a>
+      
+    
+  </div>
+  
+  <div>
+    <span>
+        Powered by:<a href="https://hexo.io/" class="codename" target="_blank">
+                       hexo
+        </a>
+    </span>
+    <span> - </span>
+    <span>
+        Theme: <a href='https://github.com/stkevintan/hexo-theme-material-flow' class="codename" target="_blank">MaterialFlow</a> 
+    </span>
+    <span> - </span>
+    <span id="busuanzi_container_site_pv">
+        本站总访问量:
+        <a href='http://ibruce.info/2015/04/04/busuanzi/' class="codename" target="_blank">
+            <span id="busuanzi_value_site_pv"></span>
+        </a>
+    </span>
+</div>
+  
+</footer>
+
+
+  
+
+<script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
+<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
+<script src="/js/jquery.fitvids.js"></script>
+<script>
+	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+	var ALGOLIA_API_KEY = "";
+	var ALGOLIA_APP_ID = "";
+	var ALGOLIA_INDEX_NAME = "";
+  var AZURE_SERVICE_NAME = "";
+  var AZURE_INDEX_NAME = "";
+  var AZURE_QUERY_KEY = "";
+  var BAIDU_API_ID = "";
+  var SEARCH_SERVICE = "hexo";
+  var ROOT = "/"||"/";
+  if(!ROOT.endsWith('/'))ROOT += '/';
+</script>
+<script src="/js/search.js"></script>
+<script src="/js/app.js"></script>
+<!--隐藏不是主页的wiget-->
+<script>
+  if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/" && document.location.href !== "http://localhost:4000/"){
+    var foo = document.getElementsByClassName("l_side");
+    for (let index = 0; index < foo.length; index++) {
+      foo[index].style.display="none";
+    }
+  }
+  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
+  Waves.attach(".u-search-form", ['.waves-circle']);
+  Waves.init();
+
+  //添加tr显示效果
+  $(".article-entry>table tbody tr:odd").css("backgroundColor","rgb(235,236,238)");
+	$("#loading").fadeOut(1000);
+  $("ol").attr("type",1);
+</script>
+
+
+</body>
+</html>

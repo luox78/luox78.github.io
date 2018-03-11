@@ -153,6 +153,180 @@
   <section class="meta">
     
     <h2 class="title">
+      <a href="/2018/01/25/sanchen02/">
+        三层02
+      </a>
+    </h2>
+    
+    <time>
+      Jan 25, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h3 id="ado-net使用事务"><a href="#ado-net使用事务" class="headerlink" title="ado.net使用事务"></a>ado.net使用事务</h3><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">string constr = <span class="string">""</span>;</span><br><span class="line">            using (SqlConnection con = new SqlConnection(constr))</span><br><span class="line">            &#123;</span><br><span class="line">                con.Open();</span><br><span class="line">                using (SqlTransaction tran = con.BeginTransaction())</span><br><span class="line">                &#123;</span><br><span class="line">                    using (SqlCommand <span class="keyword">cmd</span><span class="bash"> = new SqlCommand(<span class="string">"sql"</span>, con))</span></span><br><span class="line"><span class="bash">                    &#123;</span></span><br><span class="line"><span class="bash">                        cmd.Transaction = tran;</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                        cmd.CommandText = <span class="string">"sql"</span>;</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.Clear();</span></span><br><span class="line"><span class="bash">                        cmd.Parameters.AddRange(null);</span></span><br><span class="line"><span class="bash">                        cmd.ExecuteNonQuery();</span></span><br><span class="line"><span class="bash">                    &#125;</span></span><br><span class="line"><span class="bash">                    //tran.Commit();无异常提交</span></span><br><span class="line"><span class="bash">                    tran.Rollback();//异常回滚</span></span><br><span class="line"><span class="bash">                &#125;</span></span><br><span class="line"><span class="bash"></span></span><br><span class="line"><span class="bash">            &#125;</span></span><br></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/25/sanchen02/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/三层/">三层</a>
+      
+        <a href="/tags/单例模式/">单例模式</a>
+      
+        <a href="/tags/发邮件/">发邮件</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/22/paginginfo/">
+        动态创建分页
+      </a>
+    </h2>
+    
+    <time>
+      Jan 22, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h3 id="接着上一个demo"><a href="#接着上一个demo" class="headerlink" title="接着上一个demo"></a>接着上一个demo</h3><p>现在controller中创建一个新的action</p>
+<p>先添加两个私有字段分别表示每页条数，和整个一组多少个，为了方便演示，设置小点</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> PageSize = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">int</span> PageGroupSize = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/22/paginginfo/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/分页/">分页</a>
+      
+        <a href="/tags/asp-net-mvc/">asp.net mvc</a>
+      
+        <a href="/tags/HtmlHelper拓展/">HtmlHelper拓展</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/22/Autofac_IOC/">
+        autofac依赖注入
+      </a>
+    </h2>
+    
+    <time>
+      Jan 22, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/C/">C#</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h3 id="C-Asp-net-autofac依赖注入"><a href="#C-Asp-net-autofac依赖注入" class="headerlink" title="C# Asp.net autofac依赖注入"></a>C# Asp.net autofac依赖注入</h3><h4 id="service类创建实体，接口，具体实现类"><a href="#service类创建实体，接口，具体实现类" class="headerlink" title="service类创建实体，接口，具体实现类"></a>service类创建实体，接口，具体实现类</h4><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Product</span></span><br><span class="line">   &#123;</span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">int</span> ProductID &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> Name &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">string</span> Description &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">       <span class="keyword">public</span> <span class="keyword">decimal</span> Price &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br><span class="line"> </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/22/Autofac_IOC/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/autofac/">autofac</a>
+      
+        <a href="/tags/IOC/">IOC</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/01/22/IOC/">
+        控制反转与依赖注入
+      </a>
+    </h2>
+    
+    <time>
+      Jan 22, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/DailyLearning/">DailyLearning</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="一、分享Iteye的开涛对Ioc的精彩讲解"><a href="#一、分享Iteye的开涛对Ioc的精彩讲解" class="headerlink" title="一、分享Iteye的开涛对Ioc的精彩讲解"></a>一、分享Iteye的开涛对Ioc的精彩讲解</h2><p>　　首先要分享的是Iteye的开涛这位技术牛人对Spring框架的IOC的理解，写得非常通俗易懂，以下内容全部来自原文，原文地址：<a href="http://jinnianshilongnian.iteye.com/blog/1413846" target="_blank" rel="noopener">http://jinnianshilongnian.iteye.com/blog/1413846</a></p>
+
+    
+	  <div class="readmore">
+      <a href="/2018/01/22/IOC/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/IOC/">IOC</a>
+      
+        <a href="/tags/DI/">DI</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
       <a href="/2018/01/21/sanchen01/">
         三层01
       </a>
@@ -241,171 +415,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/17/JQuery03/">
-        初始JQuery03
-      </a>
-    </h2>
-    
-    <time>
-      Jan 17, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="RadioButton-checkbox"><a href="#RadioButton-checkbox" class="headerlink" title="RadioButton|checkbox"></a>RadioButton|checkbox</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio2"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"男"</span> /&gt;男</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio1"</span> <span class="attribute">checked</span>=<span class="string">"checked"</span> <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"女"</span> /&gt;女</span><br><span class="line">&lt;input <span class="attribute">id</span>=<span class="string">"Radio3"</span>checked="checked" <span class="attribute">name</span>=<span class="string">"gender"</span> <span class="attribute">type</span>=<span class="string">"radio"</span> <span class="attribute">value</span>=<span class="string">"未知"</span> /&gt;未知</span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/17/JQuery03/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/16/Entity Framework Code First to a New Database/">
-        Entity Framework01-code first建立一个新数据库
-      </a>
-    </h2>
-    
-    <time>
-      Jan 16, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/C/">C#</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="建立model"><a href="#建立model" class="headerlink" title="建立model"></a>建立model</h2><p>编写.net class建立model</p>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/16/Entity Framework Code First to a New Database/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/Entity-Framework/">Entity Framework</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/JQuery02/">
-        初始JQuery02
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/JQuery/">JQuery</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="selector"><a href="#selector" class="headerlink" title="selector"></a>selector</h2><h3 id="相对定位"><a href="#相对定位" class="headerlink" title="相对定位"></a>相对定位</h3><p>不仅可以使用选择器进行进行绝对定位，还可以进行相对定位，只要在$()指定第二个参数，第二个参数为相对的元素.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//$(this) 代表tr，在tr下面找td</span></span><br><span class="line">$(<span class="string">"tr"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       $(<span class="string">"td:even"</span>, $(<span class="keyword">this</span>)).css(<span class="string">"backgroundColor"</span>, <span class="string">"red"</span>);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/15/JQuery02/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/jQueryfoundation/">jQueryfoundation</a>
-      
-        <a href="/tags/jsfoundation/">jsfoundation</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/01/15/get_post/">
-        GET，POST，PUT，DELETE的区别
-      </a>
-    </h2>
-    
-    <time>
-      Jan 15, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/DailyLearning/">DailyLearning</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <p>Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE。URL全称是资源描述符，我们可以这样认为：一个URL地址，它用于描述一个网络上的资源，而HTTP中的GET，POST，PUT，DELETE就对应着对这个资源的查，改，增，删4个操作。到这里，大家应该有个大概的了解了，GET一般用于获取/查询资源信息，而POST一般用于更新资源信息。
-
-    
-	  <div class="readmore">
-      <a href="/2018/01/15/get_post/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/request/">request</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -455,9 +464,9 @@
     
         <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>9</div></a></li>
     
-        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>6</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>9</div></a></li>
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>16</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>17</div></a></li>
     
         <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>6</div></a></li>
     
@@ -474,7 +483,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 15.5px; color: #606060">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.5px; color: #606060">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.5px; color: #606060">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.5px; color: #606060">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 17px; color: #404040">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.5px; color: #606060">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.5px; color: #606060">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.5px; color: #606060">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/log/" style="font-size: 14px; color: #808080">log</a> <a href="/tags/log4net/" style="font-size: 14px; color: #808080">log4net</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/redis/" style="font-size: 14px; color: #808080">redis</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
     </div>
 </div>
 
