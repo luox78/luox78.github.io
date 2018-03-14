@@ -35,22 +35,6 @@
 </head>
 
 <body>
-  <div id="loading">
-    <div id="loading-center">
-    <div id="loading-center-absolute">
-    <div class="object" id="object_one"></div>
-    <div class="object" id="object_two"></div>
-    <div class="object" id="object_three"></div>
-    <div class="object" id="object_four"></div>
-    <div class="object" id="object_five"></div>
-    <div class="object" id="object_six"></div>
-    <div class="object" id="object_seven"></div>
-    <div class="object" id="object_eight"></div>
-    <div class="object" id="object_big"></div>
-    </div>
-    </div>
-     
-    </div>
   <header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
@@ -153,6 +137,95 @@
 
 <section class="post-list">
 	
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/02/28/filters/">
+        Asp.Net MVC学习总结之过滤器详解
+      </a>
+    </h2>
+    
+    <time>
+      Feb 28, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET-MVC/">ASP.NET MVC</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <p><strong>一、过滤器简介</strong></p>
+<p><strong>1.1、理解什么是过滤器</strong></p>
+<p>1、过滤器（Filters）就是向请求处理管道中注入额外的逻辑。提供了一个简单而优雅的方式来实现横切关注点。</p>
+<p>2、所谓的过滤器（Filters），MVC框架里面的过滤器完全不同于ASP.NET平台里面的Request.Filters和Response.Filter对象，它们主要是实现请求和响应流的传输。通常我们所说的过滤器是指MVC框架里面的过滤器。</p>
+<p>3、过滤器可以注入一些代码逻辑到请求处理管道中，是基于C#的Attribute的实现。当负责调用Action的类ControllerActionInvoker在调用执行Action的时候会检查Action上面的Attribute并查看这些Attribute是否实现了指定的接口，以便进行额外的代码注入处理
+
+    
+	  <div class="readmore">
+      <a href="/2018/02/28/filters/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/filters/">filters</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+    <div class='post-wrapper'>
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2018/02/28/ASP.NET08/">
+        ASP.NET08
+      </a>
+    </h2>
+    
+    <time>
+      Feb 28, 2018
+    </time>
+		
+    
+    <div class='cats'>
+        <a href="/categories/ASP-NET/">ASP.NET</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h2 id="配置错误页"><a href="#配置错误页" class="headerlink" title="配置错误页"></a>配置错误页</h2><figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;customErrors mode=<span class="string">"On"</span> defaultRedirect=<span class="string">"~/test2/404.htm"</span>&gt;</span><br><span class="line">      &lt;<span class="keyword">error</span> statusCode=<span class="string">"403"</span> redirect=<span class="string">"NoAccess.htm"</span> /&gt;</span><br><span class="line">      &lt;<span class="keyword">error</span> statusCode=<span class="string">"404"</span> redirect=<span class="string">"FileNotFound.htm"</span> /&gt;</span><br><span class="line">    &lt;/customErrors&gt;</span><br><span class="line">---------------------------在Application_Error中发生错误时转向另外一个页面------------------------</span><br><span class="line">protected void Application_Error(object sender, EventArgs e)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">string</span> errorMsg = Context.<span class="keyword">Error</span>.Message + Environment.NewLine + Context.<span class="keyword">Error</span>.StackTrace + <span class="string">"【"</span> + DateTime.<span class="built_in">Now</span>.ToString() + <span class="string">"】"</span> + Environment.NewLine + <span class="string">"===================================================="</span> + Environment.NewLine;</span><br><span class="line">            File.AppendAllText(<span class="built_in">Server</span>.MapPath(<span class="string">"~/log.txt"</span>), errorMsg);</span><br><span class="line">            <span class="built_in">Response</span>.Redirect(<span class="string">"~/test2/404.htm"</span>);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p>mvc中只能将静态页面放在根目录或者创建一个Error控制器
+
+    
+	  <div class="readmore">
+      <a href="/2018/02/28/ASP.NET08/">Read More</a>
+    </div>
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/cache/">cache</a>
+      
+        <a href="/tags/错误页/">错误页</a>
+      
+        <a href="/tags/HttpModule/">HttpModule</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
     <div class='post-wrapper'>
       <article class="post reveal">
   <section class="meta">
@@ -506,117 +579,6 @@
 </article>
     </div>
   
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/02/05/ASP.NET03/">
-        ASP.NET03
-      </a>
-    </h2>
-    
-    <time>
-      Feb 5, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/ASP-NET/">ASP.NET</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="ASP-NET简单三层步骤"><a href="#ASP-NET简单三层步骤" class="headerlink" title="ASP.NET简单三层步骤"></a>ASP.NET简单三层步骤</h2><ol>
-<li>建立好相应的文件夹</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>文件夹</th>
-<th>用处</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>CURD.BLL</td>
-<td>CURD的业务逻辑层</td>
-</tr>
-<tr>
-<td>CURD.DAL</td>
-<td>CURD的数据访问层</td>
-</tr>
-<tr>
-<td>CURD.Model</td>
-<td>CURD的传输层模型（本次将数据库模型与dto混为一谈）</td>
-</tr>
-<tr>
-<td>CURD.UI</td>
-<td>CURD的网页端</td>
-</tr>
-</tbody>
-</table>
-
-    
-	  <div class="readmore">
-      <a href="/2018/02/05/ASP.NET03/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/简单三层/">简单三层</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class='post-wrapper'>
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2018/02/04/ASP.NET02/">
-        ASP.NET02
-      </a>
-    </h2>
-    
-    <time>
-      Feb 4, 2018
-    </time>
-		
-    
-    <div class='cats'>
-        <a href="/categories/ASP-NET/">ASP.NET</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h2 id="搭建IIS本地服务器"><a href="#搭建IIS本地服务器" class="headerlink" title="搭建IIS本地服务器"></a>搭建IIS本地服务器</h2><p>打开服务</p>
-<p><img src="https://luox78.github.io/images/IIS01.png" alt="https://luox78.github.io/images/IIS01.png"><br>
-
-    
-	  <div class="readmore">
-      <a href="/2018/02/04/ASP.NET02/">Read More</a>
-    </div>
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/IIS请求流程/">IIS请求流程</a>
-      
-        <a href="/tags/工厂模式/">工厂模式</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
 
 
@@ -667,9 +629,9 @@
     
         <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>9</div></a></li>
     
-        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>9</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>10</div></a></li>
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>17</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>18</div></a></li>
     
         <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>6</div></a></li>
     
@@ -686,7 +648,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 17px; color: #404040">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.5px; color: #606060">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.5px; color: #606060">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.5px; color: #606060">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/log/" style="font-size: 14px; color: #808080">log</a> <a href="/tags/log4net/" style="font-size: 14px; color: #808080">log4net</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/redis/" style="font-size: 14px; color: #808080">redis</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 17.6px; color: #333">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.2px; color: #666">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.2px; color: #666">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.2px; color: #666">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.2px; color: #666">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.2px; color: #666">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.2px; color: #666">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.2px; color: #666">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.2px; color: #666">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 16.4px; color: #4d4d4d">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.8px; color: #1a1a1a">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/log/" style="font-size: 14px; color: #808080">log</a> <a href="/tags/log4net/" style="font-size: 14px; color: #808080">log4net</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/redis/" style="font-size: 14px; color: #808080">redis</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.2px; color: #666">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.2px; color: #666">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
     </div>
 </div>
 

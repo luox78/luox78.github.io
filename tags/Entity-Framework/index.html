@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
-  <title>Tag: Entity Framework | luox78</title>
+  <title>Tag: entity framework | luox78</title>
   <meta name="description" content="Blog for luox78" />
   <meta name="keywords" content="" />
   <meta name="HandheldFriendly" content="True" />
@@ -18,7 +18,7 @@
   <meta name="description" content="Blog for luox78">
 <meta property="og:type" content="website">
 <meta property="og:title" content="luox78">
-<meta property="og:url" content="https://luox78.github.io/tags/Entity-Framework/index.html">
+<meta property="og:url" content="https://luox78.github.io/tags/entity-framework/index.html">
 <meta property="og:site_name" content="luox78">
 <meta property="og:description" content="Blog for luox78">
 <meta property="og:locale" content="zh-Hans">
@@ -35,22 +35,6 @@
 </head>
 
 <body>
-  <div id="loading">
-    <div id="loading-center">
-    <div id="loading-center-absolute">
-    <div class="object" id="object_one"></div>
-    <div class="object" id="object_two"></div>
-    <div class="object" id="object_three"></div>
-    <div class="object" id="object_four"></div>
-    <div class="object" id="object_five"></div>
-    <div class="object" id="object_six"></div>
-    <div class="object" id="object_seven"></div>
-    <div class="object" id="object_eight"></div>
-    <div class="object" id="object_big"></div>
-    </div>
-    </div>
-     
-    </div>
   <header class="l_header">
 	<div class='wrapper'>
 		<div class="nav-main container container--flex">
@@ -147,7 +131,7 @@
       <div class='l_main'>
         
   <script>
-    window.subData= { title:'Tag : Entity Framework'}
+    window.subData= { title:'Tag : entity framework'}
   </script>
 
 <section class="post-list">
@@ -157,36 +141,36 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/18/Entity Framework Code First to a Update model and migrate/">
-        Entity Framework02-code first修改模型，迁移数据库
+      <a href="/2018/03/03/ASP.NET-MVC02/">
+        ASP.NET MVC02
       </a>
     </h2>
     
     <time>
-      Jan 18, 2018
+      Mar 3, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/C/">C#</a>
+        <a href="/categories/ASP-NET-MVC/">ASP.NET MVC</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <p> 本文以<code>asp.net mvc</code>自己提供的身份验证为例</p>
-<h2 id="添加属性"><a href="#添加属性" class="headerlink" title="添加属性"></a>添加属性</h2><p>在<code>Models\IdentityModels.cs</code> 里 <code>ApplicationUser</code>类下添加你想添加的属性，比如生日</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> DateTime BirthDate &#123; <span class="keyword">get</span>; <span class="keyword">set</span>; &#125;</span><br></pre></td></tr></table></figure>
+	  <h2 id="接上篇"><a href="#接上篇" class="headerlink" title="接上篇"></a>接上篇</h2><p>更新，删除可以先找出实体，然后直接更改属性保存即可，删除直接调用<code>remove</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="keyword">db</span> = new luox78_成绩管理系统Entities();</span><br><span class="line"><span class="keyword">var</span> college = <span class="keyword">db</span>.College.FirstOrDefault(<span class="keyword">m</span> =&gt; <span class="keyword">m</span>.Autoid == 1);</span><br><span class="line"><span class="comment">//更新</span></span><br><span class="line">college.CollegeName = <span class="string">"changed"</span>;</span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="keyword">db</span>.College.Remove(college);</span><br><span class="line"><span class="keyword">db</span>.SaveChanges();</span><br></pre></td></tr></table></figure>
+<p>根据主键查询可以使用<code>Find</code>方法
 
     
 	  <div class="readmore">
-      <a href="/2018/01/18/Entity Framework Code First to a Update model and migrate/">Read More</a>
+      <a href="/2018/03/03/ASP.NET-MVC02/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/Entity-Framework/">Entity Framework</a>
+        <a href="/tags/entity-framework/">entity framework</a>
       
 	  </div>
     
@@ -199,34 +183,52 @@
   <section class="meta">
     
     <h2 class="title">
-      <a href="/2018/01/16/Entity Framework Code First to a New Database/">
-        Entity Framework01-code first建立一个新数据库
+      <a href="/2018/03/02/ASP.NET-MVC01/">
+        ASP.NET MVC01
       </a>
     </h2>
     
     <time>
-      Jan 16, 2018
+      Mar 2, 2018
     </time>
 		
     
     <div class='cats'>
-        <a href="/categories/C/">C#</a>
+        <a href="/categories/ASP-NET-MVC/">ASP.NET MVC</a>
     </div>
 
   </section>
   <section class="article typo">
-	  <h2 id="建立model"><a href="#建立model" class="headerlink" title="建立model"></a>建立model</h2><p>编写.net class建立model</p>
+	  <h2 id="Entity-Framework"><a href="#Entity-Framework" class="headerlink" title="Entity Framework"></a>Entity Framework</h2><h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><ul>
+<li>自动属性</li>
+<li>var</li>
+<li>对象、集合初始化器</li>
+<li>匿名类</li>
+<li>拓展方法</li>
+<li>lambda表达式</li>
+</ul>
+<h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p><strong>托管于非托管代码</strong></p>
+<p>C，c++编译 –》dll动态链接库 –》 二进制机器码，直接交给操作系统运行</p>
+<p>C# 编译dll（程序集） –》 IL –》CLR 即时编译JIT –》 二进制机器码
 
     
 	  <div class="readmore">
-      <a href="/2018/01/16/Entity Framework Code First to a New Database/">Read More</a>
+      <a href="/2018/03/02/ASP.NET-MVC01/">Read More</a>
     </div>
     
     
     
 	  <div class="full-width auto-padding tags">
       
-        <a href="/tags/Entity-Framework/">Entity Framework</a>
+        <a href="/tags/entity-framework/">entity framework</a>
+      
+        <a href="/tags/entity-framework-designer/">entity framework designer</a>
+      
+        <a href="/tags/database-first/">database first</a>
+      
+        <a href="/tags/model-first/">model first</a>
+      
+        <a href="/tags/linq-to-ef/">linq to ef</a>
       
 	  </div>
     
@@ -267,9 +269,9 @@
     
         <li><a class="flat-box" href="/categories/ASP-NET/"><div class='name'>ASP.NET</div><div class='badget'>9</div></a></li>
     
-        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>9</div></a></li>
+        <li><a class="flat-box" href="/categories/ASP-NET-MVC/"><div class='name'>ASP.NET MVC</div><div class='badget'>10</div></a></li>
     
-        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>17</div></a></li>
+        <li><a class="flat-box" href="/categories/C/"><div class='name'>C#</div><div class='badget'>18</div></a></li>
     
         <li><a class="flat-box" href="/categories/DailyLearning/"><div class='name'>DailyLearning</div><div class='badget'>6</div></a></li>
     
@@ -286,7 +288,7 @@
 <div class="m_widget tagcloud">
     <div class="header">Tags</div>
     <div class='content'>
-        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 17px; color: #404040">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.5px; color: #606060">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.5px; color: #606060">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.5px; color: #606060">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.5px; color: #606060">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.5px; color: #606060">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.5px; color: #606060">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.5px; color: #606060">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.5px; color: #606060">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 17px; color: #404040">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.5px; color: #202020">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/log/" style="font-size: 14px; color: #808080">log</a> <a href="/tags/log4net/" style="font-size: 14px; color: #808080">log4net</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/redis/" style="font-size: 14px; color: #808080">redis</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.5px; color: #606060">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.5px; color: #606060">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
+        <a href="/tags/ASP-NET-MVC5-编程实战/" style="font-size: 17.6px; color: #333">ASP.NET MVC5 编程实战</a> <a href="/tags/Ajax/" style="font-size: 14px; color: #808080">Ajax</a> <a href="/tags/AjaxHelper/" style="font-size: 15.2px; color: #666">AjaxHelper</a> <a href="/tags/C-特性/" style="font-size: 15.2px; color: #666">C#特性</a> <a href="/tags/DI/" style="font-size: 14px; color: #808080">DI</a> <a href="/tags/Entity-Framework/" style="font-size: 15.2px; color: #666">Entity Framework</a> <a href="/tags/HtmlHelper拓展/" style="font-size: 14px; color: #808080">HtmlHelper拓展</a> <a href="/tags/HttpModule/" style="font-size: 14px; color: #808080">HttpModule</a> <a href="/tags/HttpRequest/" style="font-size: 14px; color: #808080">HttpRequest</a> <a href="/tags/HttpResponse/" style="font-size: 14px; color: #808080">HttpResponse</a> <a href="/tags/HttpUtility/" style="font-size: 14px; color: #808080">HttpUtility</a> <a href="/tags/IIS请求流程/" style="font-size: 14px; color: #808080">IIS请求流程</a> <a href="/tags/IOC/" style="font-size: 15.2px; color: #666">IOC</a> <a href="/tags/Json/" style="font-size: 14px; color: #808080">Json</a> <a href="/tags/LINQ/" style="font-size: 15.2px; color: #666">LINQ</a> <a href="/tags/MD5/" style="font-size: 14px; color: #808080">MD5</a> <a href="/tags/Mvc校验/" style="font-size: 14px; color: #808080">Mvc校验</a> <a href="/tags/NOPI/" style="font-size: 14px; color: #808080">NOPI</a> <a href="/tags/SqlHelper/" style="font-size: 14px; color: #808080">SqlHelper</a> <a href="/tags/TryCatch/" style="font-size: 14px; color: #808080">TryCatch</a> <a href="/tags/areas/" style="font-size: 14px; color: #808080">areas</a> <a href="/tags/asp-net-mvc/" style="font-size: 14px; color: #808080">asp.net mvc</a> <a href="/tags/autofac/" style="font-size: 14px; color: #808080">autofac</a> <a href="/tags/bitwiseOperations/" style="font-size: 14px; color: #808080">bitwiseOperations</a> <a href="/tags/cache/" style="font-size: 15.2px; color: #666">cache</a> <a href="/tags/database-first/" style="font-size: 14px; color: #808080">database first</a> <a href="/tags/entity-framework/" style="font-size: 15.2px; color: #666">entity framework</a> <a href="/tags/entity-framework-designer/" style="font-size: 14px; color: #808080">entity framework designer</a> <a href="/tags/event/" style="font-size: 14px; color: #808080">event</a> <a href="/tags/filters/" style="font-size: 15.2px; color: #666">filters</a> <a href="/tags/https/" style="font-size: 14px; color: #808080">https</a> <a href="/tags/http协议/" style="font-size: 14px; color: #808080">http协议</a> <a href="/tags/jQuery-Validate/" style="font-size: 14px; color: #808080">jQuery Validate</a> <a href="/tags/jQueryfoundation/" style="font-size: 16.4px; color: #4d4d4d">jQueryfoundation</a> <a href="/tags/jsfoundation/" style="font-size: 18.8px; color: #1a1a1a">jsfoundation</a> <a href="/tags/linq-to-ef/" style="font-size: 14px; color: #808080">linq to ef</a> <a href="/tags/log/" style="font-size: 14px; color: #808080">log</a> <a href="/tags/log4net/" style="font-size: 14px; color: #808080">log4net</a> <a href="/tags/model-first/" style="font-size: 14px; color: #808080">model first</a> <a href="/tags/path/" style="font-size: 14px; color: #808080">path</a> <a href="/tags/redis/" style="font-size: 14px; color: #808080">redis</a> <a href="/tags/request/" style="font-size: 14px; color: #808080">request</a> <a href="/tags/swagger/" style="font-size: 14px; color: #808080">swagger</a> <a href="/tags/thread/" style="font-size: 15.2px; color: #666">thread</a> <a href="/tags/tips/" style="font-size: 14px; color: #808080">tips</a> <a href="/tags/viewstate/" style="font-size: 14px; color: #808080">viewstate</a> <a href="/tags/三层/" style="font-size: 15.2px; color: #666">三层</a> <a href="/tags/分页/" style="font-size: 14px; color: #808080">分页</a> <a href="/tags/单例模式/" style="font-size: 14px; color: #808080">单例模式</a> <a href="/tags/发邮件/" style="font-size: 14px; color: #808080">发邮件</a> <a href="/tags/工厂模式/" style="font-size: 14px; color: #808080">工厂模式</a> <a href="/tags/数据库三范式/" style="font-size: 14px; color: #808080">数据库三范式</a> <a href="/tags/文件上传下载/" style="font-size: 14px; color: #808080">文件上传下载</a> <a href="/tags/模拟IIS/" style="font-size: 14px; color: #808080">模拟IIS</a> <a href="/tags/深入理解JS/" style="font-size: 20px; color: #000">深入理解JS</a> <a href="/tags/深入理解aspx/" style="font-size: 14px; color: #808080">深入理解aspx</a> <a href="/tags/简单三层/" style="font-size: 14px; color: #808080">简单三层</a> <a href="/tags/线程/" style="font-size: 14px; color: #808080">线程</a> <a href="/tags/缩略图/" style="font-size: 14px; color: #808080">缩略图</a> <a href="/tags/错误页/" style="font-size: 14px; color: #808080">错误页</a>
     </div>
 </div>
 
@@ -361,46 +363,6 @@
 
 <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
-<script src="/js/jquery.fitvids.js"></script>
-<script>
-	var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
-	var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
-	var ALGOLIA_API_KEY = "";
-	var ALGOLIA_APP_ID = "";
-	var ALGOLIA_INDEX_NAME = "";
-  var AZURE_SERVICE_NAME = "";
-  var AZURE_INDEX_NAME = "";
-  var AZURE_QUERY_KEY = "";
-  var BAIDU_API_ID = "";
-  var SEARCH_SERVICE = "hexo";
-  var ROOT = "/"||"/";
-  if(!ROOT.endsWith('/'))ROOT += '/';
-</script>
-<script src="/js/search.js"></script>
-<script src="/js/app.js"></script>
-<!--隐藏不是主页的wiget-->
-<script>
-  if(document.location.href !== "https://luox78.github.io/" && document.location.href !== "https://luox78.github.io/archives/" && document.location.href !== "http://localhost:4000/"){
-    var foo = document.getElementsByClassName("l_side");
-    for (let index = 0; index < foo.length; index++) {
-      foo[index].style.display="none";
-    }
-  }
-  Waves.attach('.vbtn', ['waves-button', 'waves-float']);
-  Waves.attach(".u-search-form", ['.waves-circle']);
-  Waves.init();
-
-  //添加tr显示效果
-  $(".article-entry>table tbody tr:odd").css("backgroundColor","rgb(235,236,238)");
-	$("#loading").fadeOut(1000);
-  $("ol").attr("type",1);
-</script>
-
-
-</body>
-</html>
-css.com/node-waves/0.7.5/waves.min.js'></script>
 <script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
 <script src="/js/jquery.fitvids.js"></script>
 <script>
